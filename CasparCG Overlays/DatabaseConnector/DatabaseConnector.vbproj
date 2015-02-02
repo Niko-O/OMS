@@ -52,6 +52,10 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OnUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OnUtilsLib\OnUtils.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -62,12 +66,13 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="D:\Projects\VB\_Libs\OnUtils\OnUtils\bin\Release\OnUtils.dll" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Import Include="OnUtils" />
+    <Import Include="OnUtils.Extensions" />
+    <Import Include="OnUtils.Streams" />
     <Import Include="OnUtils.Wpf" />
-    <Import Include="OnUtils.Wpf.Converters" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -76,9 +81,6 @@
     <Import Include="System.Diagnostics" />
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
-    <Import Include="OnUtils" />
-    <Import Include="OnUtils.Extensions" />
-    <Import Include="OnUtils.Streams" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\ColumnValue.vb" />
@@ -150,7 +152,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)CopyPlugins\bin\Release\CopyPlugins.exe" "$(SolutionDir)\" "$(TargetDir)\"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)CopyPlugins\bin\Release\CopyPlugins.exe" "$(SolutionDir)\" "$(TargetDir)\" "$(ProjectName)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

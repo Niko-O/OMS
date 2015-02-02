@@ -15,11 +15,24 @@ Public Class Composition
     ''' </summary>
     ''' <param name="DirectoryPath">Der Ordnerpfad, an dem nach Kompositions-Assemblies gesucht wird.</param>
     Public Shared Sub AddPluginDirectoryPath(DirectoryPath As String)
-        If Not System.IO.Directory.Exists(DirectoryPath) Then
-            System.IO.Directory.CreateDirectory(DirectoryPath)
-        End If
-        Catalog.Catalogs.Add(New DirectoryCatalog(DirectoryPath))
+        Dim Info As New System.IO.DirectoryInfo(DirectoryPath)
+        RecursiveAddDirectory(Info)
         RaiseEvent CatalogChanged()
+    End Sub
+
+    Private Shared Sub RecursiveAddDirectory(Info As System.IO.DirectoryInfo)
+        If DirectoryCatalogs.Any(Function(i) i.FullPath = Info.FullName) Then
+            Return
+        End If
+        If Info.Exists Then
+            Info.Create()
+        End If
+        Dim NewCatalog As New DirectoryCatalog(Info.FullName)
+        DirectoryCatalogs.Add(NewCatalog)
+        Catalog.Catalogs.Add(NewCatalog)
+        For Each i In Info.GetDirectories
+            RecursiveAddDirectory(i)
+        Next
     End Sub
 
     ''' <summary>
@@ -31,6 +44,7 @@ Public Class Composition
     End Sub
 
     Private Shared Catalog As New AggregateCatalog
+    Private Shared DirectoryCatalogs As New List(Of DirectoryCatalog)
     Private Shared Compositions As New CompositionContainer(Catalog)
 
 End Class

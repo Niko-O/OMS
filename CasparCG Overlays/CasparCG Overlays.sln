@@ -2,18 +2,39 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CasparCG Overlays", "CasparCG Overlays\CasparCG Overlays.vbproj", "{8E8DB71F-51C2-4011-A907-7246EC85B224}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PluginInterfaces", "PluginInterfaces\PluginInterfaces.vbproj", "{8E60A8D4-FA07-41B1-86BD-3FD1209C7AAC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TennisPlugin", "TennisPlugin\TennisPlugin.vbproj", "{0F5CB3AB-9AAB-4617-865E-5713286687FB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TestApplication", "TestApplication\TestApplication.vbproj", "{A6B6A0E4-4C2C-4F1D-8DEB-646140CC84AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DatabaseConnector", "DatabaseConnector\DatabaseConnector.vbproj", "{80323AFB-CBAB-495A-875D-786C6C30C475}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TestFootballPlugin", "TestFootballPlugin\TestFootballPlugin.vbproj", "{0837A2DC-2F53-43F6-AC78-6E3D39468828}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CommonEventPluginData", "CommonEventPluginData\CommonEventPluginData.vbproj", "{740B3954-FC54-4180-9BD3-77DF23090B33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{D5026463-6FB8-49E2-9729-38A03CEC21F1}"
 EndProject
@@ -26,8 +47,21 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Postbuild", "Postbuild", "{B5EBB970-64E8-463D-B5FC-555F1275CEBC}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CopyPlugins", "CopyPlugins\CopyPlugins.vbproj", "{CF311F24-893A-4ECD-9F44-A6E069258104}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0F5CB3AB-9AAB-4617-865E-5713286687FB} = {0F5CB3AB-9AAB-4617-865E-5713286687FB}
+		{0837A2DC-2F53-43F6-AC78-6E3D39468828} = {0837A2DC-2F53-43F6-AC78-6E3D39468828}
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+		{80323AFB-CBAB-495A-875D-786C6C30C475} = {80323AFB-CBAB-495A-875D-786C6C30C475}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PluginSettings", "PluginSettings\PluginSettings.vbproj", "{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {0CDA04E2-0D42-4960-83D7-524E07867430}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prebuild", "Prebuild", "{4B20939D-9FB0-4730-B636-806E497C2805}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CopyOnUtils", "CopyOnUtils\CopyOnUtils.vbproj", "{0CDA04E2-0D42-4960-83D7-524E07867430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +163,16 @@ Global
 		{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}.Release|x86.ActiveCfg = Release|Any CPU
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Debug|x86.ActiveCfg = Debug|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Debug|x86.Build.0 = Debug|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Release|Any CPU.ActiveCfg = Release|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Release|Mixed Platforms.Build.0 = Release|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Release|x86.ActiveCfg = Release|x86
+		{0CDA04E2-0D42-4960-83D7-524E07867430}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,5 +187,6 @@ Global
 		{0F5CB3AB-9AAB-4617-865E-5713286687FB} = {D5026463-6FB8-49E2-9729-38A03CEC21F1}
 		{A6B6A0E4-4C2C-4F1D-8DEB-646140CC84AA} = {39527171-736E-4C15-AD31-AA586E95AC6B}
 		{CF311F24-893A-4ECD-9F44-A6E069258104} = {B5EBB970-64E8-463D-B5FC-555F1275CEBC}
+		{0CDA04E2-0D42-4960-83D7-524E07867430} = {4B20939D-9FB0-4730-B636-806E497C2805}
 	EndGlobalSection
 EndGlobal

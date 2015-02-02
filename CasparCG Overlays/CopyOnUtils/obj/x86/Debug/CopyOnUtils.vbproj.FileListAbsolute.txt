@@ -1,0 +1,11 @@
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\bin\Debug\CopyOnUtils.exe
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\bin\Debug\CopyOnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\bin\Debug\CopyOnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\bin\Debug\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\bin\Debug\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\bin\Debug\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\obj\x86\Debug\CopyOnUtils.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\obj\x86\Debug\CopyOnUtils.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\obj\x86\Debug\CopyOnUtils.exe
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\obj\x86\Debug\CopyOnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyOnUtils\obj\x86\Debug\CopyOnUtils.pdb

@@ -12,6 +12,21 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <MyType>Custom</MyType>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -52,6 +67,10 @@
     <Reference Include="ApplicationSettings">
       <HintPath>D:\Projects\VB\_Libs\ApplicationSettings\ApplicationSettings\bin\Release\ApplicationSettings.dll</HintPath>
     </Reference>
+    <Reference Include="OnUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OnUtilsLib\OnUtils.dll</HintPath>
+    </Reference>
     <Reference Include="SettingsManager">
       <HintPath>..\SettingsManager.dll</HintPath>
     </Reference>
@@ -71,7 +90,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="D:\Projects\VB\_Libs\OnUtils\OnUtils\bin\Release\OnUtils.dll" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="Application.xaml">
@@ -108,6 +126,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Import Include="OnUtils" />
+    <Import Include="OnUtils.Extensions" />
+    <Import Include="OnUtils.Streams" />
+    <Import Include="OnUtils.Wpf" />
     <Import Include="System.ComponentModel.Composition" />
     <Import Include="System.ComponentModel.Composition.Hosting" />
     <Import Include="System.Linq" />
@@ -127,10 +149,6 @@
     <Import Include="System.Windows.Media" />
     <Import Include="System.Windows.Media.Imaging" />
     <Import Include="System.Windows.Navigation" />
-    <Import Include="OnUtils" />
-    <Import Include="OnUtils.Extensions" />
-    <Import Include="OnUtils.Streams" />
-    <Import Include="OnUtils.Wpf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb">
@@ -173,5 +191,30 @@
       <Name>PluginSettings</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)CopyOnUtils\bin\Release\CopyOnUtils.exe" "$(SolutionDir)\"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

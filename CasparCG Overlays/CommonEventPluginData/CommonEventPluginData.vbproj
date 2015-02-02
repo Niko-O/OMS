@@ -46,15 +46,21 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OnUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OnUtilsLib\OnUtils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="D:\Projects\VB\_Libs\OnUtils\OnUtils\bin\Release\OnUtils.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Import Include="OnUtils" />
+    <Import Include="OnUtils.Extensions" />
+    <Import Include="OnUtils.Streams" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -62,9 +68,6 @@
     <Import Include="System.Diagnostics" />
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
-    <Import Include="OnUtils" />
-    <Import Include="OnUtils.Extensions" />
-    <Import Include="OnUtils.Streams" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICountry.vb" />

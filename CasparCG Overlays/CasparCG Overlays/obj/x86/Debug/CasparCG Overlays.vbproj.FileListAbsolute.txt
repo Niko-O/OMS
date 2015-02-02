@@ -31,3 +31,7 @@ C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CasparCG Overlays\obj\x86\De
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginSettings.dll
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginSettings.pdb
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginSettings.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparCG Overlays.exe.config
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.exe
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.pdb

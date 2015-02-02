@@ -4,14 +4,15 @@ Imports System.IO
 Public Class Program
 
     Public Shared Function Main(Args As String()) As Integer
-        If Not Args.Length = 2 Then
+        If Not Args.Length = 3 Then
             Console.WriteLine("Argument fehlt")
             Return 1
         End If
         Dim SolutionDirectory As New DirectoryInfo(Args(0))
         Dim SourceDirectory As New DirectoryInfo(Args(1))
+        Dim SubDirectoryName = Args(2)
         For Each i In {"CasparCG Overlays\bin\Release\Plugins", "CasparCG Overlays\bin\Debug\Plugins"}
-            Dim Result = Copy(SourceDirectory, SolutionDirectory.CreateSubdirectory(i))
+            Dim Result = Copy(SourceDirectory, SolutionDirectory.CreateSubdirectory(Path.Combine(i, SubDirectoryName)))
             If Not Result = 0 Then
                 Return Result
             End If

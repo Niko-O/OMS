@@ -55,7 +55,11 @@
                         <StackPanel>
                             <TextBlock>IP-Adresse:</TextBlock>
                             <TextBox Margin="0,3"></TextBox>
-                            <Button Padding="0,10" Content="{Binding Source={x:Static Member=t:CasparServer.Instance}, Path=IsConnected, Converter={StaticResource ResourceKey=ConnectToServerButtonTextConverter}}"></Button>
+                            <Button
+                                Padding="0,10"
+                                Content="{Binding Source={x:Static Member=t:CasparServer.Instance}, Path=IsConnected, Converter={StaticResource ResourceKey=ConnectToServerButtonTextConverter}}"
+                                Command="{Binding Source={x:Static Member=t:CasparServer.Instance}, Path=ToggleConnectionCommand}"
+                            />
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>

@@ -49,7 +49,8 @@
     End Property
 
     Public Sub ToggleConnection()
-
+        _IsConnected = Not _IsConnected
+        OnPropertyChanged("IsConnected")
     End Sub
 
 End Class
