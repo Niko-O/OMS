@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CommonEventPluginData
+</name>
+</assembly>
+<members>
+<member name="P:CommonEventPluginData.ICountry.FullName">
+	<summary>
+ Der vorllständige Name des Landes.
+ </summary>
+</member><member name="P:CommonEventPluginData.ICountry.ShortName">
+	<summary>
+ Das Namenskürzel des Landes.
+ </summary>
+</member><member name="T:CommonEventPluginData.ICountry">
+	<summary>
+ Stellt ein Land und das dafür verwendete Länderkürzel dar.
+ </summary>
+</member><member name="M:CommonEventPluginData.ICountrySource.GetCountries">
+	<summary>
+ Gibt eine Liste der vorhandenen <see cref="T:CommonEventPluginData.ICountry"/> Bedürfnisse zurück.
+ </summary>
+</member><member name="T:CommonEventPluginData.ICountrySource">
+	<summary>
+ Stellt eine Quelle für <see cref="T:CommonEventPluginData.ICountry"/> dar.
+ </summary>
+</member><member name="P:CommonEventPluginData.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:CommonEventPluginData.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:CommonEventPluginData.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

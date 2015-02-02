@@ -1,0 +1,12 @@
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Release\CommonEventPluginData.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Release\CommonEventPluginData.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Release\CommonEventPluginData.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Release\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Release\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Release\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.vbprojResolveAssemblyReference.cache

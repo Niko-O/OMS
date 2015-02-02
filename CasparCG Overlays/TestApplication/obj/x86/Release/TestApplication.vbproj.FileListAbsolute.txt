@@ -1,0 +1,15 @@
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\TestApplication.exe
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\TestApplication.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\TestApplication.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\Svt.Caspar.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\Svt.Network.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\bin\Release\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.Form_Main.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.exe
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.vbprojResolveAssemblyReference.cache

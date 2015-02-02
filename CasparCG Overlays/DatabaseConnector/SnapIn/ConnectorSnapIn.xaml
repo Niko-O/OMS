@@ -1,0 +1,146 @@
+﻿<UserControl
+	x:Class="ConnectorSnapIn"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:t="clr-namespace:DatabaseConnector"
+    xmlns:o="clr-namespace:OnUtils;assembly=OnUtils"
+    xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+	d:DesignWidth="300"
+>
+    <UserControl.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="3,1,0,1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="3,1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Margin" Value="3,1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <c:BooleanNotConverter x:Key="BooleanNotConverter"/>
+        <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
+    </UserControl.Resources>
+	<UserControl.DataContext>
+		<t:ConnectorSnapInViewModel/>
+	</UserControl.DataContext>
+    <Grid Margin="0,3,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource ResourceKey=TextBlockStyle}"
+        >
+            Servername:
+        </TextBlock>
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource ResourceKey=TextBoxStyle}"
+            ToolTip="UNC-Name, URI oder IP-Adresse"
+            IsEnabled="{Binding Path=EnableServerDataChange}"
+            Text="{Binding Path=SqlServerName, UpdateSourceTrigger=PropertyChanged}"
+        />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Style="{StaticResource ResourceKey=TextBlockStyle}"
+        >
+            Datenbankname:
+        </TextBlock>
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Style="{StaticResource ResourceKey=TextBoxStyle}"
+            ToolTip="Datenbank, auf die zugegriffen wird"
+            IsEnabled="{Binding Path=EnableServerDataChange}"
+            Text="{Binding Path=SqlSchemaName, UpdateSourceTrigger=PropertyChanged}"
+        />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource ResourceKey=TextBlockStyle}"
+        >
+            SQL-Benutzername:
+        </TextBlock>
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource ResourceKey=TextBoxStyle}"
+            ToolTip="Benutzername des SQL-Benutzers"
+            IsEnabled="{Binding Path=EnableServerDataChange}"
+            Text="{Binding Path=SqlUserName, UpdateSourceTrigger=PropertyChanged}"
+        />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Style="{StaticResource ResourceKey=TextBlockStyle}"
+        >
+            Passwort:
+        </TextBlock>
+        <PasswordBox
+            Name="PasswordBox_SqlPassword"
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource ResourceKey=PasswordBoxStyle}"
+            IsEnabled="{Binding Path=EnableServerDataChange}"
+            ToolTip="Passwort des SQL-Benutzers"
+        />
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Padding="8"
+            Margin="5"
+            IsEnabled="{Binding Path=CanChangeConnection}"
+            Click="ConnectToSqlServer"
+        >
+            <Button.Content>
+                <Binding Path="IsConnected">
+                    <Binding.Converter>
+                        <c:BooleanToStringConverter FalseString="Verbindung herstellen" TrueString="Verbindung trennen"/>
+                    </Binding.Converter>
+                </Binding>
+            </Button.Content>
+        </Button>
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            Padding="8"
+            Click="EditCountries"
+            IsEnabled="{Binding Path=ServerCanInteract}"
+        >
+            Länder bearbeiten
+        </Button>
+        <TextBlock
+            Grid.Row="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="3,0"
+            Text="{Binding Path=SqlInfo}"
+            TextWrapping="Wrap"
+            Background="{Binding Path=SqlInfoBackground}"
+        />
+    </Grid>
+</UserControl>

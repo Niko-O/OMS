@@ -1,0 +1,141 @@
+﻿<Window
+    x:Class="EditCountriesTableWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:t="clr-namespace:DatabaseConnector"
+    xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
+    xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
+    Title="Länder bearbeiten"
+    Width="376"
+    Height="328"
+>
+    <Window.Resources>
+        <Style x:Key="FullNameStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,4,0"/>
+            <Setter Property="Padding" Value="3,1"/>
+            <Setter Property="MinWidth" Value="120"/>
+        </Style>
+        <Style x:Key="ShortNameStyle" TargetType="TextBox" BasedOn="{StaticResource ResourceKey=FullNameStyle}">
+            <Setter Property="MinWidth" Value="36"/>
+        </Style>
+        <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
+        <c:BooleanNotConverter x:Key="BooleanNotConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <t:EditCountriesTableWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" IsEnabled="{Binding Path=CanInteract}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListBox
+                Grid.Row="0"
+                ItemsSource="{Binding Path=CountriesViewModels}"
+                HorizontalContentAlignment="Stretch"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ToolTip="{Binding Path=GuidInfo}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox
+                                Grid.Column="0"
+                                Style="{StaticResource ResourceKey=FullNameStyle}"
+                                Text="{Binding Path=FullName}"
+                                IsReadOnly="{Binding Path=IsLoading, Source={RelativeSource Mode=PreviousData}}"
+                            />
+                            <TextBox
+                                Grid.Column="1"
+                                Style="{StaticResource ResourceKey=ShortNameStyle}"
+                                Width="36"
+                                MaxLength="3"
+                                Text="{Binding Path=ShortName}"
+                                IsReadOnly="{Binding Path=IsLoading, Source={RelativeSource Mode=PreviousData}}"
+                            />
+                            <Button
+                                Grid.Column="2"
+                                Width="20"
+                                Command="{Binding Path=RemoveCommand}"
+                            >
+                                X
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button
+                    Margin="3"
+                    Padding="8,3"
+                    Click="RefreshList"
+                >
+                    Aktualisieren
+                </Button>
+                <Button
+                    Margin="3"
+                    Padding="8,3"
+                    Command="{Binding Path=AddCountryCommand}"
+                >
+                    Hinzufügen
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Border
+            Grid.Row="0"
+            Background="#40FFFFFF"
+            Visibility="{Binding Path=IsLoading, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}"
+        >
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+            >
+                Lade Daten...
+            </TextBlock>
+        </Border>
+        <Grid Grid.Row="1" Background="#f0f0f0" IsEnabled="{Binding Path=CanInteract}">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+            >
+                <StackPanel.Resources>
+                    <Style x:Key="DialogControlButtonStyle" TargetType="Button">
+                        <Setter Property="Width" Value="86"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="Margin" Value="0,15,15,15"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    IsDefault="True"
+                    Click="CloseOk"
+                >
+                    OK
+                </Button>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    Click="CloseCancel"
+                >
+                    Abbrechen
+                </Button>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    IsEnabled="{Binding Path=HasChanges}"
+                    Click="ApplyChanges"
+                >
+                    Übernehmen
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

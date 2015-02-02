@@ -1,0 +1,11 @@
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\bin\Debug\PluginSettings.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\bin\Debug\PluginSettings.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\bin\Debug\PluginSettings.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\bin\Debug\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\bin\Debug\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\bin\Debug\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.pdb

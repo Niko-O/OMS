@@ -1,0 +1,148 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CasparCGOverlays
+</name>
+</assembly>
+<members>
+<member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+	<summary>
+CreateInstance
+</summary>
+</member><member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+	<summary>
+GetPropertyValue
+</summary>
+</member><member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+	<summary>
+SetPropertyValue
+</summary>
+</member><member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+	<summary>
+CreateDelegate
+</summary>
+</member><member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+	<summary>
+AddEventHandler
+</summary>
+</member><member name="T:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+	<summary>
+GeneratedInternalTypeHelper
+</summary>
+</member><member name="M:CasparCG_Overlays.MainWindow.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:CasparCG_Overlays.MainWindow">
+	<summary>
+MainWindow
+</summary>
+</member><member name="M:CasparCG_Overlays.Application.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="M:CasparCG_Overlays.Application.Main">
+	<summary>
+Application Entry Point.
+</summary>
+</member><member name="T:CasparCG_Overlays.Application">
+	<summary>
+Application
+</summary>
+</member><member name="T:CasparCG_Overlays.PluginActiveStates">
+	<summary>
+ Eine Liste von Zuständen, die angeben, ob Plugins aktiv sind. Die Plugins werden an ihren Guids erkannt.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginSettingsProvider">
+	<summary>
+ Agiert als <see cref="T:PluginInterfaces.ISettingsProvider"/> und speichert Einstellungen für Plugins.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginContainer.Plugins">
+	<summary>
+ Die Liste der verfügbaren Plugins.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginContainer">
+	<summary>
+ Beinhaltet eine Liste der verfügbaren Plugins.
+ Singleton.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Application">
+	<summary>
+ Gibt das Anwendungsobjekt für die ausgeführte Anwendung zurück.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Computer">
+	<summary>
+ Gibt Informationen über den Hostcomputer zurück.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.User">
+	<summary>
+ Gibt Informationen über den aktuellen Benutzer zurück. Wenn Sie die Anwendung mit den aktuellen Windows-
+ Anmeldeinformationen ausführen möchten, rufen Sie My.User.InitializeWithWindowsUser() auf.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Log">
+	<summary>
+ Gibt das Anwendungsprotokoll zurück. Die Listener können in der Konfigurationsdatei der Anwendung konfiguriert werden.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Windows">
+	<summary>
+ Gibt die im Projekt definierte Windows-Auflistung zurück.
+ </summary>
+</member><member name="T:CasparCG_Overlays.My.MyWpfExtension">
+	<summary>
+ Modul zum Definieren der im My-Namespace für WPF verfügbaren Eigenschaften
+ </summary>
+	<remarks></remarks>
+</member><member name="P:CasparCG_Overlays.Plugin.DisplayName">
+	<summary>
+		<see cref="P:PluginInterfaces.IPluginMetadata.DisplayName"/>
+	</summary>
+</member><member name="P:CasparCG_Overlays.Plugin.PluginGuid">
+	<summary>
+		<see cref="P:PluginInterfaces.IPluginMetadata.PluginGuid"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.Plugin.GetSnapIn">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.GetSnapIn"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.Plugin.Created">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Created"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.Plugin.Unloaded">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Unloaded"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.Plugin.Enabled">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Enabled"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.Plugin.Disabled">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Disabled"/>
+	</summary>
+</member><member name="T:CasparCG_Overlays.Plugin">
+	<summary>
+ Kapselt ein <see cref="T:PluginInterfaces.IPlugin"/> und seine Metadaten.
+ </summary>
+</member><member name="T:CasparCG_Overlays.UpdateInfo">
+	<summary>
+ Kapselt die Schnittstelle zum UpdateSystem.Net.
+ Singleton.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.Resources.Resources.ResourceManager">
+	<summary>
+  Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+</summary>
+</member><member name="P:CasparCG_Overlays.My.Resources.Resources.Culture">
+	<summary>
+  Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+  Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+</summary>
+</member><member name="T:CasparCG_Overlays.My.Resources.Resources">
+	<summary>
+  Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,15 @@
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\PluginInterfaces.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\PluginInterfaces.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\PluginInterfaces.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\obj\Debug\PluginInterfaces.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\obj\Debug\PluginInterfaces.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\obj\Debug\PluginInterfaces.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\obj\Debug\PluginInterfaces.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\obj\Debug\PluginInterfaces.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\obj\Debug\PluginInterfaces.vbprojResolveAssemblyReference.cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\PluginSettings.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\PluginSettings.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\PluginInterfaces\bin\Debug\PluginSettings.xml

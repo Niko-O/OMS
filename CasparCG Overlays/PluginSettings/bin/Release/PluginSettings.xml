@@ -1,0 +1,95 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PluginSettings
+</name>
+</assembly>
+<members>
+<member name="P:PluginSettings.SettingsProperty.Owner">
+	<summary>
+ Die Einstellungs-Struktur, zu der diese Eigenschaft gehört.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty.Value">
+	<summary>
+ Der Wert dieser Eigenschaft, als Object.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProperty.GetValue">
+	<summary>
+ Gibt beim Überschreiben den Wert der Eigenschaft zurück.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProperty.#ctor(PluginSettings.SettingsStructure)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
+</member><member name="T:PluginSettings.SettingsProperty">
+	<summary>
+ Stellt den untypisierten Zugriff auf eine <see cref="T:PluginSettings.SettingsProperty`1"/> dar, z.B. für die Verwendung in Listen ungleichartiger Eigenschaften.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty`1.Value">
+	<summary>
+ Der Wert der Eigenschaft.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty`1.DefaultValue">
+	<summary>
+ Der Standardwert der Eigenschaft.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProperty`1.#ctor(PluginSettings.SettingsStructure,`0)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
+	<param name="NewDefaultValue"><see cref="P:PluginSettings.SettingsProperty`1.DefaultValue"/></param>
+</member><member name="T:PluginSettings.SettingsProperty`1">
+	<summary>
+ Stellt eine Eigenschaft mit Standardwert dar und kapstelt einen Wert vom Typ T.
+ </summary>
+</member><member name="P:PluginSettings.SettingsStructure.Owner">
+	<summary>
+ Die Ebene, der diese Eigenschaften-Struktur untergeordnet ist.
+ Wenn die aktuelle Instanz die oberste Ebene ist, ist Owner Nothing.
+ </summary>
+</member><member name="P:PluginSettings.SettingsStructure.Properties">
+	<summary>
+ Eine Auflistung aller in dieser Ebene enthaltenen Eigenschaften.
+ Eigenschaften untergeordneter Strukturen sind nicht enthalten.
+ </summary>
+</member><member name="P:PluginSettings.SettingsStructure.SubStructures">
+	<summary>
+ Eine Auflistung aller dieser Ebene untergeordneten Strukturen.
+ </summary>
+</member><member name="M:PluginSettings.SettingsStructure.RegisterProperty``1">
+	<summary>
+ Registriert eine Eigenschaft in dieser Ebene und gibt ein <see cref="T:PluginSettings.SettingsProperty`1"/>-Objekt zurück, das den Wert dieser Eigenschaft kapselt.
+ Der Standardwert der Eigenschaft entspricht dem Standardwert des <paramref name="T"/>-Typs.
+ </summary>
+</member><member name="M:PluginSettings.SettingsStructure.RegisterProperty``1(``0)">
+	<summary>
+ Registriert eine Eigenschaft in dieser Ebene und gibt ein <see cref="T:PluginSettings.SettingsProperty`1"/>-Objekt zurück, das den Wert dieser Eigenschaft kapselt.
+ Der Standardwert der Eigenschaft entspricht dem in <paramref name="DefaultValue"/> angegebenen Wert.
+ </summary>
+</member><member name="M:PluginSettings.SettingsStructure.RegisterSubStructure``1">
+	<summary>
+ Registriert eine weitere Ebene in dieser Ebene. Untergeordnete Einstellungs-Strukturen müssen einen öffentlichen, parameterlosen Konstruktor besitzen.
+ </summary>
+</member><member name="T:PluginSettings.SettingsStructure">
+	<summary>
+ Beinhaltet Eigenschaften, die Werte beinhalten, und weitere, untergeordnete Strukturen, die weitere Eigenschaften beinhalten können.
+ </summary>
+</member><member name="P:PluginSettings.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:PluginSettings.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:PluginSettings.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,12 @@
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Debug\CommonEventPluginData.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Debug\CommonEventPluginData.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Debug\CommonEventPluginData.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Debug\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Debug\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\bin\Debug\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Debug\CommonEventPluginData.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Debug\CommonEventPluginData.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Debug\CommonEventPluginData.dll
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Debug\CommonEventPluginData.xml
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Debug\CommonEventPluginData.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CommonEventPluginData\obj\Debug\CommonEventPluginData.vbprojResolveAssemblyReference.cache
