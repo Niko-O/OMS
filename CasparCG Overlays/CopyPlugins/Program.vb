@@ -11,6 +11,8 @@ Public Class Program
         Dim SolutionDirectory As New DirectoryInfo(Args(0))
         Dim SourceDirectory As New DirectoryInfo(Args(1))
         Dim SubDirectoryName = Args(2)
+        'Helpers.MessageBox(String.Format("SolutionDirectory: {1}{0}SourceDirectory: {2}{0}SubDirectoryName: {3}", _
+        '                                 Environment.NewLine, SolutionDirectory, SourceDirectory, SubDirectoryName))
         For Each i In {"CasparCG Overlays\bin\Release\Plugins", "CasparCG Overlays\bin\Debug\Plugins"}
             Dim Result = Copy(SourceDirectory, SolutionDirectory.CreateSubdirectory(Path.Combine(i, SubDirectoryName)))
             If Not Result = 0 Then

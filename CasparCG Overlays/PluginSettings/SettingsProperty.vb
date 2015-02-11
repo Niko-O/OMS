@@ -14,6 +14,27 @@ Public MustInherit Class SettingsProperty
         End Get
     End Property
 
+    Dim _Name As String
+    ''' <summary>
+    ''' Der Name der Eigenschaft.
+    ''' Innerhalb einer Einstellungs-Struktur dürfen Namen nicht mehrmals verwendet werden.
+    ''' </summary>
+    Public ReadOnly Property Name As String
+        Get
+            Return _Name
+        End Get
+    End Property
+
+    Dim _Type As Type
+    ''' <summary>
+    ''' Der Typ der Eigenschaft.
+    ''' </summary>
+    Public ReadOnly Property Type As Type
+        Get
+            Return _Type
+        End Get
+    End Property
+
     ''' <summary>
     ''' Der Wert dieser Eigenschaft, als Object.
     ''' </summary>
@@ -24,16 +45,26 @@ Public MustInherit Class SettingsProperty
     End Property
 
     ''' <summary>
-    ''' Gibt beim Überschreiben den Wert der Eigenschaft zurück.
+    ''' Gibt beim Überschreiben den Wert der Eigenschaft als Object zurück.
     ''' </summary>
-    Protected MustOverride Function GetValue() As Object
+    Friend MustOverride Function GetValue() As Object
+
+    ''' <summary>
+    ''' Setzt beim Überschreiben den Wert der Eigenschaft auf den angegebenen Wert.
+    ''' Diese Methode ist für die Verwendung von <see cref="SettingsProviderBase"/> vorgesehen.
+    ''' </summary>
+    ''' <param name="NewValue">Der neue Wert.</param>
+    Friend MustOverride Sub SetValue(NewValue As Object)
 
     ''' <summary>
     ''' Konstruktor.
     ''' </summary>
     ''' <param name="NewOwner"><see cref="Owner"/></param>
-    Public Sub New(NewOwner As SettingsStructure)
+    ''' <param name="NewType"><see cref="Type"/></param>
+    Public Sub New(NewOwner As SettingsStructure, NewName As String, NewType As Type)
         _Owner = NewOwner
+        _Name = NewName
+        _Type = NewType
     End Sub
 
 End Class

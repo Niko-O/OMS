@@ -13,3 +13,16 @@ C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Debu
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.exe
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.xml
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\bin\Debug\TestApplication.exe
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\bin\Debug\TestApplication.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\bin\Debug\TestApplication.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\bin\Debug\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\bin\Debug\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\bin\Debug\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.vbprojResolveAssemblyReference.cache
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.Form_Main.resources
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.exe
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.pdb

@@ -5,7 +5,11 @@
 Public Class FootballPlugin
     Implements PluginInterfaces.IPlugin
 
-    Dim Settings As New TestStructure
+    Dim Settings As TestStructure
+
+    Public Sub New()
+        Settings = New TestStructure
+    End Sub
 
     Public Function GetSnapIn() As System.Windows.Controls.UserControl Implements PluginInterfaces.IPlugin.GetSnapIn
         Return Singleton(Of FootballSnapIn).Instance

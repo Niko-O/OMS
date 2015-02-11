@@ -10,3 +10,15 @@ C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyPlugins\obj\x86\Debug\Co
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.xml
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.pdb
 C:\Users\Niko\Desktop\ITK\Projekt\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.vbprojResolveAssemblyReference.cache
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\bin\Debug\CopyPlugins.exe
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\bin\Debug\CopyPlugins.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\bin\Debug\CopyPlugins.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\bin\Debug\OnUtils.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\bin\Debug\OnUtils.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\bin\Debug\OnUtils.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.vbprojResolveAssemblyReference.cache
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.Resources.resources
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.exe
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.xml
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyPlugins\obj\x86\Debug\CopyPlugins.pdb

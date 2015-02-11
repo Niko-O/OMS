@@ -22,14 +22,6 @@ InitializeComponent
 	<summary>
 ConnectorSnapIn
 </summary>
-</member><member name="M:DatabaseConnector.SqlCountrySource.GetCountries">
-	<summary>
-		<see cref="M:CommonEventPluginData.ICountrySource.GetCountries"/>
-	</summary>
-</member><member name="T:DatabaseConnector.SqlCountrySource">
-	<summary>
- Stellt Länder aus Sql-Servern zur Verfügung.
- </summary>
 </member><member name="P:DatabaseConnector.SqlCountry.Guid">
 	<summary>
  Gibt die Guid an, die im Server hinterlegt ist.
@@ -54,6 +46,69 @@ ConnectorSnapIn
 	<summary>
  Wird ausgelöst, wenn bei der Kommunikation mit dem SQL-Server ein Problem auftritt.
  </summary>
+</member><member name="P:DatabaseConnector.ISqlAdapter.IsConnected">
+	<summary>
+ Gibt an, ob eine Verbindung zum Sql-Server besteht.
+ </summary>
+</member><member name="M:DatabaseConnector.ISqlAdapter.Connect(System.String,System.String,System.String,System.Security.SecureString)">
+	<summary>
+ Stellt eine Verbindung zum Sql-Server her.
+ </summary>
+</member><member name="M:DatabaseConnector.ISqlAdapter.Disconnect">
+	<summary>
+ Beendet die Verbindung zum Sql-Server.
+ </summary>
+</member><member name="M:DatabaseConnector.ISqlAdapter.ListTables">
+	<summary>
+ Gibt eine Liste der vorhandenen Tabellen zurück.
+ </summary>
+</member><member name="M:DatabaseConnector.ISqlAdapter.ListTableColumns(System.String)">
+	<summary>
+ Gibt eine Liste aller Spalten und deren Typen in der angegebenen Tabelle zurück.
+ </summary>
+	<param name="TableName">Die Tabelle, deren Spalten zurückgegeben werden.</param>
+</member><member name="M:DatabaseConnector.ISqlAdapter.Select(System.String,System.String[],System.String[])">
+	<summary>
+ Führt ein Select From auf dem Server aus.
+ </summary>
+	<param name="TableName">Die Tabelle, aus der Daten gelesen werden.</param>
+	<param name="Columns">Die Spalten, die ausgewählt werden.</param>
+</member><member name="M:DatabaseConnector.ISqlAdapter.Insert(System.String,DatabaseConnector.ColumnValue[])">
+	<summary>
+ Führt ein Insert Into auf dem Server aus.
+ </summary>
+	<param name="TableName">Die Tabelle, in die Daten eingefügt werden.</param>
+	<param name="Columns">Die Spaltennamen und darin eingefügten Werte.</param>
+</member><member name="M:DatabaseConnector.ISqlAdapter.Update(System.String,DatabaseConnector.ColumnValue[],DatabaseConnector.ColumnValue[])">
+	<summary>
+ Führt ein Update auf dem Server aus.
+ </summary>
+	<param name="TableName">Die Tabelle, in der Daten geändert werden.</param>
+	<param name="Selectors">Die Bedingungen, nach denen der zu ändernde Datensatz ausgewählt wird.</param>
+	<param name="UpdateValues">Die Spaltennamen und neuen Werte.</param>
+</member><member name="M:DatabaseConnector.ISqlAdapter.Delete(System.String,DatabaseConnector.ColumnValue[])">
+	<summary>
+ Führt ein Delete From auf dem Server aus.
+ </summary>
+	<param name="TableName">Die Tabelle, aus der Daten gelöscht werden.</param>
+	<param name="Selectors">Die Bedingungen, nach denen die zu löschenden Datensätze ausgewählt werden.</param>
+</member><member name="T:DatabaseConnector.ISqlAdapter">
+	<summary>
+ Stellt eine Abstraktionsschicht für den Zugriff auf SQL-Server dar.
+ </summary>
+</member><member name="P:DatabaseConnector.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:DatabaseConnector.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:DatabaseConnector.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
 </member><member name="P:DatabaseConnector.Connector.IsConnected">
 	<summary>
  Gibt an, ob eine Verbindung zum SQL-Server besteht.
@@ -119,56 +174,6 @@ ConnectorSnapIn
 	<summary>
  Kapselt eine Verbindung zu einem SQL-Server.
  </summary>
-</member><member name="P:DatabaseConnector.ISqlAdapter.IsConnected">
-	<summary>
- Gibt an, ob eine Verbindung zum Sql-Server besteht.
- </summary>
-</member><member name="M:DatabaseConnector.ISqlAdapter.Connect(System.String,System.String,System.String,System.Security.SecureString)">
-	<summary>
- Stellt eine Verbindung zum Sql-Server her.
- </summary>
-</member><member name="M:DatabaseConnector.ISqlAdapter.Disconnect">
-	<summary>
- Beendet die Verbindung zum Sql-Server.
- </summary>
-</member><member name="M:DatabaseConnector.ISqlAdapter.ListTables">
-	<summary>
- Gibt eine Liste der vorhandenen Tabellen zurück.
- </summary>
-</member><member name="M:DatabaseConnector.ISqlAdapter.ListTableColumns(System.String)">
-	<summary>
- Gibt eine Liste aller Spalten und deren Typen in der angegebenen Tabelle zurück.
- </summary>
-	<param name="TableName">Die Tabelle, deren Spalten zurückgegeben werden.</param>
-</member><member name="M:DatabaseConnector.ISqlAdapter.Select(System.String,System.String[],System.String[])">
-	<summary>
- Führt ein Select From auf dem Server aus.
- </summary>
-	<param name="TableName">Die Tabelle, aus der Daten gelesen werden.</param>
-	<param name="Columns">Die Spalten, die ausgewählt werden.</param>
-</member><member name="M:DatabaseConnector.ISqlAdapter.Insert(System.String,DatabaseConnector.ColumnValue[])">
-	<summary>
- Führt ein Insert Into auf dem Server aus.
- </summary>
-	<param name="TableName">Die Tabelle, in die Daten eingefügt werden.</param>
-	<param name="Columns">Die Spaltennamen und darin eingefügten Werte.</param>
-</member><member name="M:DatabaseConnector.ISqlAdapter.Update(System.String,DatabaseConnector.ColumnValue[],DatabaseConnector.ColumnValue[])">
-	<summary>
- Führt ein Update auf dem Server aus.
- </summary>
-	<param name="TableName">Die Tabelle, in der Daten geändert werden.</param>
-	<param name="Selectors">Die Bedingungen, nach denen der zu ändernde Datensatz ausgewählt wird.</param>
-	<param name="UpdateValues">Die Spaltennamen und neuen Werte.</param>
-</member><member name="M:DatabaseConnector.ISqlAdapter.Delete(System.String,DatabaseConnector.ColumnValue[])">
-	<summary>
- Führt ein Delete From auf dem Server aus.
- </summary>
-	<param name="TableName">Die Tabelle, aus der Daten gelöscht werden.</param>
-	<param name="Selectors">Die Bedingungen, nach denen die zu löschenden Datensätze ausgewählt werden.</param>
-</member><member name="T:DatabaseConnector.ISqlAdapter">
-	<summary>
- Stellt eine Abstraktionsschicht für den Zugriff auf SQL-Server dar.
- </summary>
 </member><member name="M:DatabaseConnector.ISqlRow.GetValue``1(System.Int32)">
 	<summary>
  Ruft die Spalte mit dem angegebenen Index ab.
@@ -183,19 +188,14 @@ ConnectorSnapIn
 	<summary>
  Stellt eine Tabellenzeile dar, die von einem Sql-Command zurückgegeben wird.
  </summary>
-</member><member name="P:DatabaseConnector.My.Resources.Resources.ResourceManager">
+</member><member name="M:DatabaseConnector.SqlCountrySource.GetCountries">
 	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:DatabaseConnector.My.Resources.Resources.Culture">
+		<see cref="M:CommonEventPluginData.ICountrySource.GetCountries"/>
+	</summary>
+</member><member name="T:DatabaseConnector.SqlCountrySource">
 	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:DatabaseConnector.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
+ Stellt Länder aus Sql-Servern zur Verfügung.
+ </summary>
 </member>
 </members>
 </doc>

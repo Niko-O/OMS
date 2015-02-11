@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="SettingsProperty.vb" />
     <Compile Include="SettingsPropertyOfT.vb" />
+    <Compile Include="SettingsProviderBase.vb" />
     <Compile Include="SettingsStructure.vb" />
   </ItemGroup>
   <ItemGroup>

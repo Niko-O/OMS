@@ -65,12 +65,15 @@ PluginInterfaces
 </member><member name="M:PluginInterfaces.ISettingsProvider.LoadSettings(PluginSettings.SettingsStructure)">
 	<summary>
  Lädt rekursiv die Eigenschaften für die angegebene Einstellungs-Struktur.
+ Gibt False zurück, wenn für die angegebene Einstellungs-Struktur keine Einstellungen gefunden wurden.
  </summary>
 	<param name="Settings">Die Einstellungs-Struktur, derer Eigenschaften geladen werden.</param>
 </member><member name="T:PluginInterfaces.ISettingsProvider">
 	<summary>
  Stellt Methoden zur Verfügung, mit denen Einstellungen geladen und gespeichert werden können.
- Einstellungen sind Plugin-Typ-lokal. D.h. mehrere Instanzen des gleichen Plugin-Typs verwenden die gleichen Einstellungen. Davon abgesehen sollte nie mehr als eine Instanz jedes Plugins erstellt werden.
+ Einstellungen werden anhand des Laufzeittyps der an die <see cref="M:PluginInterfaces.ISettingsProvider.SaveSettings(PluginSettings.SettingsStructure)"/>- und <see cref="M:PluginInterfaces.ISettingsProvider.LoadSettings(PluginSettings.SettingsStructure)"/>-Funktionen übergebenen <see cref="T:PluginSettings.SettingsStructure"/> identifiziert.
+ Mehrere Plugins, die unterschiedliche Instanzen des selben <see cref="T:PluginSettings.SettingsStructure"/>-Typs laden, verwenden automatisch die selben Einstellungen.
+ Für weitere Details siehe Systemdokumentation.
  </summary>
 </member><member name="E:PluginInterfaces.Composition.CatalogChanged">
 	<summary>

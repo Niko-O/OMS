@@ -101,7 +101,16 @@
     <Compile Include="DesignTime\DesignerSupportPlugin.vb" />
     <Compile Include="DesignTime\DesignerSupportPluginMetadataImplementation.vb" />
     <Compile Include="DesignTime\DesignerSupportPluginSource.vb" />
+    <Compile Include="PluginManagement\Settings\Exceptions\PropertyTypeIncompatibleException.vb" />
+    <Compile Include="PluginManagement\Settings\Exceptions\SettingsStructureIncompatibleException.vb" />
+    <Compile Include="PluginManagement\Settings\Exceptions\TypeConverterNotFoundException.vb" />
+    <Compile Include="PluginManagement\Settings\Exceptions\TypeNotFoundException.vb" />
     <Compile Include="PluginManagement\Settings\PluginSettingsProvider.vb" />
+    <Compile Include="PluginManagement\Settings\SettingsNode.vb" />
+    <Compile Include="PluginManagement\Settings\SettingsProperty.vb" />
+    <Compile Include="PluginManagement\Settings\SettingsDocument.vb" />
+    <Compile Include="PluginManagement\Settings\SettingsRootNode.vb" />
+    <Compile Include="PluginManagement\Settings\SettingsSubNode.vb" />
     <Compile Include="PluginViewModel.vb" />
     <Compile Include="PluginManagement\Plugin.vb" />
     <Compile Include="PluginManagement\PluginActiveStates.vb" />

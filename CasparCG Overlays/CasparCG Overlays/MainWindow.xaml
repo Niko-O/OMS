@@ -41,10 +41,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="{Binding Source={x:Static Member=s:Settings.IO}, Path=SettingsXmlFile.Path}"/>
-                            <TextBlock Grid.Row="1" Text="{Binding Source={x:Static Member=s:Settings.Paths}, Path=PluginSettingsDirectoryPath}"/>
                         </Grid>
                     </GroupBox>
                 </StackPanel>

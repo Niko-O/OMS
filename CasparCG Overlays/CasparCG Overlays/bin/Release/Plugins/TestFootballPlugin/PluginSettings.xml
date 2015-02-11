@@ -24,6 +24,11 @@ PluginSettings
  Die Ebene, der diese Eigenschaften-Struktur untergeordnet ist.
  Wenn die aktuelle Instanz die oberste Ebene ist, ist Owner Nothing.
  </summary>
+</member><member name="P:PluginSettings.SettingsStructure.Name">
+	<summary>
+ Der Name der Eigenschaften-Struktur.
+ Wenn die aktuelle Instanz die oberste Ebene ist, ist Name Nothing.
+ </summary>
 </member><member name="P:PluginSettings.SettingsStructure.Properties">
 	<summary>
  Eine Auflistung aller in dieser Ebene enthaltenen Eigenschaften.
@@ -33,17 +38,20 @@ PluginSettings
 	<summary>
  Eine Auflistung aller dieser Ebene untergeordneten Strukturen.
  </summary>
-</member><member name="M:PluginSettings.SettingsStructure.RegisterProperty``1">
+</member><member name="M:PluginSettings.SettingsStructure.RegisterProperty``1(System.String)">
 	<summary>
  Registriert eine Eigenschaft in dieser Ebene und gibt ein <see cref="T:PluginSettings.SettingsProperty`1"/>-Objekt zurück, das den Wert dieser Eigenschaft kapselt.
  Der Standardwert der Eigenschaft entspricht dem Standardwert des <paramref name="T"/>-Typs.
  </summary>
-</member><member name="M:PluginSettings.SettingsStructure.RegisterProperty``1(``0)">
+	<param name="Name">Der Name der Eigenschaft. Darf nicht Nothing sein.</param>
+</member><member name="M:PluginSettings.SettingsStructure.RegisterProperty``1(System.String,``0)">
 	<summary>
  Registriert eine Eigenschaft in dieser Ebene und gibt ein <see cref="T:PluginSettings.SettingsProperty`1"/>-Objekt zurück, das den Wert dieser Eigenschaft kapselt.
  Der Standardwert der Eigenschaft entspricht dem in <paramref name="DefaultValue"/> angegebenen Wert.
- </summary>
-</member><member name="M:PluginSettings.SettingsStructure.RegisterSubStructure``1">
+ <param name="Name">Der Name der Eigenschaft. Darf nicht Nothing sein.</param>
+		<param name="DefaultValue">Der Standardwert der Eigenschaft.</param>
+	</summary>
+</member><member name="M:PluginSettings.SettingsStructure.RegisterSubStructure``1(System.String)">
 	<summary>
  Registriert eine weitere Ebene in dieser Ebene. Untergeordnete Einstellungs-Strukturen müssen einen öffentlichen, parameterlosen Konstruktor besitzen.
  </summary>
@@ -59,11 +67,12 @@ PluginSettings
 	<summary>
  Der Standardwert der Eigenschaft.
  </summary>
-</member><member name="M:PluginSettings.SettingsProperty`1.#ctor(PluginSettings.SettingsStructure,`0)">
+</member><member name="M:PluginSettings.SettingsProperty`1.#ctor(PluginSettings.SettingsStructure,System.String,`0)">
 	<summary>
  Konstruktor.
  </summary>
 	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
+	<param name="NewName"><see cref="P:PluginSettings.SettingsProperty.Name"/></param>
 	<param name="NewDefaultValue"><see cref="P:PluginSettings.SettingsProperty`1.DefaultValue"/></param>
 </member><member name="T:PluginSettings.SettingsProperty`1">
 	<summary>
@@ -73,22 +82,49 @@ PluginSettings
 	<summary>
  Die Einstellungs-Struktur, zu der diese Eigenschaft gehört.
  </summary>
+</member><member name="P:PluginSettings.SettingsProperty.Name">
+	<summary>
+ Der Name der Eigenschaft.
+ Innerhalb einer Einstellungs-Struktur dürfen Namen nicht mehrmals verwendet werden.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty.Type">
+	<summary>
+ Der Typ der Eigenschaft.
+ </summary>
 </member><member name="P:PluginSettings.SettingsProperty.Value">
 	<summary>
  Der Wert dieser Eigenschaft, als Object.
  </summary>
 </member><member name="M:PluginSettings.SettingsProperty.GetValue">
 	<summary>
- Gibt beim Überschreiben den Wert der Eigenschaft zurück.
+ Gibt beim Überschreiben den Wert der Eigenschaft als Object zurück.
  </summary>
-</member><member name="M:PluginSettings.SettingsProperty.#ctor(PluginSettings.SettingsStructure)">
+</member><member name="M:PluginSettings.SettingsProperty.SetValue(System.Object)">
+	<summary>
+ Setzt beim Überschreiben den Wert der Eigenschaft auf den angegebenen Wert.
+ Diese Methode ist für die Verwendung von <see cref="T:PluginSettings.SettingsProviderBase"/> vorgesehen.
+ </summary>
+	<param name="NewValue">Der neue Wert.</param>
+</member><member name="M:PluginSettings.SettingsProperty.#ctor(PluginSettings.SettingsStructure,System.String,System.Type)">
 	<summary>
  Konstruktor.
  </summary>
 	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
+	<param name="NewType"><see cref="P:PluginSettings.SettingsProperty.Type"/></param>
 </member><member name="T:PluginSettings.SettingsProperty">
 	<summary>
  Stellt den untypisierten Zugriff auf eine <see cref="T:PluginSettings.SettingsProperty`1"/> dar, z.B. für die Verwendung in Listen ungleichartiger Eigenschaften.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProviderBase.SetPropertyValue(PluginSettings.SettingsProperty,System.Object)">
+	<summary>
+ Setzt den Wert von <paramref name="Property"/> auf <paramref name="NewValue"/>.
+ Der aufrufende Code muss (mithilfe von <see cref="P:SettingsProperty.Type"/>) selbst überprüfen, ob der Wert für den Typ der Eigenschaft geeignet ist. Wird ein ungültiger Wert übergeben, wird eine <see cref="T:System.InvalidCastException"/> ausgelöst.
+ </summary>
+	<param name="Property">Die zu verändernde Eigenschaft.</param>
+	<param name="NewValue">Der neue Wert.</param>
+</member><member name="T:PluginSettings.SettingsProviderBase">
+	<summary>
+ Stellt eine Basisklasse für Objekte dar, die Einstellungen speichern und laden und dafür auf die internen Zustände von Einstellungen zugreifen müssen.
  </summary>
 </member>
 </members>

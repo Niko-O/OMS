@@ -6,26 +6,7 @@ PluginInterfaces
 </name>
 </assembly>
 <members>
-<member name="E:PluginInterfaces.Composition.CatalogChanged">
-	<summary>
- Wird ausgelöst, wenn ein Katalog hinzugefügt wird.
- </summary>
-</member><member name="M:PluginInterfaces.Composition.AddPluginDirectoryPath(System.String)">
-	<summary>
- Fügt den angegebenen Ordner der Liste an Pfaden, in denen nach Kompositions-Assemblies gesucht wird, hinzu.
- Wenn der Ordner nicht existiert, wird er erstellt.
- </summary>
-	<param name="DirectoryPath">Der Ordnerpfad, an dem nach Kompositions-Assemblies gesucht wird.</param>
-</member><member name="M:PluginInterfaces.Composition.Compose(System.Object)">
-	<summary>
- Führt eine Komposition für das angegebene Objekt durch und befüllt die <see cref="T:System.ComponentModel.Composition.ImportAttribute"/>- und <see cref="T:System.ComponentModel.Composition.ImportManyAttribute"/>-Schnittstellen.
- </summary>
-	<param name="Obj">Das Objekt, dessen Kompositions-Schnittstellen befüllt werden.</param>
-</member><member name="T:PluginInterfaces.Composition">
-	<summary>
- Stellt einen gemeinsamen Sammelpunkt für Komposition bereit.
- </summary>
-</member><member name="M:PluginInterfaces.IPlugin.GetSnapIn">
+<member name="M:PluginInterfaces.IPlugin.GetSnapIn">
 	<summary>
  Gibt ein WPF-<see cref="T:System.Windows.Controls.UserControl"/> zurück, das Einstellungen für dieses Plugin anzeigt.
  Gibt Null zurück, wenn keine Einstellungen verfügbar sind. 
@@ -84,12 +65,34 @@ PluginInterfaces
 </member><member name="M:PluginInterfaces.ISettingsProvider.LoadSettings(PluginSettings.SettingsStructure)">
 	<summary>
  Lädt rekursiv die Eigenschaften für die angegebene Einstellungs-Struktur.
+ Gibt False zurück, wenn für die angegebene Einstellungs-Struktur keine Einstellungen gefunden wurden.
  </summary>
 	<param name="Settings">Die Einstellungs-Struktur, derer Eigenschaften geladen werden.</param>
 </member><member name="T:PluginInterfaces.ISettingsProvider">
 	<summary>
  Stellt Methoden zur Verfügung, mit denen Einstellungen geladen und gespeichert werden können.
- Einstellungen sind Plugin-Typ-lokal. D.h. mehrere Instanzen des gleichen Plugin-Typs verwenden die gleichen Einstellungen. Davon abgesehen sollte nie mehr als eine Instanz jedes Plugins erstellt werden.
+ Einstellungen werden anhand des Laufzeittyps der an die <see cref="M:PluginInterfaces.ISettingsProvider.SaveSettings(PluginSettings.SettingsStructure)"/>- und <see cref="M:PluginInterfaces.ISettingsProvider.LoadSettings(PluginSettings.SettingsStructure)"/>-Funktionen übergebenen <see cref="T:PluginSettings.SettingsStructure"/> identifiziert.
+ Mehrere Plugins, die unterschiedliche Instanzen des selben <see cref="T:PluginSettings.SettingsStructure"/>-Typs laden, verwenden automatisch die selben Einstellungen.
+ Für weitere Details siehe Systemdokumentation.
+ </summary>
+</member><member name="E:PluginInterfaces.Composition.CatalogChanged">
+	<summary>
+ Wird ausgelöst, wenn ein Katalog hinzugefügt wird.
+ </summary>
+</member><member name="M:PluginInterfaces.Composition.AddPluginDirectoryPath(System.String)">
+	<summary>
+ Fügt den angegebenen Ordner der Liste an Pfaden, in denen nach Kompositions-Assemblies gesucht wird, hinzu.
+ Wenn der Ordner nicht existiert, wird er erstellt.
+ </summary>
+	<param name="DirectoryPath">Der Ordnerpfad, an dem nach Kompositions-Assemblies gesucht wird.</param>
+</member><member name="M:PluginInterfaces.Composition.Compose(System.Object)">
+	<summary>
+ Führt eine Komposition für das angegebene Objekt durch und befüllt die <see cref="T:System.ComponentModel.Composition.ImportAttribute"/>- und <see cref="T:System.ComponentModel.Composition.ImportManyAttribute"/>-Schnittstellen.
+ </summary>
+	<param name="Obj">Das Objekt, dessen Kompositions-Schnittstellen befüllt werden.</param>
+</member><member name="T:PluginInterfaces.Composition">
+	<summary>
+ Stellt einen gemeinsamen Sammelpunkt für Komposition bereit.
  </summary>
 </member>
 </members>

@@ -4,7 +4,7 @@ Imports PluginSettings
 Public Class TestStructure
     Inherits SettingsStructure
 
-    Dim _Foo As SettingsProperty(Of String) = RegisterProperty(Of String)()
+    Dim _Foo As SettingsProperty(Of String) = RegisterProperty(Of String)("Foo")
     Public Property Foo As String
         Get
             Return _Foo.Value
@@ -14,7 +14,7 @@ Public Class TestStructure
         End Set
     End Property
 
-    Dim _Container As TestStructure_ContainerType = RegisterSubStructure(Of TestStructure_ContainerType)()
+    Dim _Container As TestStructure_ContainerType = RegisterSubStructure(Of TestStructure_ContainerType)("Container")
     Public ReadOnly Property Container As TestStructure_ContainerType
         Get
             Return _Container
@@ -24,7 +24,7 @@ Public Class TestStructure
     Public Class TestStructure_ContainerType
         Inherits SettingsStructure
 
-        Dim _Bar As SettingsProperty(Of Integer) = RegisterProperty(Of Integer)(10)
+        Dim _Bar As SettingsProperty(Of Integer) = RegisterProperty(Of Integer)("Bar", 10)
         Public Property Bar As Integer
             Get
                 Return _Bar.Value

@@ -41,7 +41,7 @@
 
     Public Property Template As PluginInterfaces.ITemplate Implements PluginInterfaces.ICasparServer.Template
         Get
-
+            Throw New NotImplementedException
         End Get
         Set(value As PluginInterfaces.ITemplate)
 

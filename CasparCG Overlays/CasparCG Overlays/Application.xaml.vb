@@ -17,14 +17,11 @@
                 <Updates>
                     <EnableAutoUpdates TypeCode="Boolean" DefaultValue="False"/>
                 </Updates>
-                <Paths>
-                    <PluginSettingsDirectoryPath TypeCode="String" DefaultValue=""/>
-                </Paths>
                 <IO>
                     <SpecialDirectory Name="AppData" Path="LocalApplicationData">
                         <Directory Name="AppDataDirectory" Path="CasparCG Overlays">
                             <File Name="SettingsXmlFile" Path="Settings.xml"/>
-                            <Directory Name="DefaultPluginSettingsDirectory" Path="PluginSettings"/>
+                            <File Name="PluginSettingsXmlFile" Path="PluginSettings.xml"/>
                         </Directory>
                     </SpecialDirectory>
                     <Directory Name="PluginDirectory" Parent="ApplicationDirectory" Path="Plugins"/>
@@ -36,9 +33,6 @@
 #End If
         Settings.IO.Initialize(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.Location))
         Settings.Load(Settings.IO.SettingsXmlFile.Path)
-        If String.IsNullOrEmpty(Settings.Paths.PluginSettingsDirectoryPath) Then
-            Settings.Paths.PluginSettingsDirectoryPath = Settings.IO.DefaultPluginSettingsDirectory.Path
-        End If
         PluginInterfaces.Composition.AddPluginDirectoryPath(Settings.IO.PluginDirectory.Path)
         UpdateInfo.Instance.Initialize()
         If Settings.Updates.EnableAutoUpdates Then

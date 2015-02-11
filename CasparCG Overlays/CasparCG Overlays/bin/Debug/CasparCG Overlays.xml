@@ -6,15 +6,7 @@ CasparCGOverlays
 </name>
 </assembly>
 <members>
-<member name="M:CasparCG_Overlays.MainWindow.InitializeComponent">
-	<summary>
-InitializeComponent
-</summary>
-</member><member name="T:CasparCG_Overlays.MainWindow">
-	<summary>
-MainWindow
-</summary>
-</member><member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+<member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
 	<summary>
 CreateInstance
 </summary>
@@ -38,6 +30,14 @@ AddEventHandler
 	<summary>
 GeneratedInternalTypeHelper
 </summary>
+</member><member name="M:CasparCG_Overlays.MainWindow.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:CasparCG_Overlays.MainWindow">
+	<summary>
+MainWindow
+</summary>
 </member><member name="M:CasparCG_Overlays.Application.InitializeComponent">
 	<summary>
 InitializeComponent
@@ -50,49 +50,6 @@ Application Entry Point.
 	<summary>
 Application
 </summary>
-</member><member name="T:CasparCG_Overlays.PluginActiveStates">
-	<summary>
- Eine Liste von Zuständen, die angeben, ob Plugins aktiv sind. Die Plugins werden an ihren Guids erkannt.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginSettingsProvider">
-	<summary>
- Agiert als <see cref="T:PluginInterfaces.ISettingsProvider"/> und speichert Einstellungen für Plugins.
- </summary>
-</member><member name="P:CasparCG_Overlays.PluginContainer.Plugins">
-	<summary>
- Die Liste der verfügbaren Plugins.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginContainer">
-	<summary>
- Beinhaltet eine Liste der verfügbaren Plugins.
- Singleton.
- </summary>
-</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Application">
-	<summary>
- Gibt das Anwendungsobjekt für die ausgeführte Anwendung zurück.
- </summary>
-</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Computer">
-	<summary>
- Gibt Informationen über den Hostcomputer zurück.
- </summary>
-</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.User">
-	<summary>
- Gibt Informationen über den aktuellen Benutzer zurück. Wenn Sie die Anwendung mit den aktuellen Windows-
- Anmeldeinformationen ausführen möchten, rufen Sie My.User.InitializeWithWindowsUser() auf.
- </summary>
-</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Log">
-	<summary>
- Gibt das Anwendungsprotokoll zurück. Die Listener können in der Konfigurationsdatei der Anwendung konfiguriert werden.
- </summary>
-</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Windows">
-	<summary>
- Gibt die im Projekt definierte Windows-Auflistung zurück.
- </summary>
-</member><member name="T:CasparCG_Overlays.My.MyWpfExtension">
-	<summary>
- Modul zum Definieren der im My-Namespace für WPF verfügbaren Eigenschaften
- </summary>
-	<remarks></remarks>
 </member><member name="P:CasparCG_Overlays.Plugin.DisplayName">
 	<summary>
 		<see cref="P:PluginInterfaces.IPluginMetadata.DisplayName"/>
@@ -130,6 +87,41 @@ Application
  Kapselt die Schnittstelle zum UpdateSystem.Net.
  Singleton.
  </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Application">
+	<summary>
+ Gibt das Anwendungsobjekt für die ausgeführte Anwendung zurück.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Computer">
+	<summary>
+ Gibt Informationen über den Hostcomputer zurück.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.User">
+	<summary>
+ Gibt Informationen über den aktuellen Benutzer zurück. Wenn Sie die Anwendung mit den aktuellen Windows-
+ Anmeldeinformationen ausführen möchten, rufen Sie My.User.InitializeWithWindowsUser() auf.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Log">
+	<summary>
+ Gibt das Anwendungsprotokoll zurück. Die Listener können in der Konfigurationsdatei der Anwendung konfiguriert werden.
+ </summary>
+</member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Windows">
+	<summary>
+ Gibt die im Projekt definierte Windows-Auflistung zurück.
+ </summary>
+</member><member name="T:CasparCG_Overlays.My.MyWpfExtension">
+	<summary>
+ Modul zum Definieren der im My-Namespace für WPF verfügbaren Eigenschaften
+ </summary>
+	<remarks></remarks>
+</member><member name="P:CasparCG_Overlays.PluginContainer.Plugins">
+	<summary>
+ Die Liste der verfügbaren Plugins.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginContainer">
+	<summary>
+ Beinhaltet eine Liste der verfügbaren Plugins.
+ Singleton.
+ </summary>
 </member><member name="P:CasparCG_Overlays.My.Resources.Resources.ResourceManager">
 	<summary>
   Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
@@ -143,6 +135,14 @@ Application
 	<summary>
   Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
 </summary>
+</member><member name="T:CasparCG_Overlays.PluginActiveStates">
+	<summary>
+ Eine Liste von Zuständen, die angeben, ob Plugins aktiv sind. Die Plugins werden an ihren Guids erkannt.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginSettingsProvider">
+	<summary>
+ Agiert als <see cref="T:PluginInterfaces.ISettingsProvider"/> und speichert Einstellungen für Plugins.
+ </summary>
 </member>
 </members>
 </doc>

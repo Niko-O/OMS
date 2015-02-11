@@ -20,4 +20,3 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.exe
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.pdb
-C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.vbprojResolveAssemblyReference.cache
