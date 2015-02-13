@@ -97,10 +97,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CheckForUpdatesCommand.vb" />
-    <Compile Include="DesignTime\DesignerSupportPluginImplementation.vb" />
-    <Compile Include="DesignTime\DesignerSupportPlugin.vb" />
-    <Compile Include="DesignTime\DesignerSupportPluginMetadataImplementation.vb" />
-    <Compile Include="DesignTime\DesignerSupportPluginSource.vb" />
+    <Compile Include="DesignerSupport\DesignerSupportPluginImplementation.vb" />
+    <Compile Include="DesignerSupport\DesignerSupportPlugin.vb" />
+    <Compile Include="DesignerSupport\DesignerSupportPluginMetadataImplementation.vb" />
+    <Compile Include="DesignerSupport\DesignerSupportPluginSource.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\PropertyTypeIncompatibleException.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\SettingsStructureIncompatibleException.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\TypeConverterNotFoundException.vb" />

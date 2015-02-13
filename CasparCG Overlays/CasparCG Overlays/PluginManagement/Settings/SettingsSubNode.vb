@@ -1,24 +1,28 @@
 ﻿
-''' <summary>
-''' Repräsentiert eine gespeicherte <see cref="PluginSettings.SettingsStructure"/>, die einer anderen Einstellungs-Struktur untergeordnet ist.
-''' </summary>
-Public Class SettingsSubNode
-    Inherits SettingsNode
+Namespace PluginManagement.Settings
 
-    Dim _Name As String
     ''' <summary>
-    ''' Der Name der Einstellungs-Struktur.
+    ''' Repräsentiert eine gespeicherte <see cref="PluginSettings.SettingsStructure"/>, die einer anderen Einstellungs-Struktur untergeordnet ist.
     ''' </summary>
-    Public ReadOnly Property Name As String
-        Get
-            Return _Name
-        End Get
-    End Property
+    Public Class SettingsSubNode
+        Inherits SettingsNode
 
-    '<Node Name="Container">
-    Public Sub New(NewSource As XElement)
-        MyBase.New(NewSource)
-        _Name = NewSource.Attribute("Name").Value
-    End Sub
+        Dim _Name As String
+        ''' <summary>
+        ''' Der Name der Einstellungs-Struktur.
+        ''' </summary>
+        Public ReadOnly Property Name As String
+            Get
+                Return _Name
+            End Get
+        End Property
 
-End Class
+        '<Node Name="Container">
+        Public Sub New(NewSource As XElement)
+            MyBase.New(NewSource)
+            _Name = NewSource.Attribute("Name").Value
+        End Sub
+
+    End Class
+
+End Namespace

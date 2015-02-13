@@ -1,8 +1,8 @@
 ﻿Class MainWindowViewModel
     Inherits ViewModelBase
 
-    Dim _MainTabItems As IEnumerable(Of PluginTabItem)
-    Public ReadOnly Property MainTabItems As IEnumerable(Of PluginTabItem)
+    Dim _MainTabItems As IEnumerable(Of PluginManagement.TabControl.PluginTabItem)
+    Public ReadOnly Property MainTabItems As IEnumerable(Of PluginManagement.TabControl.PluginTabItem)
         Get
             Return _MainTabItems
         End Get
@@ -15,12 +15,12 @@
         End Get
     End Property
 
-    Dim _Plugins As IEnumerable(Of Plugin) = Nothing
-    Public Property Plugins As IEnumerable(Of Plugin)
+    Dim _Plugins As IEnumerable(Of PluginManagement.Plugin) = Nothing
+    Public Property Plugins As IEnumerable(Of PluginManagement.Plugin)
         Get
             Return _Plugins
         End Get
-        Set(value As IEnumerable(Of Plugin))
+        Set(value As IEnumerable(Of PluginManagement.Plugin))
             If ChangeIfDifferent(_Plugins, value, "Plugins") Then
                 ActualizeMainTabItems()
                 ActualizePluginViewModels()
@@ -33,9 +33,9 @@
         If IsInDesignMode Then
             Plugins = _
             {
-                New DesignerSupportPlugin("Tennis"), _
-                New DesignerSupportPlugin("Fußball"), _
-                New DesignerSupportPlugin("Anderer Stuff")
+                New DesignerSupport.DesignerSupportPlugin("Tennis"), _
+                New DesignerSupport.DesignerSupportPlugin("Fußball"), _
+                New DesignerSupport.DesignerSupportPlugin("Anderer Stuff")
             }
         End If
     End Sub
@@ -68,10 +68,10 @@
                 i.UnloadPlugin()
             Next
         End If
-        Dim Temp As New List(Of PluginTabItem)
+        Dim Temp As New List(Of PluginManagement.TabControl.PluginTabItem)
         For Each i In _Plugins
-            If PluginActiveStates.IsInUse(i.PluginGuid) Then
-                Temp.Add(New PluginTabItem(i))
+            If PluginManagement.PluginActiveStates.IsInUse(i.PluginGuid) Then
+                Temp.Add(New PluginManagement.TabControl.PluginTabItem(i))
             End If
         Next
         _MainTabItems = Temp

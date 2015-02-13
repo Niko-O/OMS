@@ -1,5 +1,5 @@
 ﻿Public Class PluginViewModel
-    Inherits ViewModelBase(Of Plugin)
+    Inherits ViewModelBase(Of PluginManagement.Plugin)
 
     Public Event IsInUseChanged()
     Private Sub OnIsInUseChanged()
@@ -9,30 +9,30 @@
 
     Public Property IsInUse As Boolean
         Get
-            Return PluginActiveStates.IsInUse(Target.PluginGuid)
+            Return PluginManagement.PluginActiveStates.IsInUse(Target.PluginGuid)
         End Get
         Set(value As Boolean)
             Dim CurrentState = IsInUse
             If Not CurrentState = value Then
-                PluginActiveStates.IsInUse(Target.PluginGuid) = value
+                PluginManagement.PluginActiveStates.IsInUse(Target.PluginGuid) = value
                 OnIsInUseChanged()
             End If
         End Set
     End Property
 
-    Public Sub New(NewTarget As Plugin)
+    Public Sub New(NewTarget As PluginManagement.Plugin)
         MyBase.New(NewTarget)
-        AddHandler PluginActiveStates.IsInUseChanged, AddressOf CheckIsInUseChanged
+        AddHandler PluginManagement.PluginActiveStates.IsInUseChanged, AddressOf CheckIsInUseChanged
     End Sub
 
-    Private Sub CheckIsInUseChanged(sender As Object, e As PluginActiveStates.IsInUseChangedEventArgs)
+    Private Sub CheckIsInUseChanged(sender As Object, e As PluginManagement.PluginActiveStates.IsInUseChangedEventArgs)
         If e.PluginGuid = Target.PluginGuid Then
             OnIsInUseChanged()
         End If
     End Sub
 
     Public Sub Unload()
-        RemoveHandler PluginActiveStates.IsInUseChanged, AddressOf CheckIsInUseChanged
+        RemoveHandler PluginManagement.PluginActiveStates.IsInUseChanged, AddressOf CheckIsInUseChanged
     End Sub
 
 End Class

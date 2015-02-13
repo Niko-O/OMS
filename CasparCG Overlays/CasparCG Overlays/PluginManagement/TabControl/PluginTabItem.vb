@@ -1,23 +1,34 @@
-﻿Public Class PluginTabItem
-    Inherits MainTabItem
+﻿
+Namespace PluginManagement.TabControl
 
-    Dim _Plugin As Plugin
-    Public ReadOnly Property Plugin As Plugin
-        Get
-            Return _Plugin
-        End Get
-    End Property
+    ''' <summary>
+    ''' Ein TabItem, das im <see cref="MainTabControl"/> ein Plugin darstellt.
+    ''' </summary>
+    Public Class PluginTabItem
+        Inherits MainTabItem
 
-    Public Sub New(NewPlugin As Plugin)
-        _Plugin = NewPlugin
-        Me.Header = _Plugin.DisplayName
-        Me.Content = _Plugin.GetSnapIn
-    End Sub
+        Dim _Plugin As Plugin
+        ''' <summary>
+        ''' Das <see cref="Plugin"/>.
+        ''' </summary>
+        Public ReadOnly Property Plugin As Plugin
+            Get
+                Return _Plugin
+            End Get
+        End Property
 
-    Public Sub UnloadPlugin()
-        _Plugin = Nothing
-        Me.Header = Nothing
-        Me.Content = Nothing
-    End Sub
+        Public Sub New(NewPlugin As Plugin)
+            _Plugin = NewPlugin
+            Me.Header = _Plugin.DisplayName
+            Me.Content = _Plugin.GetSnapIn
+        End Sub
 
-End Class
+        Public Sub UnloadPlugin()
+            _Plugin = Nothing
+            Me.Header = Nothing
+            Me.Content = Nothing
+        End Sub
+
+    End Class
+
+End Namespace

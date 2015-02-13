@@ -1,4 +1,5 @@
-﻿Public Class CasparServer
+﻿
+Public Class CasparServer
     Inherits NotifyPropertyChanged
     Implements PluginInterfaces.ICasparServer
 

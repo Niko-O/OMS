@@ -38,15 +38,15 @@
         If Settings.Updates.EnableAutoUpdates Then
             UpdateInfo.Instance.CheckForUpdates(False)
         End If
-        PluginInterfaces.PublicProviders.Initialize(PluginSettingsProvider.Instance, CasparServer.Instance)
-        For Each i In PluginContainer.Instance.Plugins
+        PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, CasparServer.Instance)
+        For Each i In PluginManagement.PluginContainer.Instance.Plugins
             i.Created()
         Next
         MyBase.OnStartup(e)
     End Sub
 
     Protected Overrides Sub OnExit(e As System.Windows.ExitEventArgs)
-        For Each i In PluginContainer.Instance.Plugins
+        For Each i In PluginManagement.PluginContainer.Instance.Plugins
             i.Unloaded()
         Next
         Settings.Save(Settings.IO.SettingsXmlFile.Path)

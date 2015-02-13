@@ -1,12 +1,16 @@
 ﻿
-''' <summary>
-''' Wird ausgelöst, wenn die gespeicherten Einstellungen anders aufgebaut sind, als die Einstellungs-Struktur, deren Einstellungen geladen werden sollen.
-''' </summary>
-Public Class SettingsStructureIncompatibleException
-    Inherits PluginSettings.SettingsException
+Namespace PluginManagement.Settings.Exceptions
 
-    Public Sub New(NewMessage As String)
-        MyBase.New(NewMessage)
-    End Sub
+    ''' <summary>
+    ''' Wird ausgelöst, wenn die gespeicherten Einstellungen anders aufgebaut sind, als die Einstellungs-Struktur, deren Einstellungen geladen werden sollen.
+    ''' </summary>
+    Public Class SettingsStructureIncompatibleException
+        Inherits PluginSettings.SettingsException
 
-End Class
+        Public Sub New(NewMessage As String)
+            MyBase.New(NewMessage)
+        End Sub
+
+    End Class
+
+End Namespace

@@ -1,12 +1,16 @@
 ﻿
-''' <summary>
-''' Wird ausgelöst, wenn eine Einstellung geladen wird, für derer Typ kein <see cref="System.ComponentModel.TypeConverter"/> gefunden wurde.
-''' </summary>
-Public Class TypeConverterNotFoundException
-    Inherits PluginSettings.SettingsException
+Namespace PluginManagement.Settings.Exceptions
 
-    Public Sub New(NewMessage As String)
-        MyBase.New(NewMessage)
-    End Sub
+    ''' <summary>
+    ''' Wird ausgelöst, wenn eine Einstellung geladen wird, für derer Typ kein <see cref="System.ComponentModel.TypeConverter"/> gefunden wurde.
+    ''' </summary>
+    Public Class TypeConverterNotFoundException
+        Inherits PluginSettings.SettingsException
 
-End Class
+        Public Sub New(NewMessage As String)
+            MyBase.New(NewMessage)
+        End Sub
+
+    End Class
+
+End Namespace
