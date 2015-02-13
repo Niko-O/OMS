@@ -80,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SettingsException.vb" />
     <Compile Include="SettingsProperty.vb" />
     <Compile Include="SettingsPropertyOfT.vb" />
     <Compile Include="SettingsProviderBase.vb" />

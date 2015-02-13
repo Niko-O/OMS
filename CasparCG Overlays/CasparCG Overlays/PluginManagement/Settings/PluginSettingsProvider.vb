@@ -33,8 +33,30 @@ Public Class PluginSettingsProvider
         Return True
     End Function
 
-    Public Sub SaveSettings(Settings As PluginSettings.SettingsStructure) Implements PluginInterfaces.ISettingsProvider.SaveSettings
-
+    Public Sub SaveSettings(SettingsStructure As PluginSettings.SettingsStructure) Implements PluginInterfaces.ISettingsProvider.SaveSettings
+        Dim XmlDocument As XDocument
+        Dim RootElement As XElement
+        If System.IO.File.Exists(Settings.IO.PluginSettingsXmlFile.Path) Then
+            XmlDocument = XDocument.Load(Settings.IO.PluginSettingsXmlFile.Path)
+            RootElement = XmlDocument.Root
+        Else
+            XmlDocument = New XDocument
+            RootElement = New XElement("PluginSettings")
+            XmlDocument.Add(RootElement)
+        End If
+        Dim SettingsDocument As New SettingsDocument(XmlDocument.Root)
+        Dim Node = SettingsDocument.GetRootNode(SettingsStructure.GetType)
+        Dim RootNodeElemet As XElement
+        If Node Is Nothing Then
+            RootNodeElemet = New XElement("RootNode")
+            RootNodeElemet.SetAttributeValue("TypeName", SettingsStructure.GetType.AssemblyQualifiedName)
+            SettingsDocument.Source.Add(RootNodeElemet)
+        Else
+            RootNodeElemet = Node.Source
+            RootNodeElemet.RemoveNodes()
+        End If
+        RecursiveSaveSettings(SettingsStructure, RootNodeElemet)
+        XmlDocument.Save(Settings.IO.PluginSettingsXmlFile.Path)
     End Sub
 
     Private Sub RecursiveLoadSettings(Settings As PluginSettings.SettingsStructure, Node As SettingsNode)
@@ -50,6 +72,27 @@ Public Class PluginSettingsProvider
         For Each i In Settings.SubStructures
             Dim SubNode = Node.GetSubNode(i.Name)
             RecursiveLoadSettings(i, SubNode)
+        Next
+    End Sub
+
+    Private Sub RecursiveSaveSettings(Settings As PluginSettings.SettingsStructure, Node As XElement)
+        For Each i In Settings.Properties
+            Dim Converter = System.ComponentModel.TypeDescriptor.GetConverter(i.Type)
+            If Converter Is Nothing Then
+                Throw New TypeConverterNotFoundException(String.Format("Es wurde kein TypeConverter für die Konvertierung nach '{0}' gefunden.", i.Type.AssemblyQualifiedName))
+            End If
+            Dim ValueString = Converter.ConvertToString(i.Value)
+            Dim PropertyElement As New XElement("Property")
+            Node.Add(PropertyElement)
+            PropertyElement.SetAttributeValue("Name", i.Name)
+            PropertyElement.SetAttributeValue("StaticType", i.Type.AssemblyQualifiedName)
+            PropertyElement.SetAttributeValue("Value", ValueString)
+        Next
+        For Each i In Settings.SubStructures
+            Dim SubNode As New XElement("Node")
+            Node.Add(SubNode)
+            SubNode.SetAttributeValue("Name", i.Name)
+            RecursiveSaveSettings(i, SubNode)
         Next
     End Sub
 

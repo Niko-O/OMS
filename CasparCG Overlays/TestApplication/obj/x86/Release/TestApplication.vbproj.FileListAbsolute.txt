@@ -25,4 +25,3 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.exe
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.pdb
-C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Release\TestApplication.vbprojResolveAssemblyReference.cache

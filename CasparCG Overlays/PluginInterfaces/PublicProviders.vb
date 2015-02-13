@@ -2,6 +2,7 @@
 
     Private Shared _PluginSettings As ISettingsProvider = Nothing
     Public Shared ReadOnly Property PluginSettings As ISettingsProvider
+        <DebuggerStepThrough()>
         Get
             Return _PluginSettings
         End Get
@@ -9,6 +10,7 @@
 
     Private Shared _CasparServer As ICasparServer = Nothing
     Public Shared ReadOnly Property CasparServer As ICasparServer
+        <DebuggerStepThrough()>
         Get
             Return _CasparServer
         End Get

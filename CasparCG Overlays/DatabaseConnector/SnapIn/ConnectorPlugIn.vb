@@ -10,11 +10,11 @@ Public Class ConnectorPlugIn
     End Function
 
     Public Sub Created() Implements PluginInterfaces.IPlugin.Created
-
+        PluginInterfaces.PublicProviders.PluginSettings.LoadSettings(DataBaseConnectorsSettings.Instance)
     End Sub
 
     Public Sub Unloaded() Implements PluginInterfaces.IPlugin.Unloaded
-
+        PluginInterfaces.PublicProviders.PluginSettings.SaveSettings(DataBaseConnectorsSettings.Instance)
     End Sub
 
     Public Sub Enabled() Implements PluginInterfaces.IPlugin.Enabled

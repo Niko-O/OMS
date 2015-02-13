@@ -89,6 +89,7 @@
     <Compile Include="Adapters\MySqlAdapter.vb" />
     <Compile Include="Adapters\ISqlRow.vb" />
     <Compile Include="Connector.vb" />
+    <Compile Include="DataBaseConnectorsSettings.vb" />
     <Compile Include="Exceptions\ConnectorException.vb" />
     <Compile Include="Exceptions\NotConnectedException.vb" />
     <Compile Include="SnapIn\ConnectorPlugIn.vb" />
@@ -138,6 +139,10 @@
     <ProjectReference Include="..\PluginInterfaces\PluginInterfaces.vbproj">
       <Project>{8E60A8D4-FA07-41B1-86BD-3FD1209C7AAC}</Project>
       <Name>PluginInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PluginSettings\PluginSettings.vbproj">
+      <Project>{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}</Project>
+      <Name>PluginSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -56,19 +56,19 @@ Public Class SettingsProperty
         _Source = NewSource
         _Name = NewSource.Attribute("Name").Value
         Dim TypeName = NewSource.Attribute("StaticType").Value
-        _Type = Type.GetType(TypeName, False)
+        _Type = GetTypeHelper.GetTypeByAssemblyQualifiedNameInLoadedAssemblies(TypeName)
         If _Type Is Nothing Then
             Throw New TypeNotFoundException(String.Format("Der Typ '{0}' der Eigenschaft {1} wurde nicht gefunden.", TypeName, _Name))
         End If
         _Converter = System.ComponentModel.TypeDescriptor.GetConverter(_Type)
-        If Converter Is Nothing Then
+        If _Converter Is Nothing Then
             Throw New TypeConverterNotFoundException(String.Format("Es wurde kein TypeConverter für die Konvertierung nach '{0}' gefunden.", _Type.AssemblyQualifiedName))
         End If
         LazyValue = New Lazy(Of Object)(AddressOf LoadValue, False)
     End Sub
 
     Private Function LoadValue() As Object
-        Return Converter.ConvertFrom(Source.Attribute("Value").Value)
+        Return _Converter.ConvertFromString(Source.Attribute("Value").Value)
     End Function
 
 End Class

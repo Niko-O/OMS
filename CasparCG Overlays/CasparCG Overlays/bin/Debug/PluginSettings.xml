@@ -6,16 +6,9 @@ PluginSettings
 </name>
 </assembly>
 <members>
-<member name="M:PluginSettings.SettingsProviderBase.SetPropertyValue(PluginSettings.SettingsProperty,System.Object)">
+<member name="T:PluginSettings.SettingsException">
 	<summary>
- Setzt den Wert von <paramref name="Property"/> auf <paramref name="NewValue"/>.
- Der aufrufende Code muss (mithilfe von <see cref="P:SettingsProperty.Type"/>) selbst überprüfen, ob der Wert für den Typ der Eigenschaft geeignet ist. Wird ein ungültiger Wert übergeben, wird eine <see cref="T:System.InvalidCastException"/> ausgelöst.
- </summary>
-	<param name="Property">Die zu verändernde Eigenschaft.</param>
-	<param name="NewValue">Der neue Wert.</param>
-</member><member name="T:PluginSettings.SettingsProviderBase">
-	<summary>
- Stellt eine Basisklasse für Objekte dar, die Einstellungen speichern und laden und dafür auf die internen Zustände von Einstellungen zugreifen müssen.
+ Stellt eine Basisklasse für Ausnahmen dar, die beim Speichern und Laden von Einstellungen auftreten.
  </summary>
 </member><member name="P:PluginSettings.My.Resources.Resources.ResourceManager">
 	<summary>
@@ -125,6 +118,17 @@ PluginSettings
 </member><member name="T:PluginSettings.SettingsProperty">
 	<summary>
  Stellt den untypisierten Zugriff auf eine <see cref="T:PluginSettings.SettingsProperty`1"/> dar, z.B. für die Verwendung in Listen ungleichartiger Eigenschaften.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProviderBase.SetPropertyValue(PluginSettings.SettingsProperty,System.Object)">
+	<summary>
+ Setzt den Wert von <paramref name="Property"/> auf <paramref name="NewValue"/>.
+ Der aufrufende Code muss (mithilfe von <see cref="P:SettingsProperty.Type"/>) selbst überprüfen, ob der Wert für den Typ der Eigenschaft geeignet ist. Wird ein ungültiger Wert übergeben, wird eine <see cref="T:System.InvalidCastException"/> ausgelöst.
+ </summary>
+	<param name="Property">Die zu verändernde Eigenschaft.</param>
+	<param name="NewValue">Der neue Wert.</param>
+</member><member name="T:PluginSettings.SettingsProviderBase">
+	<summary>
+ Stellt eine Basisklasse für Objekte dar, die Einstellungen speichern und laden und dafür auf die internen Zustände von Einstellungen zugreifen müssen.
  </summary>
 </member>
 </members>

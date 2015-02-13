@@ -19,7 +19,7 @@ Public Class SettingsRootNode
     Public Sub New(NewSource As XElement)
         MyBase.New(NewSource)
         Dim TypeName = NewSource.Attribute("TypeName").Value
-        _Type = Type.GetType(TypeName, False)
+        _Type = GetTypeHelper.GetTypeByAssemblyQualifiedNameInLoadedAssemblies(TypeName)
         If _Type Is Nothing Then
             Throw New TypeNotFoundException(String.Format("Der Typ '{0}' der Eigenschaften-Struktur wurde nicht gefunden.", TypeName))
         End If

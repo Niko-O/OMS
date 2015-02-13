@@ -105,6 +105,7 @@
     <Compile Include="PluginManagement\Settings\Exceptions\SettingsStructureIncompatibleException.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\TypeConverterNotFoundException.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\TypeNotFoundException.vb" />
+    <Compile Include="PluginManagement\Settings\GetTypeHelper.vb" />
     <Compile Include="PluginManagement\Settings\PluginSettingsProvider.vb" />
     <Compile Include="PluginManagement\Settings\SettingsNode.vb" />
     <Compile Include="PluginManagement\Settings\SettingsProperty.vb" />
