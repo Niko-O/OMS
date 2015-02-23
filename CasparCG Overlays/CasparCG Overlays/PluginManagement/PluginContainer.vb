@@ -22,7 +22,7 @@ Namespace PluginManagement
         Dim ImportedPlugins As IEnumerable(Of Lazy(Of PluginInterfaces.IPlugin, PluginInterfaces.IPluginMetadata))
 
         Public Sub New()
-            PluginInterfaces.Composition.Compose(Me)
+            PluginInterfaces.PublicProviders.MefCompositor.Compose(Me)
             For Each i In ImportedPlugins
                 _Plugins.Add(New Plugin(i))
             Next

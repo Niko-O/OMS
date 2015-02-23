@@ -50,6 +50,10 @@ AddEventHandler
 	<summary>
 GeneratedInternalTypeHelper
 </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Compositor">
+	<summary>
+ Agiert als <see cref="T:PluginInterfaces.ICompositor"/>.
+ </summary>
 </member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.SettingsStructureIncompatibleException">
 	<summary>
  Wird ausgelöst, wenn die gespeicherten Einstellungen anders aufgebaut sind, als die Einstellungs-Struktur, deren Einstellungen geladen werden sollen.

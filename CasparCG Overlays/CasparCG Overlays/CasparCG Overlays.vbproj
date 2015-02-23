@@ -101,6 +101,7 @@
     <Compile Include="DesignerSupport\DesignerSupportPlugin.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPluginMetadataImplementation.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPluginSource.vb" />
+    <Compile Include="PluginManagement\Compositor.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\PropertyTypeIncompatibleException.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\SettingsStructureIncompatibleException.vb" />
     <Compile Include="PluginManagement\Settings\Exceptions\TypeConverterNotFoundException.vb" />

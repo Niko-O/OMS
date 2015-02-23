@@ -40,6 +40,7 @@ Public NotInheritable Class SettingsProperty(Of T)
     Public Sub New(NewOwner As SettingsStructure, NewName As String, NewDefaultValue As T)
         MyBase.New(NewOwner, NewName, GetType(T))
         _DefaultValue = NewDefaultValue
+        _Value = NewDefaultValue
     End Sub
 
     Friend Overrides Function GetValue() As Object

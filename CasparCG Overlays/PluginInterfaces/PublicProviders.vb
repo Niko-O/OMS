@@ -16,12 +16,22 @@
         End Get
     End Property
 
-    Public Shared Sub Initialize(NewPluginSettings As ISettingsProvider, NewCasparServer As ICasparServer)
-        If Not (_PluginSettings Is Nothing AndAlso _CasparServer Is Nothing) Then
+    Private Shared _MefCompositor As ICompositor = Nothing
+    Public Shared ReadOnly Property MefCompositor As ICompositor
+        Get
+            Return _MefCompositor
+        End Get
+    End Property
+
+    Private Shared IsInitialized As Boolean = False
+
+    Public Shared Sub Initialize(NewPluginSettings As ISettingsProvider, NewCasparServer As ICasparServer, NewMefCompositor As ICompositor)
+        If IsInitialized Then
             Throw New InvalidOperationException("Diese Methode darf nur vom Hostprogramm aufgerufen werden.")
         End If
         _PluginSettings = NewPluginSettings
         _CasparServer = NewCasparServer
+        _MefCompositor = NewMefCompositor
     End Sub
 
 End Class

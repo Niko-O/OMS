@@ -76,9 +76,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Composition.vb" />
     <Compile Include="Extensions.vb" />
     <Compile Include="ICasparServer.vb" />
+    <Compile Include="ICompositor.vb" />
     <Compile Include="IPlugin.vb" />
     <Compile Include="IPluginMetadata.vb" />
     <Compile Include="ISettingsProvider.vb" />

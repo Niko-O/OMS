@@ -33,12 +33,12 @@
 #End If
         Settings.IO.Initialize(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.Location))
         Settings.Load(Settings.IO.SettingsXmlFile.Path)
-        PluginInterfaces.Composition.AddPluginDirectoryPath(Settings.IO.PluginDirectory.Path)
         UpdateInfo.Instance.Initialize()
         If Settings.Updates.EnableAutoUpdates Then
             UpdateInfo.Instance.CheckForUpdates(False)
         End If
-        PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, CasparServer.Instance)
+        PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, CasparServer.Instance, PluginManagement.Compositor.Instance)
+        PluginInterfaces.PublicProviders.MefCompositor.AddPluginDirectoryPath(Settings.IO.PluginDirectory.Path, True)
         For Each i In PluginManagement.PluginContainer.Instance.Plugins
             i.Created()
         Next

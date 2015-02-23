@@ -24,7 +24,7 @@ Public Class FootballPlugin
     End Sub
 
     Public Sub Enabled() Implements PluginInterfaces.IPlugin.Enabled
-        PluginInterfaces.Composition.Compose(Countries.Instance)
+        PluginInterfaces.PublicProviders.MefCompositor.Compose(Countries.Instance)
         Settings.Foo = "Welt"
         Settings.Container.Bar = 1324
     End Sub
