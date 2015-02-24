@@ -92,6 +92,10 @@
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
     </Compile>
     <Compile Include="TennisSnapInViewModel.vb" />
+    <Compile Include="Test_UserSettings.xaml.vb">
+      <DependentUpon>Test_UserSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test_UserSettingsViewModel.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -115,6 +119,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="TennisSnapIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test_UserSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

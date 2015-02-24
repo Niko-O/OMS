@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CasparCG_Overlays.Application" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Application.xaml.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.CheckForUpdatesCommand" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CheckForUpdatesCommand.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CasparCG_Overlays.MainWindowViewModel" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAALAAEAAAAAgAAAIAgAAAAAAAAE=</HashCode>
+      <FileName>MainWindowViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.MySettings" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginViewModel" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAACAAAgAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.CasparServer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEQAAABAAACEAAAAAAAAAAAIQAAAAAAADAA=</HashCode>
+      <FileName>ServerManagement\CasparServer.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CasparCG_Overlays.UpdateInfo" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAABAAAAQAAAAAkAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <FileName>UpdateInfo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.DesignerSupport.DesignerSupportPlugin" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignerSupport\DesignerSupportPlugin.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.DesignerSupport.DesignerSupportPluginImplementation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAQAIAAAACAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignerSupport\DesignerSupportPluginImplementation.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CasparCG_Overlays.DesignerSupport.DesignerSupportPluginMetadataImplementation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>DesignerSupport\DesignerSupportPluginMetadataImplementation.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CasparCG_Overlays.DesignerSupport.DesignerSupportPluginSource" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignerSupport\DesignerSupportPluginSource.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Compositor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAgUAAACIAAAAAAAAABAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>PluginManagement\Compositor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Plugin" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAFAAAAgAQAIAAAAKAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Plugin.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.PluginActiveStates" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAACAAAgAAAAAAAAAAAAAAAAACAAAAAAABAAAAAA=</HashCode>
+      <FileName>PluginManagement\PluginActiveStates.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.PluginContainer" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAA=</HashCode>
+      <FileName>PluginManagement\PluginContainer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.Exceptions.PropertyTypeIncompatibleException" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\Exceptions\PropertyTypeIncompatibleException.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.Exceptions.SettingsStructureIncompatibleException" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\Exceptions\SettingsStructureIncompatibleException.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.Exceptions.TypeConverterNotFoundException" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\Exceptions\TypeConverterNotFoundException.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.Exceptions.TypeNotFoundException" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\Exceptions\TypeNotFoundException.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.GetTypeHelper" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\GetTypeHelper.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.PluginSettingsProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAQAAAIAgAAAEAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\PluginSettingsProvider.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.SettingsDocument" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>PluginManagement\Settings\SettingsDocument.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.SettingsNode" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAgCQAAAAAAAAAAAAAEAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>PluginManagement\Settings\SettingsNode.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.SettingsProperty" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQgEAAAAAAAAAIAYAAEAAAAAAAQAgAAAABAA=</HashCode>
+      <FileName>PluginManagement\Settings\SettingsProperty.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.SettingsRootNode" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAABAA=</HashCode>
+      <FileName>PluginManagement\Settings\SettingsRootNode.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.Settings.SettingsSubNode" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\Settings\SettingsSubNode.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.TabControl.MainTabControl" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAQAIAAAAEAAACAgAAAAAAAEABAA=</HashCode>
+      <FileName>PluginManagement\TabControl\MainTabControl.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.TabControl.MainTabItem" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\TabControl\MainTabItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasparCG_Overlays.PluginManagement.TabControl.PluginTabItem" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginManagement\TabControl\PluginTabItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Module Name="CasparCG_Overlays.My.MyWpfExtension" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiABAAAAABAAAEAAAAAAAAAAAAgBABAAABAAAAAAAAA=</HashCode>
+      <FileName>My Project\MyExtensions\MyWpfExtension.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CasparCG_Overlays.My.MySettingsProperty" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CasparCG_Overlays.My.Resources.Resources" Collapsed="true">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -14,94 +14,6 @@ OnUtils
 	<summary>
  Beschreibt ein Ergebnis, welches nur eine Angabe über den Erfolg eines Vorgangs einthält..
  </summary>
-</member><member name="P:OnUtils.Results.ValuedResult`1.Value">
-	<summary>
- Der vom Vorgang zurückgegebene Wert.
- </summary>
-</member><member name="M:OnUtils.Results.ValuedResult`1.#ctor">
-	<summary>
- Der Vorgang wurde nicht erfolgreich abgeschlossen. Es wurde kein Wert zurückgegeben.
- </summary>
-</member><member name="M:OnUtils.Results.ValuedResult`1.#ctor(`0)">
-	<summary>
- Der Vorgang wurde erfolgreich abgeschlossen. <paramref name="NewValue"/> ist der zurückgegebene Wert.
- </summary>
-</member><member name="T:OnUtils.Results.ValuedResult`1">
-	<summary>
- Kapselt eine Angabe über den Erfolg eines Vorganges und einen Wert, wenn der Vorgang erfolgreich abgeschlossen wurde.
- </summary>
-	<typeparam name="TValue">Der Typ des Wertes.</typeparam>
-</member><member name="P:OnUtils.Results.ValuedErroredResult`2.Value">
-	<summary>
- Der vom Vorgang zurückgegebene Wert.
- </summary>
-</member><member name="P:OnUtils.Results.ValuedErroredResult`2.Error">
-	<summary>
- Der Fehler im Vorgang.
- </summary>
-</member><member name="M:OnUtils.Results.ValuedErroredResult`2.#ctor(`0)">
-	<summary>
- Der Vorgang wurde erfolgreich abgeschlossen; <paramref name="NewValue"/> wurde zurückgegeben.
- </summary>
-</member><member name="M:OnUtils.Results.ValuedErroredResult`2.#ctor(`1)">
-	<summary>
- Der Vorgang wurde nicht erfolgreich abgeschlossen; <paramref name="NewError"/> ist der Fehler.
- </summary>
-</member><member name="M:OnUtils.Results.ValuedErroredResult`2.#ctor(System.Object,System.Boolean)">
-	<summary>
- Wird verwendet wenn die Konstruktoren, die <see cref="TValue"/> und <see cref="TError"/> verwenden nicht eindeutig genug sind.
- </summary>
-	<param name="Undefined">Gibt den Wert oder Fehler an.</param>
-	<param name="Success">True, wenn der Vorgang erfolgreich abgeschlossen wurde, andernfalls False.</param>
-</member><member name="T:OnUtils.Results.ValuedErroredResult`2">
-	<summary>
- Kapselt eine Angabe über den Erfolg eines Vorgangs, einen Wert, wenn der Vorgang erfolgreich abgeschlossen wurde und einen Fehler, wenn der Vorgang nicht erfolgreich abgeschlossen wurde.
- </summary>
-	<typeparam name="TValue">Der Typ des Wertes.</typeparam>
-	<typeparam name="TError">Der Typ des Fehlers.</typeparam>
-</member><member name="P:OnUtils.Results.ErroredResult`1.Error">
-	<summary>
- Der Fehler im Vorgang.
- </summary>
-</member><member name="M:OnUtils.Results.ErroredResult`1.#ctor">
-	<summary>
- Der Vorgang wurde erfolgreich abgeschlossen. Es wurde kein Wert zurückgegeben.
- </summary>
-</member><member name="M:OnUtils.Results.ErroredResult`1.#ctor(`0)">
-	<summary>
- Der Vorgang wurde nicht erfolgreich abgeschlossen. <paramref name="NewError"/> ist der Fehler im Vorgang.
- </summary>
-</member><member name="T:OnUtils.Results.ErroredResult`1">
-	<summary>
- Kapselt eine Angabe über den Erfolg eines Vorganges und einen Fehler, wenn der Vorgang nicht erfolgreich abgeschlossen wurde.
- </summary>
-	<typeparam name="TError">Der Typ des Fehlers.</typeparam>
-</member><member name="P:OnUtils.Results.IErroredResult`1.Error">
-	<summary>
- Der Fehler im Vorgang.
- </summary>
-</member><member name="T:OnUtils.Results.IErroredResult`1">
-	<summary>
- Beschreibt ein Ergebnis, welches einen Fehler eines Vorgangs zurückgibt.
- </summary>
-	<typeparam name="TError">Der Typ des Fehlers</typeparam>
-</member><member name="P:OnUtils.Results.Result.Success">
-	<summary>
- True, wenn der Vorgang erfolgreich war, andernfalls False.
- </summary>
-</member><member name="T:OnUtils.Results.Result">
-	<summary>
- Kapselt eine Angabe über den Erfolg eines Vorganges.
- </summary>
-</member><member name="P:OnUtils.Results.IValuedResult`1.Value">
-	<summary>
- Der vom Vorgang zurückgegebene Wert.
- </summary>
-</member><member name="T:OnUtils.Results.IValuedResult`1">
-	<summary>
- Beschreibt ein Ergebnis, welches einen Wert eines Vorgangs zurückgibt.
- </summary>
-	<typeparam name="TValue">Der Typ des Wertes</typeparam>
 </member><member name="P:OnUtils.CommonData.Color.A">
 	<summary>
  Alpha
@@ -1088,6 +1000,23 @@ OnUtils
 	<summary>
  Beinhaltet Extension-Methoden für die <see cref="T:System.Reflection.Emit.ILGenerator"/>-Klasse, welche nach den möglichen OpCodes <see cref="T:System.Reflection.Emit.OpCodes"/> benannt sind und nur gültige Parameter zulassen.
  </summary>
+</member><member name="P:OnUtils.Results.ValuedResult`1.Value">
+	<summary>
+ Der vom Vorgang zurückgegebene Wert.
+ </summary>
+</member><member name="M:OnUtils.Results.ValuedResult`1.#ctor">
+	<summary>
+ Der Vorgang wurde nicht erfolgreich abgeschlossen. Es wurde kein Wert zurückgegeben.
+ </summary>
+</member><member name="M:OnUtils.Results.ValuedResult`1.#ctor(`0)">
+	<summary>
+ Der Vorgang wurde erfolgreich abgeschlossen. <paramref name="NewValue"/> ist der zurückgegebene Wert.
+ </summary>
+</member><member name="T:OnUtils.Results.ValuedResult`1">
+	<summary>
+ Kapselt eine Angabe über den Erfolg eines Vorganges und einen Wert, wenn der Vorgang erfolgreich abgeschlossen wurde.
+ </summary>
+	<typeparam name="TValue">Der Typ des Wertes.</typeparam>
 </member><member name="E:OnUtils.Wpf.NotifyPropertyChanged.PropertyChanged">
 	<summary>
  Wird ausgelöst, wenn sich eine Property verändert hat.
@@ -1465,6 +1394,34 @@ OnUtils
 	<summary>
  Beinhaltet WinApi-Aufrufe, die mit Maus und Tastatur zu tun haben.
  </summary>
+</member><member name="P:OnUtils.Results.ValuedErroredResult`2.Value">
+	<summary>
+ Der vom Vorgang zurückgegebene Wert.
+ </summary>
+</member><member name="P:OnUtils.Results.ValuedErroredResult`2.Error">
+	<summary>
+ Der Fehler im Vorgang.
+ </summary>
+</member><member name="M:OnUtils.Results.ValuedErroredResult`2.#ctor(`0)">
+	<summary>
+ Der Vorgang wurde erfolgreich abgeschlossen; <paramref name="NewValue"/> wurde zurückgegeben.
+ </summary>
+</member><member name="M:OnUtils.Results.ValuedErroredResult`2.#ctor(`1)">
+	<summary>
+ Der Vorgang wurde nicht erfolgreich abgeschlossen; <paramref name="NewError"/> ist der Fehler.
+ </summary>
+</member><member name="M:OnUtils.Results.ValuedErroredResult`2.#ctor(System.Object,System.Boolean)">
+	<summary>
+ Wird verwendet wenn die Konstruktoren, die <see cref="TValue"/> und <see cref="TError"/> verwenden nicht eindeutig genug sind.
+ </summary>
+	<param name="Undefined">Gibt den Wert oder Fehler an.</param>
+	<param name="Success">True, wenn der Vorgang erfolgreich abgeschlossen wurde, andernfalls False.</param>
+</member><member name="T:OnUtils.Results.ValuedErroredResult`2">
+	<summary>
+ Kapselt eine Angabe über den Erfolg eines Vorgangs, einen Wert, wenn der Vorgang erfolgreich abgeschlossen wurde und einen Fehler, wenn der Vorgang nicht erfolgreich abgeschlossen wurde.
+ </summary>
+	<typeparam name="TValue">Der Typ des Wertes.</typeparam>
+	<typeparam name="TError">Der Typ des Fehlers.</typeparam>
 </member><member name="P:OnUtils.CommonData.RectangleF.X">
 	<summary>
  Die X-Koordinate der linken oberen Ecke des Rechtecks.
@@ -1729,6 +1686,23 @@ OnUtils
  Ein Button, der beim Klick, falls vorhanden, den zugeordneten ToolTip öffnet.
  ToolTip muss auf ein Objekt des Typs <see cref="T:System.Windows.Controls.ToolTip"/> festgelegt werden, andernfalls wird eine <see cref="T:OnUtils.Wpf.InvalidToolTipException"/> ausgelöst.
  </summary>
+</member><member name="P:OnUtils.Results.ErroredResult`1.Error">
+	<summary>
+ Der Fehler im Vorgang.
+ </summary>
+</member><member name="M:OnUtils.Results.ErroredResult`1.#ctor">
+	<summary>
+ Der Vorgang wurde erfolgreich abgeschlossen. Es wurde kein Wert zurückgegeben.
+ </summary>
+</member><member name="M:OnUtils.Results.ErroredResult`1.#ctor(`0)">
+	<summary>
+ Der Vorgang wurde nicht erfolgreich abgeschlossen. <paramref name="NewError"/> ist der Fehler im Vorgang.
+ </summary>
+</member><member name="T:OnUtils.Results.ErroredResult`1">
+	<summary>
+ Kapselt eine Angabe über den Erfolg eines Vorganges und einen Fehler, wenn der Vorgang nicht erfolgreich abgeschlossen wurde.
+ </summary>
+	<typeparam name="TError">Der Typ des Fehlers.</typeparam>
 </member><member name="P:OnUtils.CommonData.RectangleI.X">
 	<summary>
  Die X-Koordinate der linken oberen Ecke des Rechtecks.
@@ -2878,6 +2852,15 @@ OnUtils
 	<summary>
  Startet einen neuen Task, der <see cref="M:OnUtils.Wpf.DelegateCommand.Execute(System.Object)"/> ausführt.
  </summary>
+</member><member name="P:OnUtils.Results.IErroredResult`1.Error">
+	<summary>
+ Der Fehler im Vorgang.
+ </summary>
+</member><member name="T:OnUtils.Results.IErroredResult`1">
+	<summary>
+ Beschreibt ein Ergebnis, welches einen Fehler eines Vorgangs zurückgibt.
+ </summary>
+	<typeparam name="TError">Der Typ des Fehlers</typeparam>
 </member><member name="P:OnUtils.GuardedThread.DefaultDoCatch">
 	<summary>
  Gibt an, ob Exceptions in neu erstellten <see cref="T:OnUtils.GuardedThread"/>-Objekten standardmäßig gefangen werden.
@@ -2910,6 +2893,14 @@ OnUtils
 	<summary>
  Gibt an, dass die Property, auf die das Attribut angewendet wird, von den Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> abhängt.
  Somit wird das <see cref="E:OnUtils.Wpf.NotifyPropertyChanged.PropertyChanged"/>-Event für diese Property ebenfalls ausgelöst, wenn es für eine der Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> ausgelöst wird.
+ </summary>
+</member><member name="P:OnUtils.Results.Result.Success">
+	<summary>
+ True, wenn der Vorgang erfolgreich war, andernfalls False.
+ </summary>
+</member><member name="T:OnUtils.Results.Result">
+	<summary>
+ Kapselt eine Angabe über den Erfolg eines Vorganges.
  </summary>
 </member><member name="E:OnUtils.Streams.DataBuffer`1.BlockReceived">
 	<summary>
@@ -3015,6 +3006,15 @@ OnUtils
 	<summary>
  Ein Event, welches durch einen Timer verzögert ausgelöst wird.
  </summary>
+</member><member name="P:OnUtils.Results.IValuedResult`1.Value">
+	<summary>
+ Der vom Vorgang zurückgegebene Wert.
+ </summary>
+</member><member name="T:OnUtils.Results.IValuedResult`1">
+	<summary>
+ Beschreibt ein Ergebnis, welches einen Wert eines Vorgangs zurückgibt.
+ </summary>
+	<typeparam name="TValue">Der Typ des Wertes</typeparam>
 </member>
 </members>
 </doc>

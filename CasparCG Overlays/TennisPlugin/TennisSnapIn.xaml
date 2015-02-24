@@ -14,6 +14,84 @@
 		<t:TennisSnapInViewModel/>
 	</UserControl.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Template" Padding="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" ItemsSource="{Binding Path=Test_Templates}">
+                    
+                </ComboBox>
+                <CheckBox Grid.Column="2" VerticalAlignment="Center">Aktiviert</CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Spieler" Padding="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    Namenliste aktualisieren
+                </Button>
+                <CheckBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    Namen sperren
+                </CheckBox>
+                <t:Test_UserSettings
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HeaderName="Spieler 1"
+                />
+                <t:Test_UserSettings
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HeaderName="Spieler 2"
+                />
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="Bauchbinde" Padding="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>                   
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Grid.Column="0">Spielername</RadioButton>
+                    <RadioButton Grid.Column="2">Benutzerdefinierter Text</RadioButton>
+                </Grid>
+                <TextBox Grid.Row="1" AcceptsReturn="True" MinHeight="60"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Effekt:</TextBlock>
+                    <ComboBox Grid.Row="0" Grid.Column="2" ItemsSource="{Binding Path=Test_Effects}"/>
+                </Grid>
+                <Button Grid.Row="3" Margin="0,3,0,0" Padding="10">
+                    Anzeigen
+                </Button>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

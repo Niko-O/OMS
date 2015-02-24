@@ -21,3 +21,4 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\o
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.vbprojResolveAssemblyReference.cache

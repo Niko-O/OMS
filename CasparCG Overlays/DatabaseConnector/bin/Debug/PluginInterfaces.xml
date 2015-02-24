@@ -57,6 +57,26 @@ PluginInterfaces
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="E:PluginInterfaces.ICompositor.CatalogChanged">
+	<summary>
+ Wird ausgelöst, wenn ein Katalog hinzugefügt wird.
+ </summary>
+</member><member name="M:PluginInterfaces.ICompositor.AddPluginDirectoryPath(System.String,System.Boolean)">
+	<summary>
+ Fügt den angegebenen Ordner der Liste an Pfaden, in denen nach Kompositions-Assemblies gesucht wird, hinzu.
+ Wenn der Ordner nicht existiert, wird er erstellt.
+ </summary>
+	<param name="DirectoryPath">Der Pfad des Ordners, in dem nach Kompositions-Assemblies gesucht wird.</param>
+	<param name="Recursive">Gibt an, ob alle Unterordner des angegebenen Ordners ebenfalls hinzugefügt werden.</param>
+</member><member name="M:PluginInterfaces.ICompositor.Compose(System.Object)">
+	<summary>
+ Führt eine Komposition für das angegebene Objekt durch und befüllt die <see cref="T:System.ComponentModel.Composition.ImportAttribute"/>- und <see cref="T:System.ComponentModel.Composition.ImportManyAttribute"/>-Schnittstellen.
+ </summary>
+	<param name="Obj">Das Objekt, dessen Kompositions-Schnittstellen befüllt werden.</param>
+</member><member name="T:PluginInterfaces.ICompositor">
+	<summary>
+ Stellt methoden zur Verfügung, mit denen MEF-Komposition durchgeführt werden kann.
+ </summary>
 </member><member name="M:PluginInterfaces.ISettingsProvider.SaveSettings(PluginSettings.SettingsStructure)">
 	<summary>
  Speichert rekursiv die in der angegebenen Einstellungs-Struktur enthaltenen Eigenschaften.
@@ -74,25 +94,6 @@ PluginInterfaces
  Einstellungen werden anhand des Laufzeittyps der an die <see cref="M:PluginInterfaces.ISettingsProvider.SaveSettings(PluginSettings.SettingsStructure)"/>- und <see cref="M:PluginInterfaces.ISettingsProvider.LoadSettings(PluginSettings.SettingsStructure)"/>-Funktionen übergebenen <see cref="T:PluginSettings.SettingsStructure"/> identifiziert.
  Mehrere Plugins, die unterschiedliche Instanzen des selben <see cref="T:PluginSettings.SettingsStructure"/>-Typs laden, verwenden automatisch die selben Einstellungen.
  Für weitere Details siehe Systemdokumentation.
- </summary>
-</member><member name="E:PluginInterfaces.Composition.CatalogChanged">
-	<summary>
- Wird ausgelöst, wenn ein Katalog hinzugefügt wird.
- </summary>
-</member><member name="M:PluginInterfaces.Composition.AddPluginDirectoryPath(System.String)">
-	<summary>
- Fügt den angegebenen Ordner der Liste an Pfaden, in denen nach Kompositions-Assemblies gesucht wird, hinzu.
- Wenn der Ordner nicht existiert, wird er erstellt.
- </summary>
-	<param name="DirectoryPath">Der Ordnerpfad, an dem nach Kompositions-Assemblies gesucht wird.</param>
-</member><member name="M:PluginInterfaces.Composition.Compose(System.Object)">
-	<summary>
- Führt eine Komposition für das angegebene Objekt durch und befüllt die <see cref="T:System.ComponentModel.Composition.ImportAttribute"/>- und <see cref="T:System.ComponentModel.Composition.ImportManyAttribute"/>-Schnittstellen.
- </summary>
-	<param name="Obj">Das Objekt, dessen Kompositions-Schnittstellen befüllt werden.</param>
-</member><member name="T:PluginInterfaces.Composition">
-	<summary>
- Stellt einen gemeinsamen Sammelpunkt für Komposition bereit.
  </summary>
 </member>
 </members>

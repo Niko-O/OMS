@@ -131,7 +131,7 @@
             Click="EditCountries"
             IsEnabled="{Binding Path=ServerCanInteract}"
         >
-            Länder bearbeiten
+            Bearbeiten...
         </Button>
         <TextBlock
             Grid.Row="7"

@@ -21,6 +21,11 @@ Namespace PluginManagement.Settings
         Private Sub New()
         End Sub
 
+        ''' <summary>
+        ''' Lädt rekursiv die Eigenschaften für die angegebene Einstellungs-Struktur.
+        ''' Gibt False zurück, wenn für die angegebene Einstellungs-Struktur keine Einstellungen gefunden wurden.
+        ''' </summary>
+        ''' <param name="SettingsStructure">Die Einstellungs-Struktur, derer Eigenschaften geladen werden.</param>
         Public Function LoadSettings(SettingsStructure As PluginSettings.SettingsStructure) As Boolean Implements PluginInterfaces.ISettingsProvider.LoadSettings
             If Not System.IO.File.Exists(CasparCG_Overlays.Settings.IO.PluginSettingsXmlFile.Path) Then
                 Return False
@@ -34,6 +39,22 @@ Namespace PluginManagement.Settings
             RecursiveLoadSettings(SettingsStructure, Node)
             Return True
         End Function
+
+        Private Sub RecursiveLoadSettings(Settings As PluginSettings.SettingsStructure, Node As SettingsNode)
+            For Each i In Settings.Properties
+                Dim Prop = Node.GetProperty(i.Name)
+                If Not i.Type.IsAssignableFrom(Prop.Type) Then
+                    Throw New Exceptions.PropertyTypeIncompatibleException( _
+                        String.Format("Für Property {0} in {1} wurde Typ '{2}' erwartet, der Typ des gespeicherten Wertes ist jedoch '{3}'.", _
+                                      i.Name, Settings.Name, i.Type.AssemblyQualifiedName, Prop.Type.AssemblyQualifiedName))
+                End If
+                SetPropertyValue(i, Prop.Value)
+            Next
+            For Each i In Settings.SubStructures
+                Dim SubNode = Node.GetSubNode(i.Name)
+                RecursiveLoadSettings(i, SubNode)
+            Next
+        End Sub
 
         Public Sub SaveSettings(SettingsStructure As PluginSettings.SettingsStructure) Implements PluginInterfaces.ISettingsProvider.SaveSettings
             Dim XmlDocument As XDocument
@@ -59,22 +80,6 @@ Namespace PluginManagement.Settings
             End If
             RecursiveSaveSettings(SettingsStructure, RootNodeElemet)
             XmlDocument.Save(CasparCG_Overlays.Settings.IO.PluginSettingsXmlFile.Path)
-        End Sub
-
-        Private Sub RecursiveLoadSettings(Settings As PluginSettings.SettingsStructure, Node As SettingsNode)
-            For Each i In Settings.Properties
-                Dim Prop = Node.GetProperty(i.Name)
-                If Not i.Type.IsAssignableFrom(Prop.Type) Then
-                    Throw New Exceptions.PropertyTypeIncompatibleException( _
-                        String.Format("Für Property {0} in {1} wurde Typ '{2}' erwartet, der Typ des gespeicherten Wertes ist jedoch '{3}'.", _
-                                      i.Name, Settings.Name, i.Type.AssemblyQualifiedName, Prop.Type.AssemblyQualifiedName))
-                End If
-                SetPropertyValue(i, Prop.Value)
-            Next
-            For Each i In Settings.SubStructures
-                Dim SubNode = Node.GetSubNode(i.Name)
-                RecursiveLoadSettings(i, SubNode)
-            Next
         End Sub
 
         Private Sub RecursiveSaveSettings(Settings As PluginSettings.SettingsStructure, Node As XElement)

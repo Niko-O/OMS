@@ -21,3 +21,4 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPlugi
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.vbprojResolveAssemblyReference.cache

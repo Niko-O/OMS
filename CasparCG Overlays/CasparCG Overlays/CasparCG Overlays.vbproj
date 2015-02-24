@@ -121,6 +121,7 @@
     <Compile Include="PluginManagement\PluginContainer.vb" />
     <Compile Include="PluginManagement\TabControl\PluginTabItem.vb" />
     <Compile Include="ServerManagement\CasparServer.vb" />
+    <Compile Include="Test_CasparCGServer.vb" />
     <Compile Include="UpdateInfo.vb" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +187,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>

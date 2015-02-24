@@ -6,7 +6,15 @@ TennisPlugin
 </name>
 </assembly>
 <members>
-<member name="M:TennisPlugin.TennisSnapIn.InitializeComponent">
+<member name="M:TennisPlugin.Test_UserSettings.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:TennisPlugin.Test_UserSettings">
+	<summary>
+Test_UserSettings
+</summary>
+</member><member name="M:TennisPlugin.TennisSnapIn.InitializeComponent">
 	<summary>
 InitializeComponent
 </summary>

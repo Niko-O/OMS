@@ -46,3 +46,5 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TennisPlugin\obj
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TennisPlugin\obj\Release\TennisPlugin.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TennisPlugin\obj\Release\TennisPlugin.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TennisPlugin\obj\Release\TennisPlugin.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TennisPlugin\obj\Release\Test_UserSettings.g.vb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TennisPlugin\obj\Release\Test_UserSettings.baml

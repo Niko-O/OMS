@@ -28,6 +28,13 @@
         End Set
     End Property
 
+    Dim _Test_CasparCGServers As Test_CasparCGServer()
+    Public ReadOnly Property Test_CasparCGServers As Test_CasparCGServer()
+        Get
+            Return _Test_CasparCGServers
+        End Get
+    End Property
+
     Public Sub New()
         MyBase.New(True)
         If IsInDesignMode Then
@@ -38,6 +45,10 @@
                 New DesignerSupport.DesignerSupportPlugin("Anderer Stuff")
             }
         End If
+        _Test_CasparCGServers = {
+            New Test_CasparCGServer With {.Name = "Testserver 1", .IpAddress = "192.168.10.123"}, _
+            New Test_CasparCGServer With {.Name = "Lokal", .IpAddress = "127.0.0.1"}
+        }
     End Sub
 
     Private Sub ActualizePluginViewModels()
