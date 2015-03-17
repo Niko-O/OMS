@@ -25,7 +25,7 @@
   <Class Name="CasparCG_Overlays.MainWindowViewModel" Collapsed="true">
     <Position X="6" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAAAAAALAAEAAAAAgAAAIAgAAAAAAAAE=</HashCode>
+      <HashCode>AAAABAAAAAAAAAAgAAbAAEAAAAAgAAAIAgAAAAAAAAE=</HashCode>
       <FileName>MainWindowViewModel.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -53,7 +53,7 @@
   <Class Name="CasparCG_Overlays.UpdateInfo" Collapsed="true">
     <Position X="9.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAABAAAAQAAAAAkAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <HashCode>AAIAAAAgBAAAAQAAAAAkAAAAAAAAAAAAQAAACAAACAA=</HashCode>
       <FileName>UpdateInfo.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -215,24 +215,5 @@
       <FileName>PluginManagement\TabControl\PluginTabItem.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Module Name="CasparCG_Overlays.My.MyWpfExtension" Collapsed="true">
-    <Position X="7.75" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AiABAAAAABAAAEAAAAAAAAAAAAgBABAAABAAAAAAAAA=</HashCode>
-      <FileName>My Project\MyExtensions\MyWpfExtension.vb</FileName>
-    </TypeIdentifier>
-  </Module>
-  <Module Name="CasparCG_Overlays.My.MySettingsProperty" Collapsed="true">
-    <Position X="6" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-    </TypeIdentifier>
-  </Module>
-  <Module Name="CasparCG_Overlays.My.Resources.Resources" Collapsed="true">
-    <Position X="9.5" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
-    </TypeIdentifier>
-  </Module>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

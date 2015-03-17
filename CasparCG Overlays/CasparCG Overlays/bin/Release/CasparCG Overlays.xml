@@ -66,38 +66,6 @@ GeneratedInternalTypeHelper
 	<summary>
  Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsStructure"/> oberster Ebene.
  </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Plugin.DisplayName">
-	<summary>
-		<see cref="P:PluginInterfaces.IPluginMetadata.DisplayName"/>
-	</summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Plugin.PluginGuid">
-	<summary>
-		<see cref="P:PluginInterfaces.IPluginMetadata.PluginGuid"/>
-	</summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Plugin.GetSnapIn">
-	<summary>
-		<see cref="M:PluginInterfaces.IPlugin.GetSnapIn"/>
-	</summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Plugin.Created">
-	<summary>
-		<see cref="M:PluginInterfaces.IPlugin.Created"/>
-	</summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Plugin.Unloaded">
-	<summary>
-		<see cref="M:PluginInterfaces.IPlugin.Unloaded"/>
-	</summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Plugin.Enabled">
-	<summary>
-		<see cref="M:PluginInterfaces.IPlugin.Enabled"/>
-	</summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Plugin.Disabled">
-	<summary>
-		<see cref="M:PluginInterfaces.IPlugin.Disabled"/>
-	</summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Plugin">
-	<summary>
- Kapselt ein <see cref="T:PluginInterfaces.IPlugin"/> und seine Metadaten.
- </summary>
 </member><member name="T:CasparCG_Overlays.UpdateInfo">
 	<summary>
  Kapselt die Schnittstelle zum UpdateSystem.Net.
@@ -194,6 +162,38 @@ GeneratedInternalTypeHelper
 </member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.TypeConverterNotFoundException">
 	<summary>
  Wird ausgelöst, wenn eine Einstellung geladen wird, für derer Typ kein <see cref="T:System.ComponentModel.TypeConverter"/> gefunden wurde.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.PluginWrapper.DisplayName">
+	<summary>
+		<see cref="P:PluginInterfaces.IPluginMetadata.DisplayName"/>
+	</summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.PluginWrapper.PluginGuid">
+	<summary>
+		<see cref="P:PluginInterfaces.IPluginMetadata.PluginGuid"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.PluginManagement.PluginWrapper.GetSnapIn">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.GetSnapIn"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.PluginManagement.PluginWrapper.Created">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Created"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.PluginManagement.PluginWrapper.Unloaded">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Unloaded"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.PluginManagement.PluginWrapper.Enabled">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Enabled"/>
+	</summary>
+</member><member name="M:CasparCG_Overlays.PluginManagement.PluginWrapper.Disabled">
+	<summary>
+		<see cref="M:PluginInterfaces.IPlugin.Disabled"/>
+	</summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.PluginWrapper">
+	<summary>
+ Kapselt ein <see cref="T:PluginInterfaces.IPlugin"/> und seine Metadaten.
  </summary>
 </member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Name">
 	<summary>

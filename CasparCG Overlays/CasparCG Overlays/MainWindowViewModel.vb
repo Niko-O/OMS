@@ -15,12 +15,12 @@
         End Get
     End Property
 
-    Dim _Plugins As IEnumerable(Of PluginManagement.Plugin) = Nothing
-    Public Property Plugins As IEnumerable(Of PluginManagement.Plugin)
+    Dim _Plugins As IEnumerable(Of PluginManagement.PluginWrapper) = Nothing
+    Public Property Plugins As IEnumerable(Of PluginManagement.PluginWrapper)
         Get
             Return _Plugins
         End Get
-        Set(value As IEnumerable(Of PluginManagement.Plugin))
+        Set(value As IEnumerable(Of PluginManagement.PluginWrapper))
             If ChangeIfDifferent(_Plugins, value, "Plugins") Then
                 ActualizeMainTabItems()
                 ActualizePluginViewModels()

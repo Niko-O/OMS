@@ -1031,6 +1031,23 @@ OnUtils
  Löst für jedes Element in <paramref name="Names"/> das <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>-Event aus.
  </summary>
 	<param name="PropertyNames">Die Namen der Properties, die sich geändert haben.</param>
+</member><member name="M:OnUtils.Wpf.NotifyPropertyChanged.ChangeIfDifferent``1(``0@,``0,System.String[])">
+	<summary>
+ Prüft, ob <paramref name="Target"/> und <paramref name="NewValue"/> gleich sind (<see cref="M:System.Object.Equals(System.Object)"/>).
+ Ist das nicht der Fall, wird <paramref name="Target"/> überschrieben (wird ByRef übergeben), <see cref="M:OnUtils.Wpf.NotifyPropertyChanged.OnPropertyChanged(System.String)"/> aufgerufen und True zurückgegeben.
+ Andernfalls wird nur False zurückgegeben.
+ </summary>
+	<param name="Target">Üblicherweise ein Feld, das den Wert der Property speichert.</param>
+	<param name="NewValue">Üblicherweise der Parameter des Setters der Property</param>
+	<param name="PropertyNames">Die Namen der Eigenschaften, die sich geändert haben. Das können auch abhängige Eigenschaften sein (z.B. Kreisradius geändert -&gt; Umfang ändert sich auch).</param>
+</member><member name="M:OnUtils.Wpf.NotifyPropertyChanged.ChangeIfDifferent``1(``0@,``0)">
+	<summary>
+ Prüft, ob <paramref name="Target"/> und <paramref name="NewValue"/> gleich sind (<see cref="M:System.Object.Equals(System.Object)"/>).
+ Ist das nicht der Fall, wird <paramref name="Target"/> überschrieben (wird ByRef übergeben) und True zurückgegeben.
+ Andernfalls wird nur False zurückgegeben.
+ </summary>
+	<param name="Target">Üblicherweise ein Feld, das den Wert der Property speichert.</param>
+	<param name="NewValue">Üblicherweise der Parameter des Setters der Property</param>
 </member><member name="T:OnUtils.Wpf.NotifyPropertyChanged">
 	<summary>
  Implementiert <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> und stellt Hilfsmethoden bereit, um damit zu arbeiten.
@@ -1057,6 +1074,37 @@ OnUtils
 </member><member name="T:OnUtils.Wpf.TextInlines">
 	<summary>
  Enthält Hilfsfunktionen zum Erstellen von Inlines für <see cref="T:OnUtils.Wpf.FormatTextBlock"/>.
+ </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged">
+	<summary>
+ Gibt an, ob Abhängigkeiten von Properties aufgelöst werden.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelBase.#ctor">
+	<summary>
+ Abhängigkeiten von Properties werden nicht aufgelöst.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelBase.#ctor(System.Boolean)">
+	<summary>
+ Wenn <paramref name="NewEnableRecursiveOnPropertyChanged"/> True ist, werden Abhängigkeiten von Properties aufgelöst (siehe <see cref="T:OnUtils.Wpf.DependencyAttribute"/>).
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelBase.OnPropertyChanged(System.String)">
+	<summary>
+ Wenn <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/> True ist, wird für jede abhängige Property ebenfalls das PropertyChanged-Event ausgelöst.
+ </summary>
+	<param name="PropertyName">Der Name der Property, die sich geändert hat.</param>
+</member><member name="M:OnUtils.Wpf.ViewModelBase.OnPropertyChanged(System.String[])">
+	<summary>
+ Wenn <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/> True ist, wird für jede abhängige Property ebenfalls das PropertyChanged-Event ausgelöst.
+ </summary>
+	<param name="PropertyNames">Die Namen der Properties, die sich geändert haben.</param>
+</member><member name="P:OnUtils.Wpf.ViewModelBase.IsInDesignMode">
+	<summary>
+ Gibt an, ob der aktuelle Code im Designer von VisualStudio ausgeführt wird.
+ Kann verwendet werden, um z.B. Dummy-Daten im Designer anzuzeigen.
+ </summary>
+</member><member name="T:OnUtils.Wpf.ViewModelBase">
+	<summary>
+ Stellt eine Basisklasse für ViewModels für WPF und MVVM dar. Verwenden Sie das <see cref="T:OnUtils.Wpf.DependencyAttribute"/>-Attribut, um das Auslösen von <see cref="T:OnUtils.Wpf.NotifyPropertyChanged"/> für abhängige Properties zu verketten.
  </summary>
 </member><member name="T:OnUtils.NopeException">
 	<summary>
@@ -1122,6 +1170,50 @@ OnUtils
 	<summary>
  Beinhaltet Methoden zum proportionalen Skalieren von Rechtecken.
  </summary>
+</member><member name="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded">
+	<summary>
+ Wird ausgelöst, wenn der Liste ein neues Objekt hinzugefügt wird.
+ Dieses Event muss mindestens ein Mal behandelt werden und die <see cref="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.ViewModel"/>-Property muss auf ein ViewModel für das übergebene Objekt festgelegt werden.
+ Erstellen Sie immer eine neue Instanz des ViewModels. Das Wiederverwenden einer ViewModel-Instanz kann zu undefiniertem Verhalten führen.
+ </summary>
+</member><member name="E:OnUtils.Wpf.ViewModelCollection`2.ItemRemoved">
+	<summary>
+ Wird ausgelöst, wenn ein Item und das dazugehörige ViewModel verworfen werden.
+ Entfernen Sie im hier z.B. EventHandler, die Sie dem im <see cref="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded"/>-EventHandler erstellten ViewModel hinzugefügt haben.
+ </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelCollection`2.ViewModels">
+	<summary>
+ Die Liste der vorhandenen ViewModels. Legen Sie die Datenquelle des Views bzw. Controls auf diese Property fest.
+ Verändern Sie diese Liste nicht von außen.
+ </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelCollection`2.Source">
+	<summary>
+ Die Datenquelle für diese ViewModelCollection.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.#ctor(OnUtils.Wpf.IViewModelCollectionSource{`0})">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewSource"><see cref="P:OnUtils.Wpf.ViewModelCollection`2.Source"/></param>
+</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.FindViewModel(`0)">
+	<summary>
+ Findet das ViewModel für das angegebene Objekt.
+ Wenn kein ViewModel gefunden wurde, wird eine <see cref="T:System.Collections.Generic.KeyNotFoundException"/> ausgelöst.
+ </summary>
+	<param name="Item">Das Objekt, für das das ViewModel gesucht wird.</param>
+</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.FindViewModel(`0,System.Boolean)">
+	<summary>
+ Findet das ViewModel für das angegebene Objekt.
+ Wenn kein ViewModel gefunden wurde, wird eine <see cref="T:System.Collections.Generic.KeyNotFoundException"/> ausgelöst, falls <paramref name="ThrowIfNotFound"/> True ist.
+ </summary>
+	<param name="Item">Das Objekt, für das das ViewModel gesucht wird.</param>
+	<param name="ThrowIfNotFound">Gibt an, ob eine <see cref="T:System.Collections.Generic.KeyNotFoundException"/> ausgelöst wird, wenn das ViewModel nicht gefunden wurde.</param>
+</member><member name="T:OnUtils.Wpf.ViewModelCollection`2">
+	<summary>
+ Stellt eine Liste von Objekten dar und verwaltet zusätzlich die ViewModels für diese Objekte.
+ </summary>
+	<typeparam name="TItem">Der Typ der Objekte, die diese Liste fasst.</typeparam>
+	<typeparam name="TViewModel">Der Typ der ViewModels für die Objekte.</typeparam>
 </member><member name="P:OnUtils.CommonData.PointD.X">
 	<summary>
  Die X-Koordinate des Punktes.
@@ -1253,27 +1345,6 @@ OnUtils
  Stellt Member bereit, die von <see cref="T:OnUtils.Streams.DataBuffer`1"/> verwendet werden, um Daten zu puffern.
  </summary>
 	<typeparam name="T">Der Typ der Daten, die gepuffert werden.</typeparam>
-</member><member name="T:OnUtils.Wpf.CommandDependencyAttribute">
-	<summary>
- Gibt an, dass das Command, auf das das Attribut angewendet wird, von den Properties, die im Konstruktor angegeben sind, abhängt.
- Somit wird das <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/>-Event für diese Property ebenfalls ausgelöst, wenn es für eine der Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> ausgelöst wird.
- </summary>
-</member><member name="P:OnUtils.Wpf.RecursionException.OriginalPropertyName">
-	<summary>
- Der Name der ersten geprüften Property.
- </summary>
-</member><member name="P:OnUtils.Wpf.RecursionException.FaultyPropertyName">
-	<summary>
- Der Name der Property, ab der die Rekursion auftritt.
- </summary>
-</member><member name="P:OnUtils.Wpf.RecursionException.TraversedStack">
-	<summary>
- Die Properties, in der Reihenfolge in der sie geprüft wurden, von der ersten bis zur fehlerhaften.
- </summary>
-</member><member name="T:OnUtils.Wpf.RecursionException">
-	<summary>
- Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase`1"/> durch Abhängigkeiten von Properties eine Rekursion auftritt.
- </summary>
 </member><member name="P:OnUtils.Wpf.Converters.BooleanToStringConverter.TrueString">
 	<summary>
  Der String, der verwendet wird, wenn der Boolean True ist.
@@ -1347,6 +1418,24 @@ OnUtils
  Stellt eine streng typisierte Variante von <see cref="T:OnUtils.WeakReference`1"/> dar.
  </summary>
 	<typeparam name="T">Der Typ des Objektes, das referenziert wird.</typeparam>
+</member><member name="P:OnUtils.Wpf.SourceItemMovedEventArgs.OldIndex">
+	<summary>
+ Der alte Index des Elementes.
+ </summary>
+</member><member name="P:OnUtils.Wpf.SourceItemMovedEventArgs.NewIndex">
+	<summary>
+ Der neue Index des Elementes.
+ </summary>
+</member><member name="M:OnUtils.Wpf.SourceItemMovedEventArgs.#ctor(System.Int32,System.Int32)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewOldIndex"><see cref="P:OnUtils.Wpf.SourceItemMovedEventArgs.OldIndex"/></param>
+	<param name="NewNewIndex"><see cref="P:OnUtils.Wpf.SourceItemMovedEventArgs.NewIndex"/></param>
+</member><member name="T:OnUtils.Wpf.SourceItemMovedEventArgs">
+	<summary>
+ Wird von <see cref="T:OnUtils.Wpf.IViewModelCollectionSource`1"/> ausgelöst, wenn ein Element zu einer Datenquelle hinzugefügt oder entfernt wurde.
+ </summary>
 </member><member name="F:OnUtils.Emit.AccessModifiers.Private">
 	<summary>
  Nur in der Klasse sichtbar, in dem der Member deklariert ist.
@@ -1616,15 +1705,20 @@ OnUtils
 	<summary>
  Enthält Methoden, die mit DwmComposition zu tun haben.
  </summary>
-</member><member name="P:OnUtils.Wpf.IViewModel`1.Target">
+</member><member name="P:OnUtils.Wpf.ObservableCollectionSource`1.SourceCollection">
 	<summary>
- Das Objekt, dem dieses ViewModel zugeordnet ist.
+ Die <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/>, aus der die Daten verwendet werden.
  </summary>
-</member><member name="T:OnUtils.Wpf.IViewModel`1">
+</member><member name="M:OnUtils.Wpf.ObservableCollectionSource`1.#ctor(System.Collections.ObjectModel.ObservableCollection{`0})">
 	<summary>
- Stellt ein ViewModel für die Verwendung mit <see cref="T:OnUtils.Wpf.ViewModelCollection`2"/> dar.
+ Konstruktor.
  </summary>
-	<typeparam name="T">Der Typ des Objektes, dem dieses ViewModel zugeordnet ist.</typeparam>
+	<param name="NewSourceCollection"><see cref="P:OnUtils.Wpf.ObservableCollectionSource`1.SourceCollection"/></param>
+</member><member name="T:OnUtils.Wpf.ObservableCollectionSource`1">
+	<summary>
+ Implementiert eine Datenquelle für <see cref="T:OnUtils.Wpf.ViewModelBase"/>, die Daten aus einer <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> verwendet.
+ </summary>
+	<typeparam name="T">Der Typ der Elemente.</typeparam>
 </member><member name="M:OnUtils.WinApi.HotKeys.RegisterHotKey(System.IntPtr,System.Int32,System.Int32,System.Int32)">
 	<summary>Bei Erfolg True, andernfalls False.</summary>
 	<returns>Bei Erfolg True, andernfalls False.</returns>
@@ -1657,29 +1751,25 @@ OnUtils
 	<summary>
  Eine abgeänderte Form der HotKey-Klasse von ErfinderDesRades (siehe http://www.vb-paradise.de/allgemeines/sourcecode-austausch/57004-registerhotkey-wrapper/).
  </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.Item">
-	<summary>
- Das entfernte Objekt.
- </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.ViewModel">
-	<summary>
- Das ViewModel, das dem entfernten Objekt zugeordnet ist.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.#ctor(`0,`1)">
-	<summary>
- Konstruktor.
- </summary>
-	<param name="NewItem">Siehe <see cref="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.Item"/>.</param>
-	<param name="NewViewModel">Siehe <see cref="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.ViewModel"/>.</param>
-</member><member name="T:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2">
-	<summary>
- Enthält Informationen über das <see cref="E:OnUtils.Wpf.ViewModelCollection`2.ItemRemoved"/>-Event.
- </summary>
-	<typeparam name="TItem">Der Typ des entfernten Objektes.</typeparam>
-	<typeparam name="TViewModel">Der Typ des ViewModels, das dem entfernten Objekt zugeordnet ist.</typeparam>
 </member><member name="T:OnUtils.Streams.EndOfStreamException">
 	<summary>
  Wird ausgelöst, wenn das Ende des Streams vorzeitig erreicht wurde, oder wenn der Stream bereits zuende gelesen wurde.
+ </summary>
+</member><member name="P:OnUtils.Wpf.RecursionException.OriginalPropertyName">
+	<summary>
+ Der Name der ersten geprüften Property.
+ </summary>
+</member><member name="P:OnUtils.Wpf.RecursionException.FaultyPropertyName">
+	<summary>
+ Der Name der Property, ab der die Rekursion auftritt.
+ </summary>
+</member><member name="P:OnUtils.Wpf.RecursionException.TraversedStack">
+	<summary>
+ Die Properties, in der Reihenfolge in der sie geprüft wurden, von der ersten bis zur fehlerhaften.
+ </summary>
+</member><member name="T:OnUtils.Wpf.RecursionException">
+	<summary>
+ Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase"/> durch Abhängigkeiten von Properties eine Rekursion auftritt.
  </summary>
 </member><member name="T:OnUtils.Wpf.ToolTipButton">
 	<summary>
@@ -1819,31 +1909,15 @@ OnUtils
 	<summary>
  Beinhaltet Extension-Methoden für einige Klassen im <see cref="N:System.Reflection.Emit"/>-Namespace.
  </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelBase`1.Target">
+</member><member name="P:OnUtils.Wpf.IViewModel`1.Target">
 	<summary>
- Das Objekt, dem dieses ViesModel zugeordnet ist.
+ Das Objekt, dem dieses ViewModel zugeordnet ist.
  </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelBase`1.#ctor">
+</member><member name="T:OnUtils.Wpf.IViewModel`1">
 	<summary>
- Konstruktor. <see cref="P:OnUtils.Wpf.ViewModelBase`1.Target"/> wird auf Nothing festgelegt.
+ Stellt ein ViewModel für die Verwendung mit <see cref="T:OnUtils.Wpf.ViewModelCollection`2"/> dar.
  </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelBase`1.#ctor(`0)">
-	<summary>
- Konstruktor.
- </summary>
-	<param name="NewTarget">Das Objekt, dem dieses ViewModel zugeordnet ist. Siehe <see cref="P:OnUtils.Wpf.ViewModelBase`1.Target"/>.</param>
-</member><member name="M:OnUtils.Wpf.ViewModelBase`1.#ctor(System.Boolean,`0)">
-	<summary>
- Konstruktor.
- </summary>
-	<param name="NewEnableRecursiveOnPropertyChanged">Siehe <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/>.</param>
-	<param name="NewTarget">Das Objekt, dem dieses ViewModel zugeordnet ist. Siehe <see cref="P:OnUtils.Wpf.ViewModelBase`1.Target"/>.</param>
-</member><member name="T:OnUtils.Wpf.ViewModelBase`1">
-	<summary>
- Stellt eine Basisklasse für ViewModels für WPF und MVVM dar.
- Dieses ViewModel ist einem Objekt zugeordnet, das es repräsentiert.
- </summary>
-	<typeparam name="T">Der Typ des Objektes, dem das ViewModel zugeordnert ist.</typeparam>
+	<typeparam name="T">Der Typ des Objektes, dem dieses ViewModel zugeordnet ist.</typeparam>
 </member><member name="P:OnUtils.MaskingException.UnderlyingException">
 	<summary>
  Die Exception, derer Informationen verwendet werden.
@@ -1931,6 +2005,11 @@ OnUtils
  </summary>
 	<param name="Delay">Die Zeitspanne, um die die Ausführung verzögert wird.</param>
 	<param name="Callback">Die Methode, die verzögert ausgeführt wird.</param>
+</member><member name="M:OnUtils.Helpers.UnixTimestampToUtc(System.Int64)">
+	<summary>
+ Konvertiert den angegebenen Unix-Timestamp (Sekunden seit 1. Jänner 1970, 00:00 Uhr) in ein <see cref="T:System.DateTime"/>-Objekt unter der Verwendung von UTC.
+ </summary>
+	<param name="SecondsSinceEpocheBegin">Der Timestamp.</param>
 </member><member name="M:OnUtils.Helpers.ShowThreadExceptionDialog(System.Exception)">
 	<summary>
  Zeigt einen .Net-Fehlerdialog für unbehandelte Exceptions an.
@@ -1954,25 +2033,6 @@ OnUtils
 	<summary>
  Beinhaltet Hilfsfunktionen, die keine Extensions sind.
  </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.Item">
-	<summary>
- Das hinzugefügte Objekt.
- </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.ViewModel">
-	<summary>
- Weisen Sie dieser Property eine neue Instanz eines ViewModels für <see cref="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.Item"/> zu.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.#ctor(`0)">
-	<summary>
- Konstruktor.
- </summary>
-	<param name="NewItem">Siehe <see cref="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.Item"/>.</param>
-</member><member name="T:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2">
-	<summary>
- Enthält Informationen über das <see cref="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded"/>-Event.
- </summary>
-	<typeparam name="TItem">Der Typ des hinzugefügten Objektes.</typeparam>
-	<typeparam name="TViewModel">Der Typ des ViewModels, das dem hinzugefügten Objekt zugeordnet ist.</typeparam>
 </member><member name="P:OnUtils.Streams.StringStream.SourceString">
 	<summary>
  Gibt den Quellstring an.
@@ -2078,6 +2138,15 @@ OnUtils
 	<summary>
  Konvertiert zu <see cref="T:System.Boolean"/>, wenn der String leer oder null/Nothing ist, andernfalls zu <see cref="T:System.Boolean"/>.
  </summary>
+</member><member name="P:OnUtils.Wpf.DependencyAttribute.DependsOn">
+	<summary>
+ Die Properties, von denen diese Property abhängt.
+ </summary>
+</member><member name="T:OnUtils.Wpf.DependencyAttribute">
+	<summary>
+ Gibt an, dass die Property, auf die das Attribut angewendet wird, von den Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> abhängt.
+ Somit wird das <see cref="E:OnUtils.Wpf.NotifyPropertyChanged.PropertyChanged"/>-Event für diese Property ebenfalls ausgelöst, wenn es für eine der Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> ausgelöst wird.
+ </summary>
 </member><member name="M:OnUtils.DisplayItem.Create``1(System.String,``0)">
 	<summary>
  Erstellt ein <see cref="T:OnUtils.DisplayItem`1"/>.
@@ -2103,6 +2172,49 @@ OnUtils
  Kapselt einen Wert und verknüpft ihn mit einem Text, der dargestellt wird.
  </summary>
 	<typeparam name="T">Der Typ des gekapselten Wertes.</typeparam>
+</member><member name="P:OnUtils.Wpf.SourceItemEventArgs`1.Item">
+	<summary>
+ Das hinzugefügte oder entfernte Element.
+ </summary>
+</member><member name="M:OnUtils.Wpf.SourceItemEventArgs`1.#ctor(`0)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewItem"><see cref="P:OnUtils.Wpf.SourceItemEventArgs`1.Item"/></param>
+</member><member name="T:OnUtils.Wpf.SourceItemEventArgs`1">
+	<summary>
+ Wird von <see cref="T:OnUtils.Wpf.IViewModelCollectionSource`1"/> ausgelöst, wenn ein Element zu einer Datenquelle hinzugefügt oder entfernt wurde.
+ </summary>
+	<typeparam name="T">Der Typ des Elementes.</typeparam>
+</member><member name="T:OnUtils.Wpf.InvalidDependencyException">
+	<summary>
+ Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase"/> ein <see cref="T:OnUtils.Wpf.CommandDependencyAttribute"/> auf eine ungültige Property angewendet wird.
+ </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelBase`1.Target">
+	<summary>
+ Das Objekt, dem dieses ViesModel zugeordnet ist.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelBase`1.#ctor">
+	<summary>
+ Konstruktor. <see cref="P:OnUtils.Wpf.ViewModelBase`1.Target"/> wird auf Nothing festgelegt.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelBase`1.#ctor(`0)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewTarget">Das Objekt, dem dieses ViewModel zugeordnet ist. Siehe <see cref="P:OnUtils.Wpf.ViewModelBase`1.Target"/>.</param>
+</member><member name="M:OnUtils.Wpf.ViewModelBase`1.#ctor(System.Boolean,`0)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewEnableRecursiveOnPropertyChanged">Siehe <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/>.</param>
+	<param name="NewTarget">Das Objekt, dem dieses ViewModel zugeordnet ist. Siehe <see cref="P:OnUtils.Wpf.ViewModelBase`1.Target"/>.</param>
+</member><member name="T:OnUtils.Wpf.ViewModelBase`1">
+	<summary>
+ Stellt eine Basisklasse für ViewModels für WPF und MVVM dar.
+ Dieses ViewModel ist einem Objekt zugeordnet, das es repräsentiert.
+ </summary>
+	<typeparam name="T">Der Typ des Objektes, dem das ViewModel zugeordnert ist.</typeparam>
 </member><member name="T:OnUtils.Wpf.Converters.ListToStringConverter">
 	<summary>
  Konvertiert ein <see cref="T:System.Collections.IEnumerable"/> mithilfe von <see cref="T:System.String"/> zu einem String. Gibt <see cref="T:System.String"/> zurück, wenn das Objekt null/Nothing ist oder die Liste keine Elemente beinhaltet.
@@ -2237,59 +2349,31 @@ OnUtils
  Konvertiert zu <see cref="T:System.Boolean"/>, wenn das Objekt null/Nothing ist, andernfalls zu <see cref="T:System.Boolean"/>.
  Funktioniert nicht mit Wertetypen.
  </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged">
-	<summary>
- Gibt an, ob Abhängigkeiten von Properties aufgelöst werden.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelBase.#ctor">
-	<summary>
- Abhängigkeiten von Properties werden nicht aufgelöst.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelBase.#ctor(System.Boolean)">
-	<summary>
- Wenn <paramref name="NewEnableRecursiveOnPropertyChanged"/> True ist, werden Abhängigkeiten von Properties aufgelöst (siehe <see cref="T:OnUtils.Wpf.DependencyAttribute"/>).
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelBase.OnPropertyChanged(System.String)">
-	<summary>
- Wenn <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/> True ist, wird für jede abhängige Property ebenfalls das PropertyChanged-Event ausgelöst.
- </summary>
-	<param name="PropertyName">Der Name der Property, die sich geändert hat.</param>
-</member><member name="M:OnUtils.Wpf.ViewModelBase.OnPropertyChanged(System.String[])">
-	<summary>
- Wenn <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/> True ist, wird für jede abhängige Property ebenfalls das PropertyChanged-Event ausgelöst.
- </summary>
-	<param name="PropertyNames">Die Namen der Properties, die sich geändert haben.</param>
-</member><member name="M:OnUtils.Wpf.ViewModelBase.ChangeIfDifferent``1(``0@,``0,System.String[])">
-	<summary>
- Prüft, ob <paramref name="Target"/> und <paramref name="NewValue"/> gleich sind (<see cref="M:System.Object.Equals(System.Object)"/>).
- Ist das nicht der Fall, wird <paramref name="Target"/> überschrieben (wird ByRef übergeben), <see cref="M:OnUtils.Wpf.ViewModelBase.OnPropertyChanged(System.String)"/> aufgerufen und True zurückgegeben.
- Andernfalls wird nur False zurückgegeben.
- </summary>
-	<param name="Target">Üblicherweise ein Feld, das den Wert der Property speichert.</param>
-	<param name="NewValue">Üblicherweise der Parameter des Setters der Property</param>
-	<param name="PropertyNames">Die Namen der Eigenschaften, die sich geändert haben. Das können auch abhängige Eigenschaften sein (z.B. Kreisradius geändert -&gt; Umfang ändert sich auch).</param>
-</member><member name="M:OnUtils.Wpf.ViewModelBase.ChangeIfDifferent``1(``0@,``0)">
-	<summary>
- Prüft, ob <paramref name="Target"/> und <paramref name="NewValue"/> gleich sind (<see cref="M:System.Object.Equals(System.Object)"/>).
- Ist das nicht der Fall, wird <paramref name="Target"/> überschrieben (wird ByRef übergeben) und True zurückgegeben.
- Andernfalls wird nur False zurückgegeben.
- </summary>
-	<param name="Target">Üblicherweise ein Feld, das den Wert der Property speichert.</param>
-	<param name="NewValue">Üblicherweise der Parameter des Setters der Property</param>
-</member><member name="P:OnUtils.Wpf.ViewModelBase.IsInDesignMode">
-	<summary>
- Gibt an, ob der aktuelle Code im Designer von VisualStudio ausgeführt wird.
- Kann verwendet werden, um z.B. Dummy-Daten im Designer anzuzeigen.
- </summary>
-</member><member name="T:OnUtils.Wpf.ViewModelBase">
-	<summary>
- Stellt eine Basisklasse für ViewModels für WPF und MVVM dar. Verwenden Sie das <see cref="T:OnUtils.Wpf.DependencyAttribute"/>-Attribut, um das Auslösen von <see cref="T:OnUtils.Wpf.NotifyPropertyChanged"/> für abhängige Properties zu verketten.
- </summary>
 </member><member name="T:OnUtils.Emit.PredefinedMembers">
 	<summary>
  Beinhaltet bei <see cref="N:System.Reflection.Emit"/> häufig verwendete Typen und Member.
  Gegliedert nach dem .Net-Framework.
  </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.Item">
+	<summary>
+ Das entfernte Objekt.
+ </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.ViewModel">
+	<summary>
+ Das ViewModel, das dem entfernten Objekt zugeordnet ist.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.#ctor(`0,`1)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewItem">Siehe <see cref="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.Item"/>.</param>
+	<param name="NewViewModel">Siehe <see cref="P:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2.ViewModel"/>.</param>
+</member><member name="T:OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs`2">
+	<summary>
+ Enthält Informationen über das <see cref="E:OnUtils.Wpf.ViewModelCollection`2.ItemRemoved"/>-Event.
+ </summary>
+	<typeparam name="TItem">Der Typ des entfernten Objektes.</typeparam>
+	<typeparam name="TViewModel">Der Typ des ViewModels, das dem entfernten Objekt zugeordnet ist.</typeparam>
 </member><member name="P:OnUtils.Emit.EmitAssembly.Assembly">
 	<summary>
  Die <see cref="T:System.Reflection.Emit.AssemblyBuilder"/>-Instanz, in der das Modul <see cref="P:OnUtils.Emit.EmitAssembly.MainModule"/> definiert ist.
@@ -2403,10 +2487,6 @@ OnUtils
 </member><member name="T:OnUtils.WinApi.MouseAction">
 	<summary>
  Gibt eine Maus-Aktion an. Kann kombiniert werden.
- </summary>
-</member><member name="T:OnUtils.Wpf.InvalidDependencyException">
-	<summary>
- Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase`1"/> ein <see cref="T:OnUtils.Wpf.CommandDependencyAttribute"/> auf eine ungültige Property angewendet wird.
  </summary>
 </member><member name="P:OnUtils.Wpf.InvalidToolTipException.InvalidObject">
 	<summary>
@@ -2624,80 +2704,15 @@ OnUtils
  Das heißt konkret: HasValue müssen gleich sein und, wenn true, Value ebenfalls (Object.Equals).
  </summary>
 	<param name="Other">Das Nullable-Objekt, mit dem dieses Nullable-Objekt verglichen wird.</param>
+</member><member name="M:OnUtils.Extensions.Extensions.ToUnixTimestamp(System.DateTime)">
+	<summary>
+ Konvertiert dieses <see cref="T:System.DateTime"/>-Objekt in einen Unix-Timestamp. Es wird von UTC ausgegangen.
+ Wenn die Zeit nicht in UTC angegeben ist, kann das Ergebnis vom erwarteten Wert abweichen. Verwenden Sie <see cref="M:System.DateTime.SpecifyKind(System.DateTime,System.DateTimeKind)"/>, um UTC für ein <see cref="T:System.DateTime"/>-Objekt anzugeben.
+ </summary>
 </member><member name="T:OnUtils.Extensions.Extensions">
 	<summary>
  Beinhaltet hilfreiche Methoden.
  </summary>
-</member><member name="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded">
-	<summary>
- Wird ausgelöst, wenn der Liste ein neues Objekt hinzugefügt wird.
- Dieses Event muss mindestens ein Mal behandelt werden und die <see cref="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.ViewModel"/>-Property muss auf ein ViewModel für das übergebene Objekt festgelegt werden.
- Erstellen Sie immer eine neue Instanz des ViewModels. Das Wiederverwenden einer ViewModel-Instanz kann zu undefiniertem Verhalten führen.
- </summary>
-</member><member name="E:OnUtils.Wpf.ViewModelCollection`2.ItemRemoved">
-	<summary>
- Wird ausgelöst, wenn ein Item und das dazugehörige ViewModel verworfen werden.
- Entfernen Sie im hier z.B. EventHandler, die Sie dem im <see cref="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded"/>-EventHandler erstellten ViewModel hinzugefügt haben.
- </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollection`2.ViewModels">
-	<summary>
- Die Liste der vorhandenen ViewModels. Legen Sie die Datenquelle des Views bzw. Controls auf diese Property fest.
- Verändern Sie diese Liste nicht von außen.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.Add(`0)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.ICollection`1.Add(`0)"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.Clear">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.ICollection`1.Clear"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.Contains(`0)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.ICollection`1.Contains(`0)"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.CopyTo(`0[],System.Int32)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)"/>.
- </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollection`2.Count">
-	<summary>
- Siehe <see cref="P:System.Collections.Generic.ICollection`1.Count"/>.
- </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollection`2.IsReadOnly">
-	<summary>
- Siehe <see cref="P:System.Collections.Generic.ICollection`1.IsReadOnly"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.Remove(`0)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.ICollection`1.Remove(`0)"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.IndexOf(`0)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.IList`1.IndexOf(`0)"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.Insert(System.Int32,`0)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.IList`1.Insert(System.Int32,`0)"/>.
- </summary>
-</member><member name="P:OnUtils.Wpf.ViewModelCollection`2.Item(System.Int32)">
-	<summary>
- Siehe <see cref="P:System.Collections.Generic.IList`1.Item(System.Int32)"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.RemoveAt(System.Int32)">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.IList`1.RemoveAt(System.Int32)"/>.
- </summary>
-</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.GetEnumerator">
-	<summary>
- Siehe <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>.
- </summary>
-</member><member name="T:OnUtils.Wpf.ViewModelCollection`2">
-	<summary>
- Stellt eine Liste von Objekten dar und verwaltet zusätzlich die ViewModels für diese Objekte.
- </summary>
-	<typeparam name="TItem">Der Typ der Objekte, die diese Liste fasst.</typeparam>
-	<typeparam name="TViewModel">Der Typ der ViewModels für die Objekte.</typeparam>
 </member><member name="P:OnUtils.Streams.IndentStringBuilder.IndentLevel">
 	<summary>
  Die aktuelle Einrückungstiefe.
@@ -2852,6 +2867,27 @@ OnUtils
 	<summary>
  Startet einen neuen Task, der <see cref="M:OnUtils.Wpf.DelegateCommand.Execute(System.Object)"/> ausführt.
  </summary>
+</member><member name="E:OnUtils.Wpf.IViewModelCollectionSource`1.ItemAdded">
+	<summary>
+ Wird ausgelöst, wenn ein Element zur Quelle hinzugefügt wurde.
+ </summary>
+</member><member name="E:OnUtils.Wpf.IViewModelCollectionSource`1.ItemRemoved">
+	<summary>
+ Wird ausgelöst, wenn ein Element aus der Quelle entfernt wurde.
+ </summary>
+</member><member name="E:OnUtils.Wpf.IViewModelCollectionSource`1.ItemMoved">
+	<summary>
+ Wird ausgelöst, wenn ein Element in der Quelle verschoben wurde.
+ </summary>
+</member><member name="E:OnUtils.Wpf.IViewModelCollectionSource`1.CollectionCleard">
+	<summary>
+ Wird ausgelöst, wenn alle Elemente aus der Quelle entfernt werden.
+ </summary>
+</member><member name="T:OnUtils.Wpf.IViewModelCollectionSource`1">
+	<summary>
+ Stellt eine Datenquelle für <see cref="T:OnUtils.Wpf.ViewModelCollection`2"/> dar.
+ </summary>
+	<typeparam name="T">Der Typ der Quell-Elemente.</typeparam>
 </member><member name="P:OnUtils.Results.IErroredResult`1.Error">
 	<summary>
  Der Fehler im Vorgang.
@@ -2884,15 +2920,6 @@ OnUtils
 	<summary>
  Wrappt den Aufruf der im Konstruktor angegebenen Methode in einen Try-Catch-Block.
  Das zugrundeliegende <see cref="T:System.Threading.Thread"/>-Objekt kann über die <see cref="P:OnUtils.GuardedThread.InternalThread"/>-Property abgerufen werden.
- </summary>
-</member><member name="P:OnUtils.Wpf.DependencyAttribute.DependsOn">
-	<summary>
- Die Properties, von denen diese Property abhängt.
- </summary>
-</member><member name="T:OnUtils.Wpf.DependencyAttribute">
-	<summary>
- Gibt an, dass die Property, auf die das Attribut angewendet wird, von den Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> abhängt.
- Somit wird das <see cref="E:OnUtils.Wpf.NotifyPropertyChanged.PropertyChanged"/>-Event für diese Property ebenfalls ausgelöst, wenn es für eine der Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> ausgelöst wird.
  </summary>
 </member><member name="P:OnUtils.Results.Result.Success">
 	<summary>
@@ -2938,6 +2965,11 @@ OnUtils
 </member><member name="T:OnUtils.Streams.SerialPortDataSource">
 	<summary>
  Eine Datenquelle zum Puffern von <see cref="T:System.IO.Ports.SerialPort"/>.
+ </summary>
+</member><member name="T:OnUtils.Wpf.CommandDependencyAttribute">
+	<summary>
+ Gibt an, dass das Command, auf das das Attribut angewendet wird, von den Properties, die im Konstruktor angegeben sind, abhängt.
+ Somit wird das <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/>-Event für dieses Command ausgelöst, wenn das <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>-Event für eine der Properties in <see cref="P:OnUtils.Wpf.DependencyAttribute.DependsOn"/> ausgelöst wird.
  </summary>
 </member><member name="P:OnUtils.Wpf.Converters.BooleanToBrushConverter.TrueBrush">
 	<summary>
@@ -3015,6 +3047,25 @@ OnUtils
  Beschreibt ein Ergebnis, welches einen Wert eines Vorgangs zurückgibt.
  </summary>
 	<typeparam name="TValue">Der Typ des Wertes</typeparam>
+</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.Item">
+	<summary>
+ Das hinzugefügte Objekt.
+ </summary>
+</member><member name="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.ViewModel">
+	<summary>
+ Weisen Sie dieser Property eine neue Instanz eines ViewModels für <see cref="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.Item"/> zu.
+ </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.#ctor(`0)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewItem">Siehe <see cref="P:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2.Item"/>.</param>
+</member><member name="T:OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs`2">
+	<summary>
+ Enthält Informationen über das <see cref="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded"/>-Event.
+ </summary>
+	<typeparam name="TItem">Der Typ des hinzugefügten Objektes.</typeparam>
+	<typeparam name="TViewModel">Der Typ des ViewModels, das dem hinzugefügten Objekt zugeordnet ist.</typeparam>
 </member>
 </members>
 </doc>

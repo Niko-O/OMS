@@ -1,5 +1,5 @@
 ﻿Public Class PluginViewModel
-    Inherits ViewModelBase(Of PluginManagement.Plugin)
+    Inherits ViewModelBase(Of PluginManagement.PluginWrapper)
 
     Public Event IsInUseChanged()
     Private Sub OnIsInUseChanged()
@@ -20,7 +20,7 @@
         End Set
     End Property
 
-    Public Sub New(NewTarget As PluginManagement.Plugin)
+    Public Sub New(NewTarget As PluginManagement.PluginWrapper)
         MyBase.New(NewTarget)
         AddHandler PluginManagement.PluginActiveStates.IsInUseChanged, AddressOf CheckIsInUseChanged
     End Sub

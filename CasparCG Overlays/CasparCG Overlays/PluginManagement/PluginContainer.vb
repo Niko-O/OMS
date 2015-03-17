@@ -8,11 +8,11 @@ Namespace PluginManagement
     Public Class PluginContainer
         Inherits Singleton(Of PluginContainer)
 
-        Dim _Plugins As New List(Of Plugin)
+        Dim _Plugins As New List(Of PluginWrapper)
         ''' <summary>
         ''' Die Liste der verfügbaren Plugins.
         ''' </summary>
-        Public ReadOnly Property Plugins As IEnumerable(Of Plugin)
+        Public ReadOnly Property Plugins As IEnumerable(Of PluginWrapper)
             Get
                 Return _Plugins
             End Get
@@ -24,7 +24,7 @@ Namespace PluginManagement
         Public Sub New()
             PluginInterfaces.PublicProviders.MefCompositor.Compose(Me)
             For Each i In ImportedPlugins
-                _Plugins.Add(New Plugin(i))
+                _Plugins.Add(New PluginWrapper(i))
             Next
         End Sub
 

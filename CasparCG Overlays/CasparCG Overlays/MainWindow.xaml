@@ -22,6 +22,7 @@
             <TextBlock Text="{Binding Path=Target.PluginGuid}"/>
         </ToolTip>
         <t:CheckForUpdatesCommand x:Key="CheckForUpdatesCommand"/>
+        <t:OpenGithubCommand x:Key="OpenGithubCommand"/>
         <c:BooleanToStringConverter x:Key="ConnectToServerButtonTextConverter" TrueString="Verbindung trennen" FalseString="Verbindung herstellen"/>
     </Window.Resources>
     <tt:MainTabControl Margin="6" BindableTabs="{Binding Path=MainTabItems}">
@@ -50,7 +51,7 @@
                                 <TextBlock Grid.Column="2" Text="{Binding Source={x:Static Member=t:UpdateInfo.Instance}, Path=CurrentApplicationVersion}"/>
                             </Grid>
                             <TextBlock>
-                                <Hyperlink>
+                                <Hyperlink Command="{StaticResource ResourceKey=OpenGithubCommand}">
                                     OMS auf GitHub
                                 </Hyperlink>
                             </TextBlock>

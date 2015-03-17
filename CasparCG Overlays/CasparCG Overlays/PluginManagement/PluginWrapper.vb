@@ -4,7 +4,8 @@ Namespace PluginManagement
     ''' <summary>
     ''' Kapselt ein <see cref="PluginInterfaces.IPlugin"/> und seine Metadaten.
     ''' </summary>
-    Public Class Plugin
+    Public Class PluginWrapper
+        Implements PluginInterfaces.IPlugin
 
         Dim Source As Lazy(Of PluginInterfaces.IPlugin, PluginInterfaces.IPluginMetadata)
 
@@ -44,35 +45,35 @@ Namespace PluginManagement
         ''' <summary>
         ''' <see cref="PluginInterfaces.IPlugin.GetSnapIn"/>
         ''' </summary>
-        Public Function GetSnapIn() As UserControl
+        Public Function GetSnapIn() As UserControl Implements PluginInterfaces.IPlugin.GetSnapIn
             Return Source.Value.GetSnapIn
         End Function
 
         ''' <summary>
         ''' <see cref="PluginInterfaces.IPlugin.Created"/>
         ''' </summary>
-        Public Sub Created()
+        Public Sub Created() Implements PluginInterfaces.IPlugin.Created
             Source.Value.Created()
         End Sub
 
         ''' <summary>
         ''' <see cref="PluginInterfaces.IPlugin.Unloaded"/>
         ''' </summary>
-        Public Sub Unloaded()
+        Public Sub Unloaded() Implements PluginInterfaces.IPlugin.Unloaded
             Source.Value.Unloaded()
         End Sub
 
         ''' <summary>
         ''' <see cref="PluginInterfaces.IPlugin.Enabled"/>
         ''' </summary>
-        Public Sub Enabled()
+        Public Sub Enabled() Implements PluginInterfaces.IPlugin.Enabled
             Source.Value.Enabled()
         End Sub
 
         ''' <summary>
         ''' <see cref="PluginInterfaces.IPlugin.Disabled"/>
         ''' </summary>
-        Public Sub Disabled()
+        Public Sub Disabled() Implements PluginInterfaces.IPlugin.Disabled
             Source.Value.Disabled()
         End Sub
 

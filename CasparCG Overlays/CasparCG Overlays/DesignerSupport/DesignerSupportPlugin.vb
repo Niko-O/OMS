@@ -2,7 +2,7 @@
 Namespace DesignerSupport
 
     Public Class DesignerSupportPlugin
-        Inherits PluginManagement.Plugin
+        Inherits PluginManagement.PluginWrapper
 
         Public Sub New()
             Me.New("NamelessDesignerSupportPlugin")

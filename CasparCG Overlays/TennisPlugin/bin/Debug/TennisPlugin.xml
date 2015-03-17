@@ -14,30 +14,6 @@ InitializeComponent
 	<summary>
 TennisSnapIn
 </summary>
-</member><member name="M:TennisPlugin.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-	<summary>
-CreateInstance
-</summary>
-</member><member name="M:TennisPlugin.XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-	<summary>
-GetPropertyValue
-</summary>
-</member><member name="M:TennisPlugin.XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-	<summary>
-SetPropertyValue
-</summary>
-</member><member name="M:TennisPlugin.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-	<summary>
-CreateDelegate
-</summary>
-</member><member name="M:TennisPlugin.XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-	<summary>
-AddEventHandler
-</summary>
-</member><member name="T:TennisPlugin.XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-	<summary>
-GeneratedInternalTypeHelper
-</summary>
 </member><member name="M:TennisPlugin.Test_UserSettings.InitializeComponent">
 	<summary>
 InitializeComponent

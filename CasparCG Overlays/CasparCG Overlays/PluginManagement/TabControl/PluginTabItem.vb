@@ -7,17 +7,17 @@ Namespace PluginManagement.TabControl
     Public Class PluginTabItem
         Inherits MainTabItem
 
-        Dim _Plugin As Plugin
+        Dim _Plugin As PluginWrapper
         ''' <summary>
         ''' Das <see cref="Plugin"/>.
         ''' </summary>
-        Public ReadOnly Property Plugin As Plugin
+        Public ReadOnly Property Plugin As PluginWrapper
             Get
                 Return _Plugin
             End Get
         End Property
 
-        Public Sub New(NewPlugin As Plugin)
+        Public Sub New(NewPlugin As PluginWrapper)
             _Plugin = NewPlugin
             Me.Header = _Plugin.DisplayName
             Me.Content = _Plugin.GetSnapIn
