@@ -6,27 +6,7 @@ CasparCGOverlays
 </name>
 </assembly>
 <members>
-<member name="M:CasparCG_Overlays.MainWindow.InitializeComponent">
-	<summary>
-InitializeComponent
-</summary>
-</member><member name="T:CasparCG_Overlays.MainWindow">
-	<summary>
-MainWindow
-</summary>
-</member><member name="M:CasparCG_Overlays.Application.InitializeComponent">
-	<summary>
-InitializeComponent
-</summary>
-</member><member name="M:CasparCG_Overlays.Application.Main">
-	<summary>
-Application Entry Point.
-</summary>
-</member><member name="T:CasparCG_Overlays.Application">
-	<summary>
-Application
-</summary>
-</member><member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+<member name="M:CasparCG_Overlays.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
 	<summary>
 CreateInstance
 </summary>
@@ -50,39 +30,78 @@ AddEventHandler
 	<summary>
 GeneratedInternalTypeHelper
 </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.SettingsStructureIncompatibleException">
+</member><member name="M:CasparCG_Overlays.MainWindow.InitializeComponent">
 	<summary>
- Wird ausgelöst, wenn die gespeicherten Einstellungen anders aufgebaut sind, als die Einstellungs-Struktur, deren Einstellungen geladen werden sollen.
+InitializeComponent
+</summary>
+</member><member name="T:CasparCG_Overlays.MainWindow">
+	<summary>
+MainWindow
+</summary>
+</member><member name="M:CasparCG_Overlays.Application.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="M:CasparCG_Overlays.Application.Main">
+	<summary>
+Application Entry Point.
+</summary>
+</member><member name="T:CasparCG_Overlays.Application">
+	<summary>
+Application
+</summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.TypeConverterNotFoundException">
+	<summary>
+ Wird ausgelöst, wenn eine Einstellung geladen wird, für derer Typ kein <see cref="T:System.ComponentModel.TypeConverter"/> gefunden wurde.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Name">
+	<summary>
+ Der Name der Eigenschaft.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Type">
+	<summary>
+ Der Typ der Eigenschaft.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Converter">
+	<summary>
+ Der <see cref="T:System.ComponentModel.TypeConverter"/>, der zur Konvertierung verwendet wird.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Value">
+	<summary>
+ Der gespeicherte Wert.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty">
+	<summary>
+ Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsProperty"/>.
  </summary>
 </member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.TypeNotFoundException">
 	<summary>
  Wird ausgelöst, wenn eine Einstellung geladen wird, für derer hinterlegten Typenname kein <see cref="T:System.Type"/> gefunden wurde.
  </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsRootNode.Type">
+</member><member name="M:CasparCG_Overlays.PluginManagement.Settings.GetTypeHelper.GetTypeByAssemblyQualifiedNameInLoadedAssemblies(System.String)">
 	<summary>
- Der Typ der Einstellungs-Struktur.
+ Durchsucht alle geladenen Assemblies in <see cref="M:System.AppDomain.GetAssemblies"/> nach einem Typ mit dem selben <see cref="P:System.Type.AssemblyQualifiedName"/>.
  </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsRootNode">
+	<param name="Name">Der <see cref="P:System.Type.AssemblyQualifiedName"/> des Typs.</param>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.GetTypeHelper">
 	<summary>
- Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsStructure"/> oberster Ebene.
+		<see cref="M:Type.[GetType](String)"/> versucht, die im Namen angegebene Assembly zu laden.
+ Bei der Verwendung von MEF schlägt die Suche nach dem Typ fehl. Genaueres dazu hier: https://msdn.microsoft.com/en-us/library/dd153782.aspx
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.PluginContainer.Plugins">
+	<summary>
+ Die Liste der verfügbaren Plugins.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.PluginContainer">
+	<summary>
+ Beinhaltet eine Liste der verfügbaren Plugins.
+ Singleton.
  </summary>
 </member><member name="T:CasparCG_Overlays.UpdateInfo">
 	<summary>
  Kapselt die Schnittstelle zum UpdateSystem.Net.
  Singleton.
  </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsSubNode.Name">
-	<summary>
- Der Name der Einstellungs-Struktur.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsSubNode">
-	<summary>
- Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsStructure"/>, die einer anderen Einstellungs-Struktur untergeordnet ist.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.PropertyTypeIncompatibleException">
-	<summary>
- Wird ausgelöst, wenn die gespeicherte Einstellung einen zum Typ der zu ladenden Einstellung inkompatiblen Typ aufweist. <!-- Grammatik, b****es! -->
-	</summary>
 </member><member name="P:CasparCG_Overlays.My.MyWpfExtension.Application">
 	<summary>
  Gibt das Anwendungsobjekt für die ausgeführte Anwendung zurück.
@@ -109,14 +128,25 @@ GeneratedInternalTypeHelper
  Modul zum Definieren der im My-Namespace für WPF verfügbaren Eigenschaften
  </summary>
 	<remarks></remarks>
-</member><member name="P:CasparCG_Overlays.PluginManagement.PluginContainer.Plugins">
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.PropertyTypeIncompatibleException">
 	<summary>
- Die Liste der verfügbaren Plugins.
+ Wird ausgelöst, wenn die gespeicherte Einstellung einen zum Typ der zu ladenden Einstellung inkompatiblen Typ aufweist. <!-- Grammatik, b****es! -->
+	</summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabItem">
+	<summary>
+ Ein TabItem, das vom <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabControl"/> permanent angezeigt wird.
  </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.PluginContainer">
+</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsRootNode.Type">
 	<summary>
- Beinhaltet eine Liste der verfügbaren Plugins.
- Singleton.
+ Der Typ der Einstellungs-Struktur.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsRootNode">
+	<summary>
+ Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsStructure"/> oberster Ebene.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.SettingsStructureIncompatibleException">
+	<summary>
+ Wird ausgelöst, wenn die gespeicherten Einstellungen anders aufgebaut sind, als die Einstellungs-Struktur, deren Einstellungen geladen werden sollen.
  </summary>
 </member><member name="P:CasparCG_Overlays.My.Resources.Resources.ResourceManager">
 	<summary>
@@ -131,38 +161,6 @@ GeneratedInternalTypeHelper
 	<summary>
   Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
 </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabControl">
-	<summary>
- Ein TabControl, das <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabItem"/> und <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.PluginTabItem"/> anzeigt.
- </summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Settings.SettingsDocument.GetRootNode(System.Type)">
-	<summary>
- Sucht eine Einstellungs-Struktur oberster Ebene anhand des angegebenen Typs.
- Gibt Nothing zurück, wenn keine Einstellungs-Struktur gefunden wurde.
- </summary>
-	<param name="RootNodeType">Der Typ der Einstellungs-Struktur.</param>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsDocument">
-	<summary>
- Repräsentiert die Xml-Datei, in der Einstellungen gespeichert werden.
- </summary>
-</member><member name="M:CasparCG_Overlays.PluginManagement.Settings.GetTypeHelper.GetTypeByAssemblyQualifiedNameInLoadedAssemblies(System.String)">
-	<summary>
- Durchsucht alle geladenen Assemblies in <see cref="M:System.AppDomain.GetAssemblies"/> nach einem Typ mit dem selben <see cref="P:System.Type.AssemblyQualifiedName"/>.
- </summary>
-	<param name="Name">Der <see cref="P:System.Type.AssemblyQualifiedName"/> des Typs.</param>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.GetTypeHelper">
-	<summary>
-		<see cref="M:Type.[GetType](String)"/> versucht, die im Namen angegebene Assembly zu laden.
- Bei der Verwendung von MEF schlägt die Suche nach dem Typ fehl. Genaueres dazu hier: https://msdn.microsoft.com/en-us/library/dd153782.aspx
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.PluginActiveStates">
-	<summary>
- Eine Liste von Zuständen, die angeben, ob Plugins aktiv sind. Die Plugins werden an ihren Guids erkannt.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.Exceptions.TypeConverterNotFoundException">
-	<summary>
- Wird ausgelöst, wenn eine Einstellung geladen wird, für derer Typ kein <see cref="T:System.ComponentModel.TypeConverter"/> gefunden wurde.
- </summary>
 </member><member name="P:CasparCG_Overlays.PluginManagement.PluginWrapper.DisplayName">
 	<summary>
 		<see cref="P:PluginInterfaces.IPluginMetadata.DisplayName"/>
@@ -195,30 +193,6 @@ GeneratedInternalTypeHelper
 	<summary>
  Kapselt ein <see cref="T:PluginInterfaces.IPlugin"/> und seine Metadaten.
  </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Name">
-	<summary>
- Der Name der Eigenschaft.
- </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Type">
-	<summary>
- Der Typ der Eigenschaft.
- </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Converter">
-	<summary>
- Der <see cref="T:System.ComponentModel.TypeConverter"/>, der zur Konvertierung verwendet wird.
- </summary>
-</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty.Value">
-	<summary>
- Der gespeicherte Wert.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsProperty">
-	<summary>
- Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsProperty`1"/>.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabItem">
-	<summary>
- Ein TabItem, das vom <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabControl"/> permanent angezeigt wird.
- </summary>
 </member><member name="P:CasparCG_Overlays.PluginManagement.TabControl.PluginTabItem.Plugin">
 	<summary>
  Das <see cref="P:CasparCG_Overlays.PluginManagement.TabControl.PluginTabItem.Plugin"/>.
@@ -226,10 +200,6 @@ GeneratedInternalTypeHelper
 </member><member name="T:CasparCG_Overlays.PluginManagement.TabControl.PluginTabItem">
 	<summary>
  Ein TabItem, das im <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabControl"/> ein Plugin darstellt.
- </summary>
-</member><member name="T:CasparCG_Overlays.PluginManagement.Compositor">
-	<summary>
- Agiert als <see cref="T:PluginInterfaces.ICompositor"/>.
  </summary>
 </member><member name="M:CasparCG_Overlays.PluginManagement.Settings.PluginSettingsProvider.LoadSettings(PluginSettings.SettingsStructure)">
 	<summary>
@@ -240,6 +210,24 @@ GeneratedInternalTypeHelper
 </member><member name="T:CasparCG_Overlays.PluginManagement.Settings.PluginSettingsProvider">
 	<summary>
  Agiert als <see cref="T:PluginInterfaces.ISettingsProvider"/> und speichert Einstellungen für Plugins.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Compositor">
+	<summary>
+ Agiert als <see cref="T:PluginInterfaces.ICompositor"/>.
+ </summary>
+</member><member name="M:CasparCG_Overlays.PluginManagement.Settings.SettingsDocument.GetRootNode(System.Type)">
+	<summary>
+ Sucht eine Einstellungs-Struktur oberster Ebene anhand des angegebenen Typs.
+ Gibt Nothing zurück, wenn keine Einstellungs-Struktur gefunden wurde.
+ </summary>
+	<param name="RootNodeType">Der Typ der Einstellungs-Struktur.</param>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsDocument">
+	<summary>
+ Repräsentiert die Xml-Datei, in der Einstellungen gespeichert werden.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabControl">
+	<summary>
+ Ein TabControl, das <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.MainTabItem"/> und <see cref="T:CasparCG_Overlays.PluginManagement.TabControl.PluginTabItem"/> anzeigt.
  </summary>
 </member><member name="M:CasparCG_Overlays.PluginManagement.Settings.SettingsNode.GetProperty(System.String)">
 	<summary>
@@ -254,6 +242,18 @@ GeneratedInternalTypeHelper
 </member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsNode">
 	<summary>
  Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsStructure"/>.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.PluginActiveStates">
+	<summary>
+ Eine Liste von Zuständen, die angeben, ob Plugins aktiv sind. Die Plugins werden an ihren Guids erkannt.
+ </summary>
+</member><member name="P:CasparCG_Overlays.PluginManagement.Settings.SettingsSubNode.Name">
+	<summary>
+ Der Name der Einstellungs-Struktur.
+ </summary>
+</member><member name="T:CasparCG_Overlays.PluginManagement.Settings.SettingsSubNode">
+	<summary>
+ Repräsentiert eine gespeicherte <see cref="T:PluginSettings.SettingsStructure"/>, die einer anderen Einstellungs-Struktur untergeordnet ist.
  </summary>
 </member>
 </members>

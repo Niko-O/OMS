@@ -19,9 +19,40 @@ namespace TennisPlugin
     /// </summary>
     public partial class TennisSnapIn : UserControl
     {
+
+        TennisSnapInViewModel ViewModel;
+
         public TennisSnapIn()
         {
             InitializeComponent();
+            ViewModel = (TennisSnapInViewModel)this.DataContext;
         }
+
+        private void LoadAndLockSelectedTemplate(object sender, RoutedEventArgs e)
+        {
+            ViewModel.CanSelectTemplate = false;
+            PluginInterfaces.PublicProviders.CasparServer.LoadTemplate(ViewModel.SelectedTennisTemplate);
+        }
+
+        private void UnlockSelectedTemplate(object sender, RoutedEventArgs e)
+        {
+            ViewModel.CanSelectTemplate = true;
+            PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
+        }
+
+        private void ToggleScoreboardVisibility(object sender, RoutedEventArgs e)
+        {
+            ViewModel.GraphicsIsVisible = !ViewModel.GraphicsIsVisible;
+            var SelectedTemplate = ViewModel.SelectedTennisTemplate;
+            if (ViewModel.GraphicsIsVisible)
+            {
+                SelectedTemplate.ShowScoreboard();
+            }
+            else
+            {
+                SelectedTemplate.HideScoreboard();
+            }
+        }
+
     }
 }

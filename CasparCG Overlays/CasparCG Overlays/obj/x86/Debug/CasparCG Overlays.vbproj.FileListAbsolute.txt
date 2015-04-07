@@ -65,3 +65,39 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlay
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.vbproj.GenerateResource.Cache
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Debug\Svt.Caspar.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Debug\Svt.Network.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparCG Overlays.exe.config
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparCG Overlays.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparCG Overlays.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparCG Overlays.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparServerCommands.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\OnUtils.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginInterfaces.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginSettings.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\SettingsManager.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\Svt.Caspar.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\Svt.Network.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparServerCommands.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\CasparServerCommands.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginInterfaces.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginInterfaces.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\PluginSettings.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\ApplicationSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\ApplicationSettings.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\OnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\OnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Debug\updateSystemDotNet.Controller.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.vbprojResolveAssemblyReference.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\Application.baml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\MainWindow.g.vb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\Application.g.vb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\GeneratedInternalTypeHelper.g.vb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays_MarkupCompile.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays_MarkupCompile.lref
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\MainWindow.baml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.g.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG_Overlays.Resources.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.vbproj.GenerateResource.Cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.pdb

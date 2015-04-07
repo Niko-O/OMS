@@ -22,3 +22,15 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\o
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\bin\Debug\PluginSettings.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\bin\Debug\PluginSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\bin\Debug\PluginSettings.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\bin\Debug\OnUtils.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\bin\Debug\OnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\bin\Debug\OnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.vbprojResolveAssemblyReference.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.Resources.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.vbproj.GenerateResource.Cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Debug\PluginSettings.pdb

@@ -22,3 +22,14 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPlugi
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.pdb
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.vbprojResolveAssemblyReference.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\bin\Release\CommonEventPluginData.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\bin\Release\CommonEventPluginData.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\bin\Release\CommonEventPluginData.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\bin\Release\OnUtils.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\bin\Release\OnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\bin\Release\OnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.Resources.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.vbproj.GenerateResource.Cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CommonEventPluginData\obj\Release\CommonEventPluginData.pdb

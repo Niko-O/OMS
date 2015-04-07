@@ -4,6 +4,7 @@
     ReadOnly Property IsConnected As Boolean
 
     Sub LoadTemplate(Template As ITemplate)
+    Sub UnloadTemplate(Template As ITemplate)
     Sub ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand)
     Sub Connect()
     Sub Disconnect()

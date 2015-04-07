@@ -26,3 +26,16 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.exe
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\bin\Debug\TestApplication.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\bin\Debug\TestApplication.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\bin\Debug\TestApplication.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\bin\Debug\OnUtils.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\bin\Debug\OnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\bin\Debug\OnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.vbprojResolveAssemblyReference.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.Form_Main.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.Resources.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.vbproj.GenerateResource.Cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\TestApplication\obj\x86\Debug\TestApplication.pdb

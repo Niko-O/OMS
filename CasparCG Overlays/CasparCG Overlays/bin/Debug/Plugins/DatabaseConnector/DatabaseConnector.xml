@@ -6,15 +6,7 @@ DatabaseConnector
 </name>
 </assembly>
 <members>
-<member name="M:DatabaseConnector.EditCountriesTableWindow.InitializeComponent">
-	<summary>
-InitializeComponent
-</summary>
-</member><member name="T:DatabaseConnector.EditCountriesTableWindow">
-	<summary>
-EditCountriesTableWindow
-</summary>
-</member><member name="M:DatabaseConnector.ConnectorSnapIn.InitializeComponent">
+<member name="M:DatabaseConnector.ConnectorSnapIn.InitializeComponent">
 	<summary>
 InitializeComponent
 </summary>
@@ -22,29 +14,21 @@ InitializeComponent
 	<summary>
 ConnectorSnapIn
 </summary>
-</member><member name="P:DatabaseConnector.SqlCountry.Guid">
+</member><member name="M:DatabaseConnector.EditCountriesTableWindow.InitializeComponent">
 	<summary>
- Gibt die Guid an, die im Server hinterlegt ist.
- </summary>
-</member><member name="P:DatabaseConnector.SqlCountry.FullName">
+InitializeComponent
+</summary>
+</member><member name="T:DatabaseConnector.EditCountriesTableWindow">
 	<summary>
-		<see cref="P:CommonEventPluginData.ICountry.FullName"/>
+EditCountriesTableWindow
+</summary>
+</member><member name="M:DatabaseConnector.SqlCountrySource.GetCountries">
+	<summary>
+		<see cref="M:CommonEventPluginData.ICountrySource.GetCountries"/>
 	</summary>
-</member><member name="P:DatabaseConnector.SqlCountry.ShortName">
+</member><member name="T:DatabaseConnector.SqlCountrySource">
 	<summary>
-		<see cref="P:CommonEventPluginData.ICountry.ShortName"/>
-	</summary>
-</member><member name="M:DatabaseConnector.SqlCountry.CreateNew(System.String,System.String)">
-	<summary>
- Erstellt ein neues Land mit einer neuen <see cref="P:DatabaseConnector.SqlCountry.Guid"/> und dem angegebenen Namen und Kürzel.
- </summary>
-</member><member name="T:DatabaseConnector.SqlCountry">
-	<summary>
- Ein Land, das im Sql-Server hinterlegt ist.
- </summary>
-</member><member name="T:DatabaseConnector.ConnectorException">
-	<summary>
- Wird ausgelöst, wenn bei der Kommunikation mit dem SQL-Server ein Problem auftritt.
+ Stellt Länder aus Sql-Servern zur Verfügung.
  </summary>
 </member><member name="P:DatabaseConnector.ISqlAdapter.IsConnected">
 	<summary>
@@ -96,19 +80,20 @@ ConnectorSnapIn
 	<summary>
  Stellt eine Abstraktionsschicht für den Zugriff auf SQL-Server dar.
  </summary>
-</member><member name="P:DatabaseConnector.My.Resources.Resources.ResourceManager">
+</member><member name="M:DatabaseConnector.ISqlRow.GetValue``1(System.Int32)">
 	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:DatabaseConnector.My.Resources.Resources.Culture">
+ Ruft die Spalte mit dem angegebenen Index ab.
+ </summary>
+	<param name="ColumnIndex">Der Index der Spalte.</param>
+</member><member name="M:DatabaseConnector.ISqlRow.GetValue``1(System.String)">
 	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:DatabaseConnector.My.Resources.Resources">
+ Ruft die Spalte mit dem angegebenen Namen ab.
+ </summary>
+	<param name="ColumnName">Der Name der Spalte.</param>
+</member><member name="T:DatabaseConnector.ISqlRow">
 	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
+ Stellt eine Tabellenzeile dar, die von einem Sql-Command zurückgegeben wird.
+ </summary>
 </member><member name="P:DatabaseConnector.Connector.IsConnected">
 	<summary>
  Gibt an, ob eine Verbindung zum SQL-Server besteht.
@@ -174,27 +159,42 @@ ConnectorSnapIn
 	<summary>
  Kapselt eine Verbindung zu einem SQL-Server.
  </summary>
-</member><member name="M:DatabaseConnector.ISqlRow.GetValue``1(System.Int32)">
+</member><member name="T:DatabaseConnector.ConnectorException">
 	<summary>
- Ruft die Spalte mit dem angegebenen Index ab.
+ Wird ausgelöst, wenn bei der Kommunikation mit dem SQL-Server ein Problem auftritt.
  </summary>
-	<param name="ColumnIndex">Der Index der Spalte.</param>
-</member><member name="M:DatabaseConnector.ISqlRow.GetValue``1(System.String)">
+</member><member name="P:DatabaseConnector.My.Resources.Resources.ResourceManager">
 	<summary>
- Ruft die Spalte mit dem angegebenen Namen ab.
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:DatabaseConnector.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:DatabaseConnector.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:DatabaseConnector.SqlCountry.Guid">
+	<summary>
+ Gibt die Guid an, die im Server hinterlegt ist.
  </summary>
-	<param name="ColumnName">Der Name der Spalte.</param>
-</member><member name="T:DatabaseConnector.ISqlRow">
+</member><member name="P:DatabaseConnector.SqlCountry.FullName">
 	<summary>
- Stellt eine Tabellenzeile dar, die von einem Sql-Command zurückgegeben wird.
- </summary>
-</member><member name="M:DatabaseConnector.SqlCountrySource.GetCountries">
-	<summary>
-		<see cref="M:CommonEventPluginData.ICountrySource.GetCountries"/>
+		<see cref="P:CommonEventPluginData.ICountry.FullName"/>
 	</summary>
-</member><member name="T:DatabaseConnector.SqlCountrySource">
+</member><member name="P:DatabaseConnector.SqlCountry.ShortName">
 	<summary>
- Stellt Länder aus Sql-Servern zur Verfügung.
+		<see cref="P:CommonEventPluginData.ICountry.ShortName"/>
+	</summary>
+</member><member name="M:DatabaseConnector.SqlCountry.CreateNew(System.String,System.String)">
+	<summary>
+ Erstellt ein neues Land mit einer neuen <see cref="P:DatabaseConnector.SqlCountry.Guid"/> und dem angegebenen Namen und Kürzel.
+ </summary>
+</member><member name="T:DatabaseConnector.SqlCountry">
+	<summary>
+ Ein Land, das im Sql-Server hinterlegt ist.
  </summary>
 </member>
 </members>

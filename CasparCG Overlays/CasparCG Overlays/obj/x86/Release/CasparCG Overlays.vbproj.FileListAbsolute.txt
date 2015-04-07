@@ -86,3 +86,38 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlay
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparServerCommands.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparServerCommands.pdb
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparServerCommands.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparCG Overlays.exe.config
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparCG Overlays.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparCG Overlays.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparCG Overlays.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparServerCommands.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\OnUtils.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\PluginInterfaces.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\PluginSettings.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\SettingsManager.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\Svt.Caspar.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\Svt.Network.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparServerCommands.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\CasparServerCommands.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\PluginInterfaces.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\PluginInterfaces.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\PluginSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\PluginSettings.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\ApplicationSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\ApplicationSettings.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\OnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\bin\Release\OnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.vbprojResolveAssemblyReference.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\Application.baml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\MainWindow.g.vb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\Application.g.vb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\GeneratedInternalTypeHelper.g.vb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays_MarkupCompile.cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays_MarkupCompile.lref
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\MainWindow.baml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.g.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG_Overlays.Resources.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.vbproj.GenerateResource.Cache

@@ -6,19 +6,14 @@ CommonEventPluginData
 </name>
 </assembly>
 <members>
-<member name="P:CommonEventPluginData.My.Resources.Resources.ResourceManager">
+<member name="M:CommonEventPluginData.ICountrySource.GetCountries">
 	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:CommonEventPluginData.My.Resources.Resources.Culture">
+ Gibt eine Liste der vorhandenen <see cref="T:CommonEventPluginData.ICountry"/> Bedürfnisse zurück.
+ </summary>
+</member><member name="T:CommonEventPluginData.ICountrySource">
 	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:CommonEventPluginData.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
+ Stellt eine Quelle für <see cref="T:CommonEventPluginData.ICountry"/> dar.
+ </summary>
 </member><member name="P:CommonEventPluginData.ICountry.FullName">
 	<summary>
  Der vorllständige Name des Landes.
@@ -31,14 +26,19 @@ CommonEventPluginData
 	<summary>
  Stellt ein Land und das dafür verwendete Länderkürzel dar.
  </summary>
-</member><member name="M:CommonEventPluginData.ICountrySource.GetCountries">
+</member><member name="P:CommonEventPluginData.My.Resources.Resources.ResourceManager">
 	<summary>
- Gibt eine Liste der vorhandenen <see cref="T:CommonEventPluginData.ICountry"/> Bedürfnisse zurück.
- </summary>
-</member><member name="T:CommonEventPluginData.ICountrySource">
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:CommonEventPluginData.My.Resources.Resources.Culture">
 	<summary>
- Stellt eine Quelle für <see cref="T:CommonEventPluginData.ICountry"/> dar.
- </summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:CommonEventPluginData.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
 </member>
 </members>
 </doc>

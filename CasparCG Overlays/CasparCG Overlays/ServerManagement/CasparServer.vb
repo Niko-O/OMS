@@ -60,6 +60,13 @@ Public Class CasparServer
         ExecuteCommand(New CasparServerCommands.PlayCommand(Template.ChannelId, Template.Layer, Template.Clip, Template.AdditionalParameters))
     End Sub
 
+    Public Sub UnloadTemplate(Template As PluginInterfaces.ITemplate) Implements PluginInterfaces.ICasparServer.UnloadTemplate
+        If Not IsConnected Then
+            Throw New InvalidOperationException("Der Server ist nicht verbunden.")
+        End If
+        ExecuteCommand(New CasparServerCommands.StopCommand(Template.ChannelId, Template.Layer))
+    End Sub
+
     Public Sub Connect() Implements PluginInterfaces.ICasparServer.Connect
         Device.Connect()
     End Sub

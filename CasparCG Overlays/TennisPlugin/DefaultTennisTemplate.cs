@@ -20,7 +20,7 @@ namespace TennisPlugin
 
         public string Clip
         {
-            get { return "html"; }
+            get { return "[html] file:///C:/CasparCG/templates_tennis/tennis.html"; }
         }
 
         public int? Layer
@@ -30,23 +30,57 @@ namespace TennisPlugin
 
         public string AdditionalParameters
         {
-            get { return "file:///bla/tennis.html"; }
+            get { return null; }
         }
 
         public void ShowScoreboard()
         {
-            throw new NotImplementedException();
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "showScoreboard"));
         }
 
         public void HideScoreboard()
         {
-            throw new NotImplementedException();
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "hideScoreboard"));
         }
 
-        public void SetPlayer1Name(string NewName)
+        public void SetTeamOneName(string NewName)
         {
-            //PluginInterfaces.PublicProviders.CasparServer.SendCommand(new CallCommand("setPlayer1Name(" + NewName + ")"));
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setTeamOneName", NewName));
         }
 
+        public void SetTeamTwoName(string NewName)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setTeamTwoName", NewName));
+        }
+
+        public void SetPointsOne(string NewPoints)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setPointsOne", NewPoints));
+        }
+
+        public void SetPointsTwo(string NewPoints)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setPointsTwo", NewPoints));
+        }
+
+        public void SetGamesOne(int NewGames)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setGamesOne", NewGames));
+        }
+
+        public void SetGamesTwo(int NewGames)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setGamesTwo", NewGames));
+        }
+
+        public void SetSetsOne(int NewSets)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setSetsOne", NewSets));
+        }
+
+        public void SetSetsTwo(int NewSets)
+        {
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setSetsTwo", NewSets));
+        }
     }
 }

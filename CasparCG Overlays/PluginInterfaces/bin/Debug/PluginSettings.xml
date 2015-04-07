@@ -6,23 +6,62 @@ PluginSettings
 </name>
 </assembly>
 <members>
-<member name="T:PluginSettings.SettingsException">
+<member name="P:PluginSettings.SettingsProperty.Owner">
 	<summary>
- Stellt eine Basisklasse für Ausnahmen dar, die beim Speichern und Laden von Einstellungen auftreten.
+ Die Einstellungs-Struktur, zu der diese Eigenschaft gehört.
  </summary>
-</member><member name="P:PluginSettings.My.Resources.Resources.ResourceManager">
+</member><member name="P:PluginSettings.SettingsProperty.Name">
 	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:PluginSettings.My.Resources.Resources.Culture">
+ Der Name der Eigenschaft.
+ Innerhalb einer Einstellungs-Struktur dürfen Namen nicht mehrmals verwendet werden.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty.Type">
 	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:PluginSettings.My.Resources.Resources">
+ Der Typ der Eigenschaft.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty.Value">
 	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
+ Der Wert dieser Eigenschaft, als Object.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProperty.GetValue">
+	<summary>
+ Gibt beim Überschreiben den Wert der Eigenschaft als Object zurück.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProperty.SetValue(System.Object)">
+	<summary>
+ Setzt beim Überschreiben den Wert der Eigenschaft auf den angegebenen Wert.
+ Diese Methode ist für die Verwendung von <see cref="T:PluginSettings.SettingsProviderBase"/> vorgesehen.
+ </summary>
+	<param name="NewValue">Der neue Wert.</param>
+</member><member name="M:PluginSettings.SettingsProperty.#ctor(PluginSettings.SettingsStructure,System.String,System.Type)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
+	<param name="NewType"><see cref="P:PluginSettings.SettingsProperty.Type"/></param>
+</member><member name="T:PluginSettings.SettingsProperty">
+	<summary>
+ Stellt den untypisierten Zugriff auf eine <see cref="T:PluginSettings.SettingsProperty`1"/> dar, z.B. für die Verwendung in Listen ungleichartiger Eigenschaften.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty`1.Value">
+	<summary>
+ Der Wert der Eigenschaft.
+ </summary>
+</member><member name="P:PluginSettings.SettingsProperty`1.DefaultValue">
+	<summary>
+ Der Standardwert der Eigenschaft.
+ </summary>
+</member><member name="M:PluginSettings.SettingsProperty`1.#ctor(PluginSettings.SettingsStructure,System.String,`0)">
+	<summary>
+ Konstruktor.
+ </summary>
+	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
+	<param name="NewName"><see cref="P:PluginSettings.SettingsProperty.Name"/></param>
+	<param name="NewDefaultValue"><see cref="P:PluginSettings.SettingsProperty`1.DefaultValue"/></param>
+</member><member name="T:PluginSettings.SettingsProperty`1">
+	<summary>
+ Stellt eine Eigenschaft mit Standardwert dar und kapstelt einen Wert vom Typ T.
+ </summary>
 </member><member name="P:PluginSettings.SettingsStructure.Owner">
 	<summary>
  Die Ebene, der diese Eigenschaften-Struktur untergeordnet ist.
@@ -63,62 +102,19 @@ PluginSettings
 	<summary>
  Beinhaltet Eigenschaften, die Werte beinhalten, und weitere, untergeordnete Strukturen, die weitere Eigenschaften beinhalten können.
  </summary>
-</member><member name="P:PluginSettings.SettingsProperty`1.Value">
+</member><member name="P:PluginSettings.My.Resources.Resources.ResourceManager">
 	<summary>
- Der Wert der Eigenschaft.
- </summary>
-</member><member name="P:PluginSettings.SettingsProperty`1.DefaultValue">
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:PluginSettings.My.Resources.Resources.Culture">
 	<summary>
- Der Standardwert der Eigenschaft.
- </summary>
-</member><member name="M:PluginSettings.SettingsProperty`1.#ctor(PluginSettings.SettingsStructure,System.String,`0)">
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:PluginSettings.My.Resources.Resources">
 	<summary>
- Konstruktor.
- </summary>
-	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
-	<param name="NewName"><see cref="P:PluginSettings.SettingsProperty.Name"/></param>
-	<param name="NewDefaultValue"><see cref="P:PluginSettings.SettingsProperty`1.DefaultValue"/></param>
-</member><member name="T:PluginSettings.SettingsProperty`1">
-	<summary>
- Stellt eine Eigenschaft mit Standardwert dar und kapstelt einen Wert vom Typ T.
- </summary>
-</member><member name="P:PluginSettings.SettingsProperty.Owner">
-	<summary>
- Die Einstellungs-Struktur, zu der diese Eigenschaft gehört.
- </summary>
-</member><member name="P:PluginSettings.SettingsProperty.Name">
-	<summary>
- Der Name der Eigenschaft.
- Innerhalb einer Einstellungs-Struktur dürfen Namen nicht mehrmals verwendet werden.
- </summary>
-</member><member name="P:PluginSettings.SettingsProperty.Type">
-	<summary>
- Der Typ der Eigenschaft.
- </summary>
-</member><member name="P:PluginSettings.SettingsProperty.Value">
-	<summary>
- Der Wert dieser Eigenschaft, als Object.
- </summary>
-</member><member name="M:PluginSettings.SettingsProperty.GetValue">
-	<summary>
- Gibt beim Überschreiben den Wert der Eigenschaft als Object zurück.
- </summary>
-</member><member name="M:PluginSettings.SettingsProperty.SetValue(System.Object)">
-	<summary>
- Setzt beim Überschreiben den Wert der Eigenschaft auf den angegebenen Wert.
- Diese Methode ist für die Verwendung von <see cref="T:PluginSettings.SettingsProviderBase"/> vorgesehen.
- </summary>
-	<param name="NewValue">Der neue Wert.</param>
-</member><member name="M:PluginSettings.SettingsProperty.#ctor(PluginSettings.SettingsStructure,System.String,System.Type)">
-	<summary>
- Konstruktor.
- </summary>
-	<param name="NewOwner"><see cref="P:PluginSettings.SettingsProperty.Owner"/></param>
-	<param name="NewType"><see cref="P:PluginSettings.SettingsProperty.Type"/></param>
-</member><member name="T:PluginSettings.SettingsProperty">
-	<summary>
- Stellt den untypisierten Zugriff auf eine <see cref="T:PluginSettings.SettingsProperty`1"/> dar, z.B. für die Verwendung in Listen ungleichartiger Eigenschaften.
- </summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
 </member><member name="M:PluginSettings.SettingsProviderBase.SetPropertyValue(PluginSettings.SettingsProperty,System.Object)">
 	<summary>
  Setzt den Wert von <paramref name="Property"/> auf <paramref name="NewValue"/>.
@@ -129,6 +125,10 @@ PluginSettings
 </member><member name="T:PluginSettings.SettingsProviderBase">
 	<summary>
  Stellt eine Basisklasse für Objekte dar, die Einstellungen speichern und laden und dafür auf die internen Zustände von Einstellungen zugreifen müssen.
+ </summary>
+</member><member name="T:PluginSettings.SettingsException">
+	<summary>
+ Stellt eine Basisklasse für Ausnahmen dar, die beim Speichern und Laden von Einstellungen auftreten.
  </summary>
 </member>
 </members>

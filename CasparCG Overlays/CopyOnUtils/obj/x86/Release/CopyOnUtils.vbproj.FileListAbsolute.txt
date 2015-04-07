@@ -20,3 +20,14 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.exe
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\bin\Release\CopyOnUtils.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\bin\Release\CopyOnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\bin\Release\CopyOnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\bin\Release\OnUtils.dll
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\bin\Release\OnUtils.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\bin\Release\OnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.Resources.resources
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.vbproj.GenerateResource.Cache
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.exe
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.xml
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyOnUtils\obj\x86\Release\CopyOnUtils.pdb
