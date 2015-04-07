@@ -43,14 +43,14 @@ namespace TennisPlugin
             PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "hideScoreboard"));
         }
 
-        public void SetTeamOneName(string NewName)
+        public void SetTeamNameOne(string NewName)
         {
-            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setTeamOneName", NewName));
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setTeamNameOne", NewName));
         }
 
-        public void SetTeamTwoName(string NewName)
+        public void SetTeamNameTwo(string NewName)
         {
-            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setTeamTwoName", NewName));
+            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(ChannelId, Layer, "setTeamNameTwo", NewName));
         }
 
         public void SetPointsOne(string NewPoints)

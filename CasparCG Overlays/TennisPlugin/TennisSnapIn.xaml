@@ -33,7 +33,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <CheckBox Grid.Column="2" VerticalAlignment="Center" Checked="LoadAndLockSelectedTemplate" Unchecked="UnlockSelectedTemplate">Ausgewählt</CheckBox>
+                <CheckBox Grid.Column="2" VerticalAlignment="Center" IsEnabled="{Binding Path=CanLoadTemplate}" Checked="LoadAndLockSelectedTemplate" Unchecked="UnlockSelectedTemplate">Ausgewählt</CheckBox>
             </Grid>
         </GroupBox>
         <GroupBox Header="Einstellungen" Padding="3">
@@ -47,10 +47,10 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Column="0" Grid.Row="0" Header="Spieler 1">
-                    <TextBox Text="{Binding Path=TeamNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=GraphicsIsVisible, Converter={StaticResource ResourceKey=NotConverter}}"/>
+                    <TextBox Text="{Binding Path=TeamNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=NotConverter}}"/>
                 </GroupBox>
                 <GroupBox Grid.Column="0" Grid.Row="1" Header="Spieler 2">
-                    <TextBox Text="{Binding Path=TeamNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=GraphicsIsVisible, Converter={StaticResource ResourceKey=NotConverter}}"/>
+                    <TextBox Text="{Binding Path=TeamNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=NotConverter}}"/>
                 </GroupBox>
                 <Button
                     Grid.Column="1"
@@ -58,7 +58,7 @@
                     Grid.RowSpan="2"
                     Margin="16"
                     IsEnabled="{Binding Path=CanShowGraphics}"
-                    Content="{Binding Path=GraphicsIsVisible, Converter={StaticResource ResourceKey=ToggleScoreboardVisibilityButtonTextConverter}}"
+                    Content="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=ToggleScoreboardVisibilityButtonTextConverter}}"
                     Click="ToggleScoreboardVisibility"
                 />
             </Grid>
@@ -82,10 +82,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Margin="2">Aufschlag</Button>
-                            <Button Grid.Column="1" Margin="2">
+                            <Button Grid.Column="1" Margin="2" Click="IncrementTeamOnePoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
-                            <Button Grid.Column="2" Margin="2">
+                            <Button Grid.Column="2" Margin="2" Click="DecrementTeamOnePoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 M 0 1"/>
                             </Button>
                         </Grid>
@@ -102,9 +102,9 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Set</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Game</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Point</TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center">1</TextBox>
-                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">2</TextBox>
-                            <TextBox Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">40</TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" Text="{Binding Path=TeamOneSets}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Text="{Binding Path=TeamOneGames}"/>
+                            <TextBox Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center" Text="{Binding Path=TeamOnePoints}"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
@@ -121,10 +121,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Margin="2">Aufschlag</Button>
-                            <Button Grid.Column="1" Margin="2">
+                            <Button Grid.Column="1" Margin="2" Click="IncrementTeamTwoPoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
-                            <Button Grid.Column="2" Margin="2">
+                            <Button Grid.Column="2" Margin="2" Click="DecrementTeamTwoPoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 M 0 1"/>
                             </Button>
                         </Grid>
@@ -141,15 +141,15 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Set</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Game</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Point</TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center">1</TextBox>
-                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">2</TextBox>
-                            <TextBox Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">40</TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" Text="{Binding Path=TeamTwoSets}"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Text="{Binding Path=TeamTwoGames}"/>
+                            <TextBox Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center" Text="{Binding Path=TeamTwoPoints}"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Bauchbinde" Padding="3" IsEnabled="False">
+        <!--<GroupBox Header="Bauchbinde" Padding="3" IsEnabled="False">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -180,6 +180,6 @@
                     Anzeigen
                 </Button>
             </Grid>
-        </GroupBox>
+        </GroupBox>-->
     </StackPanel>
 </UserControl>

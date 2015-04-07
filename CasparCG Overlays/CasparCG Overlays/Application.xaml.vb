@@ -47,6 +47,9 @@
 
     Protected Overrides Sub OnExit(e As System.Windows.ExitEventArgs)
         For Each i In PluginManagement.PluginContainer.Instance.Plugins
+            i.Disabled()
+        Next
+        For Each i In PluginManagement.PluginContainer.Instance.Plugins
             i.Unloaded()
         Next
         Settings.Save(Settings.IO.SettingsXmlFile.Path)

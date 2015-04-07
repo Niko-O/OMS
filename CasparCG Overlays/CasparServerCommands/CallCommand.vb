@@ -54,7 +54,16 @@
     End Sub
 
     Public Function GetCommandString() As String Implements ICasparServerCommand.GetCommandString
-        Return String.Format("CALL {0} INVOKE ""{1}({2})""", _ChannelId.ToString & If(_Layer.HasValue, "-" & _Layer.Value.ToString, ""), _MethodName, String.Join(", ", _Parameters))
+        Return String.Format("CALL {0} INVOKE ""{1}({2})""", _
+                             _ChannelId.ToString & If(_Layer.HasValue, "-" & _Layer.Value.ToString, ""), _
+                             _MethodName, _
+                             String.Join(", ", _Parameters.Select(Function(i)
+                                                                      If TypeOf i Is String Then
+                                                                          Return "\""" & DirectCast(i, String) & "\"""
+                                                                      Else
+                                                                          Return i.ToString
+                                                                      End If
+                                                                  End Function)))
     End Function
 
 End Class

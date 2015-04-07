@@ -50,16 +50,25 @@ namespace TennisPlugin
             }
         }
 
-        private bool _GraphicsIsVisible = false;
-        public bool GraphicsIsVisible
+        [Dependency("ScoreboardIsVisible")]
+        public bool CanLoadTemplate
         {
             get
             {
-                return _GraphicsIsVisible;
+                return !_ScoreboardIsVisible && PluginInterfaces.PublicProviders.CasparServer.IsConnected;
+            }
+        }
+
+        private bool _ScoreboardIsVisible = false;
+        public bool ScoreboardIsVisible
+        {
+            get
+            {
+                return _ScoreboardIsVisible;
             }
             set
             {
-                ChangeIfDifferent(ref _GraphicsIsVisible, value, "GraphicsIsVisible");
+                ChangeIfDifferent(ref _ScoreboardIsVisible, value, "ScoreboardIsVisible");
             }
         }
 
@@ -89,6 +98,84 @@ namespace TennisPlugin
             }
         }
 
+        private String _TeamOnePoints = "0";
+        public String TeamOnePoints
+        {
+            get
+            {
+                return _TeamOnePoints;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TeamOnePoints, value, "TeamOnePoints");
+            }
+        }
+
+        private String _TeamOneGames = "0";
+        public String TeamOneGames
+        {
+            get
+            {
+                return _TeamOneGames;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TeamOneGames, value, "TeamOneGames");
+            }
+        }
+
+        private String _TeamOneSets = "0";
+        public String TeamOneSets
+        {
+            get
+            {
+                return _TeamOneSets;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TeamOneSets, value, "TeamOneSets");
+            }
+        }
+
+        private String _TeamTwoPoints = "0";
+        public String TeamTwoPoints
+        {
+            get
+            {
+                return _TeamTwoPoints;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TeamTwoPoints, value, "TeamTwoPoints");
+            }
+        }
+
+        private String _TeamTwoGames = "0";
+        public String TeamTwoGames
+        {
+            get
+            {
+                return _TeamTwoGames;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TeamTwoGames, value, "TeamTwoGames");
+            }
+        }
+
+        private String _TeamTwoSets = "0";
+        public String TeamTwoSets
+        {
+            get
+            {
+                return _TeamTwoSets;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TeamTwoSets, value, "TeamTwoSets");
+            }
+        }
+
         [Dependency("TeamNameOne", "TeamNameTwo")]
         public bool CanShowGraphics 
         { 
@@ -102,6 +189,7 @@ namespace TennisPlugin
         {
             AvailableTennisTemplates = new [] {new DefaultTennisTemplate()};
             SelectedTennisTemplate = AvailableTennisTemplates.First();
+            PluginInterfaces.PublicProviders.CasparServer.PropertyChanged += (sender, e) => { OnPropertyChanged("CanLoadTemplate"); };
         }
 
     }

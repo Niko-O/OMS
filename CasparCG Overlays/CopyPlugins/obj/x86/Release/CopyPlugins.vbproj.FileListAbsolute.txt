@@ -32,3 +32,4 @@ C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyPlugins\obj\x86\Releas
 C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyPlugins\obj\x86\Release\CopyPlugins.exe
 C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyPlugins\obj\x86\Release\CopyPlugins.xml
 C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyPlugins\obj\x86\Release\CopyPlugins.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\CopyPlugins\obj\x86\Release\CopyPlugins.vbprojResolveAssemblyReference.cache

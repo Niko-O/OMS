@@ -33,3 +33,4 @@ C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Release
 C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.dll
 C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.xml
 C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.pdb
+C:\IT-Kolleg\Projekt\Projektdateien\CasparCG Overlays\PluginSettings\obj\Release\PluginSettings.vbprojResolveAssemblyReference.cache

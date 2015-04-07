@@ -32,7 +32,7 @@ namespace TennisPlugin
 
         public void Disabled()
         {
-            
+            Singleton<TennisSnapIn>.Instance.Unload();
         }
 
         public void Unloaded()

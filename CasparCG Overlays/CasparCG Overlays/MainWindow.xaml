@@ -27,42 +27,6 @@
     </Window.Resources>
     <tt:MainTabControl Margin="6" BindableTabs="{Binding Path=MainTabItems}">
         <tt:MainTabControl.PersistentTabItems>
-            <tt:MainTabItem Header="Einstellungen">
-                <StackPanel Margin="6">
-                    <GroupBox Header="Updates" Padding="3">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <CheckBox Grid.Row="0" IsChecked="{Binding Source={x:Static Member=s:Settings.Updates}, Path=EnableAutoUpdates}">Automatisch nach Updates suchen</CheckBox>
-                            <Button Grid.Row="1" HorizontalAlignment="Left" Margin="0,3" Padding="5" Command="{StaticResource ResourceKey=CheckForUpdatesCommand}">Jetzt nach Updates suchen</Button>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="Zusätzliche Informationen" Padding="3">
-                        <StackPanel>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0">Version:</TextBlock>
-                                <TextBlock Grid.Column="2" Text="{Binding Source={x:Static Member=t:UpdateInfo.Instance}, Path=CurrentApplicationVersion}"/>
-                            </Grid>
-                            <TextBlock>
-                                <Hyperlink Command="{StaticResource ResourceKey=OpenGithubCommand}">
-                                    OMS auf GitHub
-                                </Hyperlink>
-                            </TextBlock>
-                            <TextBlock>Anwendungseinstellungen:</TextBlock>
-                            <TextBlock Text="{Binding Source={x:Static Member=s:Settings.IO}, Path=SettingsXmlFile.Path}"/>
-                            <TextBlock>Plugin-Einstellungen:</TextBlock>
-                            <TextBlock Text="{Binding Source={x:Static Member=s:Settings.IO}, Path=PluginSettingsXmlFile.Path}"/>
-                        </StackPanel>
-                    </GroupBox>
-                </StackPanel>
-            </tt:MainTabItem>
             <tt:MainTabItem Header="CasparCG">
                 <GroupBox Header="Verbindung" Padding="3">
                     <Grid>
@@ -99,6 +63,42 @@
                         </Button>
                     </Grid>
                 </GroupBox>
+            </tt:MainTabItem>
+            <tt:MainTabItem Header="Einstellungen">
+                <StackPanel Margin="6">
+                    <GroupBox Header="Updates" Padding="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <CheckBox Grid.Row="0" IsChecked="{Binding Source={x:Static Member=s:Settings.Updates}, Path=EnableAutoUpdates}">Automatisch nach Updates suchen</CheckBox>
+                            <Button Grid.Row="1" HorizontalAlignment="Left" Margin="0,3" Padding="5" Command="{StaticResource ResourceKey=CheckForUpdatesCommand}">Jetzt nach Updates suchen</Button>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Zusätzliche Informationen" Padding="3">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0">Version:</TextBlock>
+                                <TextBlock Grid.Column="2" Text="{Binding Source={x:Static Member=t:UpdateInfo.Instance}, Path=CurrentApplicationVersion}"/>
+                            </Grid>
+                            <TextBlock>
+                                <Hyperlink Command="{StaticResource ResourceKey=OpenGithubCommand}">
+                                    OMS auf GitHub
+                                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock>Anwendungseinstellungen:</TextBlock>
+                            <TextBlock Text="{Binding Source={x:Static Member=s:Settings.IO}, Path=SettingsXmlFile.Path}"/>
+                            <TextBlock>Plugin-Einstellungen:</TextBlock>
+                            <TextBlock Text="{Binding Source={x:Static Member=s:Settings.IO}, Path=PluginSettingsXmlFile.Path}"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
             </tt:MainTabItem>
             <tt:MainTabItem Header="Plugins">
                 <Grid>

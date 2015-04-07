@@ -20,12 +20,28 @@ namespace TennisPlugin
     public partial class TennisSnapIn : UserControl
     {
 
-        TennisSnapInViewModel ViewModel;
+        private TennisSnapInViewModel ViewModel;
+        private TeamStats TeamOneStats = new TeamStats();
+        private TeamStats TeamTwoStats = new TeamStats();
 
         public TennisSnapIn()
         {
             InitializeComponent();
             ViewModel = (TennisSnapInViewModel)this.DataContext;
+        }
+
+        public void Unload()
+        {
+            if (ViewModel.ScoreboardIsVisible)
+            {
+                ViewModel.ScoreboardIsVisible = false;
+                ViewModel.SelectedTennisTemplate.HideScoreboard();
+            }
+            ViewModel.CanSelectTemplate = true;
+            if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
+            {   
+                PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
+            }
         }
 
         private void LoadAndLockSelectedTemplate(object sender, RoutedEventArgs e)
@@ -42,17 +58,64 @@ namespace TennisPlugin
 
         private void ToggleScoreboardVisibility(object sender, RoutedEventArgs e)
         {
-            ViewModel.GraphicsIsVisible = !ViewModel.GraphicsIsVisible;
-            var SelectedTemplate = ViewModel.SelectedTennisTemplate;
-            if (ViewModel.GraphicsIsVisible)
+            ViewModel.ScoreboardIsVisible = !ViewModel.ScoreboardIsVisible;
+            if (ViewModel.ScoreboardIsVisible)
             {
-                SelectedTemplate.ShowScoreboard();
+                UpdatePlayerNames();
+                UpdatePlayerStats();
+                ViewModel.SelectedTennisTemplate.ShowScoreboard();
             }
             else
             {
-                SelectedTemplate.HideScoreboard();
+                ViewModel.SelectedTennisTemplate.HideScoreboard();
             }
         }
+
+        private void IncrementTeamOnePoints(object sender, RoutedEventArgs e)
+        {
+            TeamOneStats.IncrementPoints();
+            UpdatePlayerStats();
+        }
+
+        private void DecrementTeamOnePoints(object sender, RoutedEventArgs e)
+        {
+            TeamOneStats.DecrementPoints();
+            UpdatePlayerStats();
+        }
+
+        private void IncrementTeamTwoPoints(object sender, RoutedEventArgs e)
+        {
+            TeamTwoStats.IncrementPoints();
+            UpdatePlayerStats();
+        }
+
+        private void DecrementTeamTwoPoints(object sender, RoutedEventArgs e)
+        {
+            TeamTwoStats.DecrementPoints();
+            UpdatePlayerStats();
+        }
+
+        private void UpdatePlayerStats()
+        {
+            ViewModel.SelectedTennisTemplate.SetPointsOne(TeamOneStats.PointsAsString);
+            ViewModel.SelectedTennisTemplate.SetGamesOne(TeamOneStats.Games);
+            ViewModel.SelectedTennisTemplate.SetSetsOne(TeamOneStats.Sets);
+            ViewModel.SelectedTennisTemplate.SetPointsTwo(TeamTwoStats.PointsAsString);
+            ViewModel.SelectedTennisTemplate.SetGamesTwo(TeamTwoStats.Games);
+            ViewModel.SelectedTennisTemplate.SetSetsTwo(TeamTwoStats.Sets);
+            ViewModel.TeamOnePoints = TeamOneStats.PointsAsString;
+            ViewModel.TeamOneGames = TeamOneStats.Games.ToString();
+            ViewModel.TeamOneSets = TeamOneStats.Sets.ToString();
+            ViewModel.TeamTwoPoints = TeamTwoStats.PointsAsString;
+            ViewModel.TeamTwoGames = TeamTwoStats.Games.ToString();
+            ViewModel.TeamTwoSets = TeamTwoStats.Sets.ToString();
+        }
+
+        private void UpdatePlayerNames()
+        {
+            ViewModel.SelectedTennisTemplate.SetTeamNameOne(ViewModel.TeamNameOne);
+            ViewModel.SelectedTennisTemplate.SetTeamNameTwo(ViewModel.TeamNameTwo);
+        } 
 
     }
 }

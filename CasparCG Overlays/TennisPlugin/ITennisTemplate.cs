@@ -9,8 +9,8 @@ namespace TennisPlugin
     {
         void ShowScoreboard();
         void HideScoreboard();
-        void SetTeamOneName(String NewName);
-        void SetTeamTwoName(String NewName);
+        void SetTeamNameOne(String NewName);
+        void SetTeamNameTwo(String NewName);
         void SetPointsOne(String NewPoints);
         void SetPointsTwo(String NewPoints);
         void SetGamesOne(int NewGames);

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ITennisTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamStats.cs" />
     <Compile Include="TennisMainPlugin.cs" />
     <Compile Include="TennisSnapIn.xaml.cs">
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
