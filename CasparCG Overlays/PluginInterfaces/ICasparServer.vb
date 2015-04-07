@@ -2,6 +2,9 @@
     Inherits System.ComponentModel.INotifyPropertyChanged
 
     ReadOnly Property IsConnected As Boolean
-    Property Template As ITemplate
+
+    Sub LoadTemplate(Template As ITemplate)
+    Sub Connect()
+    Sub Disconnect()
 
 End Interface

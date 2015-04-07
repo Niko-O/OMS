@@ -11,8 +11,13 @@ namespace TennisPlugin
     class TennisSnapInViewModel : ViewModelBase
     {
 
+        public IEnumerable<ITennisTemplate> AvailableTennisTemplates { get; set; }
+        public ITennisTemplate SelectedTennisTemplate { get; set; }
+
         public TennisSnapInViewModel()
         {
+            AvailableTennisTemplates = new [] {new DefaultTennisTemplate()};
+            SelectedTennisTemplate = AvailableTennisTemplates.First();
         }
 
     }

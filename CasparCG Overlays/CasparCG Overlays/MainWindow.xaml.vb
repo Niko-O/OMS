@@ -20,4 +20,13 @@
         MyBase.OnClosing(e)
     End Sub
 
+    Private Sub ToggleCasparServerConnection(sender As System.Object, e As System.Windows.RoutedEventArgs)
+        If CasparServer.Instance.IsConnected Then
+            CasparServer.Instance.Disconnect()
+        Else
+            CasparServer.Instance.IpAddress = Model.SelectedServerIp
+            CasparServer.Instance.Connect()
+        End If
+    End Sub
+
 End Class

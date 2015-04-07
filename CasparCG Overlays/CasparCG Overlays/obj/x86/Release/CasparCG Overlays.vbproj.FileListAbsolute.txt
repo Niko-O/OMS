@@ -81,3 +81,5 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlay
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.exe
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Release\CasparCG Overlays.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Release\Svt.Caspar.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Release\Svt.Network.dll

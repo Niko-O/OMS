@@ -1,4 +1,6 @@
 ﻿
+Imports C = Svt.Caspar
+
 Public Class CasparServer
     Inherits NotifyPropertyChanged
     Implements PluginInterfaces.ICasparServer
@@ -13,44 +15,45 @@ Public Class CasparServer
         End Get
     End Property
 
-    Public ReadOnly Property ToggleConnectionCommand As DelegateCommand
-        Get
-            Static Temp As New DelegateCommand(Sub() ToggleConnection())
-            Return Temp
-        End Get
-    End Property
-
-    Dim _IsConnected As Boolean = False
     Public ReadOnly Property IsConnected As Boolean Implements PluginInterfaces.ICasparServer.IsConnected
         Get
-            Return _IsConnected
+            Return Device.IsConnected
         End Get
     End Property
 
-    Dim _IpAddress As String = Nothing
     Public Property IpAddress As String
         Get
-            Return _IpAddress
+            Return Device.Settings.Hostname
         End Get
         Set(value As String)
-            If Not _IpAddress = value Then
-                _IpAddress = value
+            If ChangeIfDifferent(Device.Settings.Hostname, value) Then
                 OnPropertyChanged("IpAddress")
             End If
         End Set
     End Property
 
-    Public Property Template As PluginInterfaces.ITemplate Implements PluginInterfaces.ICasparServer.Template
-        Get
-            Throw New NotImplementedException
-        End Get
-        Set(value As PluginInterfaces.ITemplate)
+    Dim WithEvents Device As C.CasparDevice
 
-        End Set
-    End Property
+    Private Sub New()
+        Device = New C.CasparDevice
+    End Sub
 
-    Public Sub ToggleConnection()
-        _IsConnected = Not _IsConnected
+    Public Sub LoadTemplate(Template As PluginInterfaces.ITemplate) Implements PluginInterfaces.ICasparServer.LoadTemplate
+        If Not IsConnected Then
+            Throw New InvalidOperationException("Der Server ist nicht verbunden.")
+        End If
+        'ToDo
+    End Sub
+
+    Public Sub Connect() Implements PluginInterfaces.ICasparServer.Connect
+        Device.Connect()
+    End Sub
+
+    Public Sub Disconnect() Implements PluginInterfaces.ICasparServer.Disconnect
+        Device.Disconnect()
+    End Sub
+
+    Private Sub Device_ConnectionStatusChanged(sender As Object, e As Svt.Network.ConnectionEventArgs) Handles Device.ConnectionStatusChanged
         OnPropertyChanged("IsConnected")
     End Sub
 

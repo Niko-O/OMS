@@ -63,3 +63,5 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlay
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.g.resources
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG_Overlays.Resources.resources
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\obj\x86\Debug\CasparCG Overlays.vbproj.GenerateResource.Cache
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Debug\Svt.Caspar.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\CasparCG Overlays\bin\Debug\Svt.Network.dll

@@ -53,8 +53,7 @@
                 <l:Test_UserSettings
                     Grid.Row="1"
                     Grid.Column="0"
-                    HeaderName="Spieler 1"
-                />
+                    HeaderName="Spieler 1" x:Name="Test_UserSettings1" />
                 <l:Test_UserSettings
                     Grid.Row="1"
                     Grid.Column="1"

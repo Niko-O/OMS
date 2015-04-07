@@ -9,7 +9,7 @@
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
     mc:Ignorable="d" 
     d:DesignHeight="459"
-	d:DesignWidth="463"
+	d:DesignWidth="424"
 >
     <UserControl.DataContext>
         <l:TennisSnapInViewModel/>
@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" ItemsSource="{Binding Path=Test_Templates}">
+                <ComboBox Grid.Column="0" ItemsSource="{Binding Path=AvailableTennisTemplates}" SelectedItem="{Binding Path=SelectedTennisTemplate}">
 
                 </ComboBox>
                 <CheckBox Grid.Column="2" VerticalAlignment="Center">Ausgewählt</CheckBox>

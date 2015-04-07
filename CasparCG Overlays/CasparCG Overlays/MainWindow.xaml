@@ -73,14 +73,14 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <TextBlock>IP-Adresse:</TextBlock>
-                            <TextBox Margin="0,3"></TextBox>
+                            <TextBox Margin="0,3" Text="{Binding Path=SelectedServerIp}"></TextBox>
                             <Button
                                 Padding="14"
                                 Content="{Binding Source={x:Static Member=t:CasparServer.Instance}, Path=IsConnected, Converter={StaticResource ResourceKey=ConnectToServerButtonTextConverter}}"
-                                Command="{Binding Source={x:Static Member=t:CasparServer.Instance}, Path=ToggleConnectionCommand}"
+                                Click="ToggleCasparServerConnection"
                             />
                         </StackPanel>
-                        <ListBox Grid.Row="1" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Path=Test_CasparCGServers}">
+                        <ListBox Grid.Row="1" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Path=Test_CasparCGServers}" SelectedItem="{Binding Path=SelectedCasparCGServer}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
