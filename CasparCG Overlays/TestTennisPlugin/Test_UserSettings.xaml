@@ -1,0 +1,46 @@
+﻿<UserControl
+	x:Class="Test_UserSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:t="clr-namespace:TestTennisPlugin"
+    xmlns:o="clr-namespace:OnUtils;assembly=OnUtils"
+    d:DesignWidth="200"
+    mc:Ignorable="d"
+>
+	<UserControl.DataContext>
+		<t:Test_UserSettingsViewModel/>
+	</UserControl.DataContext>
+    <GroupBox x:Name="MainGroupBox" Header="Hallo" Padding="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0">Spielername:</TextBlock>
+            <ComboBox Grid.Row="1" ItemsSource="{Binding Path=Test_PlayerNames}"/>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,6,0" VerticalAlignment="Center">Spiel:</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,6,0" VerticalAlignment="Center">Satz:</TextBlock>
+                <Button Grid.Row="0" Grid.Column="1" Margin="1" Width="30">-</Button>
+                <Button Grid.Row="1" Grid.Column="1" Margin="1" Width="30">-</Button>
+                <Button Grid.Row="0" Grid.Column="2" Margin="1" Width="30">+</Button>
+                <Button Grid.Row="1" Grid.Column="2" Margin="1" Width="30">+</Button>
+                <TextBlock Grid.Row="0" Grid.Column="3" Margin="8,0" Text="{Binding Path=RandomNumberA}"/>
+                <TextBlock Grid.Row="1" Grid.Column="3" Margin="8,0" Text="{Binding Path=RandomNumberB}"/>
+            </Grid>
+        </Grid>
+    </GroupBox>
+</UserControl>

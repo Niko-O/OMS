@@ -2716,7 +2716,7 @@ OnUtils
 </member><member name="P:OnUtils.Streams.IndentStringBuilder.IndentLevel">
 	<summary>
  Die aktuelle Einrückungstiefe.
- <see cref="P:OnUtils.Streams.IndentStringBuilder.IndentLevel"/> * <see cref="P:OnUtils.Streams.IndentStringBuilder.IndentationsPerLevel"/> ergibt die Anzahl an Zeichen, mit denen eingerückt wird.
+ <see cref="P:OnUtils.Streams.IndentStringBuilder.IndentLevel"/> multipliziert mit <see cref="P:OnUtils.Streams.IndentStringBuilder.IndentationsPerLevel"/> ergibt die Anzahl an Zeichen, mit denen eingerückt wird.
  </summary>
 </member><member name="P:OnUtils.Streams.IndentStringBuilder.IndentationsPerLevel">
 	<summary>
@@ -2879,7 +2879,7 @@ OnUtils
 	<summary>
  Wird ausgelöst, wenn ein Element in der Quelle verschoben wurde.
  </summary>
-</member><member name="E:OnUtils.Wpf.IViewModelCollectionSource`1.CollectionCleard">
+</member><member name="E:OnUtils.Wpf.IViewModelCollectionSource`1.CollectionCleared">
 	<summary>
  Wird ausgelöst, wenn alle Elemente aus der Quelle entfernt werden.
  </summary>
