@@ -58,3 +58,6 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnecto
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnector\obj\Release\DatabaseConnector.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnector\obj\Release\DatabaseConnector.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnector\obj\Release\DatabaseConnector.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnector\bin\Release\CasparServerCommands.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnector\bin\Release\CasparServerCommands.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\DatabaseConnector\bin\Release\CasparServerCommands.xml

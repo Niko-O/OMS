@@ -52,3 +52,6 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlug
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlugin\obj\Release\TestFootballPlugin.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlugin\obj\Release\TestFootballPlugin.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlugin\obj\Release\TestFootballPlugin.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlugin\bin\Release\CasparServerCommands.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlugin\bin\Release\CasparServerCommands.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\TestFootballPlugin\bin\Release\CasparServerCommands.xml

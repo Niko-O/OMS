@@ -110,6 +110,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CasparServerCommands\CasparServerCommands.vbproj">
+      <Project>{6921A1D4-BDA2-4442-9B54-05541E52FA33}</Project>
+      <Name>CasparServerCommands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PluginSettings\PluginSettings.vbproj">
       <Project>{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}</Project>
       <Name>PluginSettings</Name>

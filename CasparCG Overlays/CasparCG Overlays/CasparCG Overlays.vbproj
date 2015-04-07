@@ -204,6 +204,10 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CasparServerCommands\CasparServerCommands.vbproj">
+      <Project>{6921A1D4-BDA2-4442-9B54-05541E52FA33}</Project>
+      <Name>CasparServerCommands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PluginInterfaces\PluginInterfaces.vbproj">
       <Project>{8E60A8D4-FA07-41B1-86BD-3FD1209C7AAC}</Project>
       <Name>PluginInterfaces</Name>

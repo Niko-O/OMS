@@ -28,3 +28,6 @@ C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces\obj\Release\PluginInterfaces.dll
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces\obj\Release\PluginInterfaces.xml
 C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces\obj\Release\PluginInterfaces.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces\bin\Release\CasparServerCommands.dll
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces\bin\Release\CasparServerCommands.pdb
+C:\Users\Niko\Desktop\ITK\Projekt\GitRepo\OMS\CasparCG Overlays\PluginInterfaces\bin\Release\CasparServerCommands.xml

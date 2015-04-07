@@ -25,6 +25,7 @@
             CasparServer.Instance.Disconnect()
         Else
             CasparServer.Instance.IpAddress = Model.SelectedServerIp
+            CasparServer.Instance.Port = 5250
             CasparServer.Instance.Connect()
         End If
     End Sub

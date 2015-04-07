@@ -1,6 +1,16 @@
 ﻿Class MainWindowViewModel
     Inherits ViewModelBase
 
+    Dim _SelectedServerIp As String = ""
+    Public Property SelectedServerIp As String
+        Get
+            Return _SelectedServerIp
+        End Get
+        Set(value As String)
+            ChangeIfDifferent(_SelectedServerIp, value, "SelectedServerIp")
+        End Set
+    End Property
+
     Dim _MainTabItems As IEnumerable(Of PluginManagement.TabControl.PluginTabItem)
     Public ReadOnly Property MainTabItems As IEnumerable(Of PluginManagement.TabControl.PluginTabItem)
         Get
@@ -33,6 +43,20 @@
         Get
             Return _Test_CasparCGServers
         End Get
+    End Property
+
+    Dim _SelectedCasparCGServer As Test_CasparCGServer = Nothing
+    Public Property SelectedCasparCGServer As Test_CasparCGServer
+        Get
+            Return _SelectedCasparCGServer
+        End Get
+        Set(value As Test_CasparCGServer)
+            If ChangeIfDifferent(_SelectedCasparCGServer, value, "SelectedCasparCGServer") Then
+                If Not _SelectedCasparCGServer Is Nothing Then
+                    SelectedServerIp = _SelectedCasparCGServer.IpAddress
+                End If
+            End If
+        End Set
     End Property
 
     Public Sub New()

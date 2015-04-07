@@ -32,17 +32,32 @@ Public Class CasparServer
         End Set
     End Property
 
+    Public Property Port As Integer
+        Get
+            Return Device.Settings.Port
+        End Get
+        Set(value As Integer)
+            If ChangeIfDifferent(Device.Settings.Port, value) Then
+                OnPropertyChanged("Port")
+            End If
+        End Set
+    End Property
+
     Dim WithEvents Device As C.CasparDevice
 
     Private Sub New()
         Device = New C.CasparDevice
     End Sub
 
+    Public Sub ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) Implements PluginInterfaces.ICasparServer.ExecuteCommand
+        Device.SendString(Command.GetCommandString)
+    End Sub
+
     Public Sub LoadTemplate(Template As PluginInterfaces.ITemplate) Implements PluginInterfaces.ICasparServer.LoadTemplate
         If Not IsConnected Then
             Throw New InvalidOperationException("Der Server ist nicht verbunden.")
         End If
-        'ToDo
+        ExecuteCommand(New CasparServerCommands.PlayCommand(Template.ChannelId, Template.Layer, Template.Clip, Template.AdditionalParameters))
     End Sub
 
     Public Sub Connect() Implements PluginInterfaces.ICasparServer.Connect

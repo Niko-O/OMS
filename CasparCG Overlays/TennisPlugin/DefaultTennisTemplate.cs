@@ -28,7 +28,7 @@ namespace TennisPlugin
             get { return 1; }
         }
 
-        public string Parameters
+        public string AdditionalParameters
         {
             get { return "file:///bla/tennis.html"; }
         }
