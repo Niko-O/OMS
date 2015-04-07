@@ -6,21 +6,21 @@ DatabaseConnector
 </name>
 </assembly>
 <members>
-<member name="M:DatabaseConnector.ConnectorSnapIn.InitializeComponent">
-	<summary>
-InitializeComponent
-</summary>
-</member><member name="T:DatabaseConnector.ConnectorSnapIn">
-	<summary>
-ConnectorSnapIn
-</summary>
-</member><member name="M:DatabaseConnector.EditCountriesTableWindow.InitializeComponent">
+<member name="M:DatabaseConnector.EditCountriesTableWindow.InitializeComponent">
 	<summary>
 InitializeComponent
 </summary>
 </member><member name="T:DatabaseConnector.EditCountriesTableWindow">
 	<summary>
 EditCountriesTableWindow
+</summary>
+</member><member name="M:DatabaseConnector.ConnectorSnapIn.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:DatabaseConnector.ConnectorSnapIn">
+	<summary>
+ConnectorSnapIn
 </summary>
 </member><member name="M:DatabaseConnector.SqlCountrySource.GetCountries">
 	<summary>

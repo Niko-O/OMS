@@ -6,21 +6,21 @@ TestTennisPlugin
 </name>
 </assembly>
 <members>
-<member name="M:TestTennisPlugin.Test_UserSettings.InitializeComponent">
-	<summary>
-InitializeComponent
-</summary>
-</member><member name="T:TestTennisPlugin.Test_UserSettings">
-	<summary>
-Test_UserSettings
-</summary>
-</member><member name="M:TestTennisPlugin.TennisSnapIn.InitializeComponent">
+<member name="M:TestTennisPlugin.TennisSnapIn.InitializeComponent">
 	<summary>
 InitializeComponent
 </summary>
 </member><member name="T:TestTennisPlugin.TennisSnapIn">
 	<summary>
 TennisSnapIn
+</summary>
+</member><member name="M:TestTennisPlugin.Test_UserSettings.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:TestTennisPlugin.Test_UserSettings">
+	<summary>
+Test_UserSettings
 </summary>
 </member><member name="P:TestTennisPlugin.My.Resources.Resources.ResourceManager">
 	<summary>
