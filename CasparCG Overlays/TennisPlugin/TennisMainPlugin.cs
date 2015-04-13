@@ -15,9 +15,11 @@ namespace TennisPlugin
     class TennisMainPlugin : PluginInterfaces.IPlugin
     {
 
+        private TennisSnapIn SnapIn = null;
+
         public System.Windows.Controls.UserControl GetSnapIn()
         {
-            return Singleton<TennisSnapIn>.Instance;
+            return SnapIn;
         }
 
         public void Created()
@@ -27,12 +29,13 @@ namespace TennisPlugin
 
         public void Enabled()
         {
-            
+            SnapIn = new TennisSnapIn();
         }
 
         public void Disabled()
         {
-            Singleton<TennisSnapIn>.Instance.Unload();
+            SnapIn.Unload();
+            SnapIn = null;
         }
 
         public void Unloaded()
