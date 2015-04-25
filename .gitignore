@@ -1,4 +1,7 @@
 
+# Cache-Files
+*.cache
+
 # User-specific files
 *.suo
 *.user
