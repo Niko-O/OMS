@@ -93,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="NullObjects\NullCasparServer.vb" />
+    <Compile Include="NullObjects\NullCompositor.vb" />
+    <Compile Include="NullObjects\NullSettingsProvider.vb" />
     <Compile Include="PublicProviders.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +122,7 @@
       <Name>PluginSettings</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,6 @@
 ﻿Public Class PublicProviders
 
-    Private Shared _PluginSettings As ISettingsProvider = Nothing
+    Private Shared _PluginSettings As ISettingsProvider = New NullSettingsProvider
     Public Shared ReadOnly Property PluginSettings As ISettingsProvider
         <DebuggerStepThrough()>
         Get
@@ -8,7 +8,7 @@
         End Get
     End Property
 
-    Private Shared _CasparServer As ICasparServer = Nothing
+    Private Shared _CasparServer As ICasparServer = New NullCasparServer
     Public Shared ReadOnly Property CasparServer As ICasparServer
         <DebuggerStepThrough()>
         Get
@@ -16,7 +16,7 @@
         End Get
     End Property
 
-    Private Shared _MefCompositor As ICompositor = Nothing
+    Private Shared _MefCompositor As ICompositor = New NullCompositor
     Public Shared ReadOnly Property MefCompositor As ICompositor
         Get
             Return _MefCompositor
