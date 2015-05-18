@@ -1,6 +1,11 @@
 ﻿Class MainWindowViewModel
     Inherits ViewModelBase
 
+    Public Event RemoveServer As EventHandler(Of ServerList.RemoveServerEventArgs)
+    Protected Overridable Sub OnRemoveServer(Server As ServerList.CasparCGServer)
+        RaiseEvent RemoveServer(Me, New ServerList.RemoveServerEventArgs(Server))
+    End Sub
+
     Dim _SelectedServerIp As String = ""
     Public Property SelectedServerIp As String
         Get
@@ -38,22 +43,27 @@
         End Set
     End Property
 
-    Dim _Test_CasparCGServers As Test_CasparCGServer()
-    Public ReadOnly Property Test_CasparCGServers As Test_CasparCGServer()
+    Dim WithEvents _CasparCGServers As ViewModelCollection(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel) = Nothing
+    Public Property CasparCGServers As ViewModelCollection(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)
         Get
-            Return _Test_CasparCGServers
+            Return _CasparCGServers
         End Get
+        Set(value As ViewModelCollection(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel))
+            If ChangeIfDifferent(_CasparCGServers, value) Then
+                OnPropertyChanged("CasparCGServers")
+            End If
+        End Set
     End Property
 
-    Dim _SelectedCasparCGServer As Test_CasparCGServer = Nothing
-    Public Property SelectedCasparCGServer As Test_CasparCGServer
+    Dim _SelectedCasparCGServer As ServerList.CasparCGServerViewModel = Nothing
+    Public Property SelectedCasparCGServer As ServerList.CasparCGServerViewModel
         Get
             Return _SelectedCasparCGServer
         End Get
-        Set(value As Test_CasparCGServer)
+        Set(value As ServerList.CasparCGServerViewModel)
             If ChangeIfDifferent(_SelectedCasparCGServer, value, "SelectedCasparCGServer") Then
                 If Not _SelectedCasparCGServer Is Nothing Then
-                    SelectedServerIp = _SelectedCasparCGServer.IpAddress
+                    SelectedServerIp = _SelectedCasparCGServer.Target.Address
                 End If
             End If
         End Set
@@ -68,11 +78,13 @@
                 New DesignerSupport.DesignerSupportPlugin("Fußball"), _
                 New DesignerSupport.DesignerSupportPlugin("Anderer Stuff")
             }
+            CasparCGServers = New ViewModelCollection(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)(New ObservableCollectionSource(Of ServerList.CasparCGServer)(ServerList.CasparCGServerCollection.Instance))
+            ServerList.CasparCGServerCollection.Instance.Add(New ServerList.CasparCGServer("Test", "1.2.3.4"))
+            ServerList.CasparCGServerCollection.Instance.Add(New ServerList.CasparCGServer("Test 01", "192.168.0.1"))
+            Dim a As New ServerList.CasparCGServer("Blubb", "Foo Bar")
+            ServerList.CasparCGServerCollection.Instance.Add(a)
+            SelectedCasparCGServer = CasparCGServers.FindViewModel(a)
         End If
-        _Test_CasparCGServers = {
-            New Test_CasparCGServer With {.Name = "Testserver 1", .IpAddress = "192.168.10.123"}, _
-            New Test_CasparCGServer With {.Name = "Lokal", .IpAddress = "127.0.0.1"}
-        }
     End Sub
 
     Private Sub ActualizePluginViewModels()
@@ -111,6 +123,19 @@
         Next
         _MainTabItems = Temp
         OnPropertyChanged("MainTabItems")
+    End Sub
+
+    Private Sub _CasparCGServers_ItemAdded(sender As Object, e As OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)) Handles _CasparCGServers.ItemAdded
+        e.ViewModel = New ServerList.CasparCGServerViewModel(e.Item)
+        AddHandler e.ViewModel.Remove, AddressOf CasparCGServers_Item_Remove
+    End Sub
+
+    Private Sub _CasparCGServers_ItemRemoved(sender As Object, e As OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)) Handles _CasparCGServers.ItemRemoved
+        RemoveHandler e.ViewModel.Remove, AddressOf CasparCGServers_Item_Remove
+    End Sub
+
+    Private Sub CasparCGServers_Item_Remove(Sender As ServerList.CasparCGServerViewModel)
+        OnRemoveServer(Sender.Target)
     End Sub
 
 End Class

@@ -104,6 +104,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions.vb" />
+    <Compile Include="ServerList\CasparCGServer.vb" />
     <Compile Include="CheckForUpdatesCommand.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPluginImplementation.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPlugin.vb" />
@@ -129,8 +131,12 @@
     <Compile Include="PluginManagement\TabControl\MainTabItem.vb" />
     <Compile Include="PluginManagement\PluginContainer.vb" />
     <Compile Include="PluginManagement\TabControl\PluginTabItem.vb" />
+    <Compile Include="ServerList\CasparCGServerCollection.vb" />
+    <Compile Include="ServerList\CasparCGServerCollectionTypeConverter.vb" />
+    <Compile Include="ServerList\CasparCGServerViewModel.vb" />
+    <Compile Include="ServerList\EditButtonVisibilityConverter.vb" />
+    <Compile Include="ServerList\RemoveServerEventArgs.vb" />
     <Compile Include="ServerManagement\CasparServer.vb" />
-    <Compile Include="Test_CasparCGServer.vb" />
     <Compile Include="UpdateInfo.vb" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

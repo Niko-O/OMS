@@ -1,16 +1,18 @@
 ﻿Class MainWindow 
 
-    Dim Model As MainWindowViewModel
+    Dim ViewModel As MainWindowViewModel
 
     Public Sub New()
         InitializeComponent()
-        Model = DirectCast(Me.DataContext, MainWindowViewModel)
+        ViewModel = DirectCast(Me.DataContext, MainWindowViewModel)
+        ViewModel.CasparCGServers = New ViewModelCollection(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)(New ObservableCollectionSource(Of ServerList.CasparCGServer)(ServerList.CasparCGServerCollection.Instance))
+        ViewModel.CasparCGServers.SynchronizeWithList(ServerList.CasparCGServerCollection.Instance)
         For Each i In PluginManagement.PluginContainer.Instance.Plugins
             If PluginManagement.PluginActiveStates.IsInUse(i.PluginGuid) Then
                 i.Enabled()
             End If
         Next
-        Model.Plugins = PluginManagement.PluginContainer.Instance.Plugins
+        ViewModel.Plugins = PluginManagement.PluginContainer.Instance.Plugins
     End Sub
 
     Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
@@ -24,10 +26,20 @@
         If CasparServer.Instance.IsConnected Then
             CasparServer.Instance.Disconnect()
         Else
-            CasparServer.Instance.IpAddress = Model.SelectedServerIp
+            CasparServer.Instance.IpAddress = ViewModel.SelectedServerIp
             CasparServer.Instance.Port = 5250
             CasparServer.Instance.Connect()
         End If
+    End Sub
+
+    Private Sub RemoveSelectedServer(sender As System.Object, e As System.Windows.RoutedEventArgs)
+        ServerList.CasparCGServerCollection.Instance.Remove(ViewModel.SelectedCasparCGServer.Target)
+    End Sub
+
+    Private Sub AddNewServer(sender As System.Object, e As System.Windows.RoutedEventArgs)
+        Dim Temp As New ServerList.CasparCGServer("Name", "Adresse")
+        ServerList.CasparCGServerCollection.Instance.Add(Temp)
+        ViewModel.CasparCGServers.FindViewModel(Temp).IsInEditMode = True
     End Sub
 
 End Class

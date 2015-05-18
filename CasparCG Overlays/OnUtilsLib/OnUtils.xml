@@ -6,7 +6,33 @@ OnUtils
 </name>
 </assembly>
 <members>
-<member name="P:OnUtils.Results.IResult.Success">
+<member name="F:OnUtils.Wpf.Converters.BooleanOperator.And">
+	<summary>
+ Wendet ein logisches Und an.
+ </summary>
+</member><member name="F:OnUtils.Wpf.Converters.BooleanOperator.Or">
+	<summary>
+ Wendet ein logisches Oder an.
+ </summary>
+</member><member name="T:OnUtils.Wpf.Converters.BooleanOperator">
+	<summary>
+ Gibt einen logischen Operator für <see cref="T:OnUtils.Wpf.Converters.BooleanOperatorConverter"/> an.
+ </summary>
+</member><member name="P:OnUtils.Wpf.Converters.BooleanOperatorConverter.Operator">
+	<summary>
+ Gibt den Operator an, mit dem die Boolean-Werte verknüpft werden.
+ </summary>
+</member><member name="T:OnUtils.Wpf.Converters.BooleanOperatorConverter">
+	<summary>
+ Verknüpft mehrere Boolean-Werte mit dem angegebenen Operator.
+ Werte, die nicht zu Boolean gecastet werden können, werden ignoriert.
+ </summary>
+</member><member name="T:OnUtils.Wpf.Converters.MultiConverter">
+	<summary>
+ Führt alle enthaltenen Konvertierungen der Reihe nach durch.
+ Zurückkonvertieren ist ebenfalls möglich.
+ </summary>
+</member><member name="P:OnUtils.Results.IResult.Success">
 	<summary>
  True, wenn der Vorgang erfolgreich war, andernfalls False.
  </summary>
@@ -1195,6 +1221,11 @@ OnUtils
  Konstruktor.
  </summary>
 	<param name="NewSource"><see cref="P:OnUtils.Wpf.ViewModelCollection`2.Source"/></param>
+</member><member name="M:OnUtils.Wpf.ViewModelCollection`2.SynchronizeWithList(System.Collections.Generic.IEnumerable{`0})">
+	<summary>
+ Entfernt alle Elemente, die nicht in <paramref name="Items"/> vorhanden sind und fügt Elemente hinzu, die in <paramref name="Items"/> zusätzlich vorhanden sind.
+ </summary>
+	<param name="Items">Die Liste der Elemente, mit der synchronisiert wird.</param>
 </member><member name="M:OnUtils.Wpf.ViewModelCollection`2.FindViewModel(`0)">
 	<summary>
  Findet das ViewModel für das angegebene Objekt.
@@ -2709,6 +2740,17 @@ OnUtils
  Konvertiert dieses <see cref="T:System.DateTime"/>-Objekt in einen Unix-Timestamp. Es wird von UTC ausgegangen.
  Wenn die Zeit nicht in UTC angegeben ist, kann das Ergebnis vom erwarteten Wert abweichen. Verwenden Sie <see cref="M:System.DateTime.SpecifyKind(System.DateTime,System.DateTimeKind)"/>, um UTC für ein <see cref="T:System.DateTime"/>-Objekt anzugeben.
  </summary>
+</member><member name="M:OnUtils.Extensions.Extensions.Reduce``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,``0})">
+	<summary>
+ Reduziert eine Liste von Elementen zu einem einzigen Element unter der Verwendung der angegebenen Reduzierungs-Funktion.
+ Wenn <paramref name="Target"/> leer ist, wird der Standardwert von T zurückgegeben.
+ Wenn <paramref name="Target"/> 1 Element einthält, wird dieses zurückgegeben.
+ Für alle weiteren Elemente wird <paramref name="Reducer"/> mit dem bisherigen Element und dem nächsten Element aufgerufen. Das Ergebnis jedes Aufrufes an <paramref name="Reducer"/> dient zusammen mit dem jeweils nächsten Element als Parameter für den nächsten Aufruf von <paramref name="Reducer"/>.
+ Beispiel: {"A", "B", "C"}.Reduce(Function(Left, Right) Left &amp; "X" &amp; Right)
+ ergibt: ("A" &amp; "X" &amp; "B") &amp; "X" &amp; "C"
+ </summary>
+	<typeparam name="T">Der Typ der Elemente in der Auflistung.</typeparam>
+	<param name="Reducer">Eine Funktion, die zwei Elemente auf eines reduziert.</param>
 </member><member name="T:OnUtils.Extensions.Extensions">
 	<summary>
  Beinhaltet hilfreiche Methoden.

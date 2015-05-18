@@ -14,6 +14,9 @@
                                                            "..", "..", "..", "SettingsManager.dll")), _
             True, True, _
             <CasparCG_Overlays>
+                <CasparCG>
+                    <ServerList TypeCode="String"/>
+                </CasparCG>
                 <Updates>
                     <EnableAutoUpdates TypeCode="Boolean" DefaultValue="False"/>
                 </Updates>
@@ -39,6 +42,9 @@
         End If
         PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, CasparServer.Instance, PluginManagement.Compositor.Instance)
         PluginInterfaces.PublicProviders.MefCompositor.AddPluginDirectoryPath(Settings.IO.PluginDirectory.Path, True)
+        If Not Settings.CasparCG.ServerList Is Nothing Then
+            ServerList.CasparCGServerCollection.Instance.FromXml(XElement.Parse(Settings.CasparCG.ServerList))
+        End If
         For Each i In PluginManagement.PluginContainer.Instance.Plugins
             i.Created()
         Next
@@ -52,6 +58,7 @@
         For Each i In PluginManagement.PluginContainer.Instance.Plugins
             i.Unloaded()
         Next
+        Settings.CasparCG.ServerList = ServerList.CasparCGServerCollection.Instance.ToXml.ToString
         Settings.Save(Settings.IO.SettingsXmlFile.Path)
         MyBase.OnExit(e)
     End Sub
