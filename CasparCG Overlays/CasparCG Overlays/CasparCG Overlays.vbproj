@@ -93,8 +93,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="updateSystemDotNet.Controller">
-      <HintPath>..\..\..\..\..\..\..\Program Files\updateSystem.NET\updateSystemDotNet.Controller.dll</HintPath>
+    <Reference Include="updateSystemDotNet.Controller, Version=1.5.2.515, Culture=neutral, PublicKeyToken=4b29b2d1691903dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UpdateSystemDotNetLib\updateSystemDotNet.Controller.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -250,6 +251,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>"$(SolutionDir)CopyOnUtils\bin\Release\CopyOnUtils.exe" "$(SolutionDir)\"
-"$(SolutionDir)CopyApplicationSettings\bin\Release\CopyApplicationSettings.exe" "$(SolutionDir)\"</PreBuildEvent>
+"$(SolutionDir)CopyApplicationSettings\bin\Release\CopyApplicationSettings.exe" "$(SolutionDir)\"
+"$(SolutionDir)CopyUpdateSystemDotNet\bin\Release\CopyUpdateSystemDotNet.exe" "$(SolutionDir)\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

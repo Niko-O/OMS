@@ -9,8 +9,8 @@ Public Class Program
             Return 1
         End If
         Dim SolutionDirectory As New DirectoryInfo(Args(0))
-        Dim TargetDirectory = SolutionDirectory.CreateSubdirectory("ApplicationSettingsLib")
-        Dim AbsoluteSourceDirectory As New DirectoryInfo("D:\Projects\VB\_Libs\ApplicationSettings\ApplicationSettings\bin\Release")
+        Dim TargetDirectory = SolutionDirectory.CreateSubdirectory("UpdateSystemDotNetLib")
+        Dim AbsoluteSourceDirectory As New DirectoryInfo("C:\Program Files\updateSystem.NET")
         If Not AbsoluteSourceDirectory.Exists Then
             Console.WriteLine("Lokaler Pfad existiert nicht.")
             Return 0
@@ -19,7 +19,7 @@ Public Class Program
             TargetDirectory.Create()
         End If
         For Each i In AbsoluteSourceDirectory.GetFiles
-            If Not String.Equals(i.Extension, ".tmp", StringComparison.InvariantCultureIgnoreCase) AndAlso i.Name.Contains("ApplicationSettings") Then
+            If {"updateSystemDotNet.Controller.dll", "updateSystemDotNet.Controller.pdb"}.Contains(i.Name) Then
                 i.CopyTo(Path.Combine(TargetDirectory.FullName, i.Name), True)
             End If
         Next
