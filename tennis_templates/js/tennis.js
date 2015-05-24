@@ -48,3 +48,28 @@ function setSetsTwo(sets)
     document.getElementById("sets_two").innerHTML = sets;
 }
 
+function showLowerThird()
+{
+    document.getElementById("lower_third").style.visibility = "visible";
+}
+
+function hideLowerThird()
+{
+    document.getElementById("lower_third").style.visibility = "hidden";
+}
+
+function setLowerThirdText(text)
+{
+    document.getElementById("sets_two").innerHTML = text;
+}
+
+function setLowerThirdVisibilityDuration(int Milliseconds)
+{
+
+}
+
+function setLowerThirdEffects(bool IsScrolling)
+{
+
+}
+

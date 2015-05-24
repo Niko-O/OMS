@@ -8,7 +8,7 @@
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
     mc:Ignorable="d" 
-    d:DesignHeight="459"
+    d:DesignHeight="497"
 	d:DesignWidth="424"
 >
     <UserControl.DataContext>
@@ -17,6 +17,8 @@
     <UserControl.Resources>
         <c:BooleanToStringConverter x:Key="ToggleScoreboardVisibilityButtonTextConverter" TrueString="Ausblenden" FalseString="Anzeigen"/>
         <c:BooleanNotConverter x:Key="NotConverter"/>
+        <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
+        <c:BooleanToBrushConverter x:Key="ErrorConverter" TrueBrush="White" FalseBrush="#40FF0000"/>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <GroupBox Header="Template" Padding="3">
@@ -149,9 +151,10 @@
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <!--<GroupBox Header="Bauchbinde" Padding="3" IsEnabled="False">
+        <GroupBox Header="Bauchbinde" Padding="3">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -163,23 +166,75 @@
                         <ColumnDefinition Width="8"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Grid.Column="0">Spielername</RadioButton>
-                    <RadioButton Grid.Column="2">Benutzerdefinierter Text</RadioButton>
+                    <RadioButton Grid.Column="0" IsChecked="{Binding Path=LowerThirdUsePlayerName}">Spielername</RadioButton>
+                    <RadioButton Grid.Column="2" IsChecked="{Binding Path=LowerThirdUseCustomText}">Benutzerdefinierter Text</RadioButton>
                 </Grid>
-                <TextBox Grid.Row="1" AcceptsReturn="True" MinHeight="60"/>
+                <TextBox Grid.Row="1" Visibility="{Binding Path=LowerThirdTextBoxVisible, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}" AcceptsReturn="True" MinHeight="60" Text="{Binding Path=LowerThirdCustomText, UpdateSourceTrigger=PropertyChanged}"/>
+                <Grid Grid.Row="1" Visibility="{Binding Path=LowerThirdPlayerNamesVisible, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Grid.Column="0" IsChecked="{Binding Path=LowerThirdUsePlayer1Name}">Spieler 1</RadioButton>
+                    <RadioButton Grid.Column="2" IsChecked="{Binding Path=LowerThirdUsePlayer2Name}">Spieler 2</RadioButton>
+                </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="5"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Effekt:</TextBlock>
-                    <ComboBox Grid.Row="0" Grid.Column="2" ItemsSource="{Binding Path=Test_Effects}"/>
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                    >Effekt:</TextBlock>
+                    <ComboBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        ItemsSource="{Binding Path=LowerThirdTextEffects}"
+                        SelectedItem="{Binding Path=SelectedLowerThirdTextEffect}"
+                    >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=DisplayText}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Grid>
-                <Button Grid.Row="3" Margin="0,3,0,0" Padding="10">
-                    Anzeigen
-                </Button>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding Path=ApplyLowerThirdVisibilityDuration}"
+                    >Nach</CheckBox>
+                    <TextBox
+                        Grid.Column="2"
+                        Text="{Binding Path=LowerThirdVisibilityDurationString, UpdateSourceTrigger=PropertyChanged}"
+                        Background="{Binding Path=LowerThirdVisibilityDurationIsValid, Converter={StaticResource ResourceKey=ErrorConverter}}"
+                    />
+                    <TextBlock
+                        Grid.Column="4"
+                        VerticalAlignment="Center"
+                    >Sekunden wieder ausblenden</TextBlock>
+                </Grid>
+                <Button
+                    Grid.Row="4"
+                    Margin="0,3,0,0"
+                    Padding="10"
+                    Click="ToggleLowerThirdVisibility"
+                    IsEnabled="{Binding Path=ToggleLowerThirdVisibilityButtonEnabled}"
+                    Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"
+                />
             </Grid>
-        </GroupBox>-->
+        </GroupBox>
     </StackPanel>
 </UserControl>

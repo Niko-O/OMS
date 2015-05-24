@@ -37,6 +37,11 @@ namespace TennisPlugin
                 ViewModel.ScoreboardIsVisible = false;
                 ViewModel.SelectedTennisTemplate.HideScoreboard();
             }
+            if (ViewModel.LowerThirdIsVisible)
+            {
+                ViewModel.LowerThirdIsVisible = false;
+                ViewModel.SelectedTennisTemplate.HideLowerThird();
+            }
             ViewModel.CanSelectTemplate = true;
             if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
             {   
@@ -115,7 +120,35 @@ namespace TennisPlugin
         {
             ViewModel.SelectedTennisTemplate.SetTeamNameOne(ViewModel.TeamNameOne);
             ViewModel.SelectedTennisTemplate.SetTeamNameTwo(ViewModel.TeamNameTwo);
-        } 
+        }
+
+        private void ToggleLowerThirdVisibility(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LowerThirdIsVisible = !ViewModel.LowerThirdIsVisible;
+            if (ViewModel.LowerThirdIsVisible)
+            {
+                UpdateLowerThirdParameters();
+                ViewModel.SelectedTennisTemplate.ShowLowerThird();
+            }
+            else
+            {
+                ViewModel.SelectedTennisTemplate.HideLowerThird();
+            }
+        }
+
+        private void UpdateLowerThirdParameters()
+        {
+            if (ViewModel.LowerThirdUseCustomText)
+            {
+                ViewModel.SelectedTennisTemplate.SetLowerThirdText(ViewModel.LowerThirdCustomText);
+            }
+            else
+            {
+                ViewModel.SelectedTennisTemplate.SetLowerThirdText(ViewModel.LowerThirdUsePlayer1Name ? ViewModel.TeamNameOne : ViewModel.TeamNameTwo);
+            }
+            ViewModel.SelectedTennisTemplate.SetLowerThirdEffects(ViewModel.SelectedLowerThirdTextEffect.Value == LowerThirdTextEffect.ScrollRightToLeft);
+            ViewModel.SelectedTennisTemplate.SetLowerThirdVisibilityDuration(ViewModel.ApplyLowerThirdVisibilityDuration && ViewModel.LowerThirdVisibilityDurationIsValid ? ViewModel.LowerThirdVisibilityDuration * 1000 : 0);
+        }
 
     }
 }

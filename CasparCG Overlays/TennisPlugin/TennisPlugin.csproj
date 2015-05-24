@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITennisTemplate.cs" />
+    <Compile Include="LowerThirdTextEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamStats.cs" />
     <Compile Include="TennisMainPlugin.cs" />
