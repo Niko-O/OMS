@@ -58,17 +58,17 @@ function hideLowerThird()
     document.getElementById("lower_third").style.visibility = "hidden";
 }
 
-function setLowerThirdText(text)
+function setLowerThirdTitleText(text)
 {
-    document.getElementById("sets_two").innerHTML = text;
+    document.getElementById("title").innerHTML = text;
 }
 
-function setLowerThirdVisibilityDuration(int Milliseconds)
+function setLowerThirdTitleSubtitleText(text)
 {
-
+    document.getElementById("subtitle").innerHTML = text;
 }
 
-function setLowerThirdEffects(bool IsScrolling)
+function setLowerThirdEffects(isScrolling)
 {
 
 }
