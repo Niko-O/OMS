@@ -8,7 +8,7 @@ using OnUtils.Wpf;
 
 namespace TennisPlugin
 {
-    class TennisSnapInViewModel : ViewModelBase
+    public class TennisSnapInViewModel : ViewModelBase
     {
 
         private bool _CanSelectTemplate = true;

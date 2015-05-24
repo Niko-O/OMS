@@ -12,7 +12,7 @@ namespace TennisPlugin
     [Export(typeof(PluginInterfaces.IPlugin))]
     [ExportMetadata("DisplayName", "Tennis")]
     [ExportMetadata("PluginGuid", "e2067728-d790-4a32-9db8-e771382c4ef5")]
-    class TennisMainPlugin : PluginInterfaces.IPlugin
+    public class TennisMainPlugin : PluginInterfaces.IPlugin
     {
 
         private TennisSnapIn SnapIn = null;

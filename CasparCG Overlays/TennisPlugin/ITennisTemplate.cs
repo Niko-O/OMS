@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TennisPlugin
 {
-    interface ITennisTemplate : PluginInterfaces.ITemplate
+    public interface ITennisTemplate : PluginInterfaces.ITemplate
     {
         void ShowScoreboard();
         void HideScoreboard();

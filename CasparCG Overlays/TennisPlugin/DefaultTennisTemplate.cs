@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TennisPlugin
 {
-    class DefaultTennisTemplate : ITennisTemplate
+    public class DefaultTennisTemplate : ITennisTemplate
     {
 
         public String DisplayName

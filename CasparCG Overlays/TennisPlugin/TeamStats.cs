@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TennisPlugin
 {
-    class TeamStats
+    public class TeamStats
     {
 
         public enum PointsValue
