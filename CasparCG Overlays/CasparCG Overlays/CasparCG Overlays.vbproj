@@ -66,8 +66,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApplicationSettings">
-      <HintPath>D:\Projects\VB\_Libs\ApplicationSettings\ApplicationSettings\bin\Release\ApplicationSettings.dll</HintPath>
+    <Reference Include="ApplicationSettings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ApplicationSettingsLib\ApplicationSettings.dll</HintPath>
     </Reference>
     <Reference Include="OnUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -153,6 +154,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Import Include="ApplicationSettings" />
     <Import Include="OnUtils" />
     <Import Include="OnUtils.Extensions" />
     <Import Include="OnUtils.Streams" />
@@ -247,6 +249,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)CopyOnUtils\bin\Release\CopyOnUtils.exe" "$(SolutionDir)\"</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)CopyOnUtils\bin\Release\CopyOnUtils.exe" "$(SolutionDir)\"
+"$(SolutionDir)CopyApplicationSettings\bin\Release\CopyApplicationSettings.exe" "$(SolutionDir)\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

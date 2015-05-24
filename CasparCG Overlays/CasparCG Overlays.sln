@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisPlugin", "TennisPlugi
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CasparServerCommands", "CasparServerCommands\CasparServerCommands.vbproj", "{6921A1D4-BDA2-4442-9B54-05541E52FA33}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CopyApplicationSettings", "CopyApplicationSettings\CopyApplicationSettings.vbproj", "{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,16 @@ Global
 		{6921A1D4-BDA2-4442-9B54-05541E52FA33}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6921A1D4-BDA2-4442-9B54-05541E52FA33}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6921A1D4-BDA2-4442-9B54-05541E52FA33}.Release|x86.ActiveCfg = Release|Any CPU
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Debug|x86.ActiveCfg = Debug|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Debug|x86.Build.0 = Debug|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Release|Any CPU.ActiveCfg = Release|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Release|x86.ActiveCfg = Release|x86
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,5 +196,6 @@ Global
 		{A6B6A0E4-4C2C-4F1D-8DEB-646140CC84AA} = {39527171-736E-4C15-AD31-AA586E95AC6B}
 		{CF311F24-893A-4ECD-9F44-A6E069258104} = {B5EBB970-64E8-463D-B5FC-555F1275CEBC}
 		{0CDA04E2-0D42-4960-83D7-524E07867430} = {4B20939D-9FB0-4730-B636-806E497C2805}
+		{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8} = {4B20939D-9FB0-4730-B636-806E497C2805}
 	EndGlobalSection
 EndGlobal

@@ -9,8 +9,8 @@ Public Class Program
             Return 1
         End If
         Dim SolutionDirectory As New DirectoryInfo(Args(0))
-        Dim OnUtilsTargetDirectory = SolutionDirectory.CreateSubdirectory("OnUtilsLib")
-        Dim AbsoluteOnUtilsSourceDirectory As New DirectoryInfo("D:\Projects\VB\_Libs\OnUtils\OnUtils\bin\Release")
+        Dim OnUtilsTargetDirectory = SolutionDirectory.CreateSubdirectory("ApplicationSettingsLib")
+        Dim AbsoluteOnUtilsSourceDirectory As New DirectoryInfo("D:\Projects\VB\_Libs\ApplicationSettings\ApplicationSettings\bin\Release")
         If Not AbsoluteOnUtilsSourceDirectory.Exists Then
             Console.WriteLine("Lokaler Pfad existiert nicht.")
             Return 0
@@ -19,7 +19,7 @@ Public Class Program
             OnUtilsTargetDirectory.Create()
         End If
         For Each i In AbsoluteOnUtilsSourceDirectory.GetFiles
-            If Not String.Equals(i.Extension, ".tmp", StringComparison.InvariantCultureIgnoreCase) AndAlso i.Name.Contains("OnUtils") Then
+            If Not String.Equals(i.Extension, ".tmp", StringComparison.InvariantCultureIgnoreCase) AndAlso i.Name.Contains("ApplicationSettings") Then
                 i.CopyTo(Path.Combine(OnUtilsTargetDirectory.FullName, i.Name), True)
             End If
         Next

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ApplicationSettings
+</name>
+</assembly>
+<members>
+<member name="P:ApplicationSettings.FileIdentifierBase.ContainingDirectory">
+	<summary>
+ Gibt den beinhaltenden Ordner an. 
+ </summary>
+</member><member name="P:ApplicationSettings.FileIdentifierBase.FileName">
+	<summary>
+ Gibt den Dateinamen an (nicht den vollständigen Pfad).
+ </summary>
+</member><member name="T:ApplicationSettings.FileIdentifierBase">
+	<summary>
+ Stellt eine Basisklasse für speziell identifizierte Dateien dar.
+ </summary>
+</member><member name="P:ApplicationSettings.IdentifierBase.Path">
+	<summary>
+ Gibt den vollständigen Pfad des Ordners / der Datei zurück.
+ </summary>
+</member><member name="M:ApplicationSettings.IdentifierBase.GetAbsolutePath(System.String)">
+	<summary>
+ Gibt einen absoluten Pfad zurück, der durch einen relativen Pfad beschrieben wird. ".." als Ordnername wechselt in den übergeordneten Ordner.
+ Beispiel: "C:\Temp\Ordner1\..\..\Users\Administrator\Desktop" wird zu "C:\Users\Administrator\Desktop" aufgelöst.
+ Verwenden Sie diese Funktion in Verbindung mit beispielsweise <see cref="T:System.IO.Path"/>.Combine(System.Windows.Forms.Application.StartupPath, "..", "..", "..")
+ </summary>
+	<param name="RelativePath">Der relative Pfad, aus dem der absolute Pfad gebildet werden soll.</param>
+	<exception cref="T:System.ArgumentException">Der relative Pfad versucht, über den übergeordnetsten Ordner hinaus zu wechseln. Beispiel: "C:\Users\..\..\.."
+ "C:\.." würde "" ergeben, "C:\..\.." kann nicht aus "" hinausgehen.</exception>
+</member><member name="P:ApplicationSettings.DirectoryFromEnvironmentDirectory.SpecialDirectory">
+	<summary>
+ Gibt die Ordnerbezeichnung an.
+ </summary>
+</member><member name="M:ApplicationSettings.DirectoryFromEnvironmentDirectory.#ctor(System.Environment.SpecialFolder)">
+	<summary>
+	</summary>
+	<param name="NewSpecialDirectory">Die Ordnerbezeichnung, der verwendet werden soll.</param>
+</member><member name="T:ApplicationSettings.DirectoryFromEnvironmentDirectory">
+	<summary>
+ Stellt einen Ordner dar, der durch eine Angabe von <see cref="T:System.Environment.SpecialFolder"/> identifiziert wird.
+ </summary>
+</member><member name="P:ApplicationSettings.SettingsAssemblyIOClassBase.ApplicationDirectory">
+	<summary>
+ Gibt den Ordnerpfad an, in dem sich die ausgeführte Datei befindet.
+ </summary>
+</member><member name="M:ApplicationSettings.SettingsAssemblyIOClassBase.Initialize(System.String)">
+	<summary>
+ Lädt alle Pfade entsprechend der Konfiguration.
+ Muss aufgerufen werden, bevor Pfade verwendet werden.
+ </summary>
+	<param name="ApplicationDirectoryPath">Der vollständige Ordnerpfad, in dem sich die ausgeführte Datei befindet. Dies ist meist System.Windows.Forms.Application.StartupPath.</param>
+</member><member name="M:ApplicationSettings.SettingsAssemblyIOClassBase.OnInitializing">
+	<summary>
+ Teilt der abgeleiteten Klasse mit, dass sie die Pfade laden soll.
+ </summary>
+</member><member name="P:ApplicationSettings.SettingsAssemblyIOClassBase.BaseClassDefinedParentAliases">
+	<summary>
+ Gibt eine Liste aller Aliase an, die als Parent-Attribute in der <see cref="M:ApplicationSettings.Generator.CreateSettingsAssembly(System.String,System.Boolean,System.Boolean,System.Xml.Linq.XElement)"/>-Methode verwendet werden können, um bereits vordefinierte Ordner als übergeordnete Ordner zu verwenden.
+ </summary>
+</member><member name="T:ApplicationSettings.SettingsAssemblyIOClassBase">
+	<summary>
+ Eine Basisklasse für generierte IO-Klassen in der SettingsAssembly.
+ </summary>
+</member><member name="T:ApplicationSettings.SettingsAssemblyClassBase">
+	<summary>
+ Eine Basisklasse für alle generierten Klassen.
+ </summary>
+</member><member name="T:ApplicationSettings.SettingsAssemblyPropertyCollection">
+	<summary>
+ Gruppiert <see cref="T:ApplicationSettings.SettingsAssemblyProperty"/> und untergeordnete Gruppierungen.
+ Wird von der <see cref="M:ApplicationSettings.SettingsAssemblyGeneratedNameSpaceClassBase.GetProperties"/>-Funktion zurückgegeben.")
+ </summary>
+</member><member name="M:ApplicationSettings.SettingsAssemblyGeneratedNameSpaceClassBase.GetProperties">
+	<summary>
+ Ruft eine Liste aller Properties zurück, die dieser Klasse untergeordnet sind.
+ </summary>
+</member><member name="T:ApplicationSettings.SettingsAssemblyGeneratedNameSpaceClassBase">
+	<summary>
+ Die Basisklasse für die generierten Klassen im Generated-NameSpace in der SettingsAssembly.
+ </summary>
+</member><member name="M:ApplicationSettings.GeneratorException.#ctor(System.String)">
+	<summary>
+	</summary>
+	<param name="Message">Siehe <see cref="P:System.Exception.Message"/>.</param>
+</member><member name="T:ApplicationSettings.GeneratorException">
+	<summary>
+ Wird innerhalb der <see cref="M:ApplicationSettings.Generator.CreateSettingsAssembly(System.String,System.Boolean,System.Boolean,System.Xml.Linq.XElement)"/>-Methode ausgelöst, wenn fehlerhafte Informationen angegeben wurden.
+ </summary>
+</member><member name="P:ApplicationSettings.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ApplicationSettings.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ApplicationSettings.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:ApplicationSettings.DirectoryIdentifierBase.GetSubDirectory(System.String)">
+	<summary>
+ Identifiziert einen Ordner anhand des Ordnernamens im aktuellen Ordner.
+ </summary>
+	<param name="DirectoryName">Der Name des enthaltenen Ordners (nicht der vollständige Pfad).</param>
+</member><member name="M:ApplicationSettings.DirectoryIdentifierBase.GetFileInDirectory(System.String)">
+	<summary>
+ Identifiziert eine Datei anhand des Dateinamens im aktuellen Ordner.
+ </summary>
+	<param name="FileName">Der Name der enthaltenen Datei (nicht der vollständige Pfad).</param>
+</member><member name="T:ApplicationSettings.DirectoryIdentifierBase">
+	<summary>
+ Stellt eine Basisklasse für speziell identifizierte Ordner dar.
+ </summary>
+</member><member name="M:ApplicationSettings.FileFromPath.#ctor(System.String)">
+	<summary>
+	</summary>
+	<param name="NewPath">Der vollständige Pfad, der die Datei identifiziert.</param>
+</member><member name="T:ApplicationSettings.FileFromPath">
+	<summary>
+ Stellt eine Datei dar, die durch einen vollständigen Pfad identifiziert wird.
+ </summary>
+</member><member name="P:ApplicationSettings.XMLParseException.Element">
+	<summary>
+ Das fehlerhafte XML-Element.
+ </summary>
+</member><member name="M:ApplicationSettings.XMLParseException.#ctor(System.Xml.Linq.XElement,System.String)">
+	<summary>
+	</summary>
+	<param name="NewElement">Das fehlerhafte XML-Element.</param>
+	<param name="NewMessage">Siehe <see cref="P:System.Exception.Message"/>.</param>
+</member><member name="T:ApplicationSettings.XMLParseException">
+	<summary>
+ Wird ausgelöst, wenn eine ungültige XML-Struktur an die <see cref="M:ApplicationSettings.Generator.CreateSettingsAssembly(System.String,System.Boolean,System.Boolean,System.Xml.Linq.XElement)"/>-Methode übergeben wurde.
+ </summary>
+</member><member name="M:ApplicationSettings.FileInDirectory.#ctor(ApplicationSettings.DirectoryIdentifierBase,System.String)">
+	<summary>
+	</summary>
+	<param name="NewContainingDirectory">Der Ordner (<see cref="T:ApplicationSettings.DirectoryIdentifierBase"/>), der die Datei beinhaltet.</param>
+	<param name="NewFileName">Der Name der Datei (nicht der vollständige Pfad).</param>
+</member><member name="T:ApplicationSettings.FileInDirectory">
+	<summary>
+ Stellt eine Datei dar, die durch einen Dateinamen innerhalb eines Ordners (<see cref="T:ApplicationSettings.DirectoryIdentifierBase"/>) identifiziert wird.
+ </summary>
+</member><member name="M:ApplicationSettings.Generator.CreateSettingsAssembly(System.String,System.Boolean,System.Boolean,System.Xml.Linq.XElement)">
+	<summary>
+ Erstellt eine SettingsAssembly am angegebenen Pfad.
+ </summary>
+	<param name="Path">Der Pfad, an dem die SettingsAssembly erstellt werden soll.</param>
+	<param name="EmitChangedEvents">Gibt an, ob für jede Eigenschaft ein passendes Event erstellt werden soll, welches ausgelöst wird, sobald sich der Wert ändert.</param>
+	<param name="ImplementINotifyPropertyChanged">Gibt an, ob die Eigenschaften-Container das <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>-Interface implementieren.</param>
+	<param name="AssemblyDescription">Eine XML-Struktur, die den Aufbau der SettingsAssembly angibt. Lesen Sie hierfür bitte die Anleitung.</param>
+	<exception cref="T:System.ArgumentNullException"><paramref name="Path"/> ist Nothing.</exception>
+	<exception cref="T:System.ArgumentException"><paramref name="Path"/> enthält ungültige Zeichen.</exception>
+	<exception cref="T:System.ArgumentException"><paramref name="Path"> gibt keine .dll-Datei an.</paramref></exception>
+	<exception cref="T:System.ArgumentNullException"><paramref name="AssemblyDescription"/> ist Nothing.</exception>
+	<exception cref="T:ApplicationSettings.XMLParseException"><paramref name="AssemblyDescription"/> enthält ungültige Strukturen.</exception>
+	<exception cref="T:ApplicationSettings.GeneratorException"><paramref name="AssemblyDescription"/> enthält ungültige Daten.</exception>
+	<exception cref="T:OnUtils.NopeException">Siehe <see cref="T:OnUtils.NopeException"/>.</exception>
+</member><member name="T:ApplicationSettings.Generator">
+	<summary>
+ Siehe <see cref="M:ApplicationSettings.Generator.CreateSettingsAssembly(System.String,System.Boolean,System.Boolean,System.Xml.Linq.XElement)"/>-Methode.
+ </summary>
+</member><member name="P:ApplicationSettings.AliasList.MainValue">
+	<summary>
+ Der Hauptwert. Elemente in <see cref="P:ApplicationSettings.AliasList.Aliases"/> sind gleichbedeutend diesem Wert.
+ </summary>
+</member><member name="P:ApplicationSettings.AliasList.Aliases">
+	<summary>
+ Die Aliase.
+ </summary>
+</member><member name="M:ApplicationSettings.AliasList.#ctor(System.String,System.String[])">
+	<summary>
+	</summary>
+	<param name="NewMainValue">Siehe <see cref="P:ApplicationSettings.AliasList.MainValue"/>.</param>
+	<param name="NewAliases">Siehe <see cref="P:ApplicationSettings.AliasList.Aliases"/></param>
+</member><member name="M:ApplicationSettings.AliasList.TryGetAlias(System.String,System.String@)">
+	<summary>
+ Prüft, ob <paramref name="Value"/> ein gültiges Alias für <see cref="P:ApplicationSettings.AliasList.MainValue"/> (oder der Wert selbst) ist, ersetzt <paramref name="Result"/> durch den Hauptwert und gibt True zurück, wenn ein Alias gefunden wurde.
+ </summary>
+	<param name="Value">Der zu prüfende Wert.</param>
+	<param name="Result">Dieser Parameter wird ByRef übergeben und wird überschrieben, wenn ein Alias gefunden wurde.</param>
+</member><member name="T:ApplicationSettings.AliasList">
+	<summary>
+ Eine Auflistung von Werten, die als Alias für den Hauptwert verwendet werden können.
+ </summary>
+</member><member name="T:ApplicationSettings.SettingsAssemblyMainNameSpaceClassBase">
+	<summary>
+ Die Basisklasse für die generierte Klasse im haupt-NameSpace in der SettingsAssembly.
+ </summary>
+</member><member name="T:ApplicationSettings.SettingsAssemblyProperty">
+	<summary>
+ Stellt eine Zugriffsmöglichkeit auf eine Property in der SettingsAssembly dar.
+ Wird (gekapselt in <see cref="T:ApplicationSettings.SettingsAssemblyPropertyCollection"/>) von der <see cref="M:ApplicationSettings.SettingsAssemblyGeneratedNameSpaceClassBase.GetProperties"/>-Funktion zurückgegeben.")
+ </summary>
+</member><member name="M:ApplicationSettings.DirectoryFromPath.#ctor(System.String)">
+	<summary>
+	</summary>
+	<param name="NewPath">Der vollständige Pfad, der den Ordner identifiziert.</param>
+</member><member name="T:ApplicationSettings.DirectoryFromPath">
+	<summary>
+ Stellt einen Ordner dar, der durch einen vollständigen Pfad identifiziert wird.
+ </summary>
+</member>
+</members>
+</doc>
