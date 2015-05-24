@@ -1,0 +1,79 @@
+*{
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;							/* This sets all elements to be the actual set dimensions, disregarding padding and borders */
+	-webkit-transition: translate3d(0,0,0);			/* Turns on hardware acceleration - not known to be of benefit in CCG, but won't hurt */
+}
+
+html, body {
+	margin: 0;										 /* Use all available space */
+	padding: 0;										 /* Use all available space */
+	background: transparent;					     /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
+	overflow: hidden;								 /* Hide any overflowing elements - to disable scollbars */
+	-webkit-font-smoothing: antialiased !important;	 /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
+}
+
+body {
+	font-family: Calibri,Arial;
+	color: #FFF;
+    font-size: 20px;
+}
+
+#scoreboard{
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 252px;
+    height: 52px;
+    float: left;
+    font-weight: bold;
+}
+
+#team_one{
+    border: 1px solid white;
+    height: 50%;
+    width: 100%;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: #C3C3C3;
+    text-transform: uppercase;
+}
+
+#team_two{
+    margin-top: 2px;
+    border: 1px solid white;
+    height: 50%;
+    width: 100%;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: #C3C3C3;
+    text-transform: uppercase;
+}
+
+#name_one, #name_two{
+    width: 100px;
+    float: left;
+    padding-left: 10px;
+}
+
+#points_one, #points_two{
+    width: 30px;
+    float: right;
+    text-align: center;
+}
+
+#games_one, #games_two{
+    width: 30px;
+    float: right; 
+    text-align: center;
+}
+
+#sets_one, #sets_two{
+    width: 30px;
+    float: right;
+    text-align: center;
+}
+
+
+
+
+
+
+
