@@ -7,11 +7,11 @@
     </ProductVersion>
     <SchemaVersion>
     </SchemaVersion>
-    <ProjectGuid>{0CDA04E2-0D42-4960-83D7-524E07867430}</ProjectGuid>
+    <ProjectGuid>{08B906BB-80BD-4502-A42D-2EA2AFBAA0C8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <StartupObject>Sub Main</StartupObject>
-    <RootNamespace>CopyOnUtils</RootNamespace>
-    <AssemblyName>CopyOnUtils</AssemblyName>
+    <RootNamespace>CopyApplicationSettings</RootNamespace>
+    <AssemblyName>CopyApplicationSettings</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -24,7 +24,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>CopyOnUtils.xml</DocumentationFile>
+    <DocumentationFile>CopyApplicationSettings.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -34,7 +34,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>CopyOnUtils.xml</DocumentationFile>
+    <DocumentationFile>CopyApplicationSettings.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
