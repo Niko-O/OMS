@@ -53,11 +53,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OnUtilsLib\OnUtils.dll</HintPath>
     </Reference>
-    <Reference Include="Svt.Caspar">
-      <HintPath>..\..\Original\CasparCG_.NET_Framework_1.0.0\x86\Svt.Caspar.dll</HintPath>
+    <Reference Include="Svt.Caspar, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CasparCGLibraries\Svt.Caspar.dll</HintPath>
     </Reference>
-    <Reference Include="Svt.Network">
-      <HintPath>..\..\Original\CasparCG_.NET_Framework_1.0.0\x86\Svt.Network.dll</HintPath>
+    <Reference Include="Svt.Network, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CasparCGLibraries\Svt.Network.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
