@@ -93,19 +93,19 @@ namespace TennisPlugin
             ExecuteCallCommand("hideLowerThird");
         }
 
-        public void SetLowerThirdText(string Text)
+        public void SetLowerThirdTitleText(string Text)
         {
-            ExecuteCallCommand("setLowerThirdText", Text);
+            ExecuteCallCommand("setLowerThirdTitleText", Text);
         }
 
-        public void SetLowerThirdVisibilityDuration(int Milliseconds)
+        public void SetLowerThirdSubtitleText(string Text)
         {
-            ExecuteCallCommand("setLowerThirdVisibilityDuration", Milliseconds);
+            ExecuteCallCommand("setLowerThirdSubtitleText", Text);
         }
 
         public void SetLowerThirdEffects(bool IsScrolling)
         {
-            ExecuteCallCommand("SetLowerThirdEffects", IsScrolling);
+            ExecuteCallCommand("setLowerThirdEffects", IsScrolling);
         }
 
         private void ExecuteCallCommand(string MethodName, params object[] Parameters)

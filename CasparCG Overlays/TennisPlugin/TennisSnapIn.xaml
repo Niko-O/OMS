@@ -7,9 +7,10 @@
     xmlns:l="clr-namespace:TennisPlugin"
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
+    xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     mc:Ignorable="d" 
-    d:DesignHeight="497"
-	d:DesignWidth="424"
+    d:DesignHeight="808"
+	d:DesignWidth="386"
 >
     <UserControl.DataContext>
         <l:TennisSnapInViewModel/>
@@ -152,89 +153,100 @@
             </Grid>
         </GroupBox>
         <GroupBox Header="Bauchbinde" Padding="3">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="8"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <RadioButton Grid.Column="0" IsChecked="{Binding Path=LowerThirdUsePlayerName}">Spielername</RadioButton>
-                    <RadioButton Grid.Column="2" IsChecked="{Binding Path=LowerThirdUseCustomText}">Benutzerdefinierter Text</RadioButton>
-                </Grid>
-                <TextBox Grid.Row="1" Visibility="{Binding Path=LowerThirdTextBoxVisible, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}" AcceptsReturn="True" MinHeight="60" Text="{Binding Path=LowerThirdCustomText, UpdateSourceTrigger=PropertyChanged}"/>
-                <Grid Grid.Row="1" Visibility="{Binding Path=LowerThirdPlayerNamesVisible, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <RadioButton Grid.Column="0" IsChecked="{Binding Path=LowerThirdUsePlayer1Name}">Spieler 1</RadioButton>
-                    <RadioButton Grid.Column="2" IsChecked="{Binding Path=LowerThirdUsePlayer2Name}">Spieler 2</RadioButton>
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        VerticalAlignment="Center"
-                    >Effekt:</TextBlock>
-                    <ComboBox
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        ItemsSource="{Binding Path=LowerThirdTextEffects}"
-                        SelectedItem="{Binding Path=SelectedLowerThirdTextEffect}"
-                    >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=DisplayText}"/>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </Grid>
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <CheckBox
-                        Grid.Column="0"
-                        VerticalAlignment="Center"
-                        IsChecked="{Binding Path=ApplyLowerThirdVisibilityDuration}"
-                    >Nach</CheckBox>
-                    <TextBox
-                        Grid.Column="2"
-                        Text="{Binding Path=LowerThirdVisibilityDurationString, UpdateSourceTrigger=PropertyChanged}"
-                        Background="{Binding Path=LowerThirdVisibilityDurationIsValid, Converter={StaticResource ResourceKey=ErrorConverter}}"
-                    />
-                    <TextBlock
-                        Grid.Column="4"
-                        VerticalAlignment="Center"
-                    >Sekunden wieder ausblenden</TextBlock>
-                </Grid>
-                <Button
-                    Grid.Row="4"
-                    Margin="0,3,0,0"
-                    Padding="10"
-                    Click="ToggleLowerThirdVisibility"
-                    IsEnabled="{Binding Path=ToggleLowerThirdVisibilityButtonEnabled}"
-                    Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"
-                />
-            </Grid>
+            <StackPanel>
+                <GroupBox Header="Steuerung">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                            >Effekt:</TextBlock>
+                            <ComboBox
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                ItemsSource="{Binding Path=LowerThirdTextEffects}"
+                                SelectedItem="{Binding Path=SelectedLowerThirdTextEffect}"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=DisplayText}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                IsChecked="{Binding Path=ApplyLowerThirdVisibilityDuration}"
+                            >Nach</CheckBox>
+                            <TextBox
+                                Grid.Column="2"
+                                Text="{Binding Path=LowerThirdVisibilityDurationString, UpdateSourceTrigger=PropertyChanged}"
+                                Background="{Binding Path=LowerThirdVisibilityDurationIsValid, Converter={StaticResource ResourceKey=ErrorConverter}}"
+                            />
+                            <TextBlock
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                            >Sekunden wieder ausblenden</TextBlock>
+                        </Grid>
+                        <Button
+                            Margin="0,3,0,0"
+                            Padding="10"
+                            Click="ToggleLowerThirdVisibility"
+                            IsEnabled="{Binding Path=ToggleLowerThirdVisibilityButtonEnabled}"
+                            Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"
+                        />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Eingabe">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="26"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="22,0,10,0" VerticalAlignment="Center">Anzahl an Eingabefeldern:</TextBlock>
+                        <toolkit:IntegerUpDown Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Minimum="1" Maximum="42" Value="5"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="22,0,10,0" VerticalAlignment="Center">Trennzeichen:</TextBlock>
+                        <TextBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="40" HorizontalContentAlignment="Center" MaxLength="1">#</TextBox>
+                        <ItemsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" ItemsSource="{Binding Path=Test_LowerThirdTexts}" HorizontalContentAlignment="Stretch">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton Grid.Column="0" VerticalAlignment="Center" Margin="3,0"/>
+                                        <TextBox Grid.Column="1" Margin="0,0,0,2" Text="{Binding Mode=OneWay}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
         </GroupBox>
     </StackPanel>
 </UserControl>

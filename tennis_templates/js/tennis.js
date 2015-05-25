@@ -63,7 +63,7 @@ function setLowerThirdTitleText(text)
     document.getElementById("title").innerHTML = text;
 }
 
-function setLowerThirdTitleSubtitleText(text)
+function setLowerThirdSubtitleText(text)
 {
     document.getElementById("subtitle").innerHTML = text;
 }
@@ -72,4 +72,5 @@ function setLowerThirdEffects(isScrolling)
 {
 
 }
+
 

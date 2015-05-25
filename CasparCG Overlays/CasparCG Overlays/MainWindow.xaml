@@ -9,8 +9,8 @@
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
 	Title="CasparCG OMS"
-	Width="354"
-	Height="414"
+	Width="482"
+	Height="735"
 >
     <Window.DataContext>
         <l:MainWindowViewModel/>

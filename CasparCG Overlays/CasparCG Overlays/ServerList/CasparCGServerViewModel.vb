@@ -30,7 +30,7 @@ Namespace ServerList
         End Property
 
         Public Sub New(NewTarget As CasparCGServer)
-            MyBase.New(NewTarget)
+            MyBase.New(True, NewTarget)
         End Sub
 
     End Class

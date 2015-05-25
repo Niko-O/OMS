@@ -203,90 +203,7 @@ namespace TennisPlugin
                 ChangeIfDifferent(ref _LowerThirdIsVisible, value, "LowerThirdIsVisible");
             }
         }
-
-        private bool _LowerThirdUsePlayerName = false;
-        public bool LowerThirdUsePlayerName
-        {
-            get
-            {
-                return _LowerThirdUsePlayerName;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _LowerThirdUsePlayerName, value, "LowerThirdUsePlayerName");
-            }
-        }
-
-        private bool _LowerThirdUseCustomText = true;
-        public bool LowerThirdUseCustomText
-        {
-            get
-            {
-                return _LowerThirdUseCustomText;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _LowerThirdUseCustomText, value, "LowerThirdUseCustomText");
-            }
-        }
-
-        [Dependency("LowerThirdUseCustomText")]
-        public bool LowerThirdTextBoxVisible
-        {
-            get
-            {
-                return _LowerThirdUseCustomText;
-            }
-        }
-
-        [Dependency("LowerThirdUsePlayerName")]
-        public bool LowerThirdPlayerNamesVisible
-        {
-            get
-            {
-                return _LowerThirdUsePlayerName;
-            }
-        }
-         
-        private string _LowerThirdCustomText = "";
-        public string LowerThirdCustomText
-        {
-            get
-            {
-                return _LowerThirdCustomText;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _LowerThirdCustomText, value, "LowerThirdCustomText");
-            }
-        }
-
-        private bool _LowerThirdUsePlayer1Name = true;
-        public bool LowerThirdUsePlayer1Name
-        {
-            get
-            {
-                return _LowerThirdUsePlayer1Name;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _LowerThirdUsePlayer1Name, value, "LowerThirdUsePlayer1Name");
-            }
-        }
-         
-        private bool _LowerThirdUsePlayer2Name = false;
-        public bool LowerThirdUsePlayer2Name
-        {
-            get
-            {
-                return _LowerThirdUsePlayer2Name;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _LowerThirdUsePlayer2Name, value, "LowerThirdUsePlayer2Name");
-            }
-        }
-
+        
         private DisplayItem<LowerThirdTextEffect>[] _LowerThirdTextEffects =
         {
             DisplayItem.Create("Statischer Text", LowerThirdTextEffect.StaticText),
@@ -313,72 +230,12 @@ namespace TennisPlugin
             }
         }
 
-        private bool _ApplyLowerThirdVisibilityDuration = false;
-        public bool ApplyLowerThirdVisibilityDuration
-        {
-            get
-            {
-                return _ApplyLowerThirdVisibilityDuration;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _ApplyLowerThirdVisibilityDuration, value, "ApplyLowerThirdVisibilityDuration");
-            }
-        }
-
-        private string _LowerThirdVisibilityDurationString = "0";
-        public string LowerThirdVisibilityDurationString
-        {
-            get
-            {
-                return _LowerThirdVisibilityDurationString;
-            }
-            set
-            {
-                if (ChangeIfDifferent(ref _LowerThirdVisibilityDurationString, value))
-                {
-                    _LowerThirdVisibilityDurationIsValid = int.TryParse(_LowerThirdVisibilityDurationString, out _LowerThirdVisibilityDuration) && _LowerThirdVisibilityDuration > 0;
-                    OnPropertyChanged("LowerThirdVisibilityDurationString");
-                }
-            }
-        }
-
-        private bool _LowerThirdVisibilityDurationIsValid = false;
-        [Dependency("LowerThirdVisibilityDurationString")]
-        public bool LowerThirdVisibilityDurationIsValid
-        {
-            get
-            {
-                return _LowerThirdVisibilityDurationIsValid;
-            }
-        }
-
-        private int _LowerThirdVisibilityDuration = -1;
-        [Dependency("LowerThirdVisibilityDurationString")]
-        public int LowerThirdVisibilityDuration
-        {
-            get
-            {
-                return _LowerThirdVisibilityDuration;
-            }
-        }
-
-        [Dependency("ApplyLowerThirdVisibilityDuration", "LowerThirdVisibilityDurationIsValid",
-                    "LowerThirdUseCustomText", "LowerThirdCustomText",
-                    "LowerThirdUsePlayerName", "LowerThirdUsePlayer1Name", "LowerThirdUsePlayer2Name")]
+        [Dependency("SelectedLowerThirdTextEffect")]
         public bool LowerThirdSettingsAreValid
         {
             get
             {
-                if (_ApplyLowerThirdVisibilityDuration && !_LowerThirdVisibilityDurationIsValid) return false;
-                if (_LowerThirdUseCustomText)
-                {
-                    if (string.IsNullOrEmpty(_LowerThirdCustomText)) return false;
-                }
-                else
-                {
-                    if (!(_LowerThirdUsePlayer1Name ^ _LowerThirdUsePlayer2Name)) return false;
-                }
+                if (_SelectedLowerThirdTextEffect == null) return false;
                 return true;
             }
         }
@@ -388,15 +245,16 @@ namespace TennisPlugin
         {
             get
             {
-                return _LowerThirdIsVisible || LowerThirdSettingsAreValid;
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && (_LowerThirdIsVisible || LowerThirdSettingsAreValid);
             }
         }
 
+        [Dependency("LowerThirdIsVisible")]
         public string ToggleLowerThirdVisibilityButtonText
         {
             get
             {
-                return LowerThirdIsVisible ? "Ausblenden" : "Einblenden";
+                return _LowerThirdIsVisible ? "Ausblenden" : "Einblenden";
             }
         }
 
@@ -408,8 +266,39 @@ namespace TennisPlugin
             _SelectedLowerThirdTextEffect = _LowerThirdTextEffects[0];
             AvailableTennisTemplates = new[] { new DefaultTennisTemplate() };
             SelectedTennisTemplate = AvailableTennisTemplates.First();
-            PluginInterfaces.PublicProviders.CasparServer.PropertyChanged += (sender, e) => { OnPropertyChanged("CanLoadTemplate"); };
+            PluginInterfaces.PublicProviders.CasparServer.PropertyChanged += (sender, e) => {
+                if (e.PropertyName == "IsConnected")
+                {
+                    OnPropertyChanged("CanLoadTemplate", "ToggleLowerThirdVisibilityButtonEnabled");
+                }
+            };
         }
+
+        #region Test
+
+        private string[] _Test_LowerThirdTexts = { "Hallo", "Wegen Regenwetters verschoben", "Lol", "Heute gibt es am Buffet Kuchen", "KUCHEN" };
+        public string[] Test_LowerThirdTexts
+        {
+            get
+            {
+                return _Test_LowerThirdTexts;
+            }
+        }
+
+        private string _Test_SelectedLowerThirdText = "Wegen Regenwetters verschoben";
+        public string Test_SelectedLowerThirdText
+        {
+            get
+            {
+                return _Test_SelectedLowerThirdText;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _Test_SelectedLowerThirdText, value, "Test_SelectedLowerThirdText");
+            }
+        }
+
+        #endregion
 
     }
 }
