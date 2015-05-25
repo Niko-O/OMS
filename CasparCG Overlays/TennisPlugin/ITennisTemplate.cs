@@ -21,8 +21,8 @@ namespace TennisPlugin
 
         void ShowLowerThird();
         void HideLowerThird();
-        void SetLowerThirdText(string Text);
-        void SetLowerThirdVisibilityDuration(int Milliseconds);
+        void SetLowerThirdTitleText(string Text);
+        void SetLowerThirdSubtitleText(string Text);
         void SetLowerThirdEffects(bool IsScrolling);
     }
 }

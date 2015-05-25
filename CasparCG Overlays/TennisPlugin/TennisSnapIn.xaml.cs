@@ -138,16 +138,9 @@ namespace TennisPlugin
 
         private void UpdateLowerThirdParameters()
         {
-            if (ViewModel.LowerThirdUseCustomText)
-            {
-                ViewModel.SelectedTennisTemplate.SetLowerThirdText(ViewModel.LowerThirdCustomText);
-            }
-            else
-            {
-                ViewModel.SelectedTennisTemplate.SetLowerThirdText(ViewModel.LowerThirdUsePlayer1Name ? ViewModel.TeamNameOne : ViewModel.TeamNameTwo);
-            }
+            //ViewModel.SelectedTennisTemplate.SetLowerThirdTitleText(...);
+            //ViewModel.SelectedTennisTemplate.SetLowerThirdSubtitleText(...);
             ViewModel.SelectedTennisTemplate.SetLowerThirdEffects(ViewModel.SelectedLowerThirdTextEffect.Value == LowerThirdTextEffect.ScrollRightToLeft);
-            ViewModel.SelectedTennisTemplate.SetLowerThirdVisibilityDuration(ViewModel.ApplyLowerThirdVisibilityDuration && ViewModel.LowerThirdVisibilityDurationIsValid ? ViewModel.LowerThirdVisibilityDuration * 1000 : 0);
         }
 
     }
