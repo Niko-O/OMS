@@ -1,4 +1,4 @@
-﻿Class MainWindow 
+﻿Class MainWindow
 
     Dim ViewModel As MainWindowViewModel
 
@@ -13,6 +13,7 @@
             End If
         Next
         ViewModel.Plugins = PluginManagement.PluginContainer.Instance.Plugins
+        AddHandler Me.SizeChanged, AddressOf OnSizeChanged
     End Sub
 
     Protected Overrides Sub OnClosing(e As System.ComponentModel.CancelEventArgs)
@@ -20,6 +21,11 @@
         e.Cancel = (MessageBox.Show("Sicher, dass Sie OMS schließen wollen?", "Schließen?", MessageBoxButton.YesNo) = MessageBoxResult.No)
 #End If
         MyBase.OnClosing(e)
+    End Sub
+
+    Protected Overrides Sub OnContentRendered(e As System.EventArgs)
+        MyBase.OnContentRendered(e)
+        LoadWindowSizeFromSettings()
     End Sub
 
     Private Sub ToggleCasparServerConnection(sender As System.Object, e As System.Windows.RoutedEventArgs)
@@ -40,6 +46,21 @@
         Dim Temp As New ServerList.CasparCGServer("Name", "Adresse")
         ServerList.CasparCGServerCollection.Instance.Add(Temp)
         ViewModel.CasparCGServers.FindViewModel(Temp).IsInEditMode = True
+    End Sub
+
+    Private Sub OnSizeChanged(sender As Object, e As SizeChangedEventArgs)
+        ViewModel.WindowWidth = e.NewSize.Width
+        ViewModel.WindowHeight = e.NewSize.Height
+    End Sub
+
+    Private Sub SaveWindowSizeToSettings(sender As System.Object, e As System.Windows.RoutedEventArgs)
+        Settings.MainWindow.SavedSize.Width = Me.Width
+        Settings.MainWindow.SavedSize.Height = Me.Height
+    End Sub
+
+    Private Sub LoadWindowSizeFromSettings(Optional sender As System.Object = Nothing, Optional e As System.Windows.RoutedEventArgs = Nothing)
+        Me.Width = Settings.MainWindow.SavedSize.Width
+        Me.Height = Settings.MainWindow.SavedSize.Height
     End Sub
 
 End Class
