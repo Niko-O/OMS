@@ -1,3 +1,6 @@
+
+//region ScoreBoard
+
 function showScoreboard()
 {
     document.getElementById("scoreboard").style.visibility = "visible";
@@ -48,6 +51,10 @@ function setSetsTwo(sets)
     document.getElementById("sets_two").innerHTML = sets;
 }
 
+//endregion
+
+//region LowerThird
+
 function showLowerThird()
 {
     document.getElementById("lower_third").style.visibility = "visible";
@@ -68,9 +75,39 @@ function setLowerThirdSubtitleText(text)
     document.getElementById("subtitle").innerHTML = text;
 }
 
-function setLowerThirdEffects(isScrolling)
+//endregion
+
+//region CrawlerTop
+
+function showCrawlerTop(){
+    document.getElementById("crawler_top").style.visibility = "visible";
+}
+
+function hideCrawlerTop(){
+    document.getElementById("crawler_top").style.visibility = "hidden";
+}
+
+function setCrawlerTopText(text)
 {
+    document.getElementById("crawler_top").innerHTML = text;
 
 }
 
+//endregion
 
+//region CrawlerDown
+
+function showCrawlerDown(){
+    document.getElementById("crawler_down").style.visibility = "visible";
+}
+
+function hideCrawlerDown(){
+    document.getElementById("crawler_down").style.visibility = "hidden";
+}
+
+function setCrawlerDownText(text)
+{
+    document.getElementById("crawler_down").innerHTML = text;
+}
+
+//endregion

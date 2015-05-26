@@ -5,6 +5,7 @@ using System.Text;
 using OnUtils;
 using OnUtils.Extensions;
 using OnUtils.Wpf;
+using System.Collections.ObjectModel;
 
 namespace TennisPlugin
 {
@@ -258,6 +259,127 @@ namespace TennisPlugin
             }
         }
 
+        private bool _ApplyLowerThirdVisibilityDuration = false;
+        public bool ApplyLowerThirdVisibilityDuration
+        {
+            get
+            {
+                return _ApplyLowerThirdVisibilityDuration;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _ApplyLowerThirdVisibilityDuration, value, "ApplyLowerThirdVisibilityDuration");
+            }
+        }
+
+        private string _LowerThirdVisibilityDurationString = "0";
+        public string LowerThirdVisibilityDurationString
+        {
+            get
+            {
+                return _LowerThirdVisibilityDurationString;
+            }
+            set
+            {
+                if (ChangeIfDifferent(ref _LowerThirdVisibilityDurationString, value))
+                {
+                    _LowerThirdVisibilityDurationIsValid = int.TryParse(_LowerThirdVisibilityDurationString, out _LowerThirdVisibilityDuration) && _LowerThirdVisibilityDuration > 0;
+                    OnPropertyChanged("LowerThirdVisibilityDurationString");
+                }
+            }
+        }
+
+        private bool _LowerThirdVisibilityDurationIsValid = false;
+        [Dependency("LowerThirdVisibilityDurationString")]
+        public bool LowerThirdVisibilityDurationIsValid
+        {
+            get
+            {
+                return _LowerThirdVisibilityDurationIsValid;
+            }
+        }
+
+        private int _LowerThirdVisibilityDuration = -1;
+        [Dependency("LowerThirdVisibilityDurationString")]
+        public int LowerThirdVisibilityDuration
+        {
+            get
+            {
+                return _LowerThirdVisibilityDuration;
+            }
+        }
+
+        private int _LowerThirdTextInputCount = 0;
+        public int LowerThirdTextInputCount
+        {
+            get
+            {
+                return _LowerThirdTextInputCount;
+            }
+            set
+            {
+                if (ChangeIfDifferent(ref _LowerThirdTextInputCount, value))
+                {
+                    while (_LowerThirdTextInputs.Count < _LowerThirdTextInputCount)
+                    {
+                        var Temp = new LowerThirdTextInput();
+                        Temp.IsSelected = _LowerThirdTextInputs.Count == 0;
+                        Temp.Selected += new EventHandler(TextInputSelected);
+                        _LowerThirdTextInputs.Add(Temp);
+                    }
+                    while (_LowerThirdTextInputs.Count > _LowerThirdTextInputCount)
+                    {
+                        _LowerThirdTextInputs[_LowerThirdTextInputs.Count - 1].Selected -= new EventHandler(TextInputSelected);
+                        _LowerThirdTextInputs.RemoveAt(_LowerThirdTextInputs.Count - 1);
+                    }
+                    OnPropertyChanged("TextInputCount");
+                }
+            }
+        }
+        
+        private ObservableCollection<LowerThirdTextInput> _LowerThirdTextInputs = new ObservableCollection<LowerThirdTextInput>();
+        public ObservableCollection<LowerThirdTextInput> LowerThirdTextInputs
+        {
+            get
+            {
+                return _LowerThirdTextInputs;
+            }
+        }
+
+        private char _LowerThirdTextSeparatorChar = '#';
+        public char LowerThirdTextSeparatorChar
+        {
+            get
+            {
+                return _LowerThirdTextSeparatorChar;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _LowerThirdTextSeparatorChar, value, "LowerThirdTextSeparatorChar");
+            }
+        }
+        
+        private bool _LowerThirdTextInputIsLocked = false;
+        public bool LowerThirdTextInputIsLocked
+        {
+            get
+            {
+                return _LowerThirdTextInputIsLocked;
+            }
+            set
+            {
+                if (ChangeIfDifferent(ref _LowerThirdTextInputIsLocked, value))
+                {
+                    foreach (var i in _LowerThirdTextInputs)
+                    {
+                        i.RadioButtonIsEnabled = !_LowerThirdTextInputIsLocked;
+                        i.TextBoxIsEnabled = !i.IsSelected || !_LowerThirdTextInputIsLocked;
+                    }
+                    OnPropertyChanged("LowerThirdTextInputIsLocked");
+                }
+            }
+        }
+        
         #endregion
 
         public TennisSnapInViewModel()
@@ -266,6 +388,7 @@ namespace TennisPlugin
             _SelectedLowerThirdTextEffect = _LowerThirdTextEffects[0];
             AvailableTennisTemplates = new[] { new DefaultTennisTemplate() };
             SelectedTennisTemplate = AvailableTennisTemplates.First();
+            LowerThirdTextInputCount = 5;
             PluginInterfaces.PublicProviders.CasparServer.PropertyChanged += (sender, e) => {
                 if (e.PropertyName == "IsConnected")
                 {
@@ -274,31 +397,16 @@ namespace TennisPlugin
             };
         }
 
-        #region Test
-
-        private string[] _Test_LowerThirdTexts = { "Hallo", "Wegen Regenwetters verschoben", "Lol", "Heute gibt es am Buffet Kuchen", "KUCHEN" };
-        public string[] Test_LowerThirdTexts
+        private void TextInputSelected(object sender, EventArgs e)
         {
-            get
+            foreach (var i in _LowerThirdTextInputs)
             {
-                return _Test_LowerThirdTexts;
+                if (i != sender)
+                {
+                    ((LowerThirdTextInput)i).IsSelected = false;
+                }
             }
         }
-
-        private string _Test_SelectedLowerThirdText = "Wegen Regenwetters verschoben";
-        public string Test_SelectedLowerThirdText
-        {
-            get
-            {
-                return _Test_SelectedLowerThirdText;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _Test_SelectedLowerThirdText, value, "Test_SelectedLowerThirdText");
-            }
-        }
-
-        #endregion
 
     }
 }

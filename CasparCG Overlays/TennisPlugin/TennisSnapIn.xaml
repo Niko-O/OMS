@@ -17,12 +17,19 @@
     </UserControl.DataContext>
     <UserControl.Resources>
         <c:BooleanToStringConverter x:Key="ToggleScoreboardVisibilityButtonTextConverter" TrueString="Ausblenden" FalseString="Anzeigen"/>
-        <c:BooleanNotConverter x:Key="NotConverter"/>
+        <c:BooleanNotConverter x:Key="BooleanNotconverter"/>
         <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
         <c:BooleanToBrushConverter x:Key="ErrorConverter" TrueBrush="White" FalseBrush="#40FF0000"/>
+        <l:StringToCharConverter x:Key="StringToCharConverter"/>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <GroupBox Header="Template" Padding="3">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Template" Padding="3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -39,7 +46,7 @@
                 <CheckBox Grid.Column="2" VerticalAlignment="Center" IsEnabled="{Binding Path=CanLoadTemplate}" Checked="LoadAndLockSelectedTemplate" Unchecked="UnlockSelectedTemplate">Ausgewählt</CheckBox>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Einstellungen" Padding="3">
+        <GroupBox Grid.Row="1" Header="Einstellungen" Padding="3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -50,10 +57,10 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Column="0" Grid.Row="0" Header="Spieler 1">
-                    <TextBox Text="{Binding Path=TeamNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=NotConverter}}"/>
+                    <TextBox Text="{Binding Path=TeamNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                 </GroupBox>
                 <GroupBox Grid.Column="0" Grid.Row="1" Header="Spieler 2">
-                    <TextBox Text="{Binding Path=TeamNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=NotConverter}}"/>
+                    <TextBox Text="{Binding Path=TeamNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                 </GroupBox>
                 <Button
                     Grid.Column="1"
@@ -66,7 +73,7 @@
                 />
             </Grid>
         </GroupBox>
-        <GroupBox Header="Punktestand" Padding="3">
+        <GroupBox Grid.Row="2" Header="Punktestand" Padding="3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -152,9 +159,13 @@
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Bauchbinde" Padding="3">
-            <StackPanel>
-                <GroupBox Header="Steuerung">
+        <GroupBox Grid.Row="3" Header="Bauchbinde" Padding="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Header="Steuerung">
                     <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -210,9 +221,10 @@
                             IsEnabled="{Binding Path=ToggleLowerThirdVisibilityButtonEnabled}"
                             Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"
                         />
+                        <CheckBox IsChecked="{Binding Path=LowerThirdTextInputIsLocked}">Test</CheckBox>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="Eingabe">
+                <GroupBox Grid.Row="1" Header="Eingabe">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="26"/>
@@ -227,10 +239,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Margin="22,0,10,0" VerticalAlignment="Center">Anzahl an Eingabefeldern:</TextBlock>
-                        <toolkit:IntegerUpDown Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Minimum="1" Maximum="42" Value="5"/>
+                        <toolkit:IntegerUpDown Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Minimum="1" Maximum="42" Value="{Binding Path=LowerThirdTextInputCount}" IsEnabled="{Binding Path=LowerThirdTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                         <TextBlock Grid.Row="0" Grid.Column="2" Margin="22,0,10,0" VerticalAlignment="Center">Trennzeichen:</TextBlock>
-                        <TextBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="40" HorizontalContentAlignment="Center" MaxLength="1">#</TextBox>
-                        <ItemsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" ItemsSource="{Binding Path=Test_LowerThirdTexts}" HorizontalContentAlignment="Stretch">
+                        <TextBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="40" HorizontalContentAlignment="Center" MaxLength="1" Text="{Binding Path=LowerThirdTextSeparatorChar, Converter={StaticResource ResourceKey=StringToCharConverter}, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=LowerThirdTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                        <ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="0" Background="Transparent" ItemsSource="{Binding Path=LowerThirdTextInputs}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" ScrollViewer.IsDeferredScrollingEnabled="False">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -238,15 +250,15 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <RadioButton Grid.Column="0" VerticalAlignment="Center" Margin="3,0"/>
-                                        <TextBox Grid.Column="1" Margin="0,0,0,2" Text="{Binding Mode=OneWay}"/>
+                                        <RadioButton Grid.Column="0" VerticalAlignment="Center" Margin="3,0" IsChecked="{Binding Path=IsSelected}" IsEnabled="{Binding Path=RadioButtonIsEnabled}"/>
+                                        <TextBox Grid.Column="1" Margin="0,0,0,2" Text="{Binding Path=Text}" IsEnabled="{Binding Path=TextBoxIsEnabled}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        </ListBox>
                     </Grid>
                 </GroupBox>
-            </StackPanel>
+            </Grid>
         </GroupBox>
-    </StackPanel>
+    </Grid>
 </UserControl>
