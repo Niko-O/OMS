@@ -6,6 +6,26 @@
         RaiseEvent RemoveServer(Me, New ServerList.RemoveServerEventArgs(Server))
     End Sub
 
+    Dim _WindowWidth As Double = 1
+    Public Property WindowWidth As Double
+        Get
+            Return _WindowWidth
+        End Get
+        Set(value As Double)
+            ChangeIfDifferent(_WindowWidth, value, "WindowWidth")
+        End Set
+    End Property
+
+    Dim _WindowHeight As Double = 2
+    Public Property WindowHeight As Double
+        Get
+            Return _WindowHeight
+        End Get
+        Set(value As Double)
+            ChangeIfDifferent(_WindowHeight, value, "WindowHeight")
+        End Set
+    End Property
+
     Dim _SelectedServerIp As String = ""
     Public Property SelectedServerIp As String
         Get

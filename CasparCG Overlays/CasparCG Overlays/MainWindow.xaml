@@ -9,8 +9,8 @@
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
 	Title="CasparCG OMS"
-	Width="482"
-	Height="735"
+	Width="400"
+	Height="500"
 >
     <Window.DataContext>
         <l:MainWindowViewModel/>
@@ -143,6 +143,48 @@
                             <CheckBox Grid.Row="0" IsChecked="{Binding Source={x:Static Member=s:Settings.Updates}, Path=EnableAutoUpdates}">Automatisch nach Updates suchen</CheckBox>
                             <Button Grid.Row="1" HorizontalAlignment="Left" Margin="0,3" Padding="5" Command="{StaticResource ResourceKey=CheckForUpdatesCommand}">Jetzt nach Updates suchen</Button>
                         </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Fenstergröße" Padding="3">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0">Gespeicherte Größe:</TextBlock>
+                                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                                    <TextBlock Margin="15,0,3,0">Breite:</TextBlock>
+                                    <TextBlock Text="{Binding Source={x:Static Member=s:Settings.MainWindow}, Path=SavedSize.Width}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                                    <TextBlock Margin="15,0,3,0">Höhe:</TextBlock>
+                                    <TextBlock Text="{Binding Source={x:Static Member=s:Settings.MainWindow}, Path=SavedSize.Height}"/>
+                                </StackPanel>
+                                <TextBlock Grid.Row="0" Grid.Column="2">Aktuelle Größe:</TextBlock>
+                                <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+                                    <TextBlock Margin="15,0,3,0">Breite:</TextBlock>
+                                    <TextBlock Text="{Binding Path=WindowWidth}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                                    <TextBlock Margin="15,0,3,0">Höhe:</TextBlock>
+                                    <TextBlock Text="{Binding Path=WindowHeight}"/>
+                                </StackPanel>
+                                <Button Grid.Row="3" Grid.Column="0" Margin="0,5,0,0" Padding="5" Click="SaveWindowSizeToSettings">
+                                    Speichern
+                                </Button>
+                                <Button Grid.Row="3" Grid.Column="2" Margin="0,5,0,0" Padding="5" Click="LoadWindowSizeFromSettings">
+                                    Aktualisieren
+                                </Button>
+                            </Grid>
+                            <Image Visibility="Collapsed" Height="100" Source="http://baellchen.hol.es/Baellchen.png"/>
+                        </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Zusätzliche Informationen" Padding="3">
                         <StackPanel>

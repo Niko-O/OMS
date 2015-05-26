@@ -14,6 +14,12 @@
                                                            "..", "..", "..", "SettingsManager.dll")), _
             True, True, _
             <CasparCG_Overlays>
+                <MainWindow>
+                    <SavedSize>
+                        <Width TypeCode="Double" DefaultValue="400.0"/>
+                        <Height TypeCode="Double" DefaultValue="500.0"/>
+                    </SavedSize>
+                </MainWindow>
                 <CasparCG>
                     <ServerList TypeCode="String"/>
                 </CasparCG>
