@@ -19,8 +19,9 @@ Public Class NullCasparServer
     Public Sub Disconnect() Implements ICasparServer.Disconnect
     End Sub
 
-    Public Sub ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) Implements ICasparServer.ExecuteCommand
-    End Sub
+    Public Function ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) As CasparServerCommands.ICommandResponse Implements ICasparServer.ExecuteCommand
+        Return Nothing
+    End Function
 
     Public Sub LoadTemplate(Template As ITemplate) Implements ICasparServer.LoadTemplate
     End Sub

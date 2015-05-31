@@ -32,4 +32,5 @@
         Parts.Add(_ChannelId.ToString & If(_Layer.HasValue, "-" & _Layer.Value.ToString, ""))
         Return String.Join(" ", Parts)
     End Function
+
 End Class

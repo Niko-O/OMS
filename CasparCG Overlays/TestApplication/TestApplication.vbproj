@@ -53,14 +53,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OnUtilsLib\OnUtils.dll</HintPath>
     </Reference>
-    <Reference Include="Svt.Caspar, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CasparCGLibraries\Svt.Caspar.dll</HintPath>
-    </Reference>
-    <Reference Include="Svt.Network, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CasparCGLibraries\Svt.Network.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />

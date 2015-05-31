@@ -1,6 +1,9 @@
 ﻿
-Imports C = Svt.Caspar
+Imports C = CasparCGNETConnector
 
+''' <summary>
+''' Verwaltet die Kommunikation mit dem CasparCG-Server.
+''' </summary>
 Public Class CasparServer
     Inherits NotifyPropertyChanged
     Implements PluginInterfaces.ICasparServer
@@ -15,43 +18,62 @@ Public Class CasparServer
         End Get
     End Property
 
+    ''' <summary>
+    ''' Gibt an, ob die Verbindung hergestellt ist.
+    ''' </summary>
     Public ReadOnly Property IsConnected As Boolean Implements PluginInterfaces.ICasparServer.IsConnected
         Get
-            Return Device.IsConnected
+            Return Device.isConnected
         End Get
     End Property
 
+    Dim _IpAddress As String
+    ''' <summary>
+    ''' Gibt die IP-Adresse des CasparCG-Servers an.
+    ''' Kann nicht geändert werden, wenn bereits eine Verbindung besteht.
+    ''' </summary>
     Public Property IpAddress As String
         Get
-            Return Device.Settings.Hostname
+            Return _IpAddress
         End Get
         Set(value As String)
-            If ChangeIfDifferent(Device.Settings.Hostname, value) Then
+            If Device.isConnected Then
+                Throw New InvalidOperationException("Die IP-Adresse kann nicht geändert werden, wenn bereits eine Verbindung besteht.")
+            End If
+            If ChangeIfDifferent(_IpAddress, value) Then
                 OnPropertyChanged("IpAddress")
             End If
         End Set
     End Property
 
+    Dim _Port As Integer
+    ''' <summary>
+    ''' Gibt den Port zum CasparCG-Server an.
+    ''' Kann nicht geändert werden, wenn bereits eine Verbindung besteht.
+    ''' </summary>
     Public Property Port As Integer
         Get
-            Return Device.Settings.Port
+            Return _Port
         End Get
         Set(value As Integer)
-            If ChangeIfDifferent(Device.Settings.Port, value) Then
+            If Device.isConnected Then
+                Throw New InvalidOperationException("Die IP-Adresse kann nicht geändert werden, wenn bereits eine Verbindung besteht.")
+            End If
+            If ChangeIfDifferent(_Port, value) Then
                 OnPropertyChanged("Port")
             End If
         End Set
     End Property
 
-    Dim WithEvents Device As C.CasparDevice
+    Dim WithEvents Device As C.CasparCGConnection
 
     Private Sub New()
-        Device = New C.CasparDevice
+        Device = New C.CasparCGConnection
     End Sub
 
-    Public Sub ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) Implements PluginInterfaces.ICasparServer.ExecuteCommand
-        Device.SendString(Command.GetCommandString)
-    End Sub
+    Public Function ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) As CasparServerCommands.ICommandResponse Implements PluginInterfaces.ICasparServer.ExecuteCommand
+        Return New SpecificImplementationOfICommandResponse(Device.sendCommand(Command.GetCommandString))
+    End Function
 
     Public Sub LoadTemplate(Template As PluginInterfaces.ITemplate) Implements PluginInterfaces.ICasparServer.LoadTemplate
         If Not IsConnected Then
@@ -68,15 +90,51 @@ Public Class CasparServer
     End Sub
 
     Public Sub Connect() Implements PluginInterfaces.ICasparServer.Connect
-        Device.Connect()
+        Device.connect(_IpAddress, _Port)
     End Sub
 
     Public Sub Disconnect() Implements PluginInterfaces.ICasparServer.Disconnect
-        Device.Disconnect()
+        Device.close()
     End Sub
 
-    Private Sub Device_ConnectionStatusChanged(sender As Object, e As Svt.Network.ConnectionEventArgs) Handles Device.ConnectionStatusChanged
+    Private Sub Device_connected(ByRef sender As Object) Handles Device.connected
         OnPropertyChanged("IsConnected")
     End Sub
+
+    Private Sub Device_disconnected(ByRef sender As Object) Handles Device.disconnected
+        OnPropertyChanged("IsConnected")
+    End Sub
+
+    ''' <summary>
+    ''' Veröffentlicht die vom Server zurückgesendeten Daten, die von einem <see cref="C.CasparCGResponse"/>-Objekt gekapselt werden.
+    ''' </summary>
+    Private Class SpecificImplementationOfICommandResponse
+        Implements CasparServerCommands.ICommandResponse
+
+        Dim Source As C.CasparCGResponse
+
+        Public Sub New(NewSource As C.CasparCGResponse)
+            Source = NewSource
+        End Sub
+
+        Public ReadOnly Property RawText As String Implements CasparServerCommands.ICommandResponse.RawText
+            Get
+                Return Source.getServerMessage
+            End Get
+        End Property
+
+        Public ReadOnly Property ReturnCode As Integer Implements CasparServerCommands.ICommandResponse.StatusCode
+            Get
+                Return Source.getCode
+            End Get
+        End Property
+
+        Public ReadOnly Property ReturnedText As String Implements CasparServerCommands.ICommandResponse.ReturnedText
+            Get
+                Return Source.getData
+            End Get
+        End Property
+
+    End Class
 
 End Class

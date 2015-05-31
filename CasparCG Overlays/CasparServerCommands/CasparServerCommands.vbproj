@@ -54,7 +54,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -66,6 +65,7 @@
   <ItemGroup>
     <Compile Include="CallCommand.vb" />
     <Compile Include="ICasparServerCommand.vb" />
+    <Compile Include="ICommandResponse.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="PlayCommand.vb" />
     <Compile Include="StopCommand.vb" />
+    <Compile Include="TlsCommand.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -5,7 +5,7 @@
 
     Sub LoadTemplate(Template As ITemplate)
     Sub UnloadTemplate(Template As ITemplate)
-    Sub ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand)
+    Function ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) As CasparServerCommands.ICommandResponse
     Sub Connect()
     Sub Disconnect()
 

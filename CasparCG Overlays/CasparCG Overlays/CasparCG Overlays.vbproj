@@ -70,18 +70,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ApplicationSettingsLib\ApplicationSettings.dll</HintPath>
     </Reference>
+    <Reference Include="CasparCGNETConnector, Version=0.1.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CasparCGLibraries\CasparCGNETConnector.dll</HintPath>
+    </Reference>
     <Reference Include="OnUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OnUtilsLib\OnUtils.dll</HintPath>
     </Reference>
     <Reference Include="SettingsManager">
       <HintPath>..\SettingsManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Svt.Caspar">
-      <HintPath>..\CasparCGLibraries\Svt.Caspar.dll</HintPath>
-    </Reference>
-    <Reference Include="Svt.Network">
-      <HintPath>..\CasparCGLibraries\Svt.Network.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
