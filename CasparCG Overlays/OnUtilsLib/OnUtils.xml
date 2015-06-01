@@ -6,33 +6,7 @@ OnUtils
 </name>
 </assembly>
 <members>
-<member name="F:OnUtils.Wpf.Converters.BooleanOperator.And">
-	<summary>
- Wendet ein logisches Und an.
- </summary>
-</member><member name="F:OnUtils.Wpf.Converters.BooleanOperator.Or">
-	<summary>
- Wendet ein logisches Oder an.
- </summary>
-</member><member name="T:OnUtils.Wpf.Converters.BooleanOperator">
-	<summary>
- Gibt einen logischen Operator für <see cref="T:OnUtils.Wpf.Converters.BooleanOperatorConverter"/> an.
- </summary>
-</member><member name="P:OnUtils.Wpf.Converters.BooleanOperatorConverter.Operator">
-	<summary>
- Gibt den Operator an, mit dem die Boolean-Werte verknüpft werden.
- </summary>
-</member><member name="T:OnUtils.Wpf.Converters.BooleanOperatorConverter">
-	<summary>
- Verknüpft mehrere Boolean-Werte mit dem angegebenen Operator.
- Werte, die nicht zu Boolean gecastet werden können, werden ignoriert.
- </summary>
-</member><member name="T:OnUtils.Wpf.Converters.MultiConverter">
-	<summary>
- Führt alle enthaltenen Konvertierungen der Reihe nach durch.
- Zurückkonvertieren ist ebenfalls möglich.
- </summary>
-</member><member name="P:OnUtils.Results.IResult.Success">
+<member name="P:OnUtils.Results.IResult.Success">
 	<summary>
  True, wenn der Vorgang erfolgreich war, andernfalls False.
  </summary>
@@ -1113,6 +1087,13 @@ OnUtils
 	<summary>
  Wenn <paramref name="NewEnableRecursiveOnPropertyChanged"/> True ist, werden Abhängigkeiten von Properties aufgelöst (siehe <see cref="T:OnUtils.Wpf.DependencyAttribute"/>).
  </summary>
+</member><member name="M:OnUtils.Wpf.ViewModelBase.AddExternalPropertyDependency(System.String,System.ComponentModel.INotifyPropertyChanged,System.String[])">
+	<summary>
+ Fügt eine Abhängigkeit von einer Property dieses ViewModels (<paramref name="ViewModelPropertyName"/>) zu Properties (<paramref name="DependsOn"/>) in einem anderen Objekt (<paramref name="Source"/>) hinzu.
+ </summary>
+	<param name="Source">Das Objekt, das die Eigenschaft enthält, von der die <paramref name="ViewModelPropertyName"/>-Property abhängt.</param>
+	<param name="ViewModelPropertyName">Der Name der Property in diesem ViewModel.</param>
+	<param name="DependsOn">Die Namen der Properties, von denen <paramref name="ViewModelPropertyName"/> abhängt.</param>
 </member><member name="M:OnUtils.Wpf.ViewModelBase.OnPropertyChanged(System.String)">
 	<summary>
  Wenn <see cref="P:OnUtils.Wpf.ViewModelBase.EnableRecursiveOnPropertyChanged"/> True ist, wird für jede abhängige Property ebenfalls das PropertyChanged-Event ausgelöst.
@@ -1376,6 +1357,15 @@ OnUtils
  Stellt Member bereit, die von <see cref="T:OnUtils.Streams.DataBuffer`1"/> verwendet werden, um Daten zu puffern.
  </summary>
 	<typeparam name="T">Der Typ der Daten, die gepuffert werden.</typeparam>
+</member><member name="P:OnUtils.Wpf.Converters.BooleanOperatorConverter.Operator">
+	<summary>
+ Gibt den Operator an, mit dem die Boolean-Werte verknüpft werden.
+ </summary>
+</member><member name="T:OnUtils.Wpf.Converters.BooleanOperatorConverter">
+	<summary>
+ Verknüpft mehrere Boolean-Werte mit dem angegebenen Operator.
+ Werte, die nicht zu Boolean gecastet werden können, werden ignoriert.
+ </summary>
 </member><member name="P:OnUtils.Wpf.Converters.BooleanToStringConverter.TrueString">
 	<summary>
  Der String, der verwendet wird, wenn der Boolean True ist.
@@ -1615,6 +1605,18 @@ OnUtils
 	<summary>
  Speichert einen Satz von vier Gleitkommazahlen einfacher Genauigkeit, die die Position und Größe eines Rechtecks angeben.
  </summary>
+</member><member name="F:OnUtils.Wpf.Converters.BooleanOperator.And">
+	<summary>
+ Wendet ein logisches Und an.
+ </summary>
+</member><member name="F:OnUtils.Wpf.Converters.BooleanOperator.Or">
+	<summary>
+ Wendet ein logisches Oder an.
+ </summary>
+</member><member name="T:OnUtils.Wpf.Converters.BooleanOperator">
+	<summary>
+ Gibt einen logischen Operator für <see cref="T:OnUtils.Wpf.Converters.BooleanOperatorConverter"/> an.
+ </summary>
 </member><member name="E:OnUtils.Wpf.DelegateCommand.CanExecuteChanged">
 	<summary>
  Siehe <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/>.
@@ -1747,7 +1749,7 @@ OnUtils
 	<param name="NewSourceCollection"><see cref="P:OnUtils.Wpf.ObservableCollectionSource`1.SourceCollection"/></param>
 </member><member name="T:OnUtils.Wpf.ObservableCollectionSource`1">
 	<summary>
- Implementiert eine Datenquelle für <see cref="T:OnUtils.Wpf.ViewModelBase"/>, die Daten aus einer <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> verwendet.
+ Implementiert eine Datenquelle für <see cref="T:OnUtils.Wpf.ViewModelBase`1"/>, die Daten aus einer <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> verwendet.
  </summary>
 	<typeparam name="T">Der Typ der Elemente.</typeparam>
 </member><member name="M:OnUtils.WinApi.HotKeys.RegisterHotKey(System.IntPtr,System.Int32,System.Int32,System.Int32)">
@@ -1800,7 +1802,7 @@ OnUtils
  </summary>
 </member><member name="T:OnUtils.Wpf.RecursionException">
 	<summary>
- Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase"/> durch Abhängigkeiten von Properties eine Rekursion auftritt.
+ Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase`1"/> durch Abhängigkeiten von Properties eine Rekursion auftritt.
  </summary>
 </member><member name="T:OnUtils.Wpf.ToolTipButton">
 	<summary>
@@ -2219,7 +2221,7 @@ OnUtils
 	<typeparam name="T">Der Typ des Elementes.</typeparam>
 </member><member name="T:OnUtils.Wpf.InvalidDependencyException">
 	<summary>
- Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase"/> ein <see cref="T:OnUtils.Wpf.CommandDependencyAttribute"/> auf eine ungültige Property angewendet wird.
+ Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase`1"/> ein <see cref="T:OnUtils.Wpf.CommandDependencyAttribute"/> auf eine ungültige Property angewendet wird.
  </summary>
 </member><member name="P:OnUtils.Wpf.ViewModelBase`1.Target">
 	<summary>
@@ -2962,6 +2964,11 @@ OnUtils
 	<summary>
  Wrappt den Aufruf der im Konstruktor angegebenen Methode in einen Try-Catch-Block.
  Das zugrundeliegende <see cref="T:System.Threading.Thread"/>-Objekt kann über die <see cref="P:OnUtils.GuardedThread.InternalThread"/>-Property abgerufen werden.
+ </summary>
+</member><member name="T:OnUtils.Wpf.Converters.MultiConverter">
+	<summary>
+ Führt alle enthaltenen Konvertierungen der Reihe nach durch.
+ Zurückkonvertieren ist ebenfalls möglich.
  </summary>
 </member><member name="P:OnUtils.Results.Result.Success">
 	<summary>
