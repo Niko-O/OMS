@@ -10,7 +10,7 @@
     xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     mc:Ignorable="d" 
     d:DesignHeight="808"
-	d:DesignWidth="386"
+	d:DesignWidth="462"
 >
     <UserControl.DataContext>
         <l:TennisSnapInViewModel/>
@@ -79,7 +79,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Grid.Column="0" Header="Spieler 1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Grid.Column="0" Header="Spieler 1">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45"/>
@@ -95,7 +99,7 @@
                             <Button Grid.Column="1" Margin="2" Click="IncrementTeamOnePoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
-                            <Button Grid.Column="2" Margin="2" Click="DecrementTeamOnePoints">
+                            <Button Grid.Column="2" Margin="2" IsEnabled="False" Click="DecrementTeamOnePoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 M 0 1"/>
                             </Button>
                         </Grid>
@@ -112,13 +116,13 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Set</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Game</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Point</TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" Text="{Binding Path=TeamOneSets}"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Text="{Binding Path=TeamOneGames}"/>
-                            <TextBox Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center" Text="{Binding Path=TeamOnePoints}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Path=TeamOneSets}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=TeamOneGames}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=TeamOnePoints}"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
-                <GroupBox Grid.Column="2" Header="Spieler 2">
+                <GroupBox Grid.Row="0" Grid.Column="2" Header="Spieler 2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45"/>
@@ -134,7 +138,7 @@
                             <Button Grid.Column="1" Margin="2" Click="IncrementTeamTwoPoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
-                            <Button Grid.Column="2" Margin="2" Click="DecrementTeamTwoPoints">
+                            <Button Grid.Column="2" Margin="2" IsEnabled="False" Click="DecrementTeamTwoPoints">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 M 0 1"/>
                             </Button>
                         </Grid>
@@ -151,21 +155,53 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Set</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Game</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Point</TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" Text="{Binding Path=TeamTwoSets}"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Text="{Binding Path=TeamTwoGames}"/>
-                            <TextBox Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center" Text="{Binding Path=TeamTwoPoints}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Path=TeamTwoSets}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=TeamTwoGames}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=TeamTwoPoints}"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" Margin="10,0" VerticalAlignment="Center">Tie-Break</CheckBox>
+                    <Button Grid.Column="1" Margin="3" Padding="7" IsEnabled="{Binding Path=CanUndoScoring}" Click="UndoScoring">Rückgängig machen</Button>
+                </Grid>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="3" Header="Bauchbinde" Padding="3">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Row="0" Header="Steuerung">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Lower Third</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Crawler Top</TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Crawler Bottom</TextBlock>
+                        <Button Grid.Row="0" Grid.Column="3" Padding="7">Anzeigen</Button>
+                        <Button Grid.Row="2" Grid.Column="3" Padding="7">Anzeigen</Button>
+                        <Button Grid.Row="4" Grid.Column="3" Padding="7">Anzeigen</Button>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Header="Steuerung" Margin="0,40,0,0" Visibility="Collapsed">
                     <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -221,10 +257,18 @@
                             IsEnabled="{Binding Path=ToggleLowerThirdVisibilityButtonEnabled}"
                             Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"
                         />
-                        <CheckBox IsChecked="{Binding Path=LowerThirdTextInputIsLocked}">Test</CheckBox>
+                        <!--<CheckBox IsChecked="{Binding Path=LowerThirdTextInputIsLocked}">Test</CheckBox>-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Padding="5,0" Click="Button_Click">X</Button>
+                            <TextBox Grid.Column="1" x:Name="FooBox"/>
+                        </Grid>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Grid.Row="1" Header="Eingabe">
+                <GroupBox Grid.Row="2" Header="Eingabe">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="26"/>

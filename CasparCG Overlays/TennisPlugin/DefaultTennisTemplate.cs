@@ -20,7 +20,7 @@ namespace TennisPlugin
 
         public string Clip
         {
-            get { return "[html] file:///C:/CasparCG/templates_tennis/tennis.html"; }
+            get { return "[html] file:///C:/CasparCG/CCGS_2.0.7/templates/oms/tennis/sommer/main.html"; }
         }
 
         public int? Layer

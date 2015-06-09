@@ -24,7 +24,6 @@
         </ToolTip>
         <l:CheckForUpdatesCommand x:Key="CheckForUpdatesCommand"/>
         <l:OpenGithubCommand x:Key="OpenGithubCommand"/>
-        <c:BooleanToStringConverter x:Key="ConnectToServerButtonTextConverter" TrueString="Verbindung trennen" FalseString="Verbindung herstellen"/>
         <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
         <c:ObjectToBooleanConverter x:Key="ObjectToBooleanConverter"/>
     </Window.Resources>
@@ -43,9 +42,11 @@
                             <TextBox Margin="0,3" Text="{Binding Path=SelectedServerIp}"></TextBox>
                             <Button
                                 Padding="14"
-                                Content="{Binding Source={x:Static Member=l:CasparServer.Instance}, Path=IsConnected, Converter={StaticResource ResourceKey=ConnectToServerButtonTextConverter}}"
                                 Click="ToggleCasparServerConnection"
+                                IsEnabled="{Binding Path=CanToggleConnection}"
+                                Content="{Binding Path=ToggleCasparServerConnectionButtonText}"
                             />
+                            <TextBlock Text="{Binding Path=OccurredExceptionInfo}" TextWrapping="Wrap" Visibility="{Binding Path=OccurredException, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}" Background="#40FF0000"/>
                         </StackPanel>
                         <ListBox
                             Grid.Row="1"
@@ -220,21 +221,21 @@
                     <TextBlock Grid.Row="0" Margin="4,2">Verfügbare Plugins:</TextBlock>
                     <ListBox
                         Grid.Row="1"
-                        ItemsSource="{Binding Path=PluginViewModels}"
+                        ItemsSource="{Binding Path=Plugins.ViewModels}"
                         HorizontalContentAlignment="Stretch"
                     >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox
                                     VerticalAlignment="Center"
-                                    IsChecked="{Binding Path=IsInUse}"
+                                    IsChecked="{Binding Path=Target.IsInUse}"
                                     Content="{Binding Path=Target.DisplayName}"
                                     ToolTip="{StaticResource ResourceKey=PluginListItemToolTip}"
                                 />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Grid.Row="2" Padding="10">
+                    <Button Grid.Row="2" Padding="10" Click="ImportPlugin">
                         Importieren
                     </Button>
                 </Grid>

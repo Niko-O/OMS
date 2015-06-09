@@ -2,7 +2,7 @@
 ''' <summary>
 ''' Stellt eine minimalistische Implementierung von <see cref="ISettingsProvider"/> dar, die keine Funktionalitäten beinhaltet.
 ''' </summary>
-Public Class NullSettingsProvider
+Friend Class NullSettingsProvider
     Implements ISettingsProvider
 
     Public Function LoadSettings(Settings As PluginSettings.SettingsStructure) As Boolean Implements ISettingsProvider.LoadSettings

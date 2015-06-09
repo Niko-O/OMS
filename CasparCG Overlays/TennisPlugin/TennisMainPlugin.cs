@@ -17,6 +17,11 @@ namespace TennisPlugin
 
         private TennisSnapIn SnapIn = null;
 
+        public TennisMainPlugin()
+        {
+        
+        }
+
         public System.Windows.Controls.UserControl GetSnapIn()
         {
             return SnapIn;

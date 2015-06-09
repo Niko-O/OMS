@@ -8,7 +8,7 @@ Namespace PluginManagement
         Inherits Singleton(Of Compositor)
         Implements PluginInterfaces.ICompositor
 
-        Public Event CatalogChanged(sender As Object, e As System.EventArgs) Implements PluginInterfaces.ICompositor.CatalogChanged
+        Public Event CatalogChanged As EventHandler Implements PluginInterfaces.ICompositor.CatalogChanged
 
         Public Sub AddPluginDirectoryPath(DirectoryPath As String, Recursive As Boolean) Implements PluginInterfaces.ICompositor.AddPluginDirectoryPath
             Dim Info As New System.IO.DirectoryInfo(DirectoryPath)
@@ -24,7 +24,7 @@ Namespace PluginManagement
             If DirectoryCatalogs.Any(Function(i) i.FullPath = Info.FullName) Then
                 Return
             End If
-            If Info.Exists Then
+            If Not Info.Exists Then
                 Info.Create()
             End If
             AddDirectoryCatalog(Info)

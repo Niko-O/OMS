@@ -2,9 +2,11 @@
 ''' <summary>
 ''' Stellt eine minimalistische Implementierung von <see cref="ICasparServer"/> dar, die keine Funktionalitäten beinhaltet.
 ''' </summary>
-Public Class NullCasparServer
+Friend Class NullCasparServer
     Implements ICasparServer
 
+    Public Event IsConnectedChanged() Implements ICasparServer.IsConnectedChanged
+    Public Event TemplateChanged() Implements ICasparServer.TemplateChanged
     Public Event PropertyChanged(sender As Object, e As System.ComponentModel.PropertyChangedEventArgs) Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
 
     Public ReadOnly Property IsConnected As Boolean Implements ICasparServer.IsConnected
@@ -13,7 +15,7 @@ Public Class NullCasparServer
         End Get
     End Property
 
-    Public Sub Connect() Implements ICasparServer.Connect
+    Public Sub BeginConnect(Of T)(Callback As System.Action(Of T, Exception), State As T) Implements ICasparServer.BeginConnect
     End Sub
 
     Public Sub Disconnect() Implements ICasparServer.Disconnect
@@ -28,5 +30,11 @@ Public Class NullCasparServer
 
     Public Sub UnloadTemplate(Template As ITemplate) Implements ICasparServer.UnloadTemplate
     End Sub
+
+    Public ReadOnly Property Template As ITemplate Implements ICasparServer.Template
+        Get
+            Return Nothing
+        End Get
+    End Property
 
 End Class

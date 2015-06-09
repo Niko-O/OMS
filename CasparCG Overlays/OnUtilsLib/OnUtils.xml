@@ -1177,6 +1177,10 @@ OnUtils
 	<summary>
  Beinhaltet Methoden zum proportionalen Skalieren von Rechtecken.
  </summary>
+</member><member name="E:OnUtils.Wpf.ViewModelCollection`2.CollectionChanged">
+	<summary>
+ Wird ausgelöst, wenn der Liste ein neues Objekt hinzugefügt wurde, und zwar nachdem die <see cref="P:OnUtils.Wpf.ViewModelCollection`2.ViewModels"/>-Liste aktualisiert wurde.
+ </summary>
 </member><member name="E:OnUtils.Wpf.ViewModelCollection`2.ItemAdded">
 	<summary>
  Wird ausgelöst, wenn der Liste ein neues Objekt hinzugefügt wird.
@@ -1738,6 +1742,10 @@ OnUtils
 	<summary>
  Enthält Methoden, die mit DwmComposition zu tun haben.
  </summary>
+</member><member name="T:OnUtils.Wpf.DefaultSelectedBehavior">
+	<summary>
+ Stellt das Verhalten dar, dass ein Steuerelement beim Laden den Fokus erhält.
+ </summary>
 </member><member name="P:OnUtils.Wpf.ObservableCollectionSource`1.SourceCollection">
 	<summary>
  Die <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/>, aus der die Daten verwendet werden.
@@ -1749,7 +1757,7 @@ OnUtils
 	<param name="NewSourceCollection"><see cref="P:OnUtils.Wpf.ObservableCollectionSource`1.SourceCollection"/></param>
 </member><member name="T:OnUtils.Wpf.ObservableCollectionSource`1">
 	<summary>
- Implementiert eine Datenquelle für <see cref="T:OnUtils.Wpf.ViewModelBase`1"/>, die Daten aus einer <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> verwendet.
+ Implementiert eine Datenquelle für <see cref="T:OnUtils.Wpf.ViewModelBase"/>, die Daten aus einer <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> verwendet.
  </summary>
 	<typeparam name="T">Der Typ der Elemente.</typeparam>
 </member><member name="M:OnUtils.WinApi.HotKeys.RegisterHotKey(System.IntPtr,System.Int32,System.Int32,System.Int32)">
@@ -1802,7 +1810,7 @@ OnUtils
  </summary>
 </member><member name="T:OnUtils.Wpf.RecursionException">
 	<summary>
- Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase`1"/> durch Abhängigkeiten von Properties eine Rekursion auftritt.
+ Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase"/> durch Abhängigkeiten von Properties eine Rekursion auftritt.
  </summary>
 </member><member name="T:OnUtils.Wpf.ToolTipButton">
 	<summary>
@@ -2221,7 +2229,7 @@ OnUtils
 	<typeparam name="T">Der Typ des Elementes.</typeparam>
 </member><member name="T:OnUtils.Wpf.InvalidDependencyException">
 	<summary>
- Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase`1"/> ein <see cref="T:OnUtils.Wpf.CommandDependencyAttribute"/> auf eine ungültige Property angewendet wird.
+ Wird ausgelöst, wenn in einem <see cref="T:OnUtils.Wpf.ViewModelBase"/> ein <see cref="T:OnUtils.Wpf.CommandDependencyAttribute"/> auf eine ungültige Property angewendet wird.
  </summary>
 </member><member name="P:OnUtils.Wpf.ViewModelBase`1.Target">
 	<summary>
@@ -2539,6 +2547,12 @@ OnUtils
 	<summary>
  Schränkt dieses Objekt auf seine Member als <see cref="T:System.Collections.Generic.IEnumerable`1"/> ein.
  </summary>
+</member><member name="M:OnUtils.Extensions.Extensions.AsTypedEnumerable``1(System.Collections.IEnumerable)">
+	<summary>
+ Gibt ein generisches <see cref="T:System.Collections.Generic.IEnumerable`1"/>-Objekt zurück, das Elemente dieses nicht-generischen <see cref="T:System.Collections.IEnumerable"/> in den T-Typ castet.
+ Gibt Nothing zurück, wenn <paramref name="Target"/> Nothing ist.
+ Gibt <paramref name="Target"/> zurück, wenn es sich bereits um ein generisches <see cref="T:System.Collections.Generic.IEnumerable`1"/>-Objekt handelt.
+ </summary>
 </member><member name="M:OnUtils.Extensions.Extensions.HByte(System.UInt16)">
 	<summary>
  Gibt die höherwertigen 8 Bits des 16-Bit-Wertes zurück.
@@ -2753,6 +2767,38 @@ OnUtils
  </summary>
 	<typeparam name="T">Der Typ der Elemente in der Auflistung.</typeparam>
 	<param name="Reducer">Eine Funktion, die zwei Elemente auf eines reduziert.</param>
+</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+	<summary>
+ Entfernt alle Elemente aus dieser Liste, die nicht in <paramref name="Items"/> vorkommen und fügt alle Elemente aus <paramref name="Items"/> hinzu, die nicht in dieser Auflistung vorkommen.
+ Die Elemente dieser Liste haben nicht nötigerweise die selbe Reihenfolge wie <paramref name="Items"/>.
+ Ziel ist es, die Liste nicht komplett zu leeren und erneut zu füllen, sondern nur die nötigen Änderungen vorzunehmen.
+ </summary>
+	<param name="Items">Die Elemente, mit denen diese Liste synchronisiert werden soll.</param>
+</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean},System.Action{``0})">
+	<summary>
+ Entfernt alle Elemente aus dieser Liste, die nicht in <paramref name="Items"/> vorkommen und fügt alle Elemente aus <paramref name="Items"/> hinzu, die nicht in dieser Auflistung vorkommen.
+ Zum Feststellen, ob zwei Elemente als gleich zu betrachten sind, wird die in <paramref name="EqualityComparer"/> angegebene Vergleichs-Funktion verwendet.
+ Die Elemente dieser Liste haben nicht nötigerweise die selbe Reihenfolge wie <paramref name="Items"/>.
+ Ziel ist es, die Liste nicht komplett zu leeren und erneut zu füllen, sondern nur die nötigen Änderungen vorzunehmen.
+ </summary>
+	<param name="Items">Die Elemente, mit denen diese Liste synchronisiert werden soll.</param>
+	<param name="EqualityComparer">Vergleicht zwei Elemente und gibt True zurück, wenn sie als gleich zu betrachten sind, andernfalls False.</param>
+</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``2(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,System.Boolean},System.Func{``1,``0},System.Action{``0})">
+	<summary>
+ Entfernt alle Elemente aus dieser Liste, die nicht in <paramref name="Items"/> vorkommen und fügt alle Elemente aus <paramref name="Items"/> hinzu, die nicht in dieser Auflistung vorkommen.
+ Zum Feststellen, ob zwei Elemente als gleich zu betrachten sind, wird die in <paramref name="EqualityComparer"/> angegebene Vergleichs-Funktion verwendet.
+ Zum Einfügen in die Liste wird die in <paramref name="InsertSelector"/> angegebene Selektor-Funktion verwendet.
+ Die Elemente dieser Liste haben nicht nötigerweise die selbe Reihenfolge wie <paramref name="Items"/>.
+ Ziel ist es, die Liste nicht komplett zu leeren und erneut zu füllen, sondern nur die nötigen Änderungen vorzunehmen.
+ </summary>
+	<param name="Items">Die Elemente, mit denen diese Liste synchronisiert werden soll.</param>
+	<param name="EqualityComparer">Vergleicht zwei Elemente und gibt True zurück, wenn sie als gleich zu betrachten sind, andernfalls False.</param>
+	<param name="InsertSelector">Nimmt ein Objekt aus <paramref name="Items"/> und gibt ein Objekt zurück, das für das übergebene Objekt in diese Liste eingefügt wird.</param>
+</member><member name="M:OnUtils.Extensions.Extensions.CopyTo(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+	<summary>
+ Kopiert den Inhalt dieses Ordners in den in <paramref name="TargetDirectory"/> angegebenen Ordner.
+ </summary>
+	<param name="TargetDirectory">Der Ordner, in den der Inhalt dieses Ordners kopiert wird.</param>
 </member><member name="T:OnUtils.Extensions.Extensions">
 	<summary>
  Beinhaltet hilfreiche Methoden.

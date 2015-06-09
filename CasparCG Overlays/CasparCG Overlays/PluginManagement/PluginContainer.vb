@@ -8,25 +8,53 @@ Namespace PluginManagement
     Public Class PluginContainer
         Inherits Singleton(Of PluginContainer)
 
-        Dim _Plugins As New List(Of PluginWrapper)
+        Dim _Plugins As New ObservableCollection(Of PluginWrapper)
         ''' <summary>
         ''' Die Liste der verfügbaren Plugins.
         ''' </summary>
-        Public ReadOnly Property Plugins As IEnumerable(Of PluginWrapper)
+        Public ReadOnly Property Plugins As ObservableCollection(Of PluginWrapper)
             Get
                 Return _Plugins
             End Get
         End Property
 
-        <ImportMany(GetType(PluginInterfaces.IPlugin))>
-        Dim ImportedPlugins As IEnumerable(Of Lazy(Of PluginInterfaces.IPlugin, PluginInterfaces.IPluginMetadata))
+        Dim Target As New CompositionTarget
 
         Public Sub New()
-            PluginInterfaces.PublicProviders.MefCompositor.Compose(Me)
-            For Each i In ImportedPlugins
-                _Plugins.Add(New PluginWrapper(i))
+            AddHandler Compositor.Instance.CatalogChanged, Sub() ActualizePlugins()
+            Compositor.Instance.Compose(Target)
+            ActualizePlugins()
+        End Sub
+
+        Private Sub ActualizePlugins()
+            _Plugins.Synchronize(Target.ImportedPlugins, _
+                                 Function(Target, Source) Target.PluginGuid = Guid.Parse(Source.Metadata.PluginGuid), _
+                                 Function(Source)
+                                     Dim Temp As New PluginWrapper(Source)
+                                     Temp.Created()
+                                     If Temp.IsInUse Then
+                                         Temp.Enabled()
+                                     End If
+                                     Return Temp
+                                 End Function,
+                                 Sub(ToDispose) ToDispose.Unloaded())
+        End Sub
+
+        Public Sub UnloadAllPlugins()
+            For Each i In _Plugins
+                i.Disabled()
+            Next
+            For Each i In _Plugins
+                i.Unloaded()
             Next
         End Sub
+
+        Private Class CompositionTarget
+
+            <ImportMany(GetType(PluginInterfaces.IPlugin), AllowRecomposition:=True)>
+            Public ImportedPlugins As IEnumerable(Of Lazy(Of PluginInterfaces.IPlugin, PluginInterfaces.IPluginMetadata))
+
+        End Class
 
     End Class
 

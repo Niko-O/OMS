@@ -83,6 +83,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System" />
@@ -95,6 +96,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\UpdateSystemDotNetLib\updateSystemDotNet.Controller.dll</HintPath>
     </Reference>
+    <Reference Include="VistaFBD">
+      <HintPath>..\VistaFBDLib\VistaFBD.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -105,6 +109,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Extensions.vb" />
+    <Compile Include="PluginManagement\Import\ImportPluginDialog.xaml.vb">
+      <DependentUpon>ImportPluginDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PluginManagement\Import\ImportPluginDialogViewModel.vb" />
+    <Compile Include="PluginManagement\Import\TargetDirectory.vb" />
+    <Compile Include="PluginManagement\Import\TargetFolderNameDialog.xaml.vb">
+      <DependentUpon>TargetFolderNameDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PluginManagement\Import\TargetFolderNameDialogViewModel.vb" />
     <Compile Include="ServerList\CasparCGServer.vb" />
     <Compile Include="CheckForUpdatesCommand.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPluginImplementation.vb" />
@@ -124,7 +137,7 @@
     <Compile Include="PluginManagement\Settings\SettingsDocument.vb" />
     <Compile Include="PluginManagement\Settings\SettingsRootNode.vb" />
     <Compile Include="PluginManagement\Settings\SettingsSubNode.vb" />
-    <Compile Include="PluginViewModel.vb" />
+    <Compile Include="PluginManagement\PluginViewModel.vb" />
     <Compile Include="PluginManagement\PluginWrapper.vb" />
     <Compile Include="PluginManagement\PluginActiveStates.vb" />
     <Compile Include="PluginManagement\TabControl\MainTabControl.vb" />
@@ -151,6 +164,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PluginManagement\Import\ImportPluginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PluginManagement\Import\TargetFolderNameDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Import Include="ApplicationSettings" />
@@ -246,10 +267,20 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExistingDirectory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DeletedDirectory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TargetDirectory.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>"$(SolutionDir)CopyOnUtils\bin\Release\CopyOnUtils.exe" "$(SolutionDir)\"
 "$(SolutionDir)CopyApplicationSettings\bin\Release\CopyApplicationSettings.exe" "$(SolutionDir)\"
-"$(SolutionDir)CopyUpdateSystemDotNet\bin\Release\CopyUpdateSystemDotNet.exe" "$(SolutionDir)\"</PreBuildEvent>
+"$(SolutionDir)CopyUpdateSystemDotNet\bin\Release\CopyUpdateSystemDotNet.exe" "$(SolutionDir)\"
+"$(SolutionDir)CopyCasparCG\bin\Release\CopyCasparCG.exe" "$(SolutionDir)\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

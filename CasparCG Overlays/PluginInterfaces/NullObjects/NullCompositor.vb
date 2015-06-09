@@ -2,7 +2,7 @@
 ''' <summary>
 ''' Stellt eine minimalistische Implementierung von <see cref="ICompositor"/> dar, die keine Funktionalitäten beinhaltet.
 ''' </summary>
-Public Class NullCompositor
+Friend Class NullCompositor
     Implements ICompositor
 
     Public Event CatalogChanged(sender As Object, e As System.EventArgs) Implements ICompositor.CatalogChanged

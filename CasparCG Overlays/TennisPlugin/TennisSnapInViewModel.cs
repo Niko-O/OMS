@@ -65,11 +65,24 @@ namespace TennisPlugin
         {
             get
             {
-                return !String.IsNullOrWhiteSpace(_TeamNameOne) && !String.IsNullOrWhiteSpace(_TeamNameTwo);
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && PluginInterfaces.PublicProviders.CasparServer.Template != null && !String.IsNullOrWhiteSpace(_TeamNameOne) && !String.IsNullOrWhiteSpace(_TeamNameTwo);
             }
         }
 
         #region Scoreboard
+        
+        private Scoring.UndoStateList _StateList = null;
+        public Scoring.UndoStateList StateList
+        {
+            get
+            {
+                return _StateList;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _StateList, value, "StateList");
+            }
+        }
 
         private bool _ScoreboardIsVisible = false;
         public bool ScoreboardIsVisible
@@ -185,6 +198,19 @@ namespace TennisPlugin
             set
             {
                 ChangeIfDifferent(ref _TeamTwoSets, value, "TeamTwoSets");
+            }
+        }
+         
+        private bool _CanUndoScoring = false;
+        public bool CanUndoScoring
+        {
+            get
+            {
+                return _CanUndoScoring;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _CanUndoScoring, value, "CanUndoScoring");
             }
         }
 
@@ -385,16 +411,13 @@ namespace TennisPlugin
         public TennisSnapInViewModel()
             : base(true)
         {
+            AddExternalPropertyDependency("CanLoadTemplate", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
+            AddExternalPropertyDependency("ToggleLowerThirdVisibilityButtonEnabled", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
+            AddExternalPropertyDependency("CanShowGraphics", PluginInterfaces.PublicProviders.CasparServer, "IsConnected", "Template");
             _SelectedLowerThirdTextEffect = _LowerThirdTextEffects[0];
             AvailableTennisTemplates = new[] { new DefaultTennisTemplate() };
             SelectedTennisTemplate = AvailableTennisTemplates.First();
             LowerThirdTextInputCount = 5;
-            PluginInterfaces.PublicProviders.CasparServer.PropertyChanged += (sender, e) => {
-                if (e.PropertyName == "IsConnected")
-                {
-                    OnPropertyChanged("CanLoadTemplate", "ToggleLowerThirdVisibilityButtonEnabled");
-                }
-            };
         }
 
         private void TextInputSelected(object sender, EventArgs e)

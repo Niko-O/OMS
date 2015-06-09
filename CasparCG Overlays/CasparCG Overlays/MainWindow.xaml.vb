@@ -8,11 +8,12 @@
         ViewModel.CasparCGServers = New ViewModelCollection(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)(New ObservableCollectionSource(Of ServerList.CasparCGServer)(ServerList.CasparCGServerCollection.Instance))
         ViewModel.CasparCGServers.SynchronizeWithList(ServerList.CasparCGServerCollection.Instance)
         For Each i In PluginManagement.PluginContainer.Instance.Plugins
-            If PluginManagement.PluginActiveStates.IsInUse(i.PluginGuid) Then
+            If i.IsInUse Then
                 i.Enabled()
             End If
         Next
-        ViewModel.Plugins = PluginManagement.PluginContainer.Instance.Plugins
+        ViewModel.Plugins = New ViewModelCollection(Of PluginManagement.PluginWrapper, PluginManagement.PluginViewModel)(New ObservableCollectionSource(Of PluginManagement.PluginWrapper)(PluginManagement.PluginContainer.Instance.Plugins))
+        ViewModel.Plugins.SynchronizeWithList(PluginManagement.PluginContainer.Instance.Plugins)
         AddHandler Me.SizeChanged, AddressOf OnSizeChanged
     End Sub
 
@@ -34,7 +35,12 @@
         Else
             CasparServer.Instance.IpAddress = ViewModel.SelectedServerIp
             CasparServer.Instance.Port = 5250
-            CasparServer.Instance.Connect()
+            ViewModel.WaitingForConnection = True
+            ViewModel.OccurredException = Nothing
+            CasparServer.Instance.BeginConnect(Of Object)(Sub(State, OccurredException)
+                                                              ViewModel.WaitingForConnection = False
+                                                              ViewModel.OccurredException = OccurredException
+                                                          End Sub, Nothing)
         End If
     End Sub
 
@@ -61,6 +67,19 @@
     Private Sub LoadWindowSizeFromSettings(Optional sender As System.Object = Nothing, Optional e As System.Windows.RoutedEventArgs = Nothing)
         Me.Width = Settings.MainWindow.SavedSize.Width
         Me.Height = Settings.MainWindow.SavedSize.Height
+    End Sub
+
+    Private Sub ImportPlugin(sender As System.Object, e As System.Windows.RoutedEventArgs)
+        Dim Dlg As New ImportPluginDialog
+        Dlg.Owner = Me
+        Dlg.WindowStartupLocation = Windows.WindowStartupLocation.CenterOwner
+        If Dlg.ShowDialog Then
+            Dim SourceDirectory = New System.IO.DirectoryInfo(Dlg.SourceDirectory)
+            Dim TargetDirectory = ImportPluginDialog.PluginsDirectory.CreateSubdirectory(Dlg.TargetDirectoryName)
+            'MessageBox.Show("Kopieren von" & Environment.NewLine & SourceDirectory.FullName & Environment.NewLine & "nach" & Environment.NewLine & TargetDirectory.FullName)
+            SourceDirectory.CopyTo(TargetDirectory)
+            PluginManagement.Compositor.Instance.AddPluginDirectoryPath(TargetDirectory.FullName, True)
+        End If
     End Sub
 
 End Class

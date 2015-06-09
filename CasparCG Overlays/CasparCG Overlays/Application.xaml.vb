@@ -20,6 +20,9 @@
                         <Height TypeCode="Double" DefaultValue="500.0"/>
                     </SavedSize>
                 </MainWindow>
+                <Plugins>
+                    <ActiveStates TypeCode="String"/>
+                </Plugins>
                 <CasparCG>
                     <ServerList TypeCode="String"/>
                 </CasparCG>
@@ -48,23 +51,19 @@
         End If
         PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, CasparServer.Instance, PluginManagement.Compositor.Instance)
         PluginInterfaces.PublicProviders.MefCompositor.AddPluginDirectoryPath(Settings.IO.PluginDirectory.Path, True)
-        If Not Settings.CasparCG.ServerList Is Nothing Then
+        If Not String.IsNullOrEmpty(Settings.CasparCG.ServerList) Then
             ServerList.CasparCGServerCollection.Instance.FromXml(XElement.Parse(Settings.CasparCG.ServerList))
         End If
-        For Each i In PluginManagement.PluginContainer.Instance.Plugins
-            i.Created()
-        Next
+        If Not String.IsNullOrEmpty(Settings.Plugins.ActiveStates) Then
+            PluginManagement.PluginActiveStates.Instance.FromXml(XElement.Parse(Settings.Plugins.ActiveStates))
+        End If
         MyBase.OnStartup(e)
     End Sub
 
     Protected Overrides Sub OnExit(e As System.Windows.ExitEventArgs)
-        For Each i In PluginManagement.PluginContainer.Instance.Plugins
-            i.Disabled()
-        Next
-        For Each i In PluginManagement.PluginContainer.Instance.Plugins
-            i.Unloaded()
-        Next
+        PluginManagement.PluginContainer.Instance.UnloadAllPlugins()
         Settings.CasparCG.ServerList = ServerList.CasparCGServerCollection.Instance.ToXml.ToString
+        Settings.Plugins.ActiveStates = PluginManagement.PluginActiveStates.Instance.ToXml.ToString
         Settings.Save(Settings.IO.SettingsXmlFile.Path)
         MyBase.OnExit(e)
     End Sub

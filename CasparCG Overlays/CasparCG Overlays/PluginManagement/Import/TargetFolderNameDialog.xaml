@@ -1,0 +1,56 @@
+﻿<Window
+    x:Class="TargetFolderNameDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:l="clr-namespace:CasparCG_Overlays"
+    xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
+    xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
+    Title="Neuen Plugin-Ordner erstellen"
+    Width="395"
+    Height="127"
+    ResizeMode="NoResize"
+>
+    <Window.DataContext>
+        <l:TargetFolderNameDialogViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <c:BooleanToBrushConverter x:Key="ErrorConverter" TrueBrush="White" FalseBrush="#40FF0000"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock>Ordnername:</TextBlock>
+            <TextBox Grid.Row="0" o:DefaultSelectedBehavior.IsDefaultSelected="True" Text="{Binding Path=DirectoryName, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Path=NameIsValid, Converter={StaticResource ResourceKey=ErrorConverter}}"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Background="#f0f0f0">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+            >
+                <StackPanel.Resources>
+                    <Style x:Key="DialogControlButtonStyle" TargetType="Button">
+                        <Setter Property="Width" Value="86"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="Margin" Value="0,15,15,15"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    IsDefault="True"
+                    Click="CloseOk"
+                >
+                    OK
+                </Button>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    Click="CloseCancel"
+                >
+                    Abbrechen
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
