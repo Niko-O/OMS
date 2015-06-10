@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,8 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateFiltering\FilterTemplatesDialog.xaml.cs">
+      <DependentUpon>FilterTemplatesDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ITennisTemplate.cs" />
-    <Compile Include="LowerThirdTextEffect.cs" />
+    <Compile Include="TemplateFiltering\FilterTemplatesDialogViewModel.cs" />
     <Compile Include="LowerThirdTextInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoring\IScoringStrategy.cs" />
@@ -64,7 +73,10 @@
     <Compile Include="Scoring\V1\PlayerState.cs" />
     <Compile Include="Scoring\V1\TennisScoringStrategyV1.cs" />
     <Compile Include="Scoring\V1\V1State.cs" />
+    <Compile Include="ServerStoredTennisTemplate.cs" />
     <Compile Include="StringToCharConverter.cs" />
+    <Compile Include="TemplateFilter.cs" />
+    <Compile Include="TemplateFiltering\TemplateDirectory.cs" />
     <Compile Include="TennisMainPlugin.cs" />
     <Compile Include="TennisSnapIn.xaml.cs">
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
@@ -73,6 +85,10 @@
     <Compile Include="DefaultTennisTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="TemplateFiltering\FilterTemplatesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TennisSnapIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,9 +108,15 @@
       <Name>PluginSettings</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)CopyPlugins\bin\Release\CopyPlugins.exe" "$(SolutionDir)\" "$(TargetDir)\" "$(ProjectName)" ignore</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)CopyPlugins\bin\Release\CopyPlugins.exe" "$(SolutionDir)\" "$(TargetDir)\" "$(ProjectName)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

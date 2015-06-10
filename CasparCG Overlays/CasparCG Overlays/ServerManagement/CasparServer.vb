@@ -9,7 +9,6 @@ Public Class CasparServer
     Implements PluginInterfaces.ICasparServer
 
     Public Event IsConnectedChanged() Implements PluginInterfaces.ICasparServer.IsConnectedChanged
-    Public Event TemplateChanged() Implements PluginInterfaces.ICasparServer.TemplateChanged
 
     Private Shared _Instance As CasparServer = Nothing
     Public Shared ReadOnly Property Instance As CasparServer
@@ -27,13 +26,6 @@ Public Class CasparServer
     Public ReadOnly Property IsConnected As Boolean Implements PluginInterfaces.ICasparServer.IsConnected
         Get
             Return Device.isConnected
-        End Get
-    End Property
-
-    Dim _Template As PluginInterfaces.ITemplate = Nothing
-    Public ReadOnly Property Template As PluginInterfaces.ITemplate Implements PluginInterfaces.ICasparServer.Template
-        Get
-            Return _Template
         End Get
     End Property
 
@@ -92,9 +84,6 @@ Public Class CasparServer
             Throw New InvalidOperationException("Der Server ist nicht verbunden.")
         End If
         ExecuteCommand(New CasparServerCommands.PlayCommand(Template.ChannelId, Template.Layer, Template.Clip, Template.AdditionalParameters))
-        _Template = Template
-        RaiseEvent TemplateChanged()
-        OnPropertyChanged("Template")
     End Sub
 
     Public Sub UnloadTemplate(Template As PluginInterfaces.ITemplate) Implements PluginInterfaces.ICasparServer.UnloadTemplate
@@ -102,9 +91,6 @@ Public Class CasparServer
             Throw New InvalidOperationException("Der Server ist nicht verbunden.")
         End If
         ExecuteCommand(New CasparServerCommands.StopCommand(Template.ChannelId, Template.Layer))
-        _Template = Nothing
-        OnPropertyChanged("Template")
-        RaiseEvent TemplateChanged()
     End Sub
 
     Public Sub BeginConnect(Of T)(Callback As Action(Of T, Exception), State As T) Implements PluginInterfaces.ICasparServer.BeginConnect

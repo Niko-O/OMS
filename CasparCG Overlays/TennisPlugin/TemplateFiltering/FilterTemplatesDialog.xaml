@@ -1,0 +1,88 @@
+﻿<Window
+    x:Class="TennisPlugin.FilterTemplatesDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:l="clr-namespace:TennisPlugin"
+    xmlns:i="clr-namespace:PluginInterfaces;assembly=PluginInterfaces"
+    xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
+    xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
+	Title="Templates filtern"
+    MinWidth="275"
+	MinHeight="153"
+	Width="418"
+	Height="305"
+>
+    <Window.DataContext>
+        <l:FilterTemplatesDialogViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TreeView
+            x:Name="MainTreeView"
+            Grid.Row="0"
+            Visibility="{Binding Path=TreeViewVisibility}"
+            ItemsSource="{Binding Path=TemplateDirectories}"
+            SelectedItemChanged="MainTreeViewSelectedItemChanged"
+        >
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type l:TemplateDirectory}" ItemsSource="{Binding Path=Children}">
+                    <TextBlock Text="{Binding Path=Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Visibility="{Binding Path=NotConnectedMessageVisibility}"
+            FontSize="18"
+        >
+            Nicht verbunden
+        </TextBlock>
+        <Grid Grid.Row="1" Background="#f0f0f0">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+            >
+                <StackPanel.Resources>
+                    <Style x:Key="DialogControlButtonStyle" TargetType="Button">
+                        <Setter Property="Width" Value="86"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="Margin" Value="0,15,15,15"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    VerticalAlignment="Center"
+                    Width="NaN"
+                    Click="RefreshTemplates"
+                >
+                    <Image Source="pack://application:,,,/Resources/Refresh.png"/>
+                </Button>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    IsDefault="True"
+                    Click="CloseOk"
+                    IsEnabled="{Binding Path=CanCloseOk}"
+                >
+                    OK
+                </Button>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    Click="CloseNoFilter"
+                >
+                    Kein Filter
+                </Button>
+                <Button
+                    Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
+                    Click="CloseCancel"
+                >
+                    Abbrechen
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

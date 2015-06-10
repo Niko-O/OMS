@@ -11,17 +11,27 @@ namespace TennisPlugin
 {
     public class TennisSnapInViewModel : ViewModelBase
     {
+         
+        private bool _TemplateIsLoaded = false;
+        public bool TemplateIsLoaded
+        {
+            get
+            {
+                return _TemplateIsLoaded;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TemplateIsLoaded, value, "TemplateIsLoaded");
+            }
+        }
 
         private bool _CanSelectTemplate = true;
+        [Dependency("TemplateIsLoaded")]
         public bool CanSelectTemplate
         {
             get
             {
                 return _CanSelectTemplate;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _CanSelectTemplate, value, "CanSelectTemplate");
             }
         }
 
@@ -60,12 +70,12 @@ namespace TennisPlugin
             }
         }
 
-        [Dependency("TeamNameOne", "TeamNameTwo")]
+        [Dependency("TeamNameOne", "TeamNameTwo", "TemplateIsLoaded")]
         public bool CanShowGraphics
         {
             get
             {
-                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && PluginInterfaces.PublicProviders.CasparServer.Template != null && !String.IsNullOrWhiteSpace(_TeamNameOne) && !String.IsNullOrWhiteSpace(_TeamNameTwo);
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_TeamNameOne) && !String.IsNullOrWhiteSpace(_TeamNameTwo);
             }
         }
 
@@ -231,38 +241,12 @@ namespace TennisPlugin
             }
         }
         
-        private DisplayItem<LowerThirdTextEffect>[] _LowerThirdTextEffects =
-        {
-            DisplayItem.Create("Statischer Text", LowerThirdTextEffect.StaticText),
-            DisplayItem.Create("Rechts nach links scrollen", LowerThirdTextEffect.ScrollRightToLeft)
-        };
-        public IEnumerable<DisplayItem<LowerThirdTextEffect>> LowerThirdTextEffects
-        {
-            get
-            {
-                return _LowerThirdTextEffects;
-            }
-        }
-
-        private DisplayItem<LowerThirdTextEffect> _SelectedLowerThirdTextEffect;
-        public DisplayItem<LowerThirdTextEffect> SelectedLowerThirdTextEffect
-        {
-            get
-            {
-                return _SelectedLowerThirdTextEffect;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _SelectedLowerThirdTextEffect, value, "SelectedLowerThirdTextEffect");
-            }
-        }
-
-        [Dependency("SelectedLowerThirdTextEffect")]
+        //[Dependency("")]
         public bool LowerThirdSettingsAreValid
         {
             get
             {
-                if (_SelectedLowerThirdTextEffect == null) return false;
+                //ToDo
                 return true;
             }
         }
@@ -413,10 +397,7 @@ namespace TennisPlugin
         {
             AddExternalPropertyDependency("CanLoadTemplate", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
             AddExternalPropertyDependency("ToggleLowerThirdVisibilityButtonEnabled", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
-            AddExternalPropertyDependency("CanShowGraphics", PluginInterfaces.PublicProviders.CasparServer, "IsConnected", "Template");
-            _SelectedLowerThirdTextEffect = _LowerThirdTextEffects[0];
-            AvailableTennisTemplates = new[] { new DefaultTennisTemplate() };
-            SelectedTennisTemplate = AvailableTennisTemplates.First();
+            AddExternalPropertyDependency("CanShowGraphics", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
             LowerThirdTextInputCount = 5;
         }
 

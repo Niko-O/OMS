@@ -49,7 +49,9 @@
         If Settings.Updates.EnableAutoUpdates Then
             UpdateInfo.Instance.CheckForUpdates(False)
         End If
-        PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, CasparServer.Instance, PluginManagement.Compositor.Instance)
+        PluginInterfaces.PublicProviders.Initialize(PluginManagement.Settings.PluginSettingsProvider.Instance, _
+                                                    CasparServer.Instance, _
+                                                    PluginManagement.Compositor.Instance)
         PluginInterfaces.PublicProviders.MefCompositor.AddPluginDirectoryPath(Settings.IO.PluginDirectory.Path, True)
         If Not String.IsNullOrEmpty(Settings.CasparCG.ServerList) Then
             ServerList.CasparCGServerCollection.Instance.FromXml(XElement.Parse(Settings.CasparCG.ServerList))

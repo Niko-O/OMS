@@ -276,6 +276,9 @@
   <ItemGroup>
     <Resource Include="Resources\TargetDirectory.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Refresh.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>"$(SolutionDir)CopyOnUtils\bin\Release\CopyOnUtils.exe" "$(SolutionDir)\"

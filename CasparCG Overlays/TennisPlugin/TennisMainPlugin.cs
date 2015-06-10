@@ -29,7 +29,7 @@ namespace TennisPlugin
 
         public void Created()
         {
-
+        
         }
 
         public void Enabled()
@@ -45,7 +45,7 @@ namespace TennisPlugin
 
         public void Unloaded()
         {
-            
+        
         }
 
     }

@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:l="clr-namespace:TennisPlugin"
+    xmlns:i="clr-namespace:PluginInterfaces;assembly=PluginInterfaces"
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
     xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
@@ -33,7 +34,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0" IsEnabled="{Binding Path=CanSelectTemplate}" ItemsSource="{Binding Path=AvailableTennisTemplates}" SelectedItem="{Binding Path=SelectedTennisTemplate}">
@@ -43,6 +44,8 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
+                <Button Grid.Column="1" Margin="5,0" Padding="10,0" Click="EditTemplateFilter">...</Button>
+                <!-- IsEnabled="{Binding Source={x:Static Member=i:PublicProviders.CasparServer}, Path=IsConnected}" -->
                 <CheckBox Grid.Column="2" VerticalAlignment="Center" IsEnabled="{Binding Path=CanLoadTemplate}" Checked="LoadAndLockSelectedTemplate" Unchecked="UnlockSelectedTemplate">Ausgewählt</CheckBox>
             </Grid>
         </GroupBox>
@@ -200,73 +203,6 @@
                         <Button Grid.Row="2" Grid.Column="3" Padding="7">Anzeigen</Button>
                         <Button Grid.Row="4" Grid.Column="3" Padding="7">Anzeigen</Button>
                     </Grid>
-                </GroupBox>
-                <GroupBox Grid.Row="1" Header="Steuerung" Margin="0,40,0,0" Visibility="Collapsed">
-                    <StackPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="5"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                VerticalAlignment="Center"
-                            >Effekt:</TextBlock>
-                            <ComboBox
-                                Grid.Row="0"
-                                Grid.Column="2"
-                                ItemsSource="{Binding Path=LowerThirdTextEffects}"
-                                SelectedItem="{Binding Path=SelectedLowerThirdTextEffect}"
-                            >
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Path=DisplayText}"/>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="5"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="5"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <CheckBox
-                                Grid.Column="0"
-                                VerticalAlignment="Center"
-                                IsChecked="{Binding Path=ApplyLowerThirdVisibilityDuration}"
-                            >Nach</CheckBox>
-                            <TextBox
-                                Grid.Column="2"
-                                Text="{Binding Path=LowerThirdVisibilityDurationString, UpdateSourceTrigger=PropertyChanged}"
-                                Background="{Binding Path=LowerThirdVisibilityDurationIsValid, Converter={StaticResource ResourceKey=ErrorConverter}}"
-                            />
-                            <TextBlock
-                                Grid.Column="4"
-                                VerticalAlignment="Center"
-                            >Sekunden wieder ausblenden</TextBlock>
-                        </Grid>
-                        <Button
-                            Margin="0,3,0,0"
-                            Padding="10"
-                            Click="ToggleLowerThirdVisibility"
-                            IsEnabled="{Binding Path=ToggleLowerThirdVisibilityButtonEnabled}"
-                            Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"
-                        />
-                        <!--<CheckBox IsChecked="{Binding Path=LowerThirdTextInputIsLocked}">Test</CheckBox>-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Padding="5,0" Click="Button_Click">X</Button>
-                            <TextBox Grid.Column="1" x:Name="FooBox"/>
-                        </Grid>
-                    </StackPanel>
                 </GroupBox>
                 <GroupBox Grid.Row="2" Header="Eingabe">
                     <Grid>

@@ -2,10 +2,8 @@
     Inherits System.ComponentModel.INotifyPropertyChanged
 
     Event IsConnectedChanged()
-    Event TemplateChanged()
 
     ReadOnly Property IsConnected As Boolean
-    ReadOnly Property Template As ITemplate
 
     Sub LoadTemplate(Template As ITemplate)
     Sub UnloadTemplate(Template As ITemplate)

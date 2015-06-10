@@ -6,7 +6,6 @@ Friend Class NullCasparServer
     Implements ICasparServer
 
     Public Event IsConnectedChanged() Implements ICasparServer.IsConnectedChanged
-    Public Event TemplateChanged() Implements ICasparServer.TemplateChanged
     Public Event PropertyChanged(sender As Object, e As System.ComponentModel.PropertyChangedEventArgs) Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
 
     Public ReadOnly Property IsConnected As Boolean Implements ICasparServer.IsConnected
@@ -30,11 +29,5 @@ Friend Class NullCasparServer
 
     Public Sub UnloadTemplate(Template As ITemplate) Implements ICasparServer.UnloadTemplate
     End Sub
-
-    Public ReadOnly Property Template As ITemplate Implements ICasparServer.Template
-        Get
-            Return Nothing
-        End Get
-    End Property
 
 End Class

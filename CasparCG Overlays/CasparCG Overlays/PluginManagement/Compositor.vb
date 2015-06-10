@@ -10,6 +10,10 @@ Namespace PluginManagement
 
         Public Event CatalogChanged As EventHandler Implements PluginInterfaces.ICompositor.CatalogChanged
 
+        Dim Catalog As New AggregateCatalog
+        Dim DirectoryCatalogs As New List(Of DirectoryCatalog)
+        Dim Compositions As New CompositionContainer(Catalog)
+
         Public Sub AddPluginDirectoryPath(DirectoryPath As String, Recursive As Boolean) Implements PluginInterfaces.ICompositor.AddPluginDirectoryPath
             Dim Info As New System.IO.DirectoryInfo(DirectoryPath)
             If Recursive Then
@@ -42,10 +46,6 @@ Namespace PluginManagement
         Public Sub Compose(Obj As Object) Implements PluginInterfaces.ICompositor.Compose
             Compositions.ComposeParts(Obj)
         End Sub
-
-        Dim Catalog As New AggregateCatalog
-        Dim DirectoryCatalogs As New List(Of DirectoryCatalog)
-        Dim Compositions As New CompositionContainer(Catalog)
 
     End Class
 

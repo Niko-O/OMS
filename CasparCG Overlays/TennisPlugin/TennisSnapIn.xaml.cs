@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OnUtils;
+using OnUtils.Extensions;
 
 namespace TennisPlugin
 {
@@ -22,8 +24,7 @@ namespace TennisPlugin
 
         private TennisSnapInViewModel ViewModel;
         private Scoring.UndoStateList StateList;
-        //private TeamStats TeamOneStats = new TeamStats();
-        //private TeamStats TeamTwoStats = new TeamStats();
+        private TemplateFilter CurrentFilter = null;
 
         public TennisSnapIn()
         {
@@ -31,6 +32,64 @@ namespace TennisPlugin
             ViewModel = (TennisSnapInViewModel)this.DataContext;
             StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
             ViewModel.StateList = StateList;
+            PluginInterfaces.PublicProviders.CasparServer.IsConnectedChanged += () => LoadTemplatesFromServer();
+            LoadTemplatesFromServer();
+        }
+
+        private void EditTemplateFilter(object sender, RoutedEventArgs e)
+        {
+            var Dlg = new FilterTemplatesDialog();
+            if ((bool)Dlg.ShowDialog())
+            {
+                CurrentFilter = Dlg.Filter;
+                LoadTemplatesFromServer();
+            }
+        }
+
+        private void LoadTemplatesFromServer()
+        {
+            IEnumerable<CasparServerCommands.TlsCommand.TemplatePath> TemplatePaths;
+            if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
+            {
+                TemplatePaths = CasparServerCommands.TlsCommand.ParseResponse(PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.TlsCommand()));
+            }
+            else
+            {
+                TemplatePaths = new List<CasparServerCommands.TlsCommand.TemplatePath>()
+                {
+                    new CasparServerCommands.TlsCommand.TemplatePath("1/1.1/1.1.1/FILE_1.1.1", 1, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("1/1.1/1.1.2/FILE_1.1.2", 2, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("1/1.2/1.2.1/FILE_1.2.1", 3, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("1/1.2/1.2.2/FILE_1.2.2", 4, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("2/2.1/2.1.1/FILE_2.1.1", 5, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("2/2.1/2.1.2/FILE_2.1.2", 6, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("2/2.2/2.2.1/FILE_2.2.1", 7, "20141234"),
+                    new CasparServerCommands.TlsCommand.TemplatePath("2/2.2/2.2.2/FILE_2.2.2", 8, "20141234")
+                };
+                return;
+            }
+            var Filtered = CurrentFilter == null ? TemplatePaths : CurrentFilter.Filter(TemplatePaths);
+            
+            var NewTemplates = new List<ServerStoredTennisTemplate>();
+            
+            var PreviouslyLoadedTemplate = ViewModel.TemplateIsLoaded ? ViewModel.SelectedTennisTemplate : null;
+            var PreviouslySelectedTemplate = ViewModel.SelectedTennisTemplate as ServerStoredTennisTemplate;
+            
+            foreach (var i in Filtered)
+            {
+                NewTemplates.Add(new ServerStoredTennisTemplate(i));
+            }
+
+            ViewModel.AvailableTennisTemplates = PreviouslyLoadedTemplate == null ? NewTemplates : NewTemplates.Prepend(PreviouslyLoadedTemplate);
+
+            if (PreviouslyLoadedTemplate != null)
+            {
+                ViewModel.SelectedTennisTemplate = PreviouslyLoadedTemplate;
+            }
+            else if (PreviouslySelectedTemplate != null)
+            {
+                ViewModel.SelectedTennisTemplate = NewTemplates.SingleOrDefault(i => i.Path.FullPath == PreviouslySelectedTemplate.Path.FullPath);
+            }
         }
 
         public void Unload()
@@ -51,22 +110,22 @@ namespace TennisPlugin
                     ViewModel.SelectedTennisTemplate.HideLowerThird();
                 }
             }
-            ViewModel.CanSelectTemplate = true;
-            if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
-            {
+            if (ViewModel.TemplateIsLoaded && PluginInterfaces.PublicProviders.CasparServer.IsConnected)
+            {  
                 PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
             }
+            ViewModel.TemplateIsLoaded = false;
         }
 
         private void LoadAndLockSelectedTemplate(object sender, RoutedEventArgs e)
         {
-            ViewModel.CanSelectTemplate = false;
+            ViewModel.TemplateIsLoaded = true;
             PluginInterfaces.PublicProviders.CasparServer.LoadTemplate(ViewModel.SelectedTennisTemplate);
         }
 
         private void UnlockSelectedTemplate(object sender, RoutedEventArgs e)
         {
-            ViewModel.CanSelectTemplate = true;
+            ViewModel.TemplateIsLoaded = false;
             PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
         }
 
@@ -197,11 +256,6 @@ namespace TennisPlugin
                 }
             }
             //ViewModel.SelectedTennisTemplate.SetLowerThirdEffects(ViewModel.SelectedLowerThirdTextEffect.Value == LowerThirdTextEffect.ScrollRightToLeft);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PluginInterfaces.PublicProviders.CasparServer.ExecuteCommand(new CasparServerCommands.CallCommand(1, 1, "foo", FooBox.Text));
         }
 
     }

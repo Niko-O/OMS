@@ -1081,7 +1081,7 @@ OnUtils
  </summary>
 </member><member name="M:OnUtils.Wpf.ViewModelBase.#ctor">
 	<summary>
- Abhängigkeiten von Properties werden nicht aufgelöst.
+ Abhängigkeiten von Properties werden aufgelöst.
  </summary>
 </member><member name="M:OnUtils.Wpf.ViewModelBase.#ctor(System.Boolean)">
 	<summary>
