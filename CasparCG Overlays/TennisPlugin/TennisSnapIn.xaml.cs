@@ -31,6 +31,7 @@ namespace TennisPlugin
             InitializeComponent();
             ViewModel = (TennisSnapInViewModel)this.DataContext;
             StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
+            StateList.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(StateListPropertyChanged);
             ViewModel.StateList = StateList;
             PluginInterfaces.PublicProviders.CasparServer.IsConnectedChanged += () => LoadTemplatesFromServer();
             LoadTemplatesFromServer();
@@ -144,68 +145,27 @@ namespace TennisPlugin
             }
         }
 
-        private void IncrementTeamOnePoints(object sender, RoutedEventArgs e)
+        private void StateListPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            //TeamOneStats.IncrementPoints();
-            StateList.Process(Scoring.ScoringStrategyAction.Player1Scored);
-            UpdatePlayerStats();
-        }
-
-        private void DecrementTeamOnePoints(object sender, RoutedEventArgs e)
-        {
-            //TeamOneStats.DecrementPoints();
-            //UpdatePlayerStats();
-        }
-
-        private void IncrementTeamTwoPoints(object sender, RoutedEventArgs e)
-        {
-            //TeamTwoStats.IncrementPoints();
-            StateList.Process(Scoring.ScoringStrategyAction.Player2Scored);
-            UpdatePlayerStats();
-        }
-
-        private void DecrementTeamTwoPoints(object sender, RoutedEventArgs e)
-        {
-            //TeamTwoStats.DecrementPoints();
-            //UpdatePlayerStats();
-        }
-
-        private void UndoScoring(object sender, RoutedEventArgs e)
-        {
-            StateList.Undo();
-            UpdatePlayerStats();
+            switch (e.PropertyName)
+            {
+                case "CurrentState":
+                    UpdatePlayerStats();
+                    break;
+            }
         }
 
         private void UpdatePlayerStats()
         {
-            //ViewModel.SelectedTennisTemplate.SetPointsOne(TeamOneStats.PointsAsString);
-            //ViewModel.SelectedTennisTemplate.SetGamesOne(TeamOneStats.Games);
-            //ViewModel.SelectedTennisTemplate.SetSetsOne(TeamOneStats.Sets);
-            //ViewModel.SelectedTennisTemplate.SetPointsTwo(TeamTwoStats.PointsAsString);
-            //ViewModel.SelectedTennisTemplate.SetGamesTwo(TeamTwoStats.Games);
-            //ViewModel.SelectedTennisTemplate.SetSetsTwo(TeamTwoStats.Sets);
-            //ViewModel.TeamOnePoints = TeamOneStats.PointsAsString;
-            //ViewModel.TeamOneGames = TeamOneStats.Games.ToString();
-            //ViewModel.TeamOneSets = TeamOneStats.Sets.ToString();
-            //ViewModel.TeamTwoPoints = TeamTwoStats.PointsAsString;
-            //ViewModel.TeamTwoGames = TeamTwoStats.Games.ToString();
-            //ViewModel.TeamTwoSets = TeamTwoStats.Sets.ToString();
             if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
             {
-                ViewModel.SelectedTennisTemplate.SetPointsOne(StateList.CurrentState.Player1Point.ToDisplayString());
+                ViewModel.SelectedTennisTemplate.SetPointsOne(StateList.CurrentState.Player1Point.ToString());
                 ViewModel.SelectedTennisTemplate.SetGamesOne(StateList.CurrentState.Player1Game);
                 ViewModel.SelectedTennisTemplate.SetSetsOne(StateList.CurrentState.Player1Set);
-                ViewModel.SelectedTennisTemplate.SetPointsTwo(StateList.CurrentState.Player2Point.ToDisplayString());
+                ViewModel.SelectedTennisTemplate.SetPointsTwo(StateList.CurrentState.Player2Point.ToString());
                 ViewModel.SelectedTennisTemplate.SetGamesTwo(StateList.CurrentState.Player2Game);
                 ViewModel.SelectedTennisTemplate.SetSetsTwo(StateList.CurrentState.Player2Set);
             }
-            ViewModel.TeamOnePoints = StateList.CurrentState.Player1Point.ToDisplayString();
-            ViewModel.TeamOneGames = StateList.CurrentState.Player1Game.ToString();
-            ViewModel.TeamOneSets = StateList.CurrentState.Player1Set.ToString();
-            ViewModel.TeamTwoPoints = StateList.CurrentState.Player2Point.ToDisplayString();
-            ViewModel.TeamTwoGames = StateList.CurrentState.Player2Game.ToString();
-            ViewModel.TeamTwoSets = StateList.CurrentState.Player2Set.ToString();
-            ViewModel.CanUndoScoring = StateList.CanUndo;
         }
 
         private void UpdatePlayerNames()

@@ -70,16 +70,44 @@ namespace TennisPlugin.Scoring.V1
             }
         }
 
-        public V1State()
+        private bool _IsInTieBreak;
+        public bool IsInTieBreak
         {
-            _Player1 = new PlayerState(0, 0, PointType.Zero);
-            _Player2 = new PlayerState(0, 0, PointType.Zero);
+            get
+            {
+                return _IsInTieBreak;
+            }
         }
 
-        public V1State(PlayerState NewPlayer1, PlayerState NewPlayer2)
+        private bool _IsTieBreakEnabled;
+        public bool IsTieBreakEnabled
+        {
+            get
+            {
+                return _IsTieBreakEnabled;
+
+            }
+        }
+
+        public V1State()
+        {
+            _Player1 = new PlayerState(0, 0, new PointType(false, PointType.Zero));
+            _Player2 = new PlayerState(0, 0, new PointType(false, PointType.Zero));
+            _IsInTieBreak = false;
+            _IsTieBreakEnabled = false;
+        }
+
+        public V1State(PlayerState NewPlayer1, PlayerState NewPlayer2, bool NewIsInTieBreak, bool NewIsTieBreakEnabled)
         {
             _Player1 = NewPlayer1;
             _Player2 = NewPlayer2;
+            _IsInTieBreak = NewIsInTieBreak;
+            _IsTieBreakEnabled = NewIsTieBreakEnabled;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} : {1}", _Player1, _Player2);
         }
 
     }

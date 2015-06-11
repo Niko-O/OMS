@@ -20,5 +20,10 @@ namespace TennisPlugin.Scoring.V1
             Point = NewPoint;
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0}-{1}-{2}", Set, Game, Point);
+        }
+
     }
 }

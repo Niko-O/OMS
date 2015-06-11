@@ -9,6 +9,7 @@ namespace TennisPlugin.Scoring
     {
 
         IScoringState InitialState { get; }
+        bool CanProcess(IScoringState PreviousState, ScoringStrategyAction Action);
         IScoringState Process(IScoringState PreviousState, ScoringStrategyAction Action);
 
     }

@@ -43,6 +43,11 @@ namespace TennisPlugin.Scoring
             OnPropertyChanged("CanUndo", "CurrentState");
         }
 
+        public bool CanProcess(ScoringStrategyAction Action)
+        {
+            return Strategy.CanProcess(States.Peek(), Action);
+        }
+
         public void Undo()
         {
             if (!CanUndo) throw new InvalidOperationException("Kann nicht rückgängig machen.");

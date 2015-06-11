@@ -99,10 +99,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Margin="2">Aufschlag</Button>
-                            <Button Grid.Column="1" Margin="2" Click="IncrementTeamOnePoints">
+                            <Button Grid.Column="1" Margin="2" Command="{Binding Path=Player1ScoredCommand}">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
-                            <Button Grid.Column="2" Margin="2" IsEnabled="False" Click="DecrementTeamOnePoints">
+                            <Button Grid.Column="2" Margin="2" Command="{Binding Path=Player1ReducedCommand}">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 M 0 1"/>
                             </Button>
                         </Grid>
@@ -119,9 +119,9 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Set</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Game</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Point</TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Path=TeamOneSets}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=TeamOneGames}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=TeamOnePoints}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Path=StateList.CurrentState.Player1Set}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=StateList.CurrentState.Player1Game}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=StateList.CurrentState.Player1Point}"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
@@ -138,10 +138,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Margin="2">Aufschlag</Button>
-                            <Button Grid.Column="1" Margin="2" Click="IncrementTeamTwoPoints">
+                            <Button Grid.Column="1" Margin="2" Command="{Binding Path=Player2ScoredCommand}">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
-                            <Button Grid.Column="2" Margin="2" IsEnabled="False" Click="DecrementTeamTwoPoints">
+                            <Button Grid.Column="2" Margin="2" Command="{Binding Path=Player2ReducedCommand}">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 M 0 1"/>
                             </Button>
                         </Grid>
@@ -158,9 +158,9 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">Set</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Game</TextBlock>
                             <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">Point</TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Path=TeamTwoSets}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=TeamTwoGames}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=TeamTwoPoints}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Path=StateList.CurrentState.Player2Set}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=StateList.CurrentState.Player2Game}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=StateList.CurrentState.Player2Point}"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
@@ -169,8 +169,8 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0" Margin="10,0" VerticalAlignment="Center">Tie-Break</CheckBox>
-                    <Button Grid.Column="1" Margin="3" Padding="7" IsEnabled="{Binding Path=CanUndoScoring}" Click="UndoScoring">Rückgängig machen</Button>
+                    <CheckBox Grid.Column="0" Margin="10,0" VerticalAlignment="Center" IsEnabled="{Binding Path=CanToggleIsTieBreakEnabled}" IsChecked="{Binding Path=IsTieBreakEnabled}">Tie-Break</CheckBox>
+                    <Button Grid.Column="1" Margin="3" Padding="7" Command="{Binding Path=UndoCommand}">Rückgängig machen</Button>
                 </Grid>
             </Grid>
         </GroupBox>

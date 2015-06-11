@@ -11,7 +11,7 @@ namespace TennisPlugin
 {
     public class TennisSnapInViewModel : ViewModelBase
     {
-         
+
         private bool _TemplateIsLoaded = false;
         public bool TemplateIsLoaded
         {
@@ -80,7 +80,91 @@ namespace TennisPlugin
         }
 
         #region Scoreboard
-        
+
+        private DelegateCommand _Player1ScoredCommand;
+        public DelegateCommand Player1ScoredCommand
+        {
+            get
+            {
+                return _Player1ScoredCommand;
+            }
+        }
+
+        private DelegateCommand _Player1ReducedCommand;
+        public DelegateCommand Player1ReducedCommand
+        {
+            get
+            {
+                return _Player1ReducedCommand;
+            }
+        }
+
+        private DelegateCommand _Player2ScoredCommand;
+        public DelegateCommand Player2ScoredCommand
+        {
+            get
+            {
+                return _Player2ScoredCommand;
+            }
+        }
+
+        private DelegateCommand _Player2ReducedCommand;
+        public DelegateCommand Player2ReducedCommand
+        {
+            get
+            {
+                return _Player2ReducedCommand;
+            }
+        }
+
+        private DelegateCommand _UndoCommand;
+        public DelegateCommand UndoCommand
+        {
+            get
+            {
+                return _UndoCommand;
+            }
+        }
+
+        public bool CanToggleIsTieBreakEnabled
+        {
+            get
+            {
+                if (_StateList == null) return false;
+                if (IsTieBreakEnabled)
+                {
+                    return _StateList.CanProcess(Scoring.ScoringStrategyAction.DisableTieBreak);
+                }
+                else
+                {
+                    return _StateList.CanProcess(Scoring.ScoringStrategyAction.EnableTieBreak);
+                }
+            }
+        }
+
+        public bool IsTieBreakEnabled
+        {
+            get
+            {
+                if (_StateList == null) return false;
+                return _StateList.CurrentState.IsTieBreakEnabled;
+            }
+            set
+            {
+                if (_StateList == null) return;
+                if (value == IsTieBreakEnabled) return;
+                if (value)
+                {
+                    _StateList.Process(Scoring.ScoringStrategyAction.EnableTieBreak);
+                }
+                else
+                {
+                    _StateList.Process(Scoring.ScoringStrategyAction.DisableTieBreak);
+                }
+                OnPropertyChanged("IsTieBreakEnabled");
+            }
+        }
+
         private Scoring.UndoStateList _StateList = null;
         public Scoring.UndoStateList StateList
         {
@@ -90,7 +174,20 @@ namespace TennisPlugin
             }
             set
             {
-                ChangeIfDifferent(ref _StateList, value, "StateList");
+                if (_StateList != value)
+                {
+                    if (_StateList != null)
+                    {
+                        _StateList.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(StateListPropertyChanged);
+                    }
+                    _StateList = value;
+                    if (_StateList != null)
+                    {
+                        _StateList.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(StateListPropertyChanged);
+                    }
+                    OnPropertyChanged("StateList");
+                    UpdateStateListCommands();
+                }
             }
         }
 
@@ -133,101 +230,10 @@ namespace TennisPlugin
             }
         }
 
-        private String _TeamOnePoints = "0";
-        public String TeamOnePoints
-        {
-            get
-            {
-                return _TeamOnePoints;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _TeamOnePoints, value, "TeamOnePoints");
-            }
-        }
-
-        private String _TeamOneGames = "0";
-        public String TeamOneGames
-        {
-            get
-            {
-                return _TeamOneGames;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _TeamOneGames, value, "TeamOneGames");
-            }
-        }
-
-        private String _TeamOneSets = "0";
-        public String TeamOneSets
-        {
-            get
-            {
-                return _TeamOneSets;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _TeamOneSets, value, "TeamOneSets");
-            }
-        }
-
-        private String _TeamTwoPoints = "0";
-        public String TeamTwoPoints
-        {
-            get
-            {
-                return _TeamTwoPoints;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _TeamTwoPoints, value, "TeamTwoPoints");
-            }
-        }
-
-        private String _TeamTwoGames = "0";
-        public String TeamTwoGames
-        {
-            get
-            {
-                return _TeamTwoGames;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _TeamTwoGames, value, "TeamTwoGames");
-            }
-        }
-
-        private String _TeamTwoSets = "0";
-        public String TeamTwoSets
-        {
-            get
-            {
-                return _TeamTwoSets;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _TeamTwoSets, value, "TeamTwoSets");
-            }
-        }
-         
-        private bool _CanUndoScoring = false;
-        public bool CanUndoScoring
-        {
-            get
-            {
-                return _CanUndoScoring;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _CanUndoScoring, value, "CanUndoScoring");
-            }
-        }
-
         #endregion
 
         #region Lower Third
-         
+
         private bool _LowerThirdIsVisible = false;
         public bool LowerThirdIsVisible
         {
@@ -240,7 +246,7 @@ namespace TennisPlugin
                 ChangeIfDifferent(ref _LowerThirdIsVisible, value, "LowerThirdIsVisible");
             }
         }
-        
+
         //[Dependency("")]
         public bool LowerThirdSettingsAreValid
         {
@@ -346,7 +352,7 @@ namespace TennisPlugin
                 }
             }
         }
-        
+
         private ObservableCollection<LowerThirdTextInput> _LowerThirdTextInputs = new ObservableCollection<LowerThirdTextInput>();
         public ObservableCollection<LowerThirdTextInput> LowerThirdTextInputs
         {
@@ -368,7 +374,7 @@ namespace TennisPlugin
                 ChangeIfDifferent(ref _LowerThirdTextSeparatorChar, value, "LowerThirdTextSeparatorChar");
             }
         }
-        
+
         private bool _LowerThirdTextInputIsLocked = false;
         public bool LowerThirdTextInputIsLocked
         {
@@ -389,16 +395,46 @@ namespace TennisPlugin
                 }
             }
         }
-        
+
         #endregion
 
         public TennisSnapInViewModel()
             : base(true)
         {
+            _Player1ScoredCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player1Scored), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player1Scored));
+            _Player1ReducedCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player1Reduced), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player1Reduced));
+            _Player2ScoredCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player2Scored), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player2Scored));
+            _Player2ReducedCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player2Reduced), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player2Reduced));
+            _UndoCommand = new DelegateCommand(() => _StateList.Undo(), () => _StateList != null && _StateList.CanUndo);
             AddExternalPropertyDependency("CanLoadTemplate", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
             AddExternalPropertyDependency("ToggleLowerThirdVisibilityButtonEnabled", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
             AddExternalPropertyDependency("CanShowGraphics", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
             LowerThirdTextInputCount = 5;
+            if (IsInDesignMode)
+            {
+                _StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
+            }
+        }
+
+        private void StateListPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "CurrentState":
+                    UpdateStateListCommands();
+                    break;
+            }
+        }
+
+        private void UpdateStateListCommands()
+        {
+            _Player1ScoredCommand.OnCanExecuteChanged();
+            _Player1ReducedCommand.OnCanExecuteChanged();
+            _Player2ScoredCommand.OnCanExecuteChanged();
+            _Player2ReducedCommand.OnCanExecuteChanged();
+            _UndoCommand.OnCanExecuteChanged();
+            OnPropertyChanged("CanToggleIsTieBreakEnabled");
+            OnPropertyChanged("IsTieBreakEnabled");
         }
 
         private void TextInputSelected(object sender, EventArgs e)
