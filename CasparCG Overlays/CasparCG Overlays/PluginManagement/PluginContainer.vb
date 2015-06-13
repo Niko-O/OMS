@@ -42,7 +42,9 @@ Namespace PluginManagement
 
         Public Sub UnloadAllPlugins()
             For Each i In _Plugins
-                i.Disabled()
+                If i.IsInUse Then
+                    i.Disabled()
+                End If
             Next
             For Each i In _Plugins
                 i.Unloaded()
