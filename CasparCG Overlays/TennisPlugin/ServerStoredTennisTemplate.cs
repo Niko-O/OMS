@@ -38,7 +38,7 @@ namespace TennisPlugin
 
         public string DisplayName
         {
-            get { return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase((_Path.FileNameWithoutExtension + " (" + (_Path.Directory ?? "<Root>") + ")").ToLower()); }
+            get { return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(_Path.FileNameWithoutExtension.ToLower()) + " (" + (_Path.Directory ?? "<Root>") + ")"; }
         }
 
         public int? Layer

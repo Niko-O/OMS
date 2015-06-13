@@ -80,8 +80,8 @@ namespace TennisPlugin
             _TemplateDirectories = new[] {
                 new TemplateDirectory("1",
                     new TemplateDirectory("1.1"),
-                    new TemplateDirectory("1.2")
-                ),
+                    new TemplateDirectory("1.2") { IsSelected = true, IsExpanded = true }
+                ) { IsExpanded = true },
                 new TemplateDirectory("2",
                     new TemplateDirectory("2.1",
                         new TemplateDirectory("2.1.1"),

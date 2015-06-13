@@ -17,7 +17,7 @@ namespace TennisPlugin
     public partial class FilterTemplatesDialog : Window
     {
 
-        public TemplateFilter Filter
+        public string Filter
         {
             get
             {
@@ -27,8 +27,12 @@ namespace TennisPlugin
                 }
                 else
                 {
-                    return new TemplateFilter(ViewModel.SelectedTemplateDirectory.BuildPath());
+                    return ViewModel.SelectedTemplateDirectory.BuildPath();
                 }
+            }
+            set
+            {
+                TrySelectFromPath(value);
             }
         }
 
@@ -115,6 +119,32 @@ namespace TennisPlugin
         private void MainTreeViewSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             ViewModel.SelectedTemplateDirectory = (TemplateDirectory)MainTreeView.SelectedItem;
+        }
+
+        private void TrySelectFromPath(string Path)
+        {
+            Action<IEnumerable<TemplateDirectory>> Deselector = null;
+            Deselector = s =>
+            {
+                foreach (var i in s)
+                {
+                    i.IsSelected = false;
+                    Deselector(i.Children);
+                }
+            };
+            Deselector(ViewModel.TemplateDirectories);
+
+            if (string.IsNullOrEmpty(Path)) return;
+            
+            IEnumerable<TemplateDirectory> Directories = ViewModel.TemplateDirectories;
+            foreach (var i in Path.Split('/'))
+            {
+                var Directory = Directories.SingleOrDefault(j => j.Name == i);
+                if (Directory == null) return;
+                Directory.IsSelected = true;
+                Directory.IsExpanded = true;
+                Directories = Directory.Children;
+            }
         }
 
     }

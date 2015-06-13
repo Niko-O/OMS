@@ -51,4 +51,8 @@ Public NotInheritable Class SettingsProperty(Of T)
         _Value = DirectCast(NewValue, T)
     End Sub
 
+    Friend Overrides Function GetDefaultValue() As Object
+        Return _DefaultValue
+    End Function
+
 End Class

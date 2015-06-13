@@ -43,12 +43,15 @@ Namespace PluginManagement.Settings
         Private Sub RecursiveLoadSettings(Settings As PluginSettings.SettingsStructure, Node As SettingsNode)
             For Each i In Settings.Properties
                 Dim Prop = Node.GetProperty(i.Name)
-                If Not i.Type.IsAssignableFrom(Prop.Type) Then
+                If Prop Is Nothing Then
+                    SetPropertyValue(i, GetDefaultValue(i))
+                ElseIf Not i.Type.IsAssignableFrom(Prop.Type) Then
                     Throw New Exceptions.PropertyTypeIncompatibleException( _
                         String.Format("Für Property {0} in {1} wurde Typ '{2}' erwartet, der Typ des gespeicherten Wertes ist jedoch '{3}'.", _
                                       i.Name, Settings.Name, i.Type.AssemblyQualifiedName, Prop.Type.AssemblyQualifiedName))
+                Else
+                    SetPropertyValue(i, Prop.Value)
                 End If
-                SetPropertyValue(i, Prop.Value)
             Next
             For Each i In Settings.SubStructures
                 Dim SubNode = Node.GetSubNode(i.Name)
@@ -88,7 +91,7 @@ Namespace PluginManagement.Settings
                 If Converter Is Nothing Then
                     Throw New Exceptions.TypeConverterNotFoundException(String.Format("Es wurde kein TypeConverter für die Konvertierung nach '{0}' gefunden.", i.Type.AssemblyQualifiedName))
                 End If
-                Dim ValueString = Converter.ConvertToString(i.Value)
+                Dim ValueString = Converter.ConvertToString(GetPropertyValue(i))
                 Dim PropertyElement As New XElement("Property")
                 Node.Add(PropertyElement)
                 PropertyElement.SetAttributeValue("Name", i.Name)

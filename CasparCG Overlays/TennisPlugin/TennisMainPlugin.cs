@@ -16,6 +16,7 @@ namespace TennisPlugin
     {
 
         private TennisSnapIn SnapIn = null;
+        private TennisSettings Settings = null;
 
         public TennisMainPlugin()
         {
@@ -29,23 +30,36 @@ namespace TennisPlugin
 
         public void Created()
         {
-        
+            Settings = new TennisSettings();
+            PluginInterfaces.PublicProviders.PluginSettings.LoadSettings(Settings);
         }
 
         public void Enabled()
         {
             SnapIn = new TennisSnapIn();
+            if (!string.IsNullOrEmpty(Settings.LastTemplateFilter))
+            {
+                SnapIn.CurrentFilter = Settings.LastTemplateFilter;
+            }
         }
 
         public void Disabled()
         {
+            if (SnapIn.CurrentFilter == null)
+            {
+                Settings.LastTemplateFilter = null;
+            }
+            else
+            {
+                Settings.LastTemplateFilter = SnapIn.CurrentFilter;
+            }
             SnapIn.Unload();
             SnapIn = null;
         }
 
         public void Unloaded()
         {
-        
+            PluginInterfaces.PublicProviders.PluginSettings.SaveSettings(Settings);
         }
 
     }

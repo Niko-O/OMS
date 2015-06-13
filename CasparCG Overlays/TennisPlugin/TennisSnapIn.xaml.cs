@@ -24,7 +24,20 @@ namespace TennisPlugin
 
         private TennisSnapInViewModel ViewModel;
         private Scoring.UndoStateList StateList;
-        private TemplateFilter CurrentFilter = null;
+
+        private string _CurrentFilter = null;
+        public string CurrentFilter
+        {
+            get
+            {
+                return _CurrentFilter;
+            }
+            set
+            {
+                _CurrentFilter = value;
+                LoadTemplatesFromServer();
+            }
+        }
 
         public TennisSnapIn()
         {
@@ -40,10 +53,10 @@ namespace TennisPlugin
         private void EditTemplateFilter(object sender, RoutedEventArgs e)
         {
             var Dlg = new FilterTemplatesDialog();
+            Dlg.Filter = _CurrentFilter;
             if ((bool)Dlg.ShowDialog())
             {
                 CurrentFilter = Dlg.Filter;
-                LoadTemplatesFromServer();
             }
         }
 
@@ -69,7 +82,7 @@ namespace TennisPlugin
                 };
                 return;
             }
-            var Filtered = CurrentFilter == null ? TemplatePaths : CurrentFilter.Filter(TemplatePaths);
+            var Filtered = _CurrentFilter == null ? TemplatePaths : TemplatePaths.Where(i => i.Directory.StartsWith(_CurrentFilter, StringComparison.InvariantCultureIgnoreCase)); ;
             
             var NewTemplates = new List<ServerStoredTennisTemplate>();
             

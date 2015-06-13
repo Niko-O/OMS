@@ -8,6 +8,7 @@
     xmlns:i="clr-namespace:PluginInterfaces;assembly=PluginInterfaces"
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
+    xmlns:f="clr-namespace:System.Diagnostics;assembly=mscorlib"
     xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     mc:Ignorable="d" 
     d:DesignHeight="808"
@@ -32,6 +33,10 @@
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="0" Header="Template" Padding="3">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
@@ -47,6 +52,7 @@
                 <Button Grid.Column="1" Margin="5,0" Padding="10,0" Click="EditTemplateFilter">...</Button>
                 <!-- IsEnabled="{Binding Source={x:Static Member=i:PublicProviders.CasparServer}, Path=IsConnected}" -->
                 <CheckBox Grid.Column="2" VerticalAlignment="Center" IsEnabled="{Binding Path=CanLoadTemplate}" Checked="LoadAndLockSelectedTemplate" Unchecked="UnlockSelectedTemplate">Ausgewählt</CheckBox>
+                <TextBox x:Name="DebugBox" Grid.Row="1" Grid.ColumnSpan="3" Visibility="{Binding Source={x:Static Member=f:Debugger.IsAttached}, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}"></TextBox>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Einstellungen" Padding="3">

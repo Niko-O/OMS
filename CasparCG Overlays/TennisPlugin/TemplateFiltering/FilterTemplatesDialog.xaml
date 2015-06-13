@@ -28,6 +28,10 @@
             SelectedItemChanged="MainTreeViewSelectedItemChanged"
         >
             <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}"/>
+                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
+                </Style>
                 <HierarchicalDataTemplate DataType="{x:Type l:TemplateDirectory}" ItemsSource="{Binding Path=Children}">
                     <TextBlock Text="{Binding Path=Name}" />
                 </HierarchicalDataTemplate>
