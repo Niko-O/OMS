@@ -36,15 +36,6 @@ Public MustInherit Class SettingsProperty
     End Property
 
     ''' <summary>
-    ''' Der Wert dieser Eigenschaft, als Object.
-    ''' </summary>
-    Public ReadOnly Property Value As Object
-        Get
-            Return GetValue()
-        End Get
-    End Property
-
-    ''' <summary>
     ''' Gibt beim Überschreiben den Wert der Eigenschaft als Object zurück.
     ''' </summary>
     Friend MustOverride Function GetValue() As Object
@@ -55,6 +46,11 @@ Public MustInherit Class SettingsProperty
     ''' </summary>
     ''' <param name="NewValue">Der neue Wert.</param>
     Friend MustOverride Sub SetValue(NewValue As Object)
+
+    ''' <summary>
+    ''' Gibt beim Überschreiben den Standardwert der Eigenschaft als Object zurück.
+    ''' </summary>
+    Friend MustOverride Function GetDefaultValue() As Object
 
     ''' <summary>
     ''' Konstruktor.

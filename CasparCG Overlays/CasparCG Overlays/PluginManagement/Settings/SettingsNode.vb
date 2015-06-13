@@ -36,7 +36,8 @@ Namespace PluginManagement.Settings
                     Return i
                 End If
             Next
-            Throw New Exceptions.PropertyTypeIncompatibleException(String.Format("In dieser Eigenschaften-Struktur wurde keine Eigenschaft mit dem Namen {0} gefunden.", PropertyName))
+            'Throw New Exceptions.PropertyTypeIncompatibleException(String.Format("In dieser Eigenschaften-Struktur wurde keine Eigenschaft mit dem Namen {0} gefunden.", PropertyName))
+            Return Nothing
         End Function
 
         ''' <summary>
