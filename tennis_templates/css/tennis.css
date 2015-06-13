@@ -1,24 +1,25 @@
-*{
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;							/* This sets all elements to be the actual set dimensions, disregarding padding and borders */
-	-webkit-transition: translate3d(0,0,0);			/* Turns on hardware acceleration - not known to be of benefit in CCG, but won't hurt */
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; /* This sets all elements to be the actual set dimensions, disregarding padding and borders */
+    -webkit-transition: translate3d(0, 0, 0); /* Turns on hardware acceleration - not known to be of benefit in CCG, but won't hurt */
 }
 
 html, body {
-	margin: 0;										 /* Use all available space */
-	padding: 0;										 /* Use all available space */
-	background: transparent;					     /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
-	overflow: hidden;								 /* Hide any overflowing elements - to disable scollbars */
-	-webkit-font-smoothing: antialiased !important;	 /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
+    margin: 0; /* Use all available space */
+    padding: 0; /* Use all available space */
+    background: transparent; /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
+    overflow: hidden; /* Hide any overflowing elements - to disable scollbars */
+    -webkit-font-smoothing: antialiased !important; /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
 }
 
 body {
     font-family: Calibri, Arial, sans-serif;
-	color: #FFF;
+    color: #FFF;
     font-size: 20px;
 }
 
-#scoreboard{
+#scoreboard {
     position: absolute;
     top: 50px;
     left: 150px;
@@ -28,7 +29,7 @@ body {
     font-weight: bold;
 }
 
-#team_one{
+#team_one {
     border: 1px solid white;
     height: 50%;
     width: 100%;
@@ -37,7 +38,7 @@ body {
     text-transform: uppercase;
 }
 
-#team_two{
+#team_two {
     margin-top: 2px;
     border: 1px solid white;
     height: 50%;
@@ -47,51 +48,103 @@ body {
     text-transform: uppercase;
 }
 
-#name_one, #name_two{
+#name_one, #name_two {
     width: 100px;
     float: left;
     padding-left: 10px;
 }
 
-#points_one, #points_two{
+#points_one, #points_two {
     width: 30px;
     float: right;
     text-align: center;
 }
 
-#games_one, #games_two{
-    width: 30px;
-    float: right; 
-    text-align: center;
-}
-
-#sets_one, #sets_two{
+#games_one, #games_two {
     width: 30px;
     float: right;
     text-align: center;
 }
 
-#lower_third{
+#sets_one, #sets_two {
+    width: 30px;
+    float: right;
+    text-align: center;
+}
+
+/*----------------- Lower Third - Setup -----------------*/
+#lower_third {
     position: absolute;
-    bottom: 100px;
-    left: 50px;
-    width: 750px;
-    height: 150px;
-    background-color: #C3C3C3;
+    bottom: 105px;
+    left: -200px;
+    width: 1200px;
+    height: 120px;
+    background-color: transparent;
 }
 
-#lower_third #title {
-    font-size: 30px;
-    padding-left: 20px;
+#lower_third #main {
+    height: 65px;
+    border-radius: 0;
+    transform: skewX(-45deg);
+    -webkit-box-shadow: 5px 5px 20px 0 #8A8A8A;
+    box-shadow: 5px 5px 15px 0 #8A8A8A;
+    position: relative;
+    z-index: 10;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(241, 116, 50, 0.85)), color-stop(9%, rgba(240, 113, 46, 0.85)), color-stop(100%, rgba(234, 85, 7, 1)));
+    background: -webkit-linear-gradient(top, rgba(241, 116, 50, 0.85) 0%, rgba(240, 113, 46, 0.85) 9%, rgba(234, 85, 7, 1) 100%);
+    background: linear-gradient(to bottom, rgba(241, 116, 50, 0.85) 0%, rgba(240, 113, 46, 0.85) 9%, rgba(234, 85, 7, 1) 100%);
 }
 
-#lower_third #subtitle {
-    margin-top: 10px;
+#main #title {
+    font-size: 45px;
+    padding-left: 300px;
+    transform: skewX(45deg);
+    line-height: 65px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#lower_third #sub {
+    width: 900px;
+    height: 40px;
+    transform: skewX(-45deg);
+    position: relative;
+    -webkit-box-shadow: 5px 5px 20px 0 #8A8A8A;
+    box-shadow: 5px 5px 15px 0 #8A8A8A;
+    background: rgb(252, 255, 244);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(252, 255, 244, 1)), color-stop(100%, rgba(233, 233, 206, 1)));
+    background: -webkit-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+    background: linear-gradient(to bottom, rgba(252, 255, 244, 1) 0%, rgba(233, 233, 206, 1) 100%);
+}
+
+#sub #subtitle {
     font-size: 20px;
-    padding-left: 20px;
+    padding-left: 350px;
+    transform: skewX(45deg);
+    line-height: 40px;
+    color: black;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
 }
 
+/*----------------- Lower Third - Animation -----------------*/
 
+#main, #sub {
+    transition-property: left;
+    transition-duration: 3s;
+    transition-timing-function: ease-out;
+}
 
+#main{
+    left: -1040px;
+}
 
+#sub{
+    left: -740px;
+}
+
+.flyIn {
+    left: 0 !important;
+}
 

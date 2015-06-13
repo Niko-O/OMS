@@ -1,4 +1,3 @@
-
 //region ScoreBoard
 
 function showScoreboard()
@@ -11,14 +10,44 @@ function hideScoreboard()
     document.getElementById("scoreboard").style.visibility = "hidden";
 }
 
-function setTeamNameOne(name)
+function setPlayerNames(playerOne, playerTwo)
 {
-    document.getElementById("name_one").innerHTML = name;
+    document.getElementById("name_one").innerHTML = playerOne;
+    document.getElementById("name_two").innerHTML = playerTwo;
 }
 
-function setTeamNameTwo(name)
+function setPlayerNameOne(playerOne)
 {
-    document.getElementById("name_two").innerHTML = name;
+    document.getElementById("name_one").innerHTML = playerOne;
+}
+
+function setPlayerNameTwo(playerTwo)
+{
+    document.getElementById("name_Two").innerHTML = playerTwo;
+}
+
+function setStandings(setsOne, gamesOne, pointsOne, setsTwo, gamesTwo, pointsTwo)
+{
+    document.getElementById("sets_one").innerHTML = setsOne;
+    document.getElementById("games_one").innerHTML = gamesOne;
+    document.getElementById("points_one").innerHTML = pointsOne;
+    document.getElementById("sets_one").innerHTML = setsTwo;
+    document.getElementById("games_one").innerHTML = gamesTwo;
+    document.getElementById("points_one").innerHTML = pointsTwo;
+}
+
+function setStandingsPlayerOne(setsOne, gamesOne, pointsOne)
+{
+    document.getElementById("sets_one").innerHTML = setsOne;
+    document.getElementById("games_one").innerHTML = gamesOne;
+    document.getElementById("points_one").innerHTML = pointsOne;
+}
+
+function setStandingsPlayerTwo(setsTwo, gamesTwo, pointsTwo)
+{
+    document.getElementById("sets_one").innerHTML = setsTwo;
+    document.getElementById("games_one").innerHTML = gamesTwo;
+    document.getElementById("points_one").innerHTML = pointsTwo;
 }
 
 function setPointsOne(points)
@@ -55,14 +84,42 @@ function setSetsTwo(sets)
 
 //region LowerThird
 
+var lowerThird_main = document.getElementById("main");
+var checkMain = true;
+var checkSub = true;
+
+function inSubLowerThird()
+{
+    if (checkMain)
+    {
+        document.getElementById("sub").classList.add("flyIn");
+        checkMain = false;
+    }
+}
+
+function outMainLowerThird()
+{
+    if (checkSub)
+    {
+        document.getElementById("main").classList.remove("flyIn");
+        checkSub = false;
+    }
+}
+
 function showLowerThird()
 {
-    document.getElementById("lower_third").style.visibility = "visible";
+    /*document.getElementById("lower_third").style.visibility = "visible";*/
+    checkMain = true;
+    document.getElementById("main").classList.add("flyIn");
+    document.getElementById("main").addEventListener("transitionend", inSubLowerThird, false);
 }
 
 function hideLowerThird()
 {
-    document.getElementById("lower_third").style.visibility = "hidden";
+    //document.getElementById("lower_third").style.visibility = "hidden";
+    checkSub = true;
+    document.getElementById("sub").classList.remove("flyIn");
+    document.getElementById("sub").addEventListener("transitionend", outMainLowerThird, false);
 }
 
 function setLowerThirdTitleText(text)
@@ -79,11 +136,13 @@ function setLowerThirdSubtitleText(text)
 
 //region CrawlerTop
 
-function showCrawlerTop(){
+function showCrawlerTop()
+{
     document.getElementById("crawler_top").style.visibility = "visible";
 }
 
-function hideCrawlerTop(){
+function hideCrawlerTop()
+{
     document.getElementById("crawler_top").style.visibility = "hidden";
 }
 
@@ -97,17 +156,19 @@ function setCrawlerTopText(text)
 
 //region CrawlerDown
 
-function showCrawlerDown(){
-    document.getElementById("crawler_down").style.visibility = "visible";
-}
-
-function hideCrawlerDown(){
-    document.getElementById("crawler_down").style.visibility = "hidden";
-}
-
-function setCrawlerDownText(text)
+function showCrawlerBottom()
 {
-    document.getElementById("crawler_down").innerHTML = text;
+    document.getElementById("crawler_bottom").style.visibility = "visible";
+}
+
+function hideCrawlerBottom()
+{
+    document.getElementById("crawler_bottom").style.visibility = "hidden";
+}
+
+function setCrawlerBottomText(text)
+{
+    document.getElementById("crawler_bottom").innerHTML = text;
 }
 
 //endregion
