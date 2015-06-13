@@ -74,9 +74,9 @@
     <Compile Include="Scoring\V1\V1State.cs" />
     <Compile Include="ServerStoredTennisTemplate.cs" />
     <Compile Include="StringToCharConverter.cs" />
-    <Compile Include="TemplateFilter.cs" />
     <Compile Include="TemplateFiltering\TemplateDirectory.cs" />
     <Compile Include="TennisMainPlugin.cs" />
+    <Compile Include="TennisSettings.cs" />
     <Compile Include="TennisSnapIn.xaml.cs">
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
     </Compile>

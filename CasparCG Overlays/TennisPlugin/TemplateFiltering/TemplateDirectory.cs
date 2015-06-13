@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OnUtils;
+using OnUtils.Wpf;
 
 namespace TennisPlugin
 {
-    public class TemplateDirectory
+    public class TemplateDirectory : NotifyPropertyChanged
     {
 
         public static TemplateDirectory RootDirectory
@@ -15,9 +17,33 @@ namespace TennisPlugin
                 return new PRootDirectory("Root");
             }
         }
+         
+        private bool _IsSelected = false;
+        public bool IsSelected
+        {
+            get
+            {
+                return _IsSelected;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsSelected, value, "IsSelected");
+            }
+        }
 
-        private TemplateDirectory Parent = null;
-
+        private bool _IsExpanded = false;
+        public bool IsExpanded
+        {
+            get
+            {
+                return _IsExpanded;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsExpanded, value, "IsExpanded");
+            }
+        }
+         
         private string _Name;
         public string Name
         {
@@ -36,6 +62,8 @@ namespace TennisPlugin
             }
         }
 
+        private TemplateDirectory Parent = null;
+        
         public TemplateDirectory(string NewName, params TemplateDirectory[] NewChildren)
         {
             _Name = NewName;
