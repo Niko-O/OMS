@@ -29,6 +29,10 @@
         LoadWindowSizeFromSettings()
     End Sub
 
+    Private Sub CheckForUpdates(sender As Object, e As RoutedEventArgs)
+        UpdateInfo.Instance.CheckForUpdates(True)
+    End Sub
+
     Private Sub ToggleCasparServerConnection(sender As System.Object, e As System.Windows.RoutedEventArgs)
         If CasparServer.Instance.IsConnected Then
             CasparServer.Instance.Disconnect()

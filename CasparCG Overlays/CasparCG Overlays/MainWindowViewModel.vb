@@ -1,11 +1,6 @@
 ﻿Class MainWindowViewModel
     Inherits ViewModelBase
 
-    Public Event RemoveServer As EventHandler(Of ServerList.RemoveServerEventArgs)
-    Protected Overridable Sub OnRemoveServer(Server As ServerList.CasparCGServer)
-        RaiseEvent RemoveServer(Me, New ServerList.RemoveServerEventArgs(Server))
-    End Sub
-
     Dim _WindowWidth As Double = 1
     Public Property WindowWidth As Double
         Get
@@ -173,15 +168,9 @@
 
     Private Sub _CasparCGServers_ItemAdded(sender As Object, e As OnUtils.Wpf.ViewModelCollectionItemAddedEventArgs(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)) Handles _CasparCGServers.ItemAdded
         e.ViewModel = New ServerList.CasparCGServerViewModel(e.Item)
-        AddHandler e.ViewModel.Remove, AddressOf CasparCGServers_Item_Remove
     End Sub
 
     Private Sub _CasparCGServers_ItemRemoved(sender As Object, e As OnUtils.Wpf.ViewModelCollectionItemRemovedEventArgs(Of ServerList.CasparCGServer, ServerList.CasparCGServerViewModel)) Handles _CasparCGServers.ItemRemoved
-        RemoveHandler e.ViewModel.Remove, AddressOf CasparCGServers_Item_Remove
-    End Sub
-
-    Private Sub CasparCGServers_Item_Remove(Sender As ServerList.CasparCGServerViewModel)
-        OnRemoveServer(Sender.Target)
     End Sub
 
     Private Sub _Plugins_CollectionChanged(sender As Object, e As System.EventArgs) Handles _Plugins.CollectionChanged

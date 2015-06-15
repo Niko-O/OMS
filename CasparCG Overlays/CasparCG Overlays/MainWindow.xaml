@@ -22,7 +22,6 @@
         <ToolTip x:Key="PluginListItemToolTip" Style="{StaticResource ResourceKey=PluginListItemToolTipStyle}">
             <TextBlock Text="{Binding Path=Target.PluginGuid}"/>
         </ToolTip>
-        <l:CheckForUpdatesCommand x:Key="CheckForUpdatesCommand"/>
         <l:OpenGithubCommand x:Key="OpenGithubCommand"/>
         <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
         <c:ObjectToBooleanConverter x:Key="ObjectToBooleanConverter"/>
@@ -54,13 +53,6 @@
                             ItemsSource="{Binding Path=CasparCGServers.ViewModels}"
                             SelectedItem="{Binding Path=SelectedCasparCGServer}"
                         >
-                            <ListBox.Resources>
-                                <c:BooleanToStringConverter x:Key="EditButtonTextConverter" TrueString="Bestätigen" FalseString="Bearbeiten"/>
-                                <c:MultiConverter x:Key="EditTextBlockVisibilityConverter">
-                                    <c:BooleanNotConverter/>
-                                    <c:ObjectToVisibilityConverter/>
-                                </c:MultiConverter>
-                            </ListBox.Resources>
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}">
                                     <Style.Triggers>
@@ -89,16 +81,16 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16" Text="{Binding Path=Target.Name}" Visibility="{Binding Path=IsInEditMode, Converter={StaticResource ResourceKey=EditTextBlockVisibilityConverter}}"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="11" Text="{Binding Path=Target.Address}" Visibility="{Binding Path=IsInEditMode, Converter={StaticResource ResourceKey=EditTextBlockVisibilityConverter}}"/>
-                                        <TextBox Grid.Row="0" Grid.Column="0" FontSize="16" Text="{Binding Path=Target.Name}" Visibility="{Binding Path=IsInEditMode, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}"/>
-                                        <TextBox Grid.Row="1" Grid.Column="0" FontSize="11" Text="{Binding Path=Target.Address}" Visibility="{Binding Path=IsInEditMode, Converter={StaticResource ResourceKey=ObjectToVisibilityConverter}}"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="16" Text="{Binding Path=Target.Name}" Visibility="{Binding Path=EditTextBlockVisibility}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="11" Text="{Binding Path=Target.Address}" Visibility="{Binding Path=EditTextBlockVisibility}"/>
+                                        <TextBox Grid.Row="0" Grid.Column="0" FontSize="16" Text="{Binding Path=Target.Name}" Visibility="{Binding Path=EditTextBoxVisibility}"/>
+                                        <TextBox Grid.Row="1" Grid.Column="0" FontSize="11" Text="{Binding Path=Target.Address}" Visibility="{Binding Path=EditTextBoxVisibility}"/>
                                         <Button
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Grid.RowSpan="2"
                                             Padding="6,0"
-                                            Content="{Binding Path=IsInEditMode, Converter={StaticResource ResourceKey=EditButtonTextConverter}}"
+                                            Content="{Binding Path=EditButtonText}"
                                             Command="{Binding Path=ToggleEditModeCommand}"
                                         >
                                             <Button.Visibility>
@@ -142,7 +134,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <CheckBox Grid.Row="0" IsChecked="{Binding Source={x:Static Member=s:Settings.Updates}, Path=EnableAutoUpdates}">Automatisch nach Updates suchen</CheckBox>
-                            <Button Grid.Row="1" HorizontalAlignment="Left" Margin="0,3" Padding="5" Command="{StaticResource ResourceKey=CheckForUpdatesCommand}">Jetzt nach Updates suchen</Button>
+                            <Button Grid.Row="1" HorizontalAlignment="Left" Margin="0,3" Padding="5" Click="CheckForUpdates">Jetzt nach Updates suchen</Button>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Fenstergröße" Padding="3">
