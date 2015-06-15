@@ -80,7 +80,7 @@
     <Compile Include="TennisSnapIn.xaml.cs">
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TennisSnapInViewModel.cs" />
+    <Compile Include="TennisTemplateServe.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="TemplateFiltering\FilterTemplatesDialog.xaml">

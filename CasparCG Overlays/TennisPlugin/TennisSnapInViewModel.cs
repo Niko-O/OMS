@@ -70,12 +70,12 @@ namespace TennisPlugin
             }
         }
 
-        [Dependency("TeamNameOne", "TeamNameTwo", "TemplateIsLoaded")]
+        [Dependency("PlayerNameOne", "PlayerNameTwo", "TemplateIsLoaded")]
         public bool CanShowGraphics
         {
             get
             {
-                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_TeamNameOne) && !String.IsNullOrWhiteSpace(_TeamNameTwo);
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo);
             }
         }
 
@@ -204,29 +204,29 @@ namespace TennisPlugin
             }
         }
 
-        private String _TeamNameOne = "";
-        public String TeamNameOne
+        private String _PlayerNameOne = "";
+        public String PlayerNameOne
         {
             get
             {
-                return _TeamNameOne;
+                return _PlayerNameOne;
             }
             set
             {
-                ChangeIfDifferent(ref _TeamNameOne, value, "TeamNameOne");
+                ChangeIfDifferent(ref _PlayerNameOne, value, "PlayerNameOne");
             }
         }
 
-        private String _TeamNameTwo = "";
-        public String TeamNameTwo
+        private String _PlayerNameTwo = "";
+        public String PlayerNameTwo
         {
             get
             {
-                return _TeamNameTwo;
+                return _PlayerNameTwo;
             }
             set
             {
-                ChangeIfDifferent(ref _TeamNameTwo, value, "TeamNameTwo");
+                ChangeIfDifferent(ref _PlayerNameTwo, value, "PlayerNameTwo");
             }
         }
 

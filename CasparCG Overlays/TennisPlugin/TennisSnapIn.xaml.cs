@@ -149,7 +149,7 @@ namespace TennisPlugin
             if (ViewModel.ScoreboardIsVisible)
             {
                 UpdatePlayerNames();
-                UpdatePlayerStats();
+                UpdateStandings();
                 ViewModel.SelectedTennisTemplate.ShowScoreboard();
             }
             else
@@ -163,28 +163,23 @@ namespace TennisPlugin
             switch (e.PropertyName)
             {
                 case "CurrentState":
-                    UpdatePlayerStats();
+                    UpdateStandings();
                     break;
             }
         }
 
-        private void UpdatePlayerStats()
+        private void UpdateStandings()
         {
             if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
             {
-                ViewModel.SelectedTennisTemplate.SetPointsOne(StateList.CurrentState.Player1Point.ToString());
-                ViewModel.SelectedTennisTemplate.SetGamesOne(StateList.CurrentState.Player1Game);
-                ViewModel.SelectedTennisTemplate.SetSetsOne(StateList.CurrentState.Player1Set);
-                ViewModel.SelectedTennisTemplate.SetPointsTwo(StateList.CurrentState.Player2Point.ToString());
-                ViewModel.SelectedTennisTemplate.SetGamesTwo(StateList.CurrentState.Player2Game);
-                ViewModel.SelectedTennisTemplate.SetSetsTwo(StateList.CurrentState.Player2Set);
+                ViewModel.SelectedTennisTemplate.SetStandings(StateList.CurrentState.Player1Set.ToString(), StateList.CurrentState.Player1Game.ToString(), StateList.CurrentState.Player1Point.ToString(),
+                                                              StateList.CurrentState.Player2Set.ToString(), StateList.CurrentState.Player2Game.ToString(), StateList.CurrentState.Player2Point.ToString());
             }
         }
 
         private void UpdatePlayerNames()
         {
-            ViewModel.SelectedTennisTemplate.SetTeamNameOne(ViewModel.TeamNameOne);
-            ViewModel.SelectedTennisTemplate.SetTeamNameTwo(ViewModel.TeamNameTwo);
+            ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
         }
 
         private void ToggleLowerThirdVisibility(object sender, RoutedEventArgs e)
@@ -206,29 +201,24 @@ namespace TennisPlugin
             var SelectedTextLine = ViewModel.LowerThirdTextInputs.SingleOrDefault(i => i.IsSelected);
             if (SelectedTextLine == null)
             {
-                ViewModel.SelectedTennisTemplate.SetLowerThirdTitleText("");
-                ViewModel.SelectedTennisTemplate.SetLowerThirdSubtitleText("");
+                ViewModel.SelectedTennisTemplate.SetLowerThirdText("", "");
             }
             else
             {
                 int IndexOfFirstSeparator = SelectedTextLine.Text.IndexOf(ViewModel.LowerThirdTextSeparatorChar);
                 if (IndexOfFirstSeparator == -1 || IndexOfFirstSeparator == SelectedTextLine.Text.Length - 1)
                 {
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdTitleText(SelectedTextLine.Text);
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdSubtitleText("");
+                    ViewModel.SelectedTennisTemplate.SetLowerThirdText(SelectedTextLine.Text, "");
                 }
                 else if (IndexOfFirstSeparator == 0)
                 {
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdTitleText("");
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdSubtitleText(SelectedTextLine.Text);
+                    ViewModel.SelectedTennisTemplate.SetLowerThirdText("", SelectedTextLine.Text);
                 }
                 else
                 {
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdTitleText(SelectedTextLine.Text.Remove(IndexOfFirstSeparator));
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdSubtitleText(SelectedTextLine.Text.Substring(IndexOfFirstSeparator + 1));
+                    ViewModel.SelectedTennisTemplate.SetLowerThirdText(SelectedTextLine.Text.Remove(IndexOfFirstSeparator), SelectedTextLine.Text.Substring(IndexOfFirstSeparator + 1));
                 }
             }
-            //ViewModel.SelectedTennisTemplate.SetLowerThirdEffects(ViewModel.SelectedLowerThirdTextEffect.Value == LowerThirdTextEffect.ScrollRightToLeft);
         }
 
     }

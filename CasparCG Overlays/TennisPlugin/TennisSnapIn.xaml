@@ -66,10 +66,10 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Column="0" Grid.Row="0" Header="Spieler 1">
-                    <TextBox Text="{Binding Path=TeamNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                    <TextBox Text="{Binding Path=PlayerNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                 </GroupBox>
                 <GroupBox Grid.Column="0" Grid.Row="1" Header="Spieler 2">
-                    <TextBox Text="{Binding Path=TeamNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                    <TextBox Text="{Binding Path=PlayerNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                 </GroupBox>
                 <Button
                     Grid.Column="1"
