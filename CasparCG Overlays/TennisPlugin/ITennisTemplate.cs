@@ -7,6 +7,7 @@ namespace TennisPlugin
 {
     public interface ITennisTemplate : PluginInterfaces.ITemplate
     {
+
         void ShowScoreboard();
         void HideScoreboard();
         void SetPlayerNames(string NameOne, string NameTwo);
@@ -19,10 +20,11 @@ namespace TennisPlugin
         
         void ShowCrawlerTop();
         void HideCrawlerTop();
-        void SetCrawlerTextTop(string Text);
-
+        
         void ShowCrawlerBottom();
         void HideCrawlerBottom();
-        void SetCrawlerTextBottom(string Text);
+
+        void SetCrawlerText(string Text);
+
     }
 }

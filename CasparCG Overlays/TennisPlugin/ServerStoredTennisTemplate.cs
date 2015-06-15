@@ -98,12 +98,7 @@ namespace TennisPlugin
         {
             ExecuteCallCommand("hideCrawlerTop");
         }
-
-        public void SetCrawlerTextTop(string Text)
-        {
-            ExecuteCallCommand("setCrawlerTextTop", Text);
-        }
-
+        
 
         public void ShowCrawlerBottom()
         {
@@ -115,9 +110,9 @@ namespace TennisPlugin
             ExecuteCallCommand("hideCrawlerBottom");
         }
 
-        public void SetCrawlerTextBottom(string Text)
+        public void SetCrawlerText(string Text)
         {
-            ExecuteCallCommand("setCrawlerTextBottom", Text);
+            ExecuteCallCommand("setCrawlerText", Text);
         }
 
 

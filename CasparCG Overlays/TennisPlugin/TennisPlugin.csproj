@@ -62,7 +62,7 @@
     </Compile>
     <Compile Include="ITennisTemplate.cs" />
     <Compile Include="TemplateFiltering\FilterTemplatesDialogViewModel.cs" />
-    <Compile Include="LowerThirdTextInput.cs" />
+    <Compile Include="TheOtherInsertsTextInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoring\IScoringStrategy.cs" />
     <Compile Include="Scoring\PointType.cs" />

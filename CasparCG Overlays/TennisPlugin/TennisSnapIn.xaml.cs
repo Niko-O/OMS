@@ -50,6 +50,31 @@ namespace TennisPlugin
             LoadTemplatesFromServer();
         }
 
+        public void Unload()
+        {
+            if (ViewModel.ScoreboardIsVisible)
+            {
+                ViewModel.ScoreboardIsVisible = false;
+                if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
+                {
+                    ViewModel.SelectedTennisTemplate.HideScoreboard();
+                }
+            }
+            if (ViewModel.LowerThirdIsVisible)
+            {
+                ViewModel.LowerThirdIsVisible = false;
+                if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
+                {
+                    ViewModel.SelectedTennisTemplate.HideLowerThird();
+                }
+            }
+            if (ViewModel.TemplateIsLoaded && PluginInterfaces.PublicProviders.CasparServer.IsConnected)
+            {
+                PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
+            }
+            ViewModel.TemplateIsLoaded = false;
+        }
+
         private void EditTemplateFilter(object sender, RoutedEventArgs e)
         {
             var Dlg = new FilterTemplatesDialog();
@@ -83,12 +108,12 @@ namespace TennisPlugin
                 return;
             }
             var Filtered = _CurrentFilter == null ? TemplatePaths : TemplatePaths.Where(i => i.Directory.StartsWith(_CurrentFilter, StringComparison.InvariantCultureIgnoreCase)); ;
-            
+
             var NewTemplates = new List<ServerStoredTennisTemplate>();
-            
+
             var PreviouslyLoadedTemplate = ViewModel.TemplateIsLoaded ? ViewModel.SelectedTennisTemplate : null;
             var PreviouslySelectedTemplate = ViewModel.SelectedTennisTemplate as ServerStoredTennisTemplate;
-            
+
             foreach (var i in Filtered)
             {
                 NewTemplates.Add(new ServerStoredTennisTemplate(i));
@@ -106,31 +131,6 @@ namespace TennisPlugin
             }
         }
 
-        public void Unload()
-        {
-            if (ViewModel.ScoreboardIsVisible)
-            {
-                ViewModel.ScoreboardIsVisible = false;
-                if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
-                {
-                    ViewModel.SelectedTennisTemplate.HideScoreboard();
-                }
-            }
-            if (ViewModel.LowerThirdIsVisible)
-            {
-                ViewModel.LowerThirdIsVisible = false;
-                if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
-                {
-                    ViewModel.SelectedTennisTemplate.HideLowerThird();
-                }
-            }
-            if (ViewModel.TemplateIsLoaded && PluginInterfaces.PublicProviders.CasparServer.IsConnected)
-            {  
-                PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
-            }
-            ViewModel.TemplateIsLoaded = false;
-        }
-
         private void LoadAndLockSelectedTemplate(object sender, RoutedEventArgs e)
         {
             ViewModel.TemplateIsLoaded = true;
@@ -141,6 +141,18 @@ namespace TennisPlugin
         {
             ViewModel.TemplateIsLoaded = false;
             PluginInterfaces.PublicProviders.CasparServer.UnloadTemplate(ViewModel.SelectedTennisTemplate);
+        }
+
+        #region Scoreboard
+
+        private void StateListPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "CurrentState":
+                    UpdateStandings();
+                    break;
+            }
         }
 
         private void ToggleScoreboardVisibility(object sender, RoutedEventArgs e)
@@ -158,14 +170,9 @@ namespace TennisPlugin
             }
         }
 
-        private void StateListPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void UpdatePlayerNames()
         {
-            switch (e.PropertyName)
-            {
-                case "CurrentState":
-                    UpdateStandings();
-                    break;
-            }
+            ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
         }
 
         private void UpdateStandings()
@@ -177,17 +184,28 @@ namespace TennisPlugin
             }
         }
 
-        private void UpdatePlayerNames()
-        {
-            ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
-        }
+        #endregion
+
+        #region Lower Third
 
         private void ToggleLowerThirdVisibility(object sender, RoutedEventArgs e)
         {
             ViewModel.LowerThirdIsVisible = !ViewModel.LowerThirdIsVisible;
             if (ViewModel.LowerThirdIsVisible)
             {
-                UpdateLowerThirdParameters();
+                int IndexOfFirstSeparator = ViewModel.SelectedTextInput.Text.IndexOf(ViewModel.TheOtherInsertsTextSeparatorChar);
+                if (IndexOfFirstSeparator == -1 || IndexOfFirstSeparator == ViewModel.SelectedTextInput.Text.Length - 1)
+                {
+                    ViewModel.SelectedTennisTemplate.SetLowerThirdText(ViewModel.SelectedTextInput.Text, "");
+                }
+                else if (IndexOfFirstSeparator == 0)
+                {
+                    ViewModel.SelectedTennisTemplate.SetLowerThirdText("", ViewModel.SelectedTextInput.Text);
+                }
+                else
+                {
+                    ViewModel.SelectedTennisTemplate.SetLowerThirdText(ViewModel.SelectedTextInput.Text.Remove(IndexOfFirstSeparator), ViewModel.SelectedTextInput.Text.Substring(IndexOfFirstSeparator + 1));
+                }
                 ViewModel.SelectedTennisTemplate.ShowLowerThird();
             }
             else
@@ -196,30 +214,73 @@ namespace TennisPlugin
             }
         }
 
-        private void UpdateLowerThirdParameters()
+        #endregion
+
+        #region Crawler Top
+
+        private void ToggleCrawlerTopVisibility(object sender, RoutedEventArgs e)
         {
-            var SelectedTextLine = ViewModel.LowerThirdTextInputs.SingleOrDefault(i => i.IsSelected);
-            if (SelectedTextLine == null)
+            ViewModel.CrawlerTopIsVisible = !ViewModel.CrawlerTopIsVisible;
+            if (ViewModel.CrawlerTopIsVisible)
             {
-                ViewModel.SelectedTennisTemplate.SetLowerThirdText("", "");
+                ViewModel.SelectedTennisTemplate.SetCrawlerText(ViewModel.SelectedTextInput.Text);
+                ViewModel.SelectedTennisTemplate.ShowCrawlerTop();
             }
             else
             {
-                int IndexOfFirstSeparator = SelectedTextLine.Text.IndexOf(ViewModel.LowerThirdTextSeparatorChar);
-                if (IndexOfFirstSeparator == -1 || IndexOfFirstSeparator == SelectedTextLine.Text.Length - 1)
-                {
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdText(SelectedTextLine.Text, "");
-                }
-                else if (IndexOfFirstSeparator == 0)
-                {
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdText("", SelectedTextLine.Text);
-                }
-                else
-                {
-                    ViewModel.SelectedTennisTemplate.SetLowerThirdText(SelectedTextLine.Text.Remove(IndexOfFirstSeparator), SelectedTextLine.Text.Substring(IndexOfFirstSeparator + 1));
-                }
+                ViewModel.SelectedTennisTemplate.HideCrawlerTop();
             }
         }
+
+        #endregion
+
+        #region Crawler Top
+
+        private void ToggleCrawlerBottomVisibility(object sender, RoutedEventArgs e)
+        {
+            ViewModel.CrawlerBottomIsVisible = !ViewModel.CrawlerBottomIsVisible;
+            if (ViewModel.CrawlerBottomIsVisible)
+            {
+                ViewModel.SelectedTennisTemplate.SetCrawlerText(ViewModel.SelectedTextInput.Text);
+                ViewModel.SelectedTennisTemplate.ShowCrawlerBottom();
+            }
+            else
+            {
+                ViewModel.SelectedTennisTemplate.HideCrawlerBottom();
+            }
+        }
+
+        #endregion
+
+        #region Serve
+
+        private void ToggleServePlayerOne(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.IsPlayerOneServe)
+            {
+                ViewModel.IsPlayerOneServe = false;
+            }
+            else
+            {
+                ViewModel.IsPlayerOneServe = true;
+                ViewModel.IsPlayerTwoServe = false;
+            }
+        }
+
+        private void ToggleServePlayerTwo(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.IsPlayerTwoServe)
+            {
+                ViewModel.IsPlayerTwoServe = false;
+            }
+            else
+            {
+                ViewModel.IsPlayerTwoServe = true;
+                ViewModel.IsPlayerOneServe = false;
+            }
+        }
+
+        #endregion
 
     }
 }
