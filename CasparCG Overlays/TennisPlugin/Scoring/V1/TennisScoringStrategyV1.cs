@@ -123,7 +123,7 @@ namespace TennisPlugin.Scoring.V1
                     }
                     else
                     {
-                        if (AffectedPlayer.Game >= 6 && AffectedPlayer.Game >= OtherPlayer.Game + 1)
+                        if (AffectedPlayer.Game >= 5 && AffectedPlayer.Game >= OtherPlayer.Game + 1)
                         {
                             SetCompleted();
                         }
