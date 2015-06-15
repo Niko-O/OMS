@@ -81,7 +81,6 @@
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
     </Compile>
     <Compile Include="TennisSnapInViewModel.cs" />
-    <Compile Include="DefaultTennisTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="TemplateFiltering\FilterTemplatesDialog.xaml">
