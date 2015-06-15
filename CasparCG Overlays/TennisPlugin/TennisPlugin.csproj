@@ -77,6 +77,7 @@
     <Compile Include="TemplateFiltering\TemplateDirectory.cs" />
     <Compile Include="TennisMainPlugin.cs" />
     <Compile Include="TennisSettings.cs" />
+    <Compile Include="TennisSnapInViewModel.cs" />
     <Compile Include="TennisSnapIn.xaml.cs">
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
     </Compile>
