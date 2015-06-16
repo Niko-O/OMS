@@ -1,0 +1,436 @@
+/*----------------- Basic Stuff -----------------*/
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; /* This sets all elements to be the actual set dimensions, disregarding padding and borders */
+    -webkit-transition: translate3d(0, 0, 0); /* Turns on hardware acceleration - not known to be of benefit in CCG, but won't hurt */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/*----------------- ScoreBoard - Setup -----------------*/
+
+#scoreboard {
+    position: absolute;
+    top: 80px;
+    left: 110px;
+    width: 320px;
+    height: 70px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    text-align: center;
+    background-color: transparent;
+    vertical-align: middle;
+}
+
+#playerOne, #playerTwo {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+#serveBox {
+    visibility: hidden;
+    order: 1;
+    width: 10px;
+    position: absolute;
+    height: 35px;
+    background: linear-gradient(to right, rgb(234, 234, 234) 59%, rgb(197, 197, 197) 100%);
+}
+
+#nameOne, #nameTwo {
+    order: 2;
+    background: rgb(234, 85, 7);
+    width: 170px;
+    text-align: left;
+    color: white;
+    padding-left: 20px;
+    background: linear-gradient(to right, rgb(234, 85, 7) 93%, rgb(215, 86, 19) 100%);
+}
+
+#setsOne, #setsTwo {
+    order: 3;
+    background: rgb(230, 230, 230);
+    width: 50px;
+    background: linear-gradient(to bottom, rgb(234, 234, 234) 0%, rgb(219, 219, 219) 100%);
+    border-image: linear-gradient(to bottom, rgba(219, 219, 219, 1), rgba(234, 234, 234, 1)) 1 100%;
+    border-width: 0 1px 0 0;
+}
+
+#gamesOne, #gamesTwo {
+    order: 4;
+    background: rgb(230, 230, 230);
+    width: 50px;
+    background: linear-gradient(to bottom, rgb(234, 234, 234) 0%, rgb(219, 219, 219) 100%);
+    border-image: linear-gradient(to bottom, rgba(219, 219, 219, 1), rgba(234, 234, 234, 1)) 1 100%;
+    border-width: 0 1px 0 0;
+}
+
+#pointsOne, #pointsTwo {
+    order: 5;
+    background: rgb(230, 230, 230);
+    background: linear-gradient(to bottom, rgb(234, 234, 234) 0%, rgb(219, 219, 219) 100%);
+    width: 50px;
+}
+
+/*----------------- ScoreBorad - Animation -----------------*/
+
+#serveBox {
+    top: 0;
+}
+
+.moveIn {
+    top: 35px !important;
+}
+
+.showOpacity {
+    opacity: 1 !important;
+}
+
+#scoreboard {
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+.showIn {
+    opacity: 1 !important;
+}
+
+/*----------------- Lower Third - Setup -----------------*/
+#lowerThird {
+    position: absolute;
+    bottom: 105px;
+    left: -200px;
+    width: 1135px;
+    height: 120px;
+    background-color: transparent;
+}
+
+#lowerThird #main {
+    height: 65px;
+    position: relative;
+    z-index: 10;
+    background: rgb(234, 85, 7);
+}
+
+#main #title {
+    font-size: 45px;
+    padding-left: 300px;
+    line-height: 65px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+#lowerThird #sub {
+    width: 900px;
+    height: 40px;
+    position: relative;
+    background: rgb(230, 230, 230);
+}
+
+#sub #subtitle {
+    font-size: 20px;
+    padding-left: 350px;
+    line-height: 40px;
+    color: black;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -65px;
+    width: 0;
+    border-top: 65px solid transparent;
+    border-left: 65px solid rgb(234, 85, 7);
+}
+
+#sub::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(230, 230, 230);
+}
+
+/*----------------- Lower Third - Animation -----------------*/
+
+#main, #sub {
+    transition-property: left;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+}
+
+#main {
+    left: -1040px;
+}
+
+#sub {
+    left: -740px;
+}
+
+.flyIn {
+    left: 0 !important;
+}
+
+/*----------------- Crawler Top - Setup -----------------*/
+
+#crawlerTopPack {
+    overflow: hidden;
+    width: 880px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px;
+    margin: 0 auto;
+}
+
+#crawlerTop {
+    width: 800px;
+    height: 40px;
+    background-color: rgb(230, 230, 230);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#crawlerTopText {
+    line-height: 40px;
+    font-size: 25px;
+    font-family: arial, sans-serif;
+}
+
+#crawlerTop::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(230, 230, 230);
+}
+
+#crawlerTop::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 0;
+    border-top: 40px solid rgb(230, 230, 230);
+    border-left: 40px solid transparent;
+}
+
+#crawlerTopMoveD {
+    width: 800px;
+    height: 40px;
+    background-color: rgb(234, 85, 7);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
+    transition: left 2s linear, top 2s linear;
+}
+
+#crawlerTopMoveD::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(234, 85, 7);
+}
+
+#crawlerTopMoveD::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 0;
+    border-top: 40px solid rgb(234, 85, 7);
+    border-left: 40px solid transparent;
+}
+
+#crawlerTopMoveU {
+    width: 800px;
+    height: 40px;
+    background-color: rgb(234, 85, 7);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
+    transition: left 2s linear, top 2s linear;
+}
+
+#crawlerTopMoveU::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(234, 85, 7);
+}
+
+#crawlerTopMoveU::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 0;
+    border-top: 40px solid rgb(234, 85, 7);
+    border-left: 40px solid transparent;
+}
+
+/*----------------- Crawler Bottom - Setup -----------------*/
+
+#crawlerBottomPack {
+    overflow: hidden;
+    width: 880px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    margin: 0 auto;
+}
+
+#crawlerBottom {
+    width: 800px;
+    height: 40px;
+    background-color: rgb(230, 230, 230);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#crawlerBottomText {
+    line-height: 40px;
+    font-size: 25px;
+    font-family: arial, sans-serif;
+}
+
+#crawlerBottom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(230, 230, 230);
+}
+
+#crawlerBottom::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 0;
+    border-top: 40px solid rgb(230, 230, 230);
+    border-left: 40px solid transparent;
+}
+
+#crawlerBottomMoveD {
+    width: 800px;
+    height: 40px;
+    background-color: rgb(234, 85, 7);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
+    transition: left 2s linear, top 2s linear;
+}
+
+#crawlerBottomMoveD::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(234, 85, 7);
+}
+
+#crawlerBottomMoveD::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 0;
+    border-top: 40px solid rgb(234, 85, 7);
+    border-left: 40px solid transparent;
+}
+
+#crawlerBottomMoveU {
+    width: 800px;
+    height: 40px;
+    background-color: rgb(234, 85, 7);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
+    transition: left 2s linear, top 2s linear;
+}
+
+#crawlerBottomMoveU::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 0;
+    border-top: 40px solid transparent;
+    border-left: 40px solid rgb(234, 85, 7);
+}
+
+#crawlerBottomMoveU::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 0;
+    border-top: 40px solid rgb(234, 85, 7);
+    border-left: 40px solid transparent;
+}
+
+/*----------------- Crawler Animation -----------------*/
+
+#crawlerTopPack, #crawlerBottomPack {
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+
+.moveDown {
+    left: 70px !important;
+    top: 35px !important;
+}
+
+.moveUp {
+    left: -70px !important;
+    top: -35px !important;
+}
+
+.setVisible {
+    opacity: 1 !important;
+}

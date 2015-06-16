@@ -73,7 +73,7 @@ body {
 }
 
 /*----------------- Lower Third - Setup -----------------*/
-#lower_third {
+#lowerThird {
     position: absolute;
     bottom: 105px;
     left: -200px;
@@ -82,10 +82,10 @@ body {
     background-color: transparent;
 }
 
-#lower_third #main {
+#lowerThird #main {
     height: 65px;
     border-radius: 0;
-    transform: skewX(-45deg);
+    /*transform: skewX(-45deg);*/
     -webkit-box-shadow: 5px 5px 20px 0 #8A8A8A;
     box-shadow: 5px 5px 15px 0 #8A8A8A;
     position: relative;
@@ -105,7 +105,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#lower_third #sub {
+#lowerThird #sub {
     width: 900px;
     height: 40px;
     transform: skewX(-45deg);
@@ -147,4 +147,3 @@ body {
 .flyIn {
     left: 0 !important;
 }
-

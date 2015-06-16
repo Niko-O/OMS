@@ -108,7 +108,7 @@ function outMainLowerThird()
 
 function showLowerThird()
 {
-    /*document.getElementById("lower_third").style.visibility = "visible";*/
+    /*document.getElementById("lowerThird").style.visibility = "visible";*/
     checkMain = true;
     document.getElementById("main").classList.add("flyIn");
     document.getElementById("main").addEventListener("transitionend", inSubLowerThird, false);
@@ -116,7 +116,7 @@ function showLowerThird()
 
 function hideLowerThird()
 {
-    //document.getElementById("lower_third").style.visibility = "hidden";
+    //document.getElementById("lowerThird").style.visibility = "hidden";
     checkSub = true;
     document.getElementById("sub").classList.remove("flyIn");
     document.getElementById("sub").addEventListener("transitionend", outMainLowerThird, false);
