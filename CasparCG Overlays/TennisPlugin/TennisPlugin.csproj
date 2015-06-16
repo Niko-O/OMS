@@ -62,7 +62,7 @@
     </Compile>
     <Compile Include="ITennisTemplate.cs" />
     <Compile Include="TemplateFiltering\FilterTemplatesDialogViewModel.cs" />
-    <Compile Include="LowerThirdTextInput.cs" />
+    <Compile Include="TheOtherInsertsTextInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoring\IScoringStrategy.cs" />
     <Compile Include="Scoring\PointType.cs" />
@@ -77,11 +77,11 @@
     <Compile Include="TemplateFiltering\TemplateDirectory.cs" />
     <Compile Include="TennisMainPlugin.cs" />
     <Compile Include="TennisSettings.cs" />
+    <Compile Include="TennisSnapInViewModel.cs" />
     <Compile Include="TennisSnapIn.xaml.cs">
       <DependentUpon>TennisSnapIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TennisSnapInViewModel.cs" />
-    <Compile Include="DefaultTennisTemplate.cs" />
+    <Compile Include="TennisTemplateServe.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="TemplateFiltering\FilterTemplatesDialog.xaml">

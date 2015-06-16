@@ -66,10 +66,10 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Column="0" Grid.Row="0" Header="Spieler 1">
-                    <TextBox Text="{Binding Path=TeamNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                    <TextBox Text="{Binding Path=PlayerNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                 </GroupBox>
                 <GroupBox Grid.Column="0" Grid.Row="1" Header="Spieler 2">
-                    <TextBox Text="{Binding Path=TeamNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                    <TextBox Text="{Binding Path=PlayerNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                 </GroupBox>
                 <Button
                     Grid.Column="1"
@@ -104,7 +104,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Margin="2">Aufschlag</Button>
+                            <Button Grid.Column="0" Margin="2" Click="ToggleServePlayerOne" Content="{Binding Path=ToggleServePlayerOneButtonText}"/>
                             <Button Grid.Column="1" Margin="2" Command="{Binding Path=Player1ScoredCommand}">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
@@ -143,7 +143,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Margin="2">Aufschlag</Button>
+                            <Button Grid.Column="0" Margin="2" Click="ToggleServePlayerTwo" Content="{Binding Path=ToggleServePlayerTwoButtonText}"/>
                             <Button Grid.Column="1" Margin="2" Command="{Binding Path=Player2ScoredCommand}">
                                 <Path Stretch="Uniform" Margin="4" Stroke="Black" StrokeThickness="4" Data="M -1 0 H 1 M 0 -1 V 1"/>
                             </Button>
@@ -205,9 +205,9 @@
                         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Lower Third</TextBlock>
                         <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Crawler Top</TextBlock>
                         <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Crawler Bottom</TextBlock>
-                        <Button Grid.Row="0" Grid.Column="3" Padding="7">Anzeigen</Button>
-                        <Button Grid.Row="2" Grid.Column="3" Padding="7">Anzeigen</Button>
-                        <Button Grid.Row="4" Grid.Column="3" Padding="7">Anzeigen</Button>
+                        <Button Grid.Row="0" Grid.Column="3" Padding="7" IsEnabled="{Binding Path=CanToggleLowerThirdVisibility}" Click="ToggleLowerThirdVisibility" Content="{Binding Path=ToggleLowerThirdVisibilityButtonText}"/>
+                        <Button Grid.Row="2" Grid.Column="3" Padding="7" IsEnabled="{Binding Path=CanToggleCrawlerTopVisibility}" Click="ToggleCrawlerTopVisibility" Content="{Binding Path=ToggleCrawlerTopVisibilityButtonText}"/>
+                        <Button Grid.Row="4" Grid.Column="3" Padding="7" IsEnabled="{Binding Path=CanToggleCrawlerBottomVisibility}" Click="ToggleCrawlerBottomVisibility" Content="{Binding Path=ToggleCrawlerBottomVisibilityButtonText}"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Grid.Row="2" Header="Eingabe">
@@ -225,10 +225,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Margin="22,0,10,0" VerticalAlignment="Center">Anzahl an Eingabefeldern:</TextBlock>
-                        <toolkit:IntegerUpDown Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Minimum="1" Maximum="42" Value="{Binding Path=LowerThirdTextInputCount}" IsEnabled="{Binding Path=LowerThirdTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                        <toolkit:IntegerUpDown Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Minimum="1" Maximum="42" Value="{Binding Path=TheOtherInsertsTextInputCount}" IsEnabled="{Binding Path=TheOtherInsertsTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                         <TextBlock Grid.Row="0" Grid.Column="2" Margin="22,0,10,0" VerticalAlignment="Center">Trennzeichen:</TextBlock>
-                        <TextBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="40" HorizontalContentAlignment="Center" MaxLength="1" Text="{Binding Path=LowerThirdTextSeparatorChar, Converter={StaticResource ResourceKey=StringToCharConverter}, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=LowerThirdTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
-                        <ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="0" Background="Transparent" ItemsSource="{Binding Path=LowerThirdTextInputs}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" ScrollViewer.IsDeferredScrollingEnabled="False">
+                        <TextBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="40" HorizontalContentAlignment="Center" MaxLength="1" Text="{Binding Path=TheOtherInsertsTextSeparatorChar, Converter={StaticResource ResourceKey=StringToCharConverter}, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=TheOtherInsertsTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                        <ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="0" Background="Transparent" ItemsSource="{Binding Path=TheOtherInsertsTextInputs}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" ScrollViewer.IsDeferredScrollingEnabled="False">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -237,7 +237,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <RadioButton Grid.Column="0" VerticalAlignment="Center" Margin="3,0" IsChecked="{Binding Path=IsSelected}" IsEnabled="{Binding Path=RadioButtonIsEnabled}"/>
-                                        <TextBox Grid.Column="1" Margin="0,0,0,2" Text="{Binding Path=Text}" IsEnabled="{Binding Path=TextBoxIsEnabled}"/>
+                                        <TextBox Grid.Column="1" Margin="0,0,0,2" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=TextBoxIsEnabled}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

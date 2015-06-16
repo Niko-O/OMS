@@ -61,7 +61,15 @@ namespace TennisPlugin
             }
         }
 
-        [Dependency("ScoreboardIsVisible")]
+        public bool CasparServerIsConnected
+        {
+            get
+            {
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected;
+            }
+        }
+
+        [Dependency("CasparServerIsConnected", "ScoreboardIsVisible")]
         public bool CanLoadTemplate
         {
             get
@@ -70,12 +78,12 @@ namespace TennisPlugin
             }
         }
 
-        [Dependency("TeamNameOne", "TeamNameTwo", "TemplateIsLoaded")]
+        [Dependency("CasparServerIsConnected", "PlayerNameOne", "PlayerNameTwo", "TemplateIsLoaded")]
         public bool CanShowGraphics
         {
             get
             {
-                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_TeamNameOne) && !String.IsNullOrWhiteSpace(_TeamNameTwo);
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo);
             }
         }
 
@@ -204,29 +212,217 @@ namespace TennisPlugin
             }
         }
 
-        private String _TeamNameOne = "";
-        public String TeamNameOne
+        private String _PlayerNameOne = "";
+        public String PlayerNameOne
         {
             get
             {
-                return _TeamNameOne;
+                return _PlayerNameOne;
             }
             set
             {
-                ChangeIfDifferent(ref _TeamNameOne, value, "TeamNameOne");
+                ChangeIfDifferent(ref _PlayerNameOne, value, "PlayerNameOne");
             }
         }
 
-        private String _TeamNameTwo = "";
-        public String TeamNameTwo
+        private String _PlayerNameTwo = "";
+        public String PlayerNameTwo
         {
             get
             {
-                return _TeamNameTwo;
+                return _PlayerNameTwo;
             }
             set
             {
-                ChangeIfDifferent(ref _TeamNameTwo, value, "TeamNameTwo");
+                ChangeIfDifferent(ref _PlayerNameTwo, value, "PlayerNameTwo");
+            }
+        }
+
+        #endregion
+
+        #region TheOtherInserts
+
+        private int _TheOtherInsertsTextInputCount = 0;
+        public int TheOtherInsertsTextInputCount
+        {
+            get
+            {
+                return _TheOtherInsertsTextInputCount;
+            }
+            set
+            {
+                if (ChangeIfDifferent(ref _TheOtherInsertsTextInputCount, value))
+                {
+                    while (_TheOtherInsertsTextInputs.Count < _TheOtherInsertsTextInputCount)
+                    {
+                        var Temp = new TheOtherInsertsTextInput();
+                        if (_TheOtherInsertsTextInputs.Count == 0)
+                        {
+                            Temp.IsSelected = true;
+                            SelectedTextInput = Temp;
+                        }
+                        Temp.Selected += new EventHandler(TextInputSelected);
+                        _TheOtherInsertsTextInputs.Add(Temp);
+                    }
+                    while (_TheOtherInsertsTextInputs.Count > _TheOtherInsertsTextInputCount)
+                    {
+                        _TheOtherInsertsTextInputs[_TheOtherInsertsTextInputs.Count - 1].Selected -= new EventHandler(TextInputSelected);
+                        _TheOtherInsertsTextInputs.RemoveAt(_TheOtherInsertsTextInputs.Count - 1);
+                    }
+                    OnPropertyChanged("TextInputCount");
+                }
+            }
+        }
+
+        private ObservableCollection<TheOtherInsertsTextInput> _TheOtherInsertsTextInputs = new ObservableCollection<TheOtherInsertsTextInput>();
+        public ObservableCollection<TheOtherInsertsTextInput> TheOtherInsertsTextInputs
+        {
+            get
+            {
+                return _TheOtherInsertsTextInputs;
+            }
+        }
+
+        private char _TheOtherInsertsTextSeparatorChar = '#';
+        public char TheOtherInsertsTextSeparatorChar
+        {
+            get
+            {
+                return _TheOtherInsertsTextSeparatorChar;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _TheOtherInsertsTextSeparatorChar, value, "TheOtherInsertsTextSeparatorChar");
+            }
+        }
+
+        private bool _TheOtherInsertsTextInputIsLocked = false;
+        public bool TheOtherInsertsTextInputIsLocked
+        {
+            get
+            {
+                return _TheOtherInsertsTextInputIsLocked;
+            }
+            set
+            {
+                if (ChangeIfDifferent(ref _TheOtherInsertsTextInputIsLocked, value))
+                {
+                    foreach (var i in _TheOtherInsertsTextInputs)
+                    {
+                        i.RadioButtonIsEnabled = !_TheOtherInsertsTextInputIsLocked;
+                        i.TextBoxIsEnabled = !i.IsSelected || !_TheOtherInsertsTextInputIsLocked;
+                    }
+                    OnPropertyChanged("TheOtherInsertsTextInputIsLocked");
+                }
+            }
+        }
+
+        private void TextInputSelected(object sender, EventArgs e)
+        {
+            foreach (var i in _TheOtherInsertsTextInputs)
+            {
+                if (i != sender)
+                {
+                    ((TheOtherInsertsTextInput)i).IsSelected = false;
+                }
+            }
+            SelectedTextInput = (TheOtherInsertsTextInput)sender;
+        }
+
+        private TheOtherInsertsTextInput _SelectedTextInput = null;
+        public TheOtherInsertsTextInput SelectedTextInput
+        {
+            get
+            {
+                return _SelectedTextInput;
+            }
+            set
+            {
+                if (_SelectedTextInput != null)
+                {
+                    _SelectedTextInput.TextChanged -= new EventHandler(TextInputTextChanged);
+                }
+                _SelectedTextInput = value;
+                if (_SelectedTextInput != null)
+                {
+                    _SelectedTextInput.TextChanged += new EventHandler(TextInputTextChanged);
+                }
+                OnPropertyChanged("SelectedTextInput");
+            }
+        }
+
+        private void TextInputTextChanged(object sender, EventArgs e)
+        {
+            SelectedTextInputText = _SelectedTextInput.Text;
+        }
+
+        private string _SelectedTextInputText = null;
+        public string SelectedTextInputText
+        {
+            get
+            {
+                return _SelectedTextInputText;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _SelectedTextInputText, value, "SelectedTextInputText");
+            }
+        }
+
+        [Dependency("TheOtherInsertsTextSeparatorChar", "SelectedTextInput", "SelectedTextInputText")]
+        public bool TheOtherInsertsSettingsAreValid
+        {
+            get
+            {
+                return _TheOtherInsertsTextSeparatorChar != '\0' && SelectedTextInput != null && !string.IsNullOrEmpty(SelectedTextInputText);
+            }
+        }
+
+        #endregion
+
+        #region Serve
+
+        private bool _IsPlayerOneServe = false;
+        public bool IsPlayerOneServe
+        {
+            get
+            {
+                return _IsPlayerOneServe;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsPlayerOneServe, value, "IsPlayerOneServe");
+            }
+        }
+
+        private bool _IsPlayerTwoServe = false;
+        public bool IsPlayerTwoServe
+        {
+            get
+            {
+                return _IsPlayerTwoServe;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsPlayerTwoServe, value, "IsPlayerTwoServe");
+            }
+        }
+
+        [Dependency("IsPlayerOneServe")]
+        public string ToggleServePlayerOneButtonText
+        {
+            get
+            {
+                return _IsPlayerOneServe ? "Kein Aufschlag" : "Aufschlag";
+            }
+        }
+
+        [Dependency("IsPlayerTwoServe")]
+        public string ToggleServePlayerTwoButtonText
+        {
+            get
+            {
+                return _IsPlayerTwoServe ? "Kein Aufschlag" : "Aufschlag";
             }
         }
 
@@ -247,22 +443,12 @@ namespace TennisPlugin
             }
         }
 
-        //[Dependency("")]
-        public bool LowerThirdSettingsAreValid
+        [Dependency("CasparServerIsConnected", "LowerThirdIsVisible", "CrawlerTopIsVisible", "CrawlerBottomIsVisible", "TheOtherInsertsSettingsAreValid")]
+        public bool CanToggleLowerThirdVisibility
         {
             get
             {
-                //ToDo
-                return true;
-            }
-        }
-
-        [Dependency("LowerThirdIsVisible", "LowerThirdSettingsAreValid")]
-        public bool ToggleLowerThirdVisibilityButtonEnabled
-        {
-            get
-            {
-                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && (_LowerThirdIsVisible || LowerThirdSettingsAreValid);
+                return CasparServerIsConnected && (_LowerThirdIsVisible || (!_CrawlerTopIsVisible && !CrawlerBottomIsVisible && TheOtherInsertsSettingsAreValid));
             }
         }
 
@@ -275,124 +461,73 @@ namespace TennisPlugin
             }
         }
 
-        private bool _ApplyLowerThirdVisibilityDuration = false;
-        public bool ApplyLowerThirdVisibilityDuration
+        #endregion
+
+        #region Crawler Top
+
+        private bool _CrawlerTopIsVisible = false;
+        public bool CrawlerTopIsVisible
         {
             get
             {
-                return _ApplyLowerThirdVisibilityDuration;
+                return _CrawlerTopIsVisible;
             }
             set
             {
-                ChangeIfDifferent(ref _ApplyLowerThirdVisibilityDuration, value, "ApplyLowerThirdVisibilityDuration");
+                ChangeIfDifferent(ref _CrawlerTopIsVisible, value, "CrawlerTopIsVisible");
             }
         }
 
-        private string _LowerThirdVisibilityDurationString = "0";
-        public string LowerThirdVisibilityDurationString
+        [Dependency("CasparServerIsConnected", "LowerThirdIsVisible", "CrawlerTopIsVisible", "CrawlerBottomIsVisible", "TheOtherInsertsSettingsAreValid")]
+        public bool CanToggleCrawlerTopVisibility
         {
             get
             {
-                return _LowerThirdVisibilityDurationString;
+                return CasparServerIsConnected && (_CrawlerTopIsVisible || (!LowerThirdIsVisible && !CrawlerBottomIsVisible && TheOtherInsertsSettingsAreValid));
+            }
+        }
+
+        [Dependency("CrawlerTopIsVisible")]
+        public string ToggleCrawlerTopVisibilityButtonText
+        {
+            get
+            {
+                return _CrawlerTopIsVisible ? "Ausblenden" : "Einblenden";
+            }
+        }
+
+        #endregion
+
+        #region Crawler Bottom
+
+        private bool _CrawlerBottomIsVisible = false;
+        public bool CrawlerBottomIsVisible
+        {
+            get
+            {
+                return _CrawlerBottomIsVisible;
             }
             set
             {
-                if (ChangeIfDifferent(ref _LowerThirdVisibilityDurationString, value))
-                {
-                    _LowerThirdVisibilityDurationIsValid = int.TryParse(_LowerThirdVisibilityDurationString, out _LowerThirdVisibilityDuration) && _LowerThirdVisibilityDuration > 0;
-                    OnPropertyChanged("LowerThirdVisibilityDurationString");
-                }
+                ChangeIfDifferent(ref _CrawlerBottomIsVisible, value, "CrawlerBottomIsVisible");
             }
         }
 
-        private bool _LowerThirdVisibilityDurationIsValid = false;
-        [Dependency("LowerThirdVisibilityDurationString")]
-        public bool LowerThirdVisibilityDurationIsValid
+        [Dependency("CasparServerIsConnected", "LowerThirdIsVisible", "CrawlerTopIsVisible", "CrawlerBottomIsVisible", "TheOtherInsertsSettingsAreValid")]
+        public bool CanToggleCrawlerBottomVisibility
         {
             get
             {
-                return _LowerThirdVisibilityDurationIsValid;
+                return CasparServerIsConnected && (_CrawlerBottomIsVisible || (!LowerThirdIsVisible && !CrawlerTopIsVisible && TheOtherInsertsSettingsAreValid));
             }
         }
 
-        private int _LowerThirdVisibilityDuration = -1;
-        [Dependency("LowerThirdVisibilityDurationString")]
-        public int LowerThirdVisibilityDuration
+        [Dependency("CrawlerBottomIsVisible")]
+        public string ToggleCrawlerBottomVisibilityButtonText
         {
             get
             {
-                return _LowerThirdVisibilityDuration;
-            }
-        }
-
-        private int _LowerThirdTextInputCount = 0;
-        public int LowerThirdTextInputCount
-        {
-            get
-            {
-                return _LowerThirdTextInputCount;
-            }
-            set
-            {
-                if (ChangeIfDifferent(ref _LowerThirdTextInputCount, value))
-                {
-                    while (_LowerThirdTextInputs.Count < _LowerThirdTextInputCount)
-                    {
-                        var Temp = new LowerThirdTextInput();
-                        Temp.IsSelected = _LowerThirdTextInputs.Count == 0;
-                        Temp.Selected += new EventHandler(TextInputSelected);
-                        _LowerThirdTextInputs.Add(Temp);
-                    }
-                    while (_LowerThirdTextInputs.Count > _LowerThirdTextInputCount)
-                    {
-                        _LowerThirdTextInputs[_LowerThirdTextInputs.Count - 1].Selected -= new EventHandler(TextInputSelected);
-                        _LowerThirdTextInputs.RemoveAt(_LowerThirdTextInputs.Count - 1);
-                    }
-                    OnPropertyChanged("TextInputCount");
-                }
-            }
-        }
-
-        private ObservableCollection<LowerThirdTextInput> _LowerThirdTextInputs = new ObservableCollection<LowerThirdTextInput>();
-        public ObservableCollection<LowerThirdTextInput> LowerThirdTextInputs
-        {
-            get
-            {
-                return _LowerThirdTextInputs;
-            }
-        }
-
-        private char _LowerThirdTextSeparatorChar = '#';
-        public char LowerThirdTextSeparatorChar
-        {
-            get
-            {
-                return _LowerThirdTextSeparatorChar;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _LowerThirdTextSeparatorChar, value, "LowerThirdTextSeparatorChar");
-            }
-        }
-
-        private bool _LowerThirdTextInputIsLocked = false;
-        public bool LowerThirdTextInputIsLocked
-        {
-            get
-            {
-                return _LowerThirdTextInputIsLocked;
-            }
-            set
-            {
-                if (ChangeIfDifferent(ref _LowerThirdTextInputIsLocked, value))
-                {
-                    foreach (var i in _LowerThirdTextInputs)
-                    {
-                        i.RadioButtonIsEnabled = !_LowerThirdTextInputIsLocked;
-                        i.TextBoxIsEnabled = !i.IsSelected || !_LowerThirdTextInputIsLocked;
-                    }
-                    OnPropertyChanged("LowerThirdTextInputIsLocked");
-                }
+                return _CrawlerBottomIsVisible ? "Ausblenden" : "Einblenden";
             }
         }
 
@@ -406,10 +541,8 @@ namespace TennisPlugin
             _Player2ScoredCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player2Scored), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player2Scored));
             _Player2ReducedCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player2Reduced), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player2Reduced));
             _UndoCommand = new DelegateCommand(() => _StateList.Undo(), () => _StateList != null && _StateList.CanUndo);
-            AddExternalPropertyDependency("CanLoadTemplate", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
-            AddExternalPropertyDependency("ToggleLowerThirdVisibilityButtonEnabled", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
-            AddExternalPropertyDependency("CanShowGraphics", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
-            LowerThirdTextInputCount = 5;
+            AddExternalPropertyDependency("CasparServerIsConnected", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
+            TheOtherInsertsTextInputCount = 5;
             if (IsInDesignMode)
             {
                 _StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
@@ -435,17 +568,6 @@ namespace TennisPlugin
             _UndoCommand.OnCanExecuteChanged();
             OnPropertyChanged("CanToggleIsTieBreakEnabled");
             OnPropertyChanged("IsTieBreakEnabled");
-        }
-
-        private void TextInputSelected(object sender, EventArgs e)
-        {
-            foreach (var i in _LowerThirdTextInputs)
-            {
-                if (i != sender)
-                {
-                    ((LowerThirdTextInput)i).IsSelected = false;
-                }
-            }
         }
 
     }

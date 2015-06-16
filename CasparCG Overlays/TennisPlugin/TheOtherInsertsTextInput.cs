@@ -6,10 +6,11 @@ using OnUtils.Wpf;
 
 namespace TennisPlugin
 {
-    public class LowerThirdTextInput : NotifyPropertyChanged
+    public class TheOtherInsertsTextInput : NotifyPropertyChanged
     {
 
         public event EventHandler Selected;
+        public event EventHandler TextChanged;
         
         private bool _IsSelected = false;
         public bool IsSelected
@@ -42,7 +43,16 @@ namespace TennisPlugin
             }
             set
             {
-                ChangeIfDifferent(ref _Text, value, "Text");
+                if (ChangeIfDifferent(ref _Text, value, "Text"))
+                {
+                    if (_IsSelected)
+                    {
+                        if (Selected != null)
+                        {
+                            TextChanged(this, EventArgs.Empty);
+                        }
+                    }
+                }
             }
         }
 
@@ -72,7 +82,7 @@ namespace TennisPlugin
             }
         }
 
-        public LowerThirdTextInput()
+        public TheOtherInsertsTextInput()
         {
         }
 

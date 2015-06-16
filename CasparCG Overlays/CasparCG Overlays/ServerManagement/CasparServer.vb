@@ -60,7 +60,7 @@ Public Class CasparServer
         End Get
         Set(value As Integer)
             If Device.isConnected Then
-                Throw New InvalidOperationException("Die IP-Adresse kann nicht geändert werden, wenn bereits eine Verbindung besteht.")
+                Throw New InvalidOperationException("Der Port kann nicht geändert werden, wenn bereits eine Verbindung besteht.")
             End If
             If ChangeIfDifferent(_Port, value) Then
                 Device.Port = value
@@ -76,7 +76,7 @@ Public Class CasparServer
     End Sub
 
     Public Function ExecuteCommand(Command As CasparServerCommands.ICasparServerCommand) As CasparServerCommands.ICommandResponse Implements PluginInterfaces.ICasparServer.ExecuteCommand
-        Return New SpecificImplementationOfICommandResponse(Device.sendCommand(Command.GetCommandString))
+        Return New CommandResponseFromNetConnector(Device.sendCommand(Command.GetCommandString))
     End Function
 
     Public Sub LoadTemplate(Template As PluginInterfaces.ITemplate) Implements PluginInterfaces.ICasparServer.LoadTemplate
@@ -121,7 +121,7 @@ Public Class CasparServer
     ''' <summary>
     ''' Veröffentlicht die vom Server zurückgesendeten Daten, die von einem <see cref="C.CasparCGResponse"/>-Objekt gekapselt werden.
     ''' </summary>
-    Private Class SpecificImplementationOfICommandResponse
+    Private Class CommandResponseFromNetConnector
         Implements CasparServerCommands.ICommandResponse
 
         Dim Source As C.CasparCGResponse

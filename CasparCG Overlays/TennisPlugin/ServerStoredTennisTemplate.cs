@@ -46,6 +46,7 @@ namespace TennisPlugin
             get { return 1; }
         }
 
+
         public void ShowScoreboard()
         {
             ExecuteCallCommand("showScoreboard");
@@ -56,45 +57,21 @@ namespace TennisPlugin
             ExecuteCallCommand("hideScoreboard");
         }
 
-        public void SetTeamNameOne(string NewName)
+        public void SetPlayerNames(string NameOne, string NameTwo)
         {
-            ExecuteCallCommand("setTeamNameOne", NewName);
+            ExecuteCallCommand("setPlayerNames", NameOne, NameTwo);
         }
 
-        public void SetTeamNameTwo(string NewName)
+        public void SetPlayerServe(TennisTemplateServe PlayerServe)
         {
-            ExecuteCallCommand("setTeamNameTwo", NewName);
+            ExecuteCallCommand("setPointsTwo", (int)PlayerServe);
         }
 
-        public void SetPointsOne(string NewPoints)
+        public void SetStandings(string SetsOne, string GamesOne, string PointsOne, string SetsTwo, string GamesTwo, string PointsTwo)
         {
-            ExecuteCallCommand("setPointsOne", NewPoints);
+            ExecuteCallCommand("setStandings", SetsOne, GamesOne, PointsOne, SetsTwo, GamesTwo, PointsTwo);
         }
 
-        public void SetPointsTwo(string NewPoints)
-        {
-            ExecuteCallCommand("setPointsTwo", NewPoints);
-        }
-
-        public void SetGamesOne(int NewGames)
-        {
-            ExecuteCallCommand("setGamesOne", NewGames);
-        }
-
-        public void SetGamesTwo(int NewGames)
-        {
-            ExecuteCallCommand("setGamesTwo", NewGames);
-        }
-
-        public void SetSetsOne(int NewSets)
-        {
-            ExecuteCallCommand("setSetsOne", NewSets);
-        }
-
-        public void SetSetsTwo(int NewSets)
-        {
-            ExecuteCallCommand("setSetsTwo", NewSets);
-        }
 
         public void ShowLowerThird()
         {
@@ -106,20 +83,38 @@ namespace TennisPlugin
             ExecuteCallCommand("hideLowerThird");
         }
 
-        public void SetLowerThirdTitleText(string Text)
+        public void SetLowerThirdText(string Title, string Subtitle)
         {
-            ExecuteCallCommand("setLowerThirdTitleText", Text);
+            ExecuteCallCommand("setLowerThirdText", Title, Subtitle);
         }
 
-        public void SetLowerThirdSubtitleText(string Text)
+
+        public void ShowCrawlerTop()
         {
-            ExecuteCallCommand("setLowerThirdSubtitleText", Text);
+            ExecuteCallCommand("showCrawlerTop");
         }
 
-        public void SetLowerThirdEffects(bool IsScrolling)
+        public void HideCrawlerTop()
         {
-            ExecuteCallCommand("setLowerThirdEffects", IsScrolling);
+            ExecuteCallCommand("hideCrawlerTop");
         }
+        
+
+        public void ShowCrawlerBottom()
+        {
+            ExecuteCallCommand("showCrawlerBottom");
+        }
+
+        public void HideCrawlerBottom()
+        {
+            ExecuteCallCommand("hideCrawlerBottom");
+        }
+
+        public void SetCrawlerText(string Text)
+        {
+            ExecuteCallCommand("setCrawlerText", Text);
+        }
+
 
         private void ExecuteCallCommand(string MethodName, params object[] Parameters)
         {

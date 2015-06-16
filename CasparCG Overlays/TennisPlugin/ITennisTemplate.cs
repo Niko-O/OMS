@@ -7,22 +7,24 @@ namespace TennisPlugin
 {
     public interface ITennisTemplate : PluginInterfaces.ITemplate
     {
+
         void ShowScoreboard();
         void HideScoreboard();
-        
-        void SetTeamNameOne(string NewName);
-        void SetTeamNameTwo(string NewName);
-        void SetPointsOne(string NewPoints);
-        void SetPointsTwo(string NewPoints);
-        void SetGamesOne(int NewGames);
-        void SetGamesTwo(int NewGames);
-        void SetSetsOne(int NewSets);
-        void SetSetsTwo(int NewSets);
+        void SetPlayerNames(string NameOne, string NameTwo);
+        void SetPlayerServe(TennisTemplateServe PlayerServe);
+        void SetStandings(string SetsOne, string GamesOne, string PointsOne, string SetsTwo, string GamesTwo, string PointsTwo);
 
         void ShowLowerThird();
         void HideLowerThird();
-        void SetLowerThirdTitleText(string Text);
-        void SetLowerThirdSubtitleText(string Text);
-        void SetLowerThirdEffects(bool IsScrolling);
+        void SetLowerThirdText(string Title, string Subtitle);
+        
+        void ShowCrawlerTop();
+        void HideCrawlerTop();
+        
+        void ShowCrawlerBottom();
+        void HideCrawlerBottom();
+
+        void SetCrawlerText(string Text);
+
     }
 }

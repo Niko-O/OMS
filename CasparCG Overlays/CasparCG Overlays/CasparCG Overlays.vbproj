@@ -119,7 +119,6 @@
     </Compile>
     <Compile Include="PluginManagement\Import\TargetFolderNameDialogViewModel.vb" />
     <Compile Include="ServerList\CasparCGServer.vb" />
-    <Compile Include="CheckForUpdatesCommand.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPluginImplementation.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPlugin.vb" />
     <Compile Include="DesignerSupport\DesignerSupportPluginMetadataImplementation.vb" />

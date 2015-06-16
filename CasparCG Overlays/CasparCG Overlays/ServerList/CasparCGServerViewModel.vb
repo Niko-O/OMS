@@ -4,14 +4,6 @@ Namespace ServerList
     Public Class CasparCGServerViewModel
         Inherits ViewModelBase(Of CasparCGServer)
 
-        Public Event Remove(Sender As CasparCGServerViewModel)
-        Public ReadOnly Property RemoveCommand As DelegateCommand
-            Get
-                Static Temp As New DelegateCommand(Sub() RaiseEvent Remove(Me))
-                Return Temp
-            End Get
-        End Property
-
         Public ReadOnly Property ToggleEditModeCommand As DelegateCommand
             Get
                 Static Temp As New DelegateCommand(Sub() IsInEditMode = Not _IsInEditMode)
@@ -27,6 +19,31 @@ Namespace ServerList
             Set(value As Boolean)
                 ChangeIfDifferent(_IsInEditMode, value, "IsInEditMode")
             End Set
+        End Property
+
+        <Dependency("IsInEditMode")>
+        Public ReadOnly Property EditButtonText As String
+            Get
+                If _IsInEditMode Then
+                    Return "Bestätigen"
+                Else
+                    Return "Bearbeiten"
+                End If
+            End Get
+        End Property
+
+        <Dependency("IsInEditMode")>
+        Public ReadOnly Property EditTextBlockVisibility As Visibility
+            Get
+                Return (Not _IsInEditMode).ToVisibility
+            End Get
+        End Property
+
+        <Dependency("IsInEditMode")>
+        Public ReadOnly Property EditTextBoxVisibility As Visibility
+            Get
+                Return _IsInEditMode.ToVisibility
+            End Get
         End Property
 
         Public Sub New(NewTarget As CasparCGServer)
