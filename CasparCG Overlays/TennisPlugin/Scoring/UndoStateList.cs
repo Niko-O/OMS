@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OnUtils;
+using OnUtils.Wpf;
 
 namespace TennisPlugin.Scoring
 {
-    public class UndoStateList : OnUtils.Wpf.NotifyPropertyChanged
+    public class UndoStateList : NotifyPropertyChanged
     {
 
         public bool CanUndo
@@ -24,28 +26,26 @@ namespace TennisPlugin.Scoring
             }
         }
 
-        private IScoringStrategy Strategy;
         private Stack<IScoringState> States = new Stack<IScoringState>();
 
-        public UndoStateList(IScoringStrategy NewStrategy)
+        public UndoStateList(IScoringState InitialState)
         {
-            if (NewStrategy == null)
+            if (InitialState == null)
             {
-                throw new ArgumentNullException("NewStrategy");
+                throw new ArgumentNullException("InitialState");
             }
-            Strategy = NewStrategy;
-            States.Push(Strategy.InitialState);
+            States.Push(InitialState);
         }
 
         public void Process(ScoringStrategyAction Action)
         {
-            States.Push(Strategy.Process(States.Peek(), Action));
+            States.Push(States.Peek().Process(Action));
             OnPropertyChanged("CanUndo", "CurrentState");
         }
 
         public bool CanProcess(ScoringStrategyAction Action)
         {
-            return Strategy.CanProcess(States.Peek(), Action);
+            return States.Peek().CanProcess(Action);
         }
 
         public void Undo()

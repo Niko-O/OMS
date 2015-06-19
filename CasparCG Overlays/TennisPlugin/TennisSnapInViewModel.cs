@@ -545,7 +545,7 @@ namespace TennisPlugin
             TheOtherInsertsTextInputCount = 5;
             if (IsInDesignMode)
             {
-                _StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
+                _StateList = new Scoring.UndoStateList(new Scoring.V1.V1State());
             }
         }
 

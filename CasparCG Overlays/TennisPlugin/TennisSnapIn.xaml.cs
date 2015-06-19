@@ -43,7 +43,7 @@ namespace TennisPlugin
         {
             InitializeComponent();
             ViewModel = (TennisSnapInViewModel)this.DataContext;
-            StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
+            StateList = new Scoring.UndoStateList(new Scoring.V1.V1State());
             StateList.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(StateListPropertyChanged);
             ViewModel.StateList = StateList;
             PluginInterfaces.PublicProviders.CasparServer.IsConnectedChanged += () => LoadTemplatesFromServer();

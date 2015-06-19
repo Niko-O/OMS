@@ -64,13 +64,10 @@
     <Compile Include="TemplateFiltering\FilterTemplatesDialogViewModel.cs" />
     <Compile Include="TheOtherInsertsTextInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scoring\IScoringStrategy.cs" />
     <Compile Include="Scoring\PointType.cs" />
     <Compile Include="Scoring\IScoringState.cs" />
     <Compile Include="Scoring\ScoringStrategyAction.cs" />
     <Compile Include="Scoring\UndoStateList.cs" />
-    <Compile Include="Scoring\V1\PlayerState.cs" />
-    <Compile Include="Scoring\V1\TennisScoringStrategyV1.cs" />
     <Compile Include="Scoring\V1\V1State.cs" />
     <Compile Include="ServerStoredTennisTemplate.cs" />
     <Compile Include="StringToCharConverter.cs" />
