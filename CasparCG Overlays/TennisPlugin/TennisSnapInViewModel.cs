@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using OnUtils;
 using OnUtils.Extensions;
 using OnUtils.Wpf;
@@ -78,12 +79,18 @@ namespace TennisPlugin
             }
         }
 
-        [Dependency("CasparServerIsConnected", "PlayerNameOne", "PlayerNameTwo", "TemplateIsLoaded")]
+        [Dependency("CasparServerIsConnected", "PlayerNameOne", "PlayerNameTwo", "TemplateIsLoaded", "SelectedPlayerOneName", "SelectedPlayerTwoName", "HasPlayerNames")]
         public bool CanShowGraphics
         {
             get
             {
-                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo);
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected &&
+                       _TemplateIsLoaded &&
+                       (
+                           HasPlayerNames ?
+                           (SelectedPlayerOneName != null && SelectedPlayerTwoName != null) :
+                           (!String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo))
+                       );
             }
         }
 
@@ -235,6 +242,67 @@ namespace TennisPlugin
             set
             {
                 ChangeIfDifferent(ref _PlayerNameTwo, value, "PlayerNameTwo");
+            }
+        }
+
+        [Dependency("AvailablePlayerNames")]
+        public bool HasPlayerNames
+        {
+            get
+            {
+                return AvailablePlayerNames.Any();
+            }
+        }
+
+        public IEnumerable<TennisNameData.IPlayerName> AvailablePlayerNames
+        {
+            get
+            {
+                return PlayerNames.PlayerNamesContainer.Instance.Names;
+            }
+        }
+
+        [Dependency("HasPlayerNames")]
+        public Visibility PlayerNameTextBoxVisibility
+        {
+            get
+            {
+                return (!HasPlayerNames).ToVisibility();
+            }
+        }
+
+        [Dependency("HasPlayerNames")]
+        public Visibility PlayerNameComboBoxVisibility
+        {
+            get
+            {
+                return HasPlayerNames.ToVisibility();
+            }
+        }
+
+        private TennisNameData.IPlayerName _SelectedPlayerOneName = null;
+        public TennisNameData.IPlayerName SelectedPlayerOneName
+        {
+            get
+            {
+                return _SelectedPlayerOneName;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _SelectedPlayerOneName, value, "SelectedPlayerOneName");
+            }
+        }
+
+        private TennisNameData.IPlayerName _SelectedPlayerTwoName = null;
+        public TennisNameData.IPlayerName SelectedPlayerTwoName
+        {
+            get
+            {
+                return _SelectedPlayerTwoName;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _SelectedPlayerTwoName, value, "SelectedPlayerTwoName");
             }
         }
 
@@ -542,6 +610,7 @@ namespace TennisPlugin
             _Player2ReducedCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player2Reduced), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player2Reduced));
             _UndoCommand = new DelegateCommand(() => _StateList.Undo(), () => _StateList != null && _StateList.CanUndo);
             AddExternalPropertyDependency("CasparServerIsConnected", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
+            AddExternalPropertyDependency("AvailablePlayerNames", PlayerNames.PlayerNamesContainer.Instance, "Names");
             TheOtherInsertsTextInputCount = 5;
             if (IsInDesignMode)
             {

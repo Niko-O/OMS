@@ -11,6 +11,9 @@ Public Class ConnectorPlugIn
 
     Public Sub Created() Implements PluginInterfaces.IPlugin.Created
         PluginInterfaces.PublicProviders.PluginSettings.LoadSettings(DataBaseConnectorsSettings.Instance)
+        Connector.Instance.ServerName = DataBaseConnectorsSettings.Instance.ServerName
+        Connector.Instance.SchemaName = DataBaseConnectorsSettings.Instance.SchemaName
+        Connector.Instance.UserName = DataBaseConnectorsSettings.Instance.UserName
     End Sub
 
     Public Sub Unloaded() Implements PluginInterfaces.IPlugin.Unloaded

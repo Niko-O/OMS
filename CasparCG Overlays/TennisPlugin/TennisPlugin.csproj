@@ -52,6 +52,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlayerNameToDisplayStringConverter.cs" />
+    <Compile Include="PlayerNames\PlayerNamesContainer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +104,10 @@
     <ProjectReference Include="..\PluginSettings\PluginSettings.vbproj">
       <Project>{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}</Project>
       <Name>PluginSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TennisNameData\TennisNameData.vbproj">
+      <Project>{7D1A502B-9FEA-43E7-9A3D-DE4AF4A6B960}</Project>
+      <Name>TennisNameData</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

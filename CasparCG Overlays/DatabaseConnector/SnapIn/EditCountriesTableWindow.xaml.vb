@@ -9,7 +9,7 @@
         Model = DirectCast(Me.DataContext, EditCountriesTableWindowViewModel)
         AddHandler Connector.Instance.IsConnectedChanged, Sub() Model.IsConnected = Connector.Instance.IsConnected
         Model.IsConnected = Connector.Instance.IsConnected
-        Model.SetOriginalCountries(Connector.Instance.GetCountries)
+        Model.SetOriginalPlayerNames(Connector.Instance.GetCountries)
     End Sub
 
     Private Sub CloseOk(sender As System.Object, e As System.Windows.RoutedEventArgs)
@@ -45,22 +45,22 @@
         End With
     End Sub
 
-    Private Function DoApplyChanges() As IEnumerable(Of SqlCountry)
-        For Each i In Model.RemovedCountries
-            Connector.Instance.DeleteCountry(i)
+    Private Function DoApplyChanges() As IEnumerable(Of PlayerName)
+        For Each i In Model.RemovedPlayerNames
+            Connector.Instance.DeletePlayerName(i)
         Next
-        For Each i In Model.ChangedCountries
-            Connector.Instance.UpdateCountry(i.OriginalCountry.Guid, i.FullName, i.ShortName)
+        For Each i In Model.ChangedPlayerNames
+            Connector.Instance.UpdatePlayerName(i.OriginalPlayerName, i.FirstName, i.LastName, i.ShortName)
         Next
-        For Each i In Model.AddedCountries
-            Connector.Instance.AddCountry(i.FullName, i.ShortName)
+        For Each i In Model.AddedPlayerNames
+            Connector.Instance.AddNewPlayerName(i.FirstName, i.LastName, i.ShortName)
         Next
         Return Connector.Instance.GetCountries
     End Function
 
     Private Sub RefreshList(sender As System.Object, e As System.Windows.RoutedEventArgs)
         If Not Model.HasChanges OrElse PromptDiscardChanges() Then
-            DoWhileLoading(Function() Connector.Instance.GetCountries, Sub(Result) Model.SetOriginalCountries(Result))
+            DoWhileLoading(Function() Connector.Instance.GetCountries, Sub(Result) Model.SetOriginalPlayerNames(Result))
         End If
     End Sub
 

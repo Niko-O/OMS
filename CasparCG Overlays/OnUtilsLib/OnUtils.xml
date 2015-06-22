@@ -2767,14 +2767,14 @@ OnUtils
  </summary>
 	<typeparam name="T">Der Typ der Elemente in der Auflistung.</typeparam>
 	<param name="Reducer">Eine Funktion, die zwei Elemente auf eines reduziert.</param>
-</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
 	<summary>
  Entfernt alle Elemente aus dieser Liste, die nicht in <paramref name="Items"/> vorkommen und fügt alle Elemente aus <paramref name="Items"/> hinzu, die nicht in dieser Auflistung vorkommen.
  Die Elemente dieser Liste haben nicht nötigerweise die selbe Reihenfolge wie <paramref name="Items"/>.
  Ziel ist es, die Liste nicht komplett zu leeren und erneut zu füllen, sondern nur die nötigen Änderungen vorzunehmen.
  </summary>
 	<param name="Items">Die Elemente, mit denen diese Liste synchronisiert werden soll.</param>
-</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean},System.Action{``0})">
+</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean},System.Action{``0})">
 	<summary>
  Entfernt alle Elemente aus dieser Liste, die nicht in <paramref name="Items"/> vorkommen und fügt alle Elemente aus <paramref name="Items"/> hinzu, die nicht in dieser Auflistung vorkommen.
  Zum Feststellen, ob zwei Elemente als gleich zu betrachten sind, wird die in <paramref name="EqualityComparer"/> angegebene Vergleichs-Funktion verwendet.
@@ -2783,7 +2783,7 @@ OnUtils
  </summary>
 	<param name="Items">Die Elemente, mit denen diese Liste synchronisiert werden soll.</param>
 	<param name="EqualityComparer">Vergleicht zwei Elemente und gibt True zurück, wenn sie als gleich zu betrachten sind, andernfalls False.</param>
-</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``2(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,System.Boolean},System.Func{``1,``0},System.Action{``0})">
+</member><member name="M:OnUtils.Extensions.Extensions.Synchronize``2(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,System.Boolean},System.Func{``1,``0},System.Action{``0})">
 	<summary>
  Entfernt alle Elemente aus dieser Liste, die nicht in <paramref name="Items"/> vorkommen und fügt alle Elemente aus <paramref name="Items"/> hinzu, die nicht in dieser Auflistung vorkommen.
  Zum Feststellen, ob zwei Elemente als gleich zu betrachten sind, wird die in <paramref name="EqualityComparer"/> angegebene Vergleichs-Funktion verwendet.

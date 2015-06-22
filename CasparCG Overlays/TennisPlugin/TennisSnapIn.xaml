@@ -23,6 +23,16 @@
         <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
         <c:BooleanToBrushConverter x:Key="ErrorConverter" TrueBrush="White" FalseBrush="#40FF0000"/>
         <l:StringToCharConverter x:Key="StringToCharConverter"/>
+        <l:PlayerNameToDisplayStringConverter x:Key="PlayerNameToDisplayStringConverter"/>
+        <Style x:Key="PlayerNameComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource ResourceKey=PlayerNameToDisplayStringConverter}}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -66,10 +76,16 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Column="0" Grid.Row="0" Header="Spieler 1">
-                    <TextBox Text="{Binding Path=PlayerNameOne, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                    <Grid IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}">
+                        <TextBox Visibility="{Binding Path=PlayerNameTextBoxVisibility}" Text="{Binding Path=PlayerNameOne, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ComboBox Visibility="{Binding Path=PlayerNameComboBoxVisibility}" ItemsSource="{Binding Path=AvailablePlayerNames}" SelectedItem="{Binding Path=SelectedPlayerOneName}" Style="{StaticResource ResourceKey=PlayerNameComboBoxStyle}"/>
+                    </Grid>
                 </GroupBox>
                 <GroupBox Grid.Column="0" Grid.Row="1" Header="Spieler 2">
-                    <TextBox Text="{Binding Path=PlayerNameTwo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
+                    <Grid IsEnabled="{Binding Path=ScoreboardIsVisible, Converter={StaticResource ResourceKey=BooleanNotconverter}}">
+                        <TextBox Visibility="{Binding Path=PlayerNameTextBoxVisibility}" Text="{Binding Path=PlayerNameTwo, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ComboBox Visibility="{Binding Path=PlayerNameComboBoxVisibility}" ItemsSource="{Binding Path=AvailablePlayerNames}" SelectedItem="{Binding Path=SelectedPlayerTwoName}" Style="{StaticResource ResourceKey=PlayerNameComboBoxStyle}"/>
+                    </Grid>
                 </GroupBox>
                 <Button
                     Grid.Column="1"

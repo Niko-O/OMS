@@ -1,7 +1,7 @@
 Public Class EditCountriesTableWindowViewModel
     Inherits ViewModelBase
 
-    Dim OriginalCountries As IEnumerable(Of SqlCountry) = Nothing
+    Dim OriginalPlayerNames As IEnumerable(Of PlayerName) = Nothing
 
     Public ReadOnly Property AddCountryCommand As DelegateCommand
         Get
@@ -10,37 +10,37 @@ Public Class EditCountriesTableWindowViewModel
         End Get
     End Property
 
-    Dim _ChangedCountries As New List(Of SqlCountryViewModel)
-    Public ReadOnly Property ChangedCountries As IEnumerable(Of SqlCountryViewModel)
+    Dim _ChangedPlayerNames As New List(Of PlayerNameViewModel)
+    Public ReadOnly Property ChangedPlayerNames As IEnumerable(Of PlayerNameViewModel)
         Get
-            Return _ChangedCountries
+            Return _ChangedPlayerNames
         End Get
     End Property
 
-    Dim _AddedCountries As New List(Of SqlCountryViewModel)
-    Public ReadOnly Property AddedCountries As IEnumerable(Of SqlCountryViewModel)
+    Dim _AddedPlayerNames As New List(Of PlayerNameViewModel)
+    Public ReadOnly Property AddedPlayerNames As IEnumerable(Of PlayerNameViewModel)
         Get
-            Return _AddedCountries
+            Return _AddedPlayerNames
         End Get
     End Property
 
-    Dim _RemovedCountries As New List(Of Guid)
-    Public ReadOnly Property RemovedCountries As IEnumerable(Of Guid)
+    Dim _RemovedPlayerNames As New List(Of PlayerName)
+    Public ReadOnly Property RemovedPlayerNames As IEnumerable(Of PlayerName)
         Get
-            Return _RemovedCountries
+            Return _RemovedPlayerNames
         End Get
     End Property
 
-    Dim _CountriesViewModels As New System.Collections.ObjectModel.ObservableCollection(Of SqlCountryViewModel)
-    Public ReadOnly Property CountriesViewModels As System.Collections.ObjectModel.ObservableCollection(Of SqlCountryViewModel)
+    Dim _PlayerNamesViewModels As New System.Collections.ObjectModel.ObservableCollection(Of PlayerNameViewModel)
+    Public ReadOnly Property PlayerNamesViewModels As System.Collections.ObjectModel.ObservableCollection(Of PlayerNameViewModel)
         Get
-            Return _CountriesViewModels
+            Return _PlayerNamesViewModels
         End Get
     End Property
 
     Public ReadOnly Property HasChanges As Boolean
         Get
-            Return _ChangedCountries.Count <> 0 OrElse _AddedCountries.Count <> 0 OrElse _RemovedCountries.Count <> 0
+            Return _ChangedPlayerNames.Count <> 0 OrElse _AddedPlayerNames.Count <> 0 OrElse _RemovedPlayerNames.Count <> 0
         End Get
     End Property
 
@@ -74,13 +74,13 @@ Public Class EditCountriesTableWindowViewModel
     Public Sub New()
         MyBase.New(True)
         If IsInDesignMode Then
-            SetOriginalCountries({New SqlCountry(Guid.NewGuid, "Austria 1", "AU1"), _
-                                  New SqlCountry(Guid.NewGuid, "Austria 2", "AU2"), _
-                                  New SqlCountry(Guid.NewGuid, "Austria 3", "AU3"), _
-                                  New SqlCountry(Guid.NewGuid, "Austria 4", "AU4"), _
-                                  New SqlCountry(Guid.NewGuid, "Austria 5", "AU5"), _
-                                  New SqlCountry(Guid.NewGuid, "Austria 6", "AU6"), _
-                                  New SqlCountry(Guid.NewGuid, "Austria 7", "AU7")})
+            SetOriginalPlayerNames({New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai"), _
+                                    New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai"), _
+                                    New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai"), _
+                                    New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai"), _
+                                    New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai"), _
+                                    New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai"), _
+                                    New PlayerName(Guid.NewGuid, "Sepp", "Maier", "SMai")})
         End If
     End Sub
 
@@ -88,46 +88,46 @@ Public Class EditCountriesTableWindowViewModel
         OnPropertyChanged("HasChanges")
     End Sub
 
-    Public Sub SetOriginalCountries(NewOriginalCountries As IEnumerable(Of SqlCountry))
-        OriginalCountries = NewOriginalCountries
-        _ChangedCountries.Clear()
-        _RemovedCountries.Clear()
-        _AddedCountries.Clear()
-        _CountriesViewModels.Clear()
-        For Each i In OriginalCountries
-            Dim NewVm As New SqlCountryViewModel(i)
-            AddHandler NewVm.Remove, AddressOf RemoveSqlCountry
-            AddHandler NewVm.NamesChanged, AddressOf SqlCountryNamesChanged
-            _CountriesViewModels.Add(NewVm)
+    Public Sub SetOriginalPlayerNames(NewOriginalCountries As IEnumerable(Of PlayerName))
+        OriginalPlayerNames = NewOriginalCountries
+        _ChangedPlayerNames.Clear()
+        _RemovedPlayerNames.Clear()
+        _AddedPlayerNames.Clear()
+        _PlayerNamesViewModels.Clear()
+        For Each i In OriginalPlayerNames
+            Dim NewVm As New PlayerNameViewModel(i)
+            AddHandler NewVm.Remove, AddressOf RemovePlayerName
+            AddHandler NewVm.NamesChanged, AddressOf PlayerNameNamesChanged
+            _PlayerNamesViewModels.Add(NewVm)
         Next
         OnHasChangesChanged()
     End Sub
 
-    Private Sub RemoveSqlCountry(Sender As SqlCountryViewModel)
-        If Sender.OriginalCountry Is Nothing Then
-            _AddedCountries.Remove(Sender)
+    Private Sub RemovePlayerName(Sender As PlayerNameViewModel)
+        If Sender.OriginalPlayerName Is Nothing Then
+            _AddedPlayerNames.Remove(Sender)
         Else
-            _RemovedCountries.Add(Sender.OriginalCountry.Guid)
+            _RemovedPlayerNames.Add(Sender.OriginalPlayerName)
         End If
-        _CountriesViewModels.Remove(Sender)
+        _PlayerNamesViewModels.Remove(Sender)
         OnHasChangesChanged()
     End Sub
 
-    Private Sub SqlCountryNamesChanged(Sender As SqlCountryViewModel)
-        If Not Sender.OriginalCountry Is Nothing Then
-            If Not _ChangedCountries.Contains(Sender) Then
-                _ChangedCountries.Add(Sender)
+    Private Sub PlayerNameNamesChanged(Sender As PlayerNameViewModel)
+        If Not Sender.OriginalPlayerName Is Nothing Then
+            If Not _ChangedPlayerNames.Contains(Sender) Then
+                _ChangedPlayerNames.Add(Sender)
                 OnHasChangesChanged()
             End If
         End If
     End Sub
 
     Private Sub AddNewCountry()
-        Dim NewVm As New SqlCountryViewModel
-        AddHandler NewVm.Remove, AddressOf RemoveSqlCountry
-        AddHandler NewVm.NamesChanged, AddressOf SqlCountryNamesChanged
-        _AddedCountries.Add(NewVm)
-        _CountriesViewModels.Add(NewVm)
+        Dim NewVm As New PlayerNameViewModel
+        AddHandler NewVm.Remove, AddressOf RemovePlayerName
+        AddHandler NewVm.NamesChanged, AddressOf PlayerNameNamesChanged
+        _AddedPlayerNames.Add(NewVm)
+        _PlayerNamesViewModels.Add(NewVm)
         OnHasChangesChanged()
     End Sub
 
