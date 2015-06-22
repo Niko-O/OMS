@@ -11,9 +11,12 @@ Public Class TargetFolderNameDialogViewModel
         End Set
     End Property
 
+    <Dependency("DirectoryName")>
     Public ReadOnly Property NameIsValid As Boolean
         Get
-            Return Not _DirectoryName.Any(AddressOf System.IO.Path.GetInvalidPathChars.Contains)
+            Return Not String.IsNullOrWhiteSpace(_DirectoryName) AndAlso _
+                   Not System.IO.Directory.Exists(System.IO.Path.Combine(ImportPluginDialog.PluginsDirectory.FullName, _DirectoryName)) AndAlso _
+                   Not _DirectoryName.Any(AddressOf System.IO.Path.GetInvalidPathChars.Contains)
         End Get
     End Property
 

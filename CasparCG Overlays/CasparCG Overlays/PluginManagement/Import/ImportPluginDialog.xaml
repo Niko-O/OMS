@@ -21,24 +21,26 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBlock>Quell-Ordner:</TextBlock>
-            <Grid>
+        <StackPanel Grid.Row="0" Margin="3">
+            <TextBlock Margin="0,0,0,3">Quell-Ordner:</TextBlock>
+            <Grid Margin="0,0,0,3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox
                     Grid.Column="0"
+                    Margin="0,0,3,0"
+                    VerticalContentAlignment="Center"
                     o:DefaultSelectedBehavior.IsDefaultSelected="True"
                     Text="{Binding Path=SourceDirectoryPath, UpdateSourceTrigger=PropertyChanged}"
                     Background="{Binding Path=SourceDirectoryPathIsValid, Converter={StaticResource ResourceKey=ErrorBrush}}"
                 />
-                <Button Grid.Column="1" Click="OpenSourceDirectory">Durchsuchen</Button>
+                <Button Grid.Column="1" Padding="6,2" Click="OpenSourceDirectory">Durchsuchen</Button>
             </Grid>
             <TextBlock Grid.Row="0" Grid.Column="1">Ziel-Ordner:</TextBlock>
         </StackPanel>
-        <ListBox Grid.Row="1" ItemsSource="{Binding Path=TargetDirectoryList}" SelectedItem="{Binding Path=SelectedTargetDirectory}" Grid.IsSharedSizeScope="True">
+        <ListBox Grid.Row="1" Margin="3,0" ItemsSource="{Binding Path=TargetDirectoryList}" SelectedItem="{Binding Path=SelectedTargetDirectory}" Grid.IsSharedSizeScope="True">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Ordner erstellen" Click="AddTargetFolder"/>
