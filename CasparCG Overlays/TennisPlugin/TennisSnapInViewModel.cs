@@ -87,9 +87,12 @@ namespace TennisPlugin
                 return PluginInterfaces.PublicProviders.CasparServer.IsConnected &&
                        _TemplateIsLoaded &&
                        (
-                           HasPlayerNames ?
-                           (SelectedPlayerOneName != null && SelectedPlayerTwoName != null) :
-                           (!String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo))
+                           _ScoreboardIsVisible ||
+                           (
+                               HasPlayerNames ?
+                               (SelectedPlayerOneName != null && SelectedPlayerTwoName != null) :
+                               (!String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo))
+                           )
                        );
             }
         }

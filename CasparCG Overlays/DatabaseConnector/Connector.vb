@@ -6,6 +6,7 @@ Public Class Connector
     Inherits Singleton(Of Connector)
 
     Public Event IsConnectedChanged()
+    Public Event NamesTableChanged()
 
     Public ReadOnly Property IsConnected As Boolean
         Get
@@ -81,7 +82,7 @@ Public Class Connector
         End If
     End Sub
 
-    Public Function GetCountries() As IEnumerable(Of PlayerName)
+    Public Function GetPlayerNames() As IEnumerable(Of PlayerName)
         EnsureConnected()
         Dim Rows = Adapter.Select(Names(SqlName.PlayerNamesTable), _
                                   {Names(SqlName.PlayerNamesIdColumn), _
@@ -110,6 +111,7 @@ Public Class Connector
         If Not Result = 1 Then
             Throw New UnexpectedAffectedRowCountException(1, Result)
         End If
+        RaiseEvent NamesTableChanged()
         Return New PlayerName(NewId, NewFirstName, NewLastName, NewShortName)
     End Function
 
@@ -126,6 +128,7 @@ Public Class Connector
         Name.FirstName = NewFirstName
         Name.LastName = NewLastName
         Name.ShortName = NewShortName
+        RaiseEvent NamesTableChanged()
     End Sub
 
     Public Sub DeletePlayerName(Name As PlayerName)
@@ -134,6 +137,7 @@ Public Class Connector
         If Not Result = 1 Then
             Throw New UnexpectedAffectedRowCountException(1, Result)
         End If
+        RaiseEvent NamesTableChanged()
     End Sub
 
     Public Shared Function IReallyNeedThisPasswordAsANormalString(Password As System.Security.SecureString) As String

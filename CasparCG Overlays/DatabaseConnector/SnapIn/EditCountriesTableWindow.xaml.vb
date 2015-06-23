@@ -9,7 +9,7 @@
         Model = DirectCast(Me.DataContext, EditCountriesTableWindowViewModel)
         AddHandler Connector.Instance.IsConnectedChanged, Sub() Model.IsConnected = Connector.Instance.IsConnected
         Model.IsConnected = Connector.Instance.IsConnected
-        Model.SetOriginalPlayerNames(Connector.Instance.GetCountries)
+        Model.SetOriginalPlayerNames(Connector.Instance.GetPlayerNames)
     End Sub
 
     Private Sub CloseOk(sender As System.Object, e As System.Windows.RoutedEventArgs)
@@ -55,12 +55,12 @@
         For Each i In Model.AddedPlayerNames
             Connector.Instance.AddNewPlayerName(i.FirstName, i.LastName, i.ShortName)
         Next
-        Return Connector.Instance.GetCountries
+        Return Connector.Instance.GetPlayerNames
     End Function
 
     Private Sub RefreshList(sender As System.Object, e As System.Windows.RoutedEventArgs)
         If Not Model.HasChanges OrElse PromptDiscardChanges() Then
-            DoWhileLoading(Function() Connector.Instance.GetCountries, Sub(Result) Model.SetOriginalPlayerNames(Result))
+            DoWhileLoading(Function() Connector.Instance.GetPlayerNames, Sub(Result) Model.SetOriginalPlayerNames(Result))
         End If
     End Sub
 

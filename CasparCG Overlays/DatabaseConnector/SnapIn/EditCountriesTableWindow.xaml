@@ -5,7 +5,7 @@
     xmlns:t="clr-namespace:DatabaseConnector"
     xmlns:o="clr-namespace:OnUtils.Wpf;assembly=OnUtils"
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
-    Title="Länder bearbeiten"
+    Title="Spielernamen bearbeiten"
     Width="376"
     Height="328"
 >
