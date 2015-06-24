@@ -7,8 +7,10 @@ using OnUtils.Extensions;
 
 namespace TennisPlugin.Scoring.V1
 {
-    class V1State : IScoringState
+    public class V1State : IScoringState
     {
+
+        //...
 
         private PlayerState Player1;
         private PlayerState Player2;
@@ -124,7 +126,7 @@ namespace TennisPlugin.Scoring.V1
         {
             if (!CanProcess(Action))
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Die Aktion kann nicht berechnet werden. Vorher mit CanProcess prüfen.");
             }
 
             switch (Action)
@@ -183,7 +185,7 @@ namespace TennisPlugin.Scoring.V1
                         }
                         else
                         {
-                            AffectedPlayer.Game = AffectedPlayer.Game + 1;
+                            AffectedPlayer.Game++;
                         }
                     }
                     else
@@ -194,7 +196,7 @@ namespace TennisPlugin.Scoring.V1
                         }
                         else
                         {
-                            AffectedPlayer.Game = AffectedPlayer.Game + 1;
+                            AffectedPlayer.Game++;
                         }
                     }
                 }

@@ -24,8 +24,7 @@ Namespace PluginManagement
                 Return PluginManagement.PluginActiveStates.Instance.IsInUse(PluginGuid)
             End Get
             Set(value As Boolean)
-                Dim CurrentState = IsInUse
-                If Not CurrentState = value Then
+                If Not IsInUse = value Then
                     PluginManagement.PluginActiveStates.Instance.IsInUse(PluginGuid) = value
                 End If
             End Set

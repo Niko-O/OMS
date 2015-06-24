@@ -107,19 +107,22 @@ namespace TennisPlugin
                 };
                 return;
             }
-            var Filtered = _CurrentFilter == null ? TemplatePaths : TemplatePaths.Where(i => i.Directory.StartsWith(_CurrentFilter, StringComparison.InvariantCultureIgnoreCase)); ;
-
-            var NewTemplates = new List<ServerStoredTennisTemplate>();
-
+            var FilteredPaths = _CurrentFilter == null ? TemplatePaths : TemplatePaths.Where(i => i.Directory.StartsWith(_CurrentFilter, StringComparison.InvariantCultureIgnoreCase));
+            
             var PreviouslyLoadedTemplate = ViewModel.TemplateIsLoaded ? ViewModel.SelectedTennisTemplate : null;
             var PreviouslySelectedTemplate = ViewModel.SelectedTennisTemplate as ServerStoredTennisTemplate;
 
-            foreach (var i in Filtered)
+            var NewTemplates = FilteredPaths.Select(i => new ServerStoredTennisTemplate(i));
+            
+            if (PreviouslyLoadedTemplate != null && PreviouslyLoadedTemplate is ServerStoredTennisTemplate)
             {
-                NewTemplates.Add(new ServerStoredTennisTemplate(i));
+                var Matches = NewTemplates.Where(i => i.Path.FullPath == ((ServerStoredTennisTemplate)PreviouslyLoadedTemplate).Path.FullPath);
+                if (Matches.Any())
+                {
+                    PreviouslyLoadedTemplate = Matches.First();
+                }
             }
-
-            ViewModel.AvailableTennisTemplates = PreviouslyLoadedTemplate == null ? NewTemplates : NewTemplates.Prepend(PreviouslyLoadedTemplate);
+            ViewModel.AvailableTennisTemplates = PreviouslyLoadedTemplate == null || NewTemplates.Contains(PreviouslyLoadedTemplate) ? NewTemplates : NewTemplates.Prepend(PreviouslyLoadedTemplate);
 
             if (PreviouslyLoadedTemplate != null)
             {

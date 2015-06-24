@@ -33,7 +33,7 @@
                     <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
                 </Style>
                 <HierarchicalDataTemplate DataType="{x:Type l:TemplateDirectory}" ItemsSource="{Binding Path=Children}">
-                    <TextBlock Text="{Binding Path=Name}" />
+                    <TextBlock Text="{Binding Path=Name}"/>
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
