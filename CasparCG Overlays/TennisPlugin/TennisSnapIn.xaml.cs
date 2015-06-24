@@ -275,6 +275,7 @@ namespace TennisPlugin
                 ViewModel.IsPlayerOneServe = true;
                 ViewModel.IsPlayerTwoServe = false;
             }
+            UpdateServe();
         }
 
         private void ToggleServePlayerTwo(object sender, RoutedEventArgs e)
@@ -287,6 +288,18 @@ namespace TennisPlugin
             {
                 ViewModel.IsPlayerTwoServe = true;
                 ViewModel.IsPlayerOneServe = false;
+            }
+            UpdateServe();
+        }
+
+        private void UpdateServe()
+        {
+            if (ViewModel.SelectedTennisTemplate != null)
+            {
+                ViewModel.SelectedTennisTemplate.SetPlayerServe(
+                    ViewModel.IsPlayerOneServe ? TennisTemplateServe.Player1 :
+                    ViewModel.IsPlayerTwoServe ? TennisTemplateServe.Player2 :
+                    TennisTemplateServe.None);
             }
         }
 
