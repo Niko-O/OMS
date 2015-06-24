@@ -1,4 +1,4 @@
-Public Class EditCountriesTableWindowViewModel
+Public Class EditPlayerNamesTableWindowViewModel
     Inherits ViewModelBase
 
     Dim OriginalPlayerNames As IEnumerable(Of PlayerName) = Nothing

@@ -1,12 +1,12 @@
-﻿Public Class EditCountriesTableWindow
+﻿Public Class EditPlayerNamesTableWindow
 
-    Dim WithEvents Model As EditCountriesTableWindowViewModel
+    Dim WithEvents Model As EditPlayerNamesTableWindowViewModel
 
     Dim AllowClose As Boolean = False
 
     Public Sub New()
         InitializeComponent()
-        Model = DirectCast(Me.DataContext, EditCountriesTableWindowViewModel)
+        Model = DirectCast(Me.DataContext, EditPlayerNamesTableWindowViewModel)
         AddHandler Connector.Instance.IsConnectedChanged, Sub() Model.IsConnected = Connector.Instance.IsConnected
         Model.IsConnected = Connector.Instance.IsConnected
         Model.SetOriginalPlayerNames(Connector.Instance.GetPlayerNames)

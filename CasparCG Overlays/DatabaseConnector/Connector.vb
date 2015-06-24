@@ -5,6 +5,14 @@
 Public Class Connector
     Inherits Singleton(Of Connector)
 
+    Private Enum SqlName As Integer
+        PlayerNamesTable = 1
+        PlayerNamesIdColumn = 2
+        PlayerNamesFirstNameColumn = 3
+        PlayerNamesLastNameColumn = 4
+        PlayerNamesShortNameColumn = 5
+    End Enum
+
     Public Event IsConnectedChanged()
     Public Event NamesTableChanged()
 

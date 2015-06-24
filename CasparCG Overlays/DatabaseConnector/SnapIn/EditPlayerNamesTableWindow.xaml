@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="EditCountriesTableWindow"
+    x:Class="EditPlayerNamesTableWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:t="clr-namespace:DatabaseConnector"
@@ -22,7 +22,7 @@
         <c:BooleanNotConverter x:Key="BooleanNotConverter"/>
     </Window.Resources>
     <Window.DataContext>
-        <t:EditCountriesTableWindowViewModel/>
+        <t:EditPlayerNamesTableWindowViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

@@ -1,30 +1,26 @@
 ﻿Public Class ConnectorSnapIn
 
-    Dim WithEvents Model As ConnectorSnapInViewModel
-    Dim EditCountriesTableWindowInstance As EditCountriesTableWindow = Nothing
+    Dim WithEvents ViewModel As ConnectorSnapInViewModel
+    Dim EditWindow As EditPlayerNamesTableWindow = Nothing
 
     Public Sub New()
         InitializeComponent()
-        Model = DirectCast(Me.DataContext, ConnectorSnapInViewModel)
-        AddHandler Connector.Instance.IsConnectedChanged, Sub() Dispatcher.Invoke(Sub() Model.IsConnected = Connector.Instance.IsConnected)
+        ViewModel = DirectCast(Me.DataContext, ConnectorSnapInViewModel)
+        AddHandler Connector.Instance.IsConnectedChanged, Sub() Dispatcher.Invoke(Sub() ViewModel.IsConnected = Connector.Instance.IsConnected)
         AddHandler PasswordBox_SqlPassword.PasswordChanged, Sub() Connector.Instance.Password = PasswordBox_SqlPassword.SecurePassword
-        Model.IsConnected = Connector.Instance.IsConnected
-        'Model.SqlServerName = "localhost"
-        'Model.SqlSchemaName = "omsdata"
-        'Model.SqlUserName = "root"
-        'PasswordBox_SqlPassword.Password = "Password1"
+        ViewModel.IsConnected = Connector.Instance.IsConnected
     End Sub
 
-    Private Sub SqlServerNameChanged() Handles Model.SqlServerNameChanged
-        Connector.Instance.ServerName = Model.SqlServerName
+    Private Sub SqlServerNameChanged() Handles ViewModel.SqlServerNameChanged
+        Connector.Instance.ServerName = ViewModel.SqlServerName
     End Sub
 
-    Private Sub SqlUserNameChanged() Handles Model.SqlUserNameChanged
-        Connector.Instance.UserName = Model.SqlUserName
+    Private Sub SqlUserNameChanged() Handles ViewModel.SqlUserNameChanged
+        Connector.Instance.UserName = ViewModel.SqlUserName
     End Sub
 
-    Private Sub SqlSchemaNameChanged() Handles Model.SqlSchemaNameChanged
-        Connector.Instance.SchemaName = Model.SqlSchemaName
+    Private Sub SqlSchemaNameChanged() Handles ViewModel.SqlSchemaNameChanged
+        Connector.Instance.SchemaName = ViewModel.SqlSchemaName
     End Sub
 
     Private Sub ConnectToSqlServer(sender As Object, e As System.Windows.RoutedEventArgs)
@@ -32,13 +28,13 @@
     End Sub
 
     Private Sub BeginConnectDisconnect()
-        Model.SqlInfoIsError = False
+        ViewModel.SqlInfoIsError = False
         Dim DoesDisconnection = Connector.Instance.IsConnected
-        Model.IsConnectionChanging = True
+        ViewModel.IsConnectionChanging = True
         If DoesDisconnection Then
-            Model.SqlInfo = "Trenne Verbindung zum Server..."
+            ViewModel.SqlInfo = "Trenne Verbindung zum Server..."
         Else
-            Model.SqlInfo = "Verbinde zum Server..."
+            ViewModel.SqlInfo = "Verbinde zum Server..."
         End If
         With New System.Threading.Thread(Sub()
                                              Try
@@ -56,12 +52,12 @@
                                                      Exception = ex
                                                  End Try
                                                  Dispatcher.Invoke(Sub()
-                                                                       Model.IsConnectionChanging = False
+                                                                       ViewModel.IsConnectionChanging = False
                                                                        If Success Then
-                                                                           Model.SqlInfo = Nothing
+                                                                           ViewModel.SqlInfo = Nothing
                                                                        Else
-                                                                           Model.SqlInfo = If(DoesDisconnection, "Fehler beim Trennen der Verbindung", "Fehler beim Herstellen der Verbindung") & Environment.NewLine & Exception.GetType.Name & Environment.NewLine & Exception.Message
-                                                                           Model.SqlInfoIsError = True
+                                                                           ViewModel.SqlInfo = If(DoesDisconnection, "Fehler beim Trennen der Verbindung", "Fehler beim Herstellen der Verbindung") & Environment.NewLine & Exception.GetType.Name & Environment.NewLine & Exception.Message
+                                                                           ViewModel.SqlInfoIsError = True
                                                                        End If
                                                                    End Sub)
                                              Catch ex As Exception
@@ -75,15 +71,15 @@
     End Sub
 
     Private Sub EditCountries(sender As System.Object, e As System.Windows.RoutedEventArgs)
-        If EditCountriesTableWindowInstance Is Nothing Then
-            EditCountriesTableWindowInstance = New EditCountriesTableWindow
-            AddHandler EditCountriesTableWindowInstance.Closing, AddressOf EditCountriesTableWindowClosing
+        If EditWindow Is Nothing Then
+            EditWindow = New EditPlayerNamesTableWindow
+            AddHandler EditWindow.Closing, AddressOf EditCountriesTableWindowClosing
         End If
-        EditCountriesTableWindowInstance.Show()
+        EditWindow.Show()
     End Sub
 
     Private Sub EditCountriesTableWindowClosing(sender As Object, e As System.ComponentModel.CancelEventArgs)
-        EditCountriesTableWindowInstance = Nothing
+        EditWindow = Nothing
     End Sub
 
 End Class

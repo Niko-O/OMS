@@ -109,10 +109,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SnapIn\EditCountriesTableWindow.xaml.vb">
-      <DependentUpon>EditCountriesTableWindow.xaml</DependentUpon>
+    <Compile Include="SnapIn\EditPlayerNamesTableWindow.xaml.vb">
+      <DependentUpon>EditPlayerNamesTableWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SnapIn\EditCountriesTableWindowViewModel.vb" />
+    <Compile Include="SnapIn\EditPlayerNamesTableWindowViewModel.vb" />
     <Compile Include="SnapIn\PlayerNameViewModel.vb" />
     <Compile Include="SqlName.vb" />
     <Compile Include="Exceptions\UnexpectedAffectedRowCountException.vb" />
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SnapIn\EditCountriesTableWindow.xaml">
+    <Page Include="SnapIn\EditPlayerNamesTableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
