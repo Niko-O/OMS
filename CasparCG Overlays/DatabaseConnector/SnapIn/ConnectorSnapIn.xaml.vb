@@ -11,18 +11,6 @@
         ViewModel.IsConnected = Connector.Instance.IsConnected
     End Sub
 
-    Private Sub SqlServerNameChanged() Handles ViewModel.SqlServerNameChanged
-        Connector.Instance.ServerName = ViewModel.SqlServerName
-    End Sub
-
-    Private Sub SqlUserNameChanged() Handles ViewModel.SqlUserNameChanged
-        Connector.Instance.UserName = ViewModel.SqlUserName
-    End Sub
-
-    Private Sub SqlSchemaNameChanged() Handles ViewModel.SqlSchemaNameChanged
-        Connector.Instance.SchemaName = ViewModel.SqlSchemaName
-    End Sub
-
     Private Sub ConnectToSqlServer(sender As Object, e As System.Windows.RoutedEventArgs)
         BeginConnectDisconnect()
     End Sub

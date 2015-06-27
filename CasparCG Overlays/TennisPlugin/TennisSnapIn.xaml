@@ -245,7 +245,7 @@
                         <TextBlock Grid.Row="0" Grid.Column="2" Margin="22,0,10,0" VerticalAlignment="Center">Trennzeichen:</TextBlock>
                         <TextBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Width="40" HorizontalContentAlignment="Center" MaxLength="1" Text="{Binding Path=TheOtherInsertsTextSeparatorChar, Converter={StaticResource ResourceKey=StringToCharConverter}, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=TheOtherInsertsTextInputIsLocked, Converter={StaticResource ResourceKey=BooleanNotconverter}}"/>
                         <ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="0" Background="Transparent" ItemsSource="{Binding Path=TheOtherInsertsTextInputs}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" ScrollViewer.IsDeferredScrollingEnabled="False">
-                            <ItemsControl.ItemTemplate>
+                            <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -256,7 +256,7 @@
                                         <TextBox Grid.Column="1" Margin="0,0,0,2" Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=TextBoxIsEnabled}"/>
                                     </Grid>
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
                 </GroupBox>

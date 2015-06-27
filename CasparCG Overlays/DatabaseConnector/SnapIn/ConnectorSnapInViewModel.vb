@@ -1,7 +1,6 @@
 Public Class ConnectorSnapInViewModel
     Inherits ViewModelBase
 
-    Public Event SqlServerNameChanged()
     Dim _SqlServerName As String = DataBaseConnectorsSettings.Instance.ServerName
     Public Property SqlServerName As String
         Get
@@ -10,12 +9,11 @@ Public Class ConnectorSnapInViewModel
         Set(value As String)
             If ChangeIfDifferent(_SqlServerName, value, "SqlServerName") Then
                 DataBaseConnectorsSettings.Instance.ServerName = _SqlServerName
-                RaiseEvent SqlServerNameChanged()
+                Connector.Instance.ServerName = _SqlServerName
             End If
         End Set
     End Property
 
-    Public Event SqlSchemaNameChanged()
     Dim _SqlSchemaName As String = DataBaseConnectorsSettings.Instance.SchemaName
     Public Property SqlSchemaName As String
         Get
@@ -24,12 +22,11 @@ Public Class ConnectorSnapInViewModel
         Set(value As String)
             If ChangeIfDifferent(_SqlSchemaName, value, "SqlSchemaName") Then
                 DataBaseConnectorsSettings.Instance.SchemaName = _SqlSchemaName
-                RaiseEvent SqlSchemaNameChanged()
+                Connector.Instance.SchemaName = _SqlSchemaName
             End If
         End Set
     End Property
 
-    Public Event SqlUserNameChanged()
     Dim _SqlUserName As String = DataBaseConnectorsSettings.Instance.UserName
     Public Property SqlUserName As String
         Get
@@ -38,7 +35,7 @@ Public Class ConnectorSnapInViewModel
         Set(value As String)
             If ChangeIfDifferent(_SqlUserName, value, "SqlUserName") Then
                 DataBaseConnectorsSettings.Instance.UserName = _SqlUserName
-                RaiseEvent SqlUserNameChanged()
+                Connector.Instance.UserName = _SqlUserName
             End If
         End Set
     End Property

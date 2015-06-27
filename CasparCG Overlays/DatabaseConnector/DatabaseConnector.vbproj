@@ -114,7 +114,6 @@
     </Compile>
     <Compile Include="SnapIn\EditPlayerNamesTableWindowViewModel.vb" />
     <Compile Include="SnapIn\PlayerNameViewModel.vb" />
-    <Compile Include="SqlName.vb" />
     <Compile Include="Exceptions\UnexpectedAffectedRowCountException.vb" />
   </ItemGroup>
   <ItemGroup>

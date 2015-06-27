@@ -20,17 +20,6 @@ Public Interface ISqlAdapter
     Sub Disconnect()
 
     ''' <summary>
-    ''' Gibt eine Liste der vorhandenen Tabellen zurück.
-    ''' </summary>
-    Function ListTables() As IEnumerable(Of ISqlRow)
-
-    ''' <summary>
-    ''' Gibt eine Liste aller Spalten und deren Typen in der angegebenen Tabelle zurück.
-    ''' </summary>
-    ''' <param name="TableName">Die Tabelle, deren Spalten zurückgegeben werden.</param>
-    Function ListTableColumns(TableName As String) As IEnumerable(Of ISqlRow)
-
-    ''' <summary>
     ''' Führt ein Select From auf dem Server aus.
     ''' </summary>
     ''' <param name="TableName">Die Tabelle, aus der Daten gelesen werden.</param>

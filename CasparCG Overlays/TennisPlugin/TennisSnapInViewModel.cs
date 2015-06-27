@@ -248,20 +248,20 @@ namespace TennisPlugin
             }
         }
 
+        public IEnumerable<TennisNameData.IPlayerName> AvailablePlayerNames
+        {
+            get
+            {
+                return PlayerNames.PlayerNamesContainer.Instance.Names;
+            }
+        }
+
         [Dependency("AvailablePlayerNames")]
         public bool HasPlayerNames
         {
             get
             {
                 return AvailablePlayerNames.Any();
-            }
-        }
-
-        public IEnumerable<TennisNameData.IPlayerName> AvailablePlayerNames
-        {
-            get
-            {
-                return PlayerNames.PlayerNamesContainer.Instance.Names;
             }
         }
 
@@ -306,6 +306,54 @@ namespace TennisPlugin
             set
             {
                 ChangeIfDifferent(ref _SelectedPlayerTwoName, value, "SelectedPlayerTwoName");
+            }
+        }
+
+        #endregion
+
+        #region Serve
+
+        private bool _IsPlayerOneServe = false;
+        public bool IsPlayerOneServe
+        {
+            get
+            {
+                return _IsPlayerOneServe;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsPlayerOneServe, value, "IsPlayerOneServe");
+            }
+        }
+
+        private bool _IsPlayerTwoServe = false;
+        public bool IsPlayerTwoServe
+        {
+            get
+            {
+                return _IsPlayerTwoServe;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsPlayerTwoServe, value, "IsPlayerTwoServe");
+            }
+        }
+
+        [Dependency("IsPlayerOneServe")]
+        public string ToggleServePlayerOneButtonText
+        {
+            get
+            {
+                return _IsPlayerOneServe ? "Kein Aufschlag" : "Aufschlag";
+            }
+        }
+
+        [Dependency("IsPlayerTwoServe")]
+        public string ToggleServePlayerTwoButtonText
+        {
+            get
+            {
+                return _IsPlayerTwoServe ? "Kein Aufschlag" : "Aufschlag";
             }
         }
 
@@ -446,54 +494,6 @@ namespace TennisPlugin
             get
             {
                 return _TheOtherInsertsTextSeparatorChar != '\0' && SelectedTextInput != null && !string.IsNullOrEmpty(SelectedTextInputText);
-            }
-        }
-
-        #endregion
-
-        #region Serve
-
-        private bool _IsPlayerOneServe = false;
-        public bool IsPlayerOneServe
-        {
-            get
-            {
-                return _IsPlayerOneServe;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _IsPlayerOneServe, value, "IsPlayerOneServe");
-            }
-        }
-
-        private bool _IsPlayerTwoServe = false;
-        public bool IsPlayerTwoServe
-        {
-            get
-            {
-                return _IsPlayerTwoServe;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _IsPlayerTwoServe, value, "IsPlayerTwoServe");
-            }
-        }
-
-        [Dependency("IsPlayerOneServe")]
-        public string ToggleServePlayerOneButtonText
-        {
-            get
-            {
-                return _IsPlayerOneServe ? "Kein Aufschlag" : "Aufschlag";
-            }
-        }
-
-        [Dependency("IsPlayerTwoServe")]
-        public string ToggleServePlayerTwoButtonText
-        {
-            get
-            {
-                return _IsPlayerTwoServe ? "Kein Aufschlag" : "Aufschlag";
             }
         }
 

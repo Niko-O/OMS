@@ -62,20 +62,18 @@ Public Class Connector
         End Set
     End Property
 
-    Dim Adapter As ISqlAdapter
-    Dim Names As New Dictionary(Of SqlName, String)
-
-    Public Sub New()
-        Adapter = New MySqlAdapter
-    End Sub
+    Dim Adapter As ISqlAdapter = New MySqlAdapter
+    Dim Names As New Dictionary(Of SqlName, String) From _
+    {
+        {SqlName.PlayerNamesTable, "PlayerNames"}, _
+        {SqlName.PlayerNamesIdColumn, "Id"}, _
+        {SqlName.PlayerNamesFirstNameColumn, "FirstName"}, _
+        {SqlName.PlayerNamesLastNameColumn, "LastName"}, _
+        {SqlName.PlayerNamesShortNameColumn, "ShortName"}
+    }
 
     Public Sub Connect()
         Adapter.Connect(_ServerName, _SchemaName, _UserName, _Password)
-        Names(SqlName.PlayerNamesTable) = "PlayerNames"
-        Names(SqlName.PlayerNamesIdColumn) = "Id"
-        Names(SqlName.PlayerNamesFirstNameColumn) = "FirstName"
-        Names(SqlName.PlayerNamesLastNameColumn) = "LastName"
-        Names(SqlName.PlayerNamesShortNameColumn) = "ShortName"
         RaiseEvent IsConnectedChanged()
     End Sub
 
@@ -92,18 +90,20 @@ Public Class Connector
 
     Public Function GetPlayerNames() As IEnumerable(Of PlayerName)
         EnsureConnected()
-        Dim Rows = Adapter.Select(Names(SqlName.PlayerNamesTable), _
-                                  {Names(SqlName.PlayerNamesIdColumn), _
-                                   Names(SqlName.PlayerNamesFirstNameColumn), _
-                                   Names(SqlName.PlayerNamesLastNameColumn), _
-                                   Names(SqlName.PlayerNamesShortNameColumn)}, _
-                                  {Names(SqlName.PlayerNamesLastNameColumn)})
+        Dim Rows = Adapter.Select( _
+         Names(SqlName.PlayerNamesTable), _
+         {Names(SqlName.PlayerNamesIdColumn), _
+          Names(SqlName.PlayerNamesFirstNameColumn), _
+          Names(SqlName.PlayerNamesLastNameColumn), _
+          Names(SqlName.PlayerNamesShortNameColumn)}, _
+         {Names(SqlName.PlayerNamesLastNameColumn)})
         Dim Result As New List(Of PlayerName)
         For Each i In Rows
-            Result.Add(New PlayerName(i.GetValue(Of Guid)(Names(SqlName.PlayerNamesIdColumn)), _
-                                      i.GetValue(Of String)(Names(SqlName.PlayerNamesFirstNameColumn)), _
-                                      i.GetValue(Of String)(Names(SqlName.PlayerNamesLastNameColumn)), _
-                                      i.GetValue(Of String)(Names(SqlName.PlayerNamesShortNameColumn))))
+            Result.Add(New PlayerName( _
+             i.GetValue(Of Guid)(Names(SqlName.PlayerNamesIdColumn)), _
+             i.GetValue(Of String)(Names(SqlName.PlayerNamesFirstNameColumn)), _
+             i.GetValue(Of String)(Names(SqlName.PlayerNamesLastNameColumn)), _
+             i.GetValue(Of String)(Names(SqlName.PlayerNamesShortNameColumn))))
         Next
         Return Result
     End Function

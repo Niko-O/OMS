@@ -39,12 +39,7 @@ namespace TennisPlugin.PlayerNames
         private PlayerNamesContainer()
         {
             PluginInterfaces.PublicProviders.MefCompositor.Compose(Target);
-            PluginInterfaces.PublicProviders.MefCompositor.CatalogChanged += new EventHandler(MefCompositor_CatalogChanged);
-            UpdateSources();
-        }
-
-        private void MefCompositor_CatalogChanged(object sender, EventArgs e)
-        {
+            PluginInterfaces.PublicProviders.MefCompositor.CatalogChanged += (sender, e) => UpdateSources();
             UpdateSources();
         }
 
