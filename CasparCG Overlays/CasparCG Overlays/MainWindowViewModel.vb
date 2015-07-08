@@ -158,7 +158,6 @@
         Dim Temp As New List(Of PluginManagement.TabControl.PluginTabItem)
         For Each i In _Plugins.ViewModels
             If i.Target.IsInUse Then
-
                 Temp.Add(New PluginManagement.TabControl.PluginTabItem(i.Target))
             End If
         Next

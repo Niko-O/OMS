@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using OnUtils;
 using OnUtils.Extensions;
 using OnUtils.Wpf;
@@ -78,12 +79,21 @@ namespace TennisPlugin
             }
         }
 
-        [Dependency("CasparServerIsConnected", "PlayerNameOne", "PlayerNameTwo", "TemplateIsLoaded")]
+        [Dependency("CasparServerIsConnected", "PlayerNameOne", "PlayerNameTwo", "TemplateIsLoaded", "SelectedPlayerOneName", "SelectedPlayerTwoName", "HasPlayerNames")]
         public bool CanShowGraphics
         {
             get
             {
-                return PluginInterfaces.PublicProviders.CasparServer.IsConnected && _TemplateIsLoaded && !String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo);
+                return PluginInterfaces.PublicProviders.CasparServer.IsConnected &&
+                       _TemplateIsLoaded &&
+                       (
+                           _ScoreboardIsVisible ||
+                           (
+                               HasPlayerNames ?
+                               (SelectedPlayerOneName != null && SelectedPlayerTwoName != null) :
+                               (!String.IsNullOrWhiteSpace(_PlayerNameOne) && !String.IsNullOrWhiteSpace(_PlayerNameTwo))
+                           )
+                       );
             }
         }
 
@@ -238,6 +248,115 @@ namespace TennisPlugin
             }
         }
 
+        public IEnumerable<TennisNameData.IPlayerName> AvailablePlayerNames
+        {
+            get
+            {
+                return PlayerNames.PlayerNamesContainer.Instance.Names;
+            }
+        }
+
+        [Dependency("AvailablePlayerNames")]
+        public bool HasPlayerNames
+        {
+            get
+            {
+                return AvailablePlayerNames.Any();
+            }
+        }
+
+        [Dependency("HasPlayerNames")]
+        public Visibility PlayerNameTextBoxVisibility
+        {
+            get
+            {
+                return (!HasPlayerNames).ToVisibility();
+            }
+        }
+
+        [Dependency("HasPlayerNames")]
+        public Visibility PlayerNameComboBoxVisibility
+        {
+            get
+            {
+                return HasPlayerNames.ToVisibility();
+            }
+        }
+
+        private TennisNameData.IPlayerName _SelectedPlayerOneName = null;
+        public TennisNameData.IPlayerName SelectedPlayerOneName
+        {
+            get
+            {
+                return _SelectedPlayerOneName;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _SelectedPlayerOneName, value, "SelectedPlayerOneName");
+            }
+        }
+
+        private TennisNameData.IPlayerName _SelectedPlayerTwoName = null;
+        public TennisNameData.IPlayerName SelectedPlayerTwoName
+        {
+            get
+            {
+                return _SelectedPlayerTwoName;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _SelectedPlayerTwoName, value, "SelectedPlayerTwoName");
+            }
+        }
+
+        #endregion
+
+        #region Serve
+
+        private bool _IsPlayerOneServe = false;
+        public bool IsPlayerOneServe
+        {
+            get
+            {
+                return _IsPlayerOneServe;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsPlayerOneServe, value, "IsPlayerOneServe");
+            }
+        }
+
+        private bool _IsPlayerTwoServe = false;
+        public bool IsPlayerTwoServe
+        {
+            get
+            {
+                return _IsPlayerTwoServe;
+            }
+            set
+            {
+                ChangeIfDifferent(ref _IsPlayerTwoServe, value, "IsPlayerTwoServe");
+            }
+        }
+
+        [Dependency("IsPlayerOneServe")]
+        public string ToggleServePlayerOneButtonText
+        {
+            get
+            {
+                return _IsPlayerOneServe ? "Kein Aufschlag" : "Aufschlag";
+            }
+        }
+
+        [Dependency("IsPlayerTwoServe")]
+        public string ToggleServePlayerTwoButtonText
+        {
+            get
+            {
+                return _IsPlayerTwoServe ? "Kein Aufschlag" : "Aufschlag";
+            }
+        }
+
         #endregion
 
         #region TheOtherInserts
@@ -380,54 +499,6 @@ namespace TennisPlugin
 
         #endregion
 
-        #region Serve
-
-        private bool _IsPlayerOneServe = false;
-        public bool IsPlayerOneServe
-        {
-            get
-            {
-                return _IsPlayerOneServe;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _IsPlayerOneServe, value, "IsPlayerOneServe");
-            }
-        }
-
-        private bool _IsPlayerTwoServe = false;
-        public bool IsPlayerTwoServe
-        {
-            get
-            {
-                return _IsPlayerTwoServe;
-            }
-            set
-            {
-                ChangeIfDifferent(ref _IsPlayerTwoServe, value, "IsPlayerTwoServe");
-            }
-        }
-
-        [Dependency("IsPlayerOneServe")]
-        public string ToggleServePlayerOneButtonText
-        {
-            get
-            {
-                return _IsPlayerOneServe ? "Kein Aufschlag" : "Aufschlag";
-            }
-        }
-
-        [Dependency("IsPlayerTwoServe")]
-        public string ToggleServePlayerTwoButtonText
-        {
-            get
-            {
-                return _IsPlayerTwoServe ? "Kein Aufschlag" : "Aufschlag";
-            }
-        }
-
-        #endregion
-
         #region Lower Third
 
         private bool _LowerThirdIsVisible = false;
@@ -542,10 +613,11 @@ namespace TennisPlugin
             _Player2ReducedCommand = new DelegateCommand(() => _StateList.Process(Scoring.ScoringStrategyAction.Player2Reduced), () => _StateList != null && _StateList.CanProcess(Scoring.ScoringStrategyAction.Player2Reduced));
             _UndoCommand = new DelegateCommand(() => _StateList.Undo(), () => _StateList != null && _StateList.CanUndo);
             AddExternalPropertyDependency("CasparServerIsConnected", PluginInterfaces.PublicProviders.CasparServer, "IsConnected");
+            AddExternalPropertyDependency("AvailablePlayerNames", PlayerNames.PlayerNamesContainer.Instance, "Names");
             TheOtherInsertsTextInputCount = 5;
             if (IsInDesignMode)
             {
-                _StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
+                _StateList = new Scoring.UndoStateList(new Scoring.V1.V1State());
             }
         }
 

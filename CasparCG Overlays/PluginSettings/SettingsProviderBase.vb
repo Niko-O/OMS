@@ -27,7 +27,7 @@ Public MustInherit Class SettingsProviderBase
     ''' </summary>
     ''' <param name="Property">Die Eigenschaft, von der der Standardwert ausgelesen wird.</param>
     Protected Function GetDefaultValue([Property] As SettingsProperty) As Object
-        Return [Property].GetValue()
+        Return [Property].GetDefaultValue()
     End Function
 
 End Class

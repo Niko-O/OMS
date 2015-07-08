@@ -64,7 +64,7 @@ namespace TennisPlugin
 
         public void SetPlayerServe(TennisTemplateServe PlayerServe)
         {
-            ExecuteCallCommand("setPointsTwo", (int)PlayerServe);
+            ExecuteCallCommand("serve", (int)PlayerServe);
         }
 
         public void SetStandings(string SetsOne, string GamesOne, string PointsOne, string SetsTwo, string GamesTwo, string PointsTwo)

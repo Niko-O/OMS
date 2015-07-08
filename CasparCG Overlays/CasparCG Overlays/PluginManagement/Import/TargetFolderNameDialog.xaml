@@ -7,7 +7,7 @@
     xmlns:c="clr-namespace:OnUtils.Wpf.Converters;assembly=OnUtils"
     Title="Neuen Plugin-Ordner erstellen"
     Width="395"
-    Height="127"
+    Height="137"
     ResizeMode="NoResize"
 >
     <Window.DataContext>
@@ -21,8 +21,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel>
-            <TextBlock>Ordnername:</TextBlock>
+        <StackPanel Margin="3">
+            <TextBlock Margin="0,0,0,3">Ordnername:</TextBlock>
             <TextBox Grid.Row="0" o:DefaultSelectedBehavior.IsDefaultSelected="True" Text="{Binding Path=DirectoryName, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Path=NameIsValid, Converter={StaticResource ResourceKey=ErrorConverter}}"/>
         </StackPanel>
         <Grid Grid.Row="1" Background="#f0f0f0">
@@ -40,6 +40,7 @@
                 <Button
                     Style="{StaticResource ResourceKey=DialogControlButtonStyle}"
                     IsDefault="True"
+                    IsEnabled="{Binding Path=NameIsValid}"
                     Click="CloseOk"
                 >
                     OK

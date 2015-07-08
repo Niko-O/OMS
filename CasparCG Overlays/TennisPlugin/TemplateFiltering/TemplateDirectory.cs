@@ -14,7 +14,7 @@ namespace TennisPlugin
         {
             get
             {
-                return new PRootDirectory("Root");
+                return new PRootDirectory();
             }
         }
          
@@ -94,8 +94,8 @@ namespace TennisPlugin
         private class PRootDirectory : TemplateDirectory
         {
 
-            public PRootDirectory(string NewName, params TemplateDirectory[] NewChildren)
-                : base(NewName, NewChildren)
+            public PRootDirectory()
+                : base("Root")
         {
         }
 

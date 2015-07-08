@@ -1,15 +1,15 @@
-﻿Public Class EditCountriesTableWindow
+﻿Public Class EditPlayerNamesTableWindow
 
-    Dim WithEvents Model As EditCountriesTableWindowViewModel
+    Dim WithEvents Model As EditPlayerNamesTableWindowViewModel
 
     Dim AllowClose As Boolean = False
 
     Public Sub New()
         InitializeComponent()
-        Model = DirectCast(Me.DataContext, EditCountriesTableWindowViewModel)
+        Model = DirectCast(Me.DataContext, EditPlayerNamesTableWindowViewModel)
         AddHandler Connector.Instance.IsConnectedChanged, Sub() Model.IsConnected = Connector.Instance.IsConnected
         Model.IsConnected = Connector.Instance.IsConnected
-        Model.SetOriginalCountries(Connector.Instance.GetCountries)
+        Model.SetOriginalPlayerNames(Connector.Instance.GetPlayerNames)
     End Sub
 
     Private Sub CloseOk(sender As System.Object, e As System.Windows.RoutedEventArgs)
@@ -45,22 +45,22 @@
         End With
     End Sub
 
-    Private Function DoApplyChanges() As IEnumerable(Of SqlCountry)
-        For Each i In Model.RemovedCountries
-            Connector.Instance.DeleteCountry(i)
+    Private Function DoApplyChanges() As IEnumerable(Of PlayerName)
+        For Each i In Model.RemovedPlayerNames
+            Connector.Instance.DeletePlayerName(i)
         Next
-        For Each i In Model.ChangedCountries
-            Connector.Instance.UpdateCountry(i.OriginalCountry.Guid, i.FullName, i.ShortName)
+        For Each i In Model.ChangedPlayerNames
+            Connector.Instance.UpdatePlayerName(i.OriginalPlayerName, i.FirstName, i.LastName, i.ShortName)
         Next
-        For Each i In Model.AddedCountries
-            Connector.Instance.AddCountry(i.FullName, i.ShortName)
+        For Each i In Model.AddedPlayerNames
+            Connector.Instance.AddNewPlayerName(i.FirstName, i.LastName, i.ShortName)
         Next
-        Return Connector.Instance.GetCountries
+        Return Connector.Instance.GetPlayerNames
     End Function
 
     Private Sub RefreshList(sender As System.Object, e As System.Windows.RoutedEventArgs)
         If Not Model.HasChanges OrElse PromptDiscardChanges() Then
-            DoWhileLoading(Function() Connector.Instance.GetCountries, Sub(Result) Model.SetOriginalCountries(Result))
+            DoWhileLoading(Function() Connector.Instance.GetPlayerNames, Sub(Result) Model.SetOriginalPlayerNames(Result))
         End If
     End Sub
 

@@ -38,6 +38,11 @@ Namespace PluginManagement
         End Sub
 
         Private Sub AddDirectoryCatalog(Info As System.IO.DirectoryInfo)
+            For Each i In DirectoryCatalogs
+                If i.FullPath = Info.FullName Then
+                    Return
+                End If
+            Next
             Dim NewCatalog As New DirectoryCatalog(Info.FullName)
             DirectoryCatalogs.Add(NewCatalog)
             Catalog.Catalogs.Add(NewCatalog)

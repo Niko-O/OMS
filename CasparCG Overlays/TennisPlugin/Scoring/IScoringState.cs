@@ -19,5 +19,8 @@ namespace TennisPlugin.Scoring
         bool IsInTieBreak { get; }
         bool IsTieBreakEnabled { get; }
 
+        bool CanProcess(ScoringStrategyAction Action);
+        IScoringState Process(ScoringStrategyAction Action);
+
     }
 }

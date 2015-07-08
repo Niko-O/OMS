@@ -5,12 +5,17 @@
 Public Class Connector
     Inherits Singleton(Of Connector)
 
-    Public Event IsConnectedChanged()
+    Private Enum SqlName As Integer
+        PlayerNamesTable = 1
+        PlayerNamesIdColumn = 2
+        PlayerNamesFirstNameColumn = 3
+        PlayerNamesLastNameColumn = 4
+        PlayerNamesShortNameColumn = 5
+    End Enum
 
-    ''' <summary>
-    ''' Gibt an, ob eine Verbindung zum SQL-Server besteht.
-    ''' Verwenden Sie <see cref="Connect"/>, um die Verbindung aufzubauen, und  <see cref="Disconnect"/>, um die Verbindung zu beenden.
-    ''' </summary>
+    Public Event IsConnectedChanged()
+    Public Event NamesTableChanged()
+
     Public ReadOnly Property IsConnected As Boolean
         Get
             Return Adapter.IsConnected
@@ -18,9 +23,6 @@ Public Class Connector
     End Property
 
     Dim _ServerName As String
-    ''' <summary>
-    ''' Der name, unter dem der Server erreichbar ist. Dies kann der UNC-Name des Computers (z.B. "\\MySqlServer"), eine URL (z.B. "www.mydomain.com") oder eine IP-Adresse (z.B. "192.168.90.104") sein.
-    ''' </summary>
     Public Property ServerName As String
         Get
             Return _ServerName
@@ -31,9 +33,6 @@ Public Class Connector
     End Property
 
     Dim _SchemaName As String
-    ''' <summary>
-    ''' Der Name der Datenbank, auf die zugegriffen wird.
-    ''' </summary>
     Public Property SchemaName As String
         Get
             Return _SchemaName
@@ -44,9 +43,6 @@ Public Class Connector
     End Property
 
     Dim _UserName As String
-    ''' <summary>
-    ''' Der SQL-Benutzer-Name, der zur Authentisierung verwendet wird.
-    ''' </summary>
     Public Property UserName As String
         Get
             Return _UserName
@@ -57,9 +53,6 @@ Public Class Connector
     End Property
 
     Dim _Password As System.Security.SecureString
-    ''' <summary>
-    ''' Das Passwort, das dem SQL-Benutzer zugeordnet ist.
-    ''' </summary>
     Public Property Password As System.Security.SecureString
         Get
             Return _Password
@@ -69,28 +62,21 @@ Public Class Connector
         End Set
     End Property
 
-    Dim Adapter As ISqlAdapter
-    Dim Names As New Dictionary(Of SqlName, String)
+    Dim Adapter As ISqlAdapter = New MySqlAdapter
+    Dim Names As New Dictionary(Of SqlName, String) From _
+    {
+        {SqlName.PlayerNamesTable, "PlayerNames"}, _
+        {SqlName.PlayerNamesIdColumn, "Id"}, _
+        {SqlName.PlayerNamesFirstNameColumn, "FirstName"}, _
+        {SqlName.PlayerNamesLastNameColumn, "LastName"}, _
+        {SqlName.PlayerNamesShortNameColumn, "ShortName"}
+    }
 
-    Public Sub New()
-        Adapter = New MySqlAdapter
-    End Sub
-
-    ''' <summary>
-    ''' Stellt eine Verbindung zum Sql-Server her.
-    ''' </summary>
     Public Sub Connect()
         Adapter.Connect(_ServerName, _SchemaName, _UserName, _Password)
-        Names(SqlName.Countries) = "countries"
-        Names(SqlName.Countries_Id) = "Id"
-        Names(SqlName.Countries_FullName) = "FullName"
-        Names(SqlName.Countries_ShortName) = "ShortName"
         RaiseEvent IsConnectedChanged()
     End Sub
 
-    ''' <summary>
-    ''' Beendet die Verbindung zum Sql-Server.
-    ''' </summary>
     Public Sub Disconnect()
         Adapter.Disconnect()
         RaiseEvent IsConnectedChanged()
@@ -102,86 +88,64 @@ Public Class Connector
         End If
     End Sub
 
-    ''' <summary>
-    ''' Ruft alle Länder der Datenbank ab.
-    ''' </summary>
-    Public Function GetCountries() As IEnumerable(Of SqlCountry)
+    Public Function GetPlayerNames() As IEnumerable(Of PlayerName)
         EnsureConnected()
-        Dim Rows = Adapter.Select(Names(SqlName.Countries), {Names(SqlName.Countries_Id), Names(SqlName.Countries_FullName), Names(SqlName.Countries_ShortName)}, {Names(SqlName.Countries_FullName)})
-        Dim Result As New List(Of SqlCountry)
+        Dim Rows = Adapter.Select( _
+         Names(SqlName.PlayerNamesTable), _
+         {Names(SqlName.PlayerNamesIdColumn), _
+          Names(SqlName.PlayerNamesFirstNameColumn), _
+          Names(SqlName.PlayerNamesLastNameColumn), _
+          Names(SqlName.PlayerNamesShortNameColumn)}, _
+         {Names(SqlName.PlayerNamesLastNameColumn)})
+        Dim Result As New List(Of PlayerName)
         For Each i In Rows
-            Result.Add(New SqlCountry(i.GetValue(Of Guid)(Names(SqlName.Countries_Id)), _
-                                      i.GetValue(Of String)(Names(SqlName.Countries_FullName)), _
-                                      i.GetValue(Of String)(Names(SqlName.Countries_ShortName))))
+            Result.Add(New PlayerName( _
+             i.GetValue(Of Guid)(Names(SqlName.PlayerNamesIdColumn)), _
+             i.GetValue(Of String)(Names(SqlName.PlayerNamesFirstNameColumn)), _
+             i.GetValue(Of String)(Names(SqlName.PlayerNamesLastNameColumn)), _
+             i.GetValue(Of String)(Names(SqlName.PlayerNamesShortNameColumn))))
         Next
         Return Result
     End Function
 
-    ''' <summary>
-    ''' Fügt der Datenbank ein neues Land mit den angegebenen Namen hinzu.
-    ''' Die Id wird automatisch erstellt.
-    ''' </summary>
-    ''' <param name="NewFullName"><see cref="CommonEventPluginData.ICountry.FullName"/></param>
-    ''' <param name="NewShortName"><see cref="CommonEventPluginData.ICountry.ShortName"/></param>
-    Public Function AddCountry(NewFullName As String, NewShortName As String) As Guid
+    Public Function AddNewPlayerName(NewFirstName As String, NewLastName As String, NewShortName As String) As PlayerName
         EnsureConnected()
         Dim NewId = Guid.NewGuid
-        Dim Result = Adapter.Insert(Names(SqlName.Countries), _
-                                    {New ColumnValue(Names(SqlName.Countries_Id), NewId), _
-                                     New ColumnValue(Names(SqlName.Countries_FullName), NewFullName), _
-                                     New ColumnValue(Names(SqlName.Countries_ShortName), NewShortName)})
+        Dim Result = Adapter.Insert(Names(SqlName.PlayerNamesTable), _
+                                    {New ColumnValue(Names(SqlName.PlayerNamesIdColumn), NewId), _
+                                     New ColumnValue(Names(SqlName.PlayerNamesFirstNameColumn), NewFirstName), _
+                                     New ColumnValue(Names(SqlName.PlayerNamesLastNameColumn), NewLastName), _
+                                     New ColumnValue(Names(SqlName.PlayerNamesShortNameColumn), NewShortName)})
         If Not Result = 1 Then
             Throw New UnexpectedAffectedRowCountException(1, Result)
         End If
-        Return NewId
+        RaiseEvent NamesTableChanged()
+        Return New PlayerName(NewId, NewFirstName, NewLastName, NewShortName)
     End Function
 
-    ''' <summary>
-    ''' Fügt der Datenbank ein neues Land mit den angegebenen Namen hinzu und übernimmt die angegebene Guid.
-    ''' Die Id wird automatisch erstellt.
-    ''' </summary>
-    ''' <param name="NewGuid"><see cref="SqlCountry.Guid"/></param>
-    ''' <param name="NewFullName"><see cref="SqlCountry.FullName"/></param>
-    ''' <param name="NewShortName"><see cref="SqlCountry.ShortName"/></param>
-    Public Sub AddCountry(NewGuid As Guid, NewFullName As String, NewShortName As String)
+    Public Sub UpdatePlayerName(Name As PlayerName, NewFirstName As String, NewLastName As String, NewShortName As String)
         EnsureConnected()
-        Dim Result = Adapter.Insert(Names(SqlName.Countries), _
-                                    {New ColumnValue(Names(SqlName.Countries_Id), NewGuid), _
-                                     New ColumnValue(Names(SqlName.Countries_FullName), NewFullName), _
-                                     New ColumnValue(Names(SqlName.Countries_ShortName), NewShortName)})
+        Dim Result = Adapter.Update(Names(SqlName.PlayerNamesTable), _
+                                    {New ColumnValue(Names(SqlName.PlayerNamesIdColumn), Name.Guid)}, _
+                                    {New ColumnValue(Names(SqlName.PlayerNamesFirstNameColumn), NewFirstName), _
+                                     New ColumnValue(Names(SqlName.PlayerNamesLastNameColumn), NewLastName), _
+                                     New ColumnValue(Names(SqlName.PlayerNamesShortNameColumn), NewShortName)})
         If Not Result = 1 Then
             Throw New UnexpectedAffectedRowCountException(1, Result)
         End If
+        Name.FirstName = NewFirstName
+        Name.LastName = NewLastName
+        Name.ShortName = NewShortName
+        RaiseEvent NamesTableChanged()
     End Sub
 
-    ''' <summary>
-    ''' Ändert die Namen des angegebenen Landes auf die angegebenen Namen.
-    ''' Das Land muss bereits in der Datenbank vorhanden sein.
-    ''' </summary>
-    ''' <param name="CountryGuid">Die Guid des Landes, das geändert wird.</param>
-    ''' <param name="NewFullName"><see cref="SqlCountry.FullName"/></param>
-    ''' <param name="NewShortName"><see cref="SqlCountry.ShortName"/></param>
-    Public Sub UpdateCountry(CountryGuid As Guid, NewFullName As String, NewShortName As String)
+    Public Sub DeletePlayerName(Name As PlayerName)
         EnsureConnected()
-        Dim Result = Adapter.Update(Names(SqlName.Countries), _
-                                    {New ColumnValue(Names(SqlName.Countries_Id), CountryGuid)}, _
-                                    {New ColumnValue(Names(SqlName.Countries_FullName), NewFullName), _
-                                     New ColumnValue(Names(SqlName.Countries_ShortName), NewShortName)})
+        Dim Result = Adapter.Delete(Names(SqlName.PlayerNamesTable), {New ColumnValue(Names(SqlName.PlayerNamesIdColumn), Name.Guid)})
         If Not Result = 1 Then
             Throw New UnexpectedAffectedRowCountException(1, Result)
         End If
-    End Sub
-
-    ''' <summary>
-    ''' Löscht das angegebene Land aus der Datenbank.
-    ''' </summary>
-    ''' <param name="CountryGuid">Die Guid des Landes, das aus der Datenbank gelöscht wird.</param>
-    Public Sub DeleteCountry(CountryGuid As Guid)
-        EnsureConnected()
-        Dim Result = Adapter.Delete(Names(SqlName.Countries), {New ColumnValue(Names(SqlName.Countries_Id), CountryGuid)})
-        If Not Result = 1 Then
-            Throw New UnexpectedAffectedRowCountException(1, Result)
-        End If
+        RaiseEvent NamesTableChanged()
     End Sub
 
     Public Shared Function IReallyNeedThisPasswordAsANormalString(Password As System.Security.SecureString) As String

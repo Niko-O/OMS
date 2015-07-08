@@ -92,13 +92,13 @@
     <Compile Include="DataBaseConnectorsSettings.vb" />
     <Compile Include="Exceptions\ConnectorException.vb" />
     <Compile Include="Exceptions\NotConnectedException.vb" />
+    <Compile Include="NameData\PlayerName.vb" />
+    <Compile Include="NameData\PlayerNameSource.vb" />
     <Compile Include="SnapIn\ConnectorPlugIn.vb" />
     <Compile Include="SnapIn\ConnectorSnapIn.xaml.vb">
       <DependentUpon>ConnectorSnapIn.xaml</DependentUpon>
     </Compile>
     <Compile Include="SnapIn\ConnectorSnapInViewModel.vb" />
-    <Compile Include="Beton\SqlCountry.vb" />
-    <Compile Include="Beton\SqlCountrySource.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -109,12 +109,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SnapIn\EditCountriesTableWindow.xaml.vb">
-      <DependentUpon>EditCountriesTableWindow.xaml</DependentUpon>
+    <Compile Include="SnapIn\EditPlayerNamesTableWindow.xaml.vb">
+      <DependentUpon>EditPlayerNamesTableWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SnapIn\EditCountriesTableWindowViewModel.vb" />
-    <Compile Include="SnapIn\SqlCountryViewModel.vb" />
-    <Compile Include="SqlName.vb" />
+    <Compile Include="SnapIn\EditPlayerNamesTableWindowViewModel.vb" />
+    <Compile Include="SnapIn\PlayerNameViewModel.vb" />
     <Compile Include="Exceptions\UnexpectedAffectedRowCountException.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -132,10 +131,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonEventPluginData\CommonEventPluginData.vbproj">
-      <Project>{740B3954-FC54-4180-9BD3-77DF23090B33}</Project>
-      <Name>CommonEventPluginData</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PluginInterfaces\PluginInterfaces.vbproj">
       <Project>{8E60A8D4-FA07-41B1-86BD-3FD1209C7AAC}</Project>
       <Name>PluginInterfaces</Name>
@@ -144,13 +139,17 @@
       <Project>{8DB484D8-8F22-46E3-9BB3-3AF749C1CC33}</Project>
       <Name>PluginSettings</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TennisNameData\TennisNameData.vbproj">
+      <Project>{7D1A502B-9FEA-43E7-9A3D-DE4AF4A6B960}</Project>
+      <Name>TennisNameData</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="SnapIn\ConnectorSnapIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SnapIn\EditCountriesTableWindow.xaml">
+    <Page Include="SnapIn\EditPlayerNamesTableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

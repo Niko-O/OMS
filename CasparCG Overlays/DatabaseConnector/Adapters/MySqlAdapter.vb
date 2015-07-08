@@ -33,14 +33,6 @@ Public Class MySqlAdapter
         _IsConnected = False
     End Sub
 
-    Public Function ListTables() As System.Collections.Generic.IEnumerable(Of ISqlRow) Implements ISqlAdapter.ListTables
-        Throw New NotImplementedException
-    End Function
-
-    Public Function ListTableColumns(TableName As String) As IEnumerable(Of ISqlRow) Implements ISqlAdapter.ListTableColumns
-        Throw New NotImplementedException
-    End Function
-
     Public Function [Select](TableName As String, Columns() As String, OrderByColumns As String()) As System.Collections.Generic.IEnumerable(Of ISqlRow) Implements ISqlAdapter.Select
         'Return {New DebugSqlRow(New ColumnValue("Id", Guid.NewGuid.ToString), New ColumnValue("FullName", "Austria"), New ColumnValue("ShortName", "AUT")), _
         '        New DebugSqlRow(New ColumnValue("Id", Guid.NewGuid.ToString), New ColumnValue("FullName", "Nope"), New ColumnValue("ShortName", "NOP")), _

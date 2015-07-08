@@ -73,7 +73,7 @@ Public MustInherit Class SettingsStructure
     ''' </summary>
     Public Function RegisterProperty(Of T)(Name As String, DefaultValue As T) As SettingsProperty(Of T)
         If String.IsNullOrEmpty(Name) Then
-            Throw New ArgumentNullException("Name", "Der Name darf nicht Nothing sein.")
+            Throw New ArgumentNullException("Name")
         End If
         Dim Temp As New SettingsProperty(Of T)(Me, Name, DefaultValue)
         _Properties.Add(Temp)

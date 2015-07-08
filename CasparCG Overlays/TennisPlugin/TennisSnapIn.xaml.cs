@@ -43,7 +43,7 @@ namespace TennisPlugin
         {
             InitializeComponent();
             ViewModel = (TennisSnapInViewModel)this.DataContext;
-            StateList = new Scoring.UndoStateList(new Scoring.V1.TennisScoringStrategyV1());
+            StateList = new Scoring.UndoStateList(new Scoring.V1.V1State());
             StateList.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(StateListPropertyChanged);
             ViewModel.StateList = StateList;
             PluginInterfaces.PublicProviders.CasparServer.IsConnectedChanged += () => LoadTemplatesFromServer();
@@ -107,19 +107,22 @@ namespace TennisPlugin
                 };
                 return;
             }
-            var Filtered = _CurrentFilter == null ? TemplatePaths : TemplatePaths.Where(i => i.Directory.StartsWith(_CurrentFilter, StringComparison.InvariantCultureIgnoreCase)); ;
-
-            var NewTemplates = new List<ServerStoredTennisTemplate>();
-
+            var FilteredPaths = _CurrentFilter == null ? TemplatePaths : TemplatePaths.Where(i => i.Directory.StartsWith(_CurrentFilter, StringComparison.InvariantCultureIgnoreCase));
+            
             var PreviouslyLoadedTemplate = ViewModel.TemplateIsLoaded ? ViewModel.SelectedTennisTemplate : null;
             var PreviouslySelectedTemplate = ViewModel.SelectedTennisTemplate as ServerStoredTennisTemplate;
 
-            foreach (var i in Filtered)
+            var NewTemplates = FilteredPaths.Select(i => new ServerStoredTennisTemplate(i));
+            
+            if (PreviouslyLoadedTemplate != null && PreviouslyLoadedTemplate is ServerStoredTennisTemplate)
             {
-                NewTemplates.Add(new ServerStoredTennisTemplate(i));
+                var Matches = NewTemplates.Where(i => i.Path.FullPath == ((ServerStoredTennisTemplate)PreviouslyLoadedTemplate).Path.FullPath);
+                if (Matches.Any())
+                {
+                    PreviouslyLoadedTemplate = Matches.First();
+                }
             }
-
-            ViewModel.AvailableTennisTemplates = PreviouslyLoadedTemplate == null ? NewTemplates : NewTemplates.Prepend(PreviouslyLoadedTemplate);
+            ViewModel.AvailableTennisTemplates = PreviouslyLoadedTemplate == null || NewTemplates.Contains(PreviouslyLoadedTemplate) ? NewTemplates : NewTemplates.Prepend(PreviouslyLoadedTemplate);
 
             if (PreviouslyLoadedTemplate != null)
             {
@@ -172,7 +175,14 @@ namespace TennisPlugin
 
         private void UpdatePlayerNames()
         {
-            ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
+            if (ViewModel.HasPlayerNames)
+            {
+                ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.SelectedPlayerOneName.ShortName, ViewModel.SelectedPlayerTwoName.ShortName);
+            }
+            else
+            {
+                ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
+            }
         }
 
         private void UpdateStandings()
@@ -265,6 +275,7 @@ namespace TennisPlugin
                 ViewModel.IsPlayerOneServe = true;
                 ViewModel.IsPlayerTwoServe = false;
             }
+            UpdateServe();
         }
 
         private void ToggleServePlayerTwo(object sender, RoutedEventArgs e)
@@ -277,6 +288,18 @@ namespace TennisPlugin
             {
                 ViewModel.IsPlayerTwoServe = true;
                 ViewModel.IsPlayerOneServe = false;
+            }
+            UpdateServe();
+        }
+
+        private void UpdateServe()
+        {
+            if (ViewModel.SelectedTennisTemplate != null)
+            {
+                ViewModel.SelectedTennisTemplate.SetPlayerServe(
+                    ViewModel.IsPlayerOneServe ? TennisTemplateServe.Player1 :
+                    ViewModel.IsPlayerTwoServe ? TennisTemplateServe.Player2 :
+                    TennisTemplateServe.None);
             }
         }
 
