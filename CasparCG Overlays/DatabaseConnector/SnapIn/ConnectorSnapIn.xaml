@@ -98,7 +98,7 @@
             Passwort:
         </TextBlock>
         <PasswordBox
-            Name="PasswordBox_SqlPassword"
+            x:Name="PasswordBox_SqlPassword"
             Grid.Row="3"
             Grid.Column="1"
             Style="{StaticResource ResourceKey=PasswordBoxStyle}"

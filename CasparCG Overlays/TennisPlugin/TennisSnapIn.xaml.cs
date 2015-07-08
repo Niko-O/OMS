@@ -175,13 +175,16 @@ namespace TennisPlugin
 
         private void UpdatePlayerNames()
         {
-            if (ViewModel.HasPlayerNames)
+            if (PluginInterfaces.PublicProviders.CasparServer.IsConnected)
             {
-                ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.SelectedPlayerOneName.ShortName, ViewModel.SelectedPlayerTwoName.ShortName);
-            }
-            else
-            {
-                ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
+                if (ViewModel.HasPlayerNames)
+                {
+                    ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.SelectedPlayerOneName.ShortName, ViewModel.SelectedPlayerTwoName.ShortName);
+                }
+                else
+                {
+                    ViewModel.SelectedTennisTemplate.SetPlayerNames(ViewModel.PlayerNameOne, ViewModel.PlayerNameTwo);
+                }
             }
         }
 
