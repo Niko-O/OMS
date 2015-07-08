@@ -74,12 +74,16 @@ var servePlayerTwo = 2;
 
 function showScoreboard()
 {
+    document.getElementById("scoreboard").classList.remove("hinge");
     document.getElementById("scoreboard").classList.add("showIn");
+    document.getElementById("scoreboard").classList.add("bounceInLeft", "animated");
 }
 
 function hideScoreboard()
 {
-    document.getElementById("scoreboard").classList.remove("showIn");
+    //document.getElementById("scoreboard").classList.remove("showIn");
+    document.getElementById("scoreboard").classList.remove("bounceInLeft");
+    document.getElementById("scoreboard").classList.add("hinge");
 }
 
 function setPlayerNames(playerOne, playerTwo)
